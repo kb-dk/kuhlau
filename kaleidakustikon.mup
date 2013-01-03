@@ -1,0 +1,77 @@
+// Kaleidakustikon
+
+header
+  title "Kaleidakustikon"
+  title ""
+
+score
+  vscheme=3f
+  packfact=.5
+  scale=.75 // turned on for testing
+  measnum=y // turned on for testing
+  staffs=2
+  brace=1-2
+
+staff 1
+  clef=treble
+
+staff 2
+  clef=bass
+
+score
+  time=3/4
+  key=1&
+
+music
+  // m. 1
+  1 1: 8c5 bm;8a5 ebm;
+  2 1: 4r; 
+  bar mnum=2
+
+  // m. 2
+  1 1: 4f5;[grace]8g5;[down]8f5 bm;[down]8e5;[down]8f5;[down]8c5 ebm;
+  2 1: 4f2;[down]4c4a3f3; [down]4c4a3f3; 
+  bar mnum=3
+
+music
+  // m. 3
+  1 1: [down]8a5 bm;[down]8f5;[down]8c6;[down]8a5;[down]8f6;[down]8f5 ebm;
+  2 1: 4f2;[down]4c4a3f3; [down]4c4a3f3; 
+  bar mnum=4
+
+music
+  // m. 4
+  1 1: [down]8e5 bm;[down]8d6;[down]8c6;[down]8b5;[down]8g5;[down]8e5 ebm;
+  2 1: 4c3;[down]4c4b3g3; [down]4c4b3g3; 
+  bar mnum=5
+
+music
+  // m. 5
+  1 1: 4.c5;8c#5 bm;8d5;8b4 ebm;
+  2 1: 4c3;[down]4c4g3e3; [down]4c4g3e3; 
+  bar mnum=6
+
+music
+  // m. 6
+  1 1: [down]8a4 bm;[down]8c5 ebm;[down]4.f5;[up]8a4;
+  2 1: [up]8f2 bm;[up]8a2;[up]8c3;[up]8f3;[up]8a3;[up]8c4 ebm;
+  bar mnum=7
+
+music
+  // m. 7
+  1 1: [down]8g4 bm;[down]8c#5;[down]8e5;[down]8d5;[down]8b4;[down]8g4 ebm;
+  2 1: 4f2;[down]4c4a3f3; [down]4c4a3f3; 
+  bar mnum=8
+
+music
+  // m. 8
+  1 1: [up]8e5;[down]4c5;[up]8bn4 bm;[up]8b&4;[up]8g&4 ebm;
+  2 1: [up]4c3;[up]4c4b3e3; [up]4c4b3e3; 
+  2 2: [down]2.c3;
+  bar mnum=9
+
+  // m. 9
+  1 1: [up]4f5;4r; 
+  2 1: [down]4c4a3f3; 4f2;
+  repeatend
+
