@@ -1,0 +1,760 @@
+# **************************************************************
+
+# NAME:     Music Encoding Initiative (MEI) schema component:
+#           datatypes.rng
+# 
+# NOTICE:   Copyright (c) 2010 by the Music Encoding Initiative (MEI)
+#           Council.
+# 
+#           Licensed under the Educational Community License, Version
+#           2.0 (the "License"); you may not use this file except in
+#           compliance with the License. You may obtain a copy of the
+#           License at http://www.osedu.org/licenses/ECL-2.0.
+# 
+#           Unless required by applicable law or agreed to in writing,
+#           software distributed under the License is distributed on
+#           an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#           KIND, either express or implied. See the License for the
+#           specific language governing permissions and limitations
+#           under the License.
+# 
+#           This is a derivative work based on earlier versions of the
+#           schema copyright (c) 2001-2006 Perry Roland and the Rector
+#           and Visitors of the University of Virginia; licensed under
+#           the Educational Community License version 1.0.
+# 
+# CONTACT:  contact@music-encoding.org 
+
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace mei = "http://www.music-encoding.org/ns/mei"
+namespace sch = "http://purl.oclc.org/dsdl/schematron"
+namespace tei = "http://www.tei-c.org/ns/1.0"
+namespace xhtml = "http://www.w3.org/1999/xhtml"
+namespace xlink = "http://www.w3.org/1999/xlink"
+
+
+## Either a decimal value or a token. The decimal values are
+##       limited to .25, .5, .75, or 1, while the token values are restricted to
+##       'full'.
+data.BEND.AMOUNT =
+  xsd:decimal { pattern = "1|\.25|\.5|\.75" }
+  | xsd:token { pattern = "full" }
+
+## A beat location, i.e., [0-9]+(\.?[0-9]*)? The value must
+##       fall between 0 and the numerator of the time signature + 1, where 0
+##       represents the left barline and the upper bound represents the right
+##       barline. For example, in 12/8 the value must be in the range from 0 to
+##       13.
+data.BEAT = xsd:decimal { minInclusive = "0" }
+
+## Visual and performance information for a repeated beat
+##       symbol.
+data.BEATRPT.REND =
+  xsd:positiveInteger { pattern = "4|8|16|32|64|128" }
+  | xsd:token { pattern = "mixed" }
+
+## Either a hexadecimal color value, ie., x[0-9A-Fa-f]{6,6} OR
+##       a descriptive word, i.e., aqua, black, blue, fuchsia, gray, green, lime,
+##       maroon, navy, olive, purple, red, silver, teal, white, or yellow, for
+##       colors defined by the HTML 4.01 specification.
+data.COLOR =
+  xsd:token {
+    pattern =
+      "(x[0-9A-Fa-f]{6,6}|aqua|black|fuchsia|gray|green|lime|maroon|navy|olive|purple|red|silver|teal|white|yellow)"
+  }
+
+## 360th-unit measure of a cirle's circumference; optionally
+##       signed decimal number, i.e., [+-]?[0-9]+(\.?[0-9]*)?
+data.DEGREES = xsd:decimal
+
+## In a guitar chord diagram, a label indicating which finger,
+##       if any, should be used to play an individual string. The values 'x' and
+##       'o' indicate stopped and open strings, respectively.
+data.FINGER.FRET =
+  xsd:positiveInteger { minInclusive = "1" maxInclusive = "4" }
+  | xsd:token { pattern = "x|o" }
+
+## In a guitar chord diagram, the fret where the finger should
+##       be placed. Since guitar chord diagrams are limited to the range of frets
+##       that fall under the hand, the value here is also limited. The pos
+##       (position) attribute on the chorddef element must be used to indicate at
+##       which fret this range begins.
+data.FRET =
+  xsd:positiveInteger { minInclusive = "1" maxInclusive = "5" }
+
+## ISO date formats
+data.ISODATE =
+  # W3C
+  xsd:date
+  | xsd:gYear
+  | xsd:gMonth
+  | xsd:gDay
+  | xsd:gYearMonth
+  | xsd:gMonthDay
+  | xsd:time
+  | xsd:dateTime
+  | # any ISO 8601 format (and a lot more)
+    xsd:token { pattern = "[0-9.,DHMPRSTWYZ/:+\-]+" }
+
+## ISO 24-hour time format: HH:MM:SS.ss, i.e.,
+##       [0-9][0-9]:[0-9][0-9]:[0-9][0-9](\.?[0-9]*)?
+data.ISOTIME = xsd:time
+
+## A duration expressed as a count of measures plus a beat
+##       location, i.e., [0-9]+m *\+ *[0-9]+(\.?[0-9]*)?, e.g., dur="1m + 3.5"
+##       indicates a duration of 1 measure plus 3 and one half beats or, in other
+##       words, on the 2nd half of the 3rd beat of the next measure. The measure
+##       number must be in the range of 0 to the number of remaining measures and
+##       the beat number must be in the range from 0 to the numerator of the time
+##       signature plus 1. For example, for an event starting in the first measure
+##       of a piece containing 6 measures in 6/8, the measure number must be
+##       between 0 to 5 and the beat number must be within the range from 0 to 7,
+##       e.g., "4m+3".
+data.MEASUREBEAT =
+  xsd:token { pattern = "([0-9]+m *\+ *)?[0-9]+(\.?[0-9]*)?" }
+
+## General MIDI instrument names
+data.MIDINAMES =
+  "Acoustic_Grand_Piano"
+  | "Bright_Acoustic_Piano"
+  | "Electric_Grand_Piano"
+  | "Honky-tonk_Piano"
+  | "Electric_Piano_1"
+  | "Electric_Piano_2"
+  | "Harpsichord"
+  | "Clavi"
+  | "Celesta"
+  | "Glockenspiel"
+  | "Music_Box"
+  | "Vibraphone"
+  | "Marimba"
+  | "Xylophone"
+  | "Tubular_Bells"
+  | "Dulcimer"
+  | "Drawbar_Organ"
+  | "Percussive_Organ"
+  | "Rock_Organ"
+  | "Church_Organ"
+  | "Reed_Organ"
+  | "Accordion"
+  | "Harmonica"
+  | "Tango_Accordion"
+  | "Acoustic_Guitar_nylon"
+  | "Acoustic_Guitar_steel"
+  | "Electric_Guitar_jazz"
+  | "Electric_Guitar_clean"
+  | "Electric_Guitar_muted"
+  | "Overdriven_Guitar"
+  | "Distortion_Guitar"
+  | "Guitar_harmonics"
+  | "Acoustic_Bass"
+  | "Electric_Bass_finger"
+  | "Electric_Bass_pick"
+  | "Fretless_Bass"
+  | "Slap_Bass_1"
+  | "Slap_Bass_2"
+  | "Synth_Bass_1"
+  | "Synth_Bass_2"
+  | "Violin"
+  | "Viola"
+  | "Cello"
+  | "Contrabass"
+  | "Tremolo_Strings"
+  | "Pizzicato_Strings"
+  | "Orchestral_Harp"
+  | "Timpani"
+  | "String_Ensemble_1"
+  | "String_Ensemble_2"
+  | "SynthStrings_1"
+  | "SynthStrings_2"
+  | "Choir_Aahs"
+  | "Voice_Oohs"
+  | "Synth_Voice"
+  | "Orchestra_Hit"
+  | "Trumpet"
+  | "Trombone"
+  | "Tuba"
+  | "Muted_Trumpet"
+  | "French_Horn"
+  | "Brass_Section"
+  | "SynthBrass_1"
+  | "SynthBrass_2"
+  | "Soprano_Sax"
+  | "Alto_Sax"
+  | "Tenor_Sax"
+  | "Baritone_Sax"
+  | "Oboe"
+  | "English_Horn"
+  | "Bassoon"
+  | "Clarinet"
+  | "Piccolo"
+  | "Flute"
+  | "Recorder"
+  | "Pan_Flute"
+  | "Blown_Bottle"
+  | "Shakuhachi"
+  | "Whistle"
+  | "Ocarina"
+  | "Lead_1_square"
+  | "Lead_2_sawtooth"
+  | "Lead_3_calliope"
+  | "Lead_4_chiff"
+  | "Lead_5_charang"
+  | "Lead_6_voice"
+  | "Lead_7_fifths"
+  | "Lead_8_bass_and_lead"
+  | "Pad_1_new_age"
+  | "Pad_2_warm"
+  | "Pad_3_polysynth"
+  | "Pad_4_choir"
+  | "Pad_5_bowed"
+  | "Pad_6_metallic"
+  | "Pad_7_halo"
+  | "Pad_8_sweep"
+  | "FX_1_rain"
+  | "FX_2_soundtrack"
+  | "FX_3_crystal"
+  | "FX_4_atmosphere"
+  | "FX_5_brightness"
+  | "FX_6_goblins"
+  | "FX_7_echoes"
+  | "FX_8_sci-fi"
+  | "Sitar"
+  | "Banjo"
+  | "Shamisen"
+  | "Koto"
+  | "Kalimba"
+  | "Bagpipe"
+  | "Fiddle"
+  | "Shanai"
+  | "Tinkle_Bell"
+  | "Agogo"
+  | "Steel_Drums"
+  | "Woodblock"
+  | "Taiko_Drum"
+  | "Melodic_Tom"
+  | "Synth_Drum"
+  | "Reverse_Cymbal"
+  | "Guitar_Fret_Noise"
+  | "Breath_Noise"
+  | "Seashore"
+  | "Bird_Tweet"
+  | "Telephone_Ring"
+  | "Helicopter"
+  | "Applause"
+  | "Gunshot"
+
+## MIDI quarter notes per minute: positive integer in the
+##       range 10-1000
+data.MIDITEMPO =
+  xsd:positiveInteger { minInclusive = "10" maxInclusive = "1000" }
+
+## Maxima-long relationship values.
+data.MODUSMAIOR =
+  xsd:positiveInteger { minInclusive = "2" maxInclusive = "3" }
+
+## Long-breve relationship values.
+data.MODUSMINOR =
+  xsd:positiveInteger { minInclusive = "2" maxInclusive = "3" }
+
+## The amount of octave displacement; that is, '8' (as in
+##       '8va' for 1 octave), '15' (for 2 octaves), or rarely '22' (for 3
+##       octaves).
+data.OCTAVE.DIS = xsd:positiveInteger { pattern = "8|15|22" }
+
+## Rotation or reflection of base symbol
+##       values.
+data.ORIENTATION = xsd:token { pattern = "reversed|90CW|90CCW" }
+
+## The number of panels per page.
+data.PAGE.PANELS =
+  xsd:positiveInteger { minInclusive = "1" maxInclusive = "2" }
+
+## Positive decimal number plus '%', i.e.,
+##       [0-9]+(\.?[0-9]*)?\%
+data.PERCENT = xsd:token { pattern = "[0-9]+(\.?[0-9]*)?%" }
+
+## Semibreve-minim relationship values.
+data.PROLATIO =
+  xsd:positiveInteger { minInclusive = "2" maxInclusive = "3" }
+
+## A ratio, i.e., [0-9]+(\.?[0-9]*)?:[0-9]+(\.?[0-9]*)? For
+##       example, "40:7.2319"
+data.RATIO =
+  xsd:token { pattern = "[0-9]+(\.?[0-9]*)?:[0-9]+(\.?[0-9]*)?" }
+
+## The number of slashes to be rendered for
+##       tremolandi.
+data.SLASH =
+  xsd:positiveInteger { minInclusive = "1" maxInclusive = "6" }
+
+## In string tablature, the number of the string to be played,
+##       i.e., [1-9]+.
+data.STRINGNUMBER = xsd:positiveInteger
+
+## Beats (meter signature denominator) per minute, e.g.
+##       120.
+data.TEMPOVALUE = xsd:positiveInteger
+
+## Breve-semibreve relationship values
+data.TEMPUS =
+  xsd:positiveInteger { minInclusive = "2" maxInclusive = "3" }
+
+## A positive or negative offset from the value given in the
+##       tstamp attribute in terms of musical time, i.e., beats[.fractional beat
+##       part]
+data.TSTAMPOFFSET = xsd:decimal
+
+## a Uniform Resource Identifier, see
+##       [RFC2396]
+data.URI = xsd:anyURI
+
+## Accidental attribute values: s = sharp, f = flat, ss =
+##       dblsharp, x=dblsharp, ff = dblflat, xs = triple sharp, tb = triple flat, n
+##       = natural, nf = naturalflat, ns = naturalsharp. ss indicates the use of 2
+##       sharp signs, while x indicates the use of a single double sharp. nf and ns
+##       are used to cancel dbflats and dblsharps, respectively. su = sharp note
+##       qtr. tone up, sd = sharp note qtr. tone down, fu = flat note qtr. tone up,
+##       fd = flat note qtr. tone down, nu = natural note qtr. tone up, nd =
+##       natural note quarter tone down.
+data.ACCIDENTAL.EXPLICIT =
+  "s"
+  | "f"
+  | "ss"
+  | "x"
+  | "ff"
+  | "xs"
+  | "tb"
+  | "n"
+  | "nf"
+  | "ns"
+  | "su"
+  | "sd"
+  | "fu"
+  | "fd"
+  | "nu"
+  | "nd"
+
+## Accidental attribute values: s = sharp, f = flat, ss =
+##       dblsharp, x=dblsharp, ff = dblflat, n = natural.
+data.ACCIDENTAL.IMPLICIT = "s" | "f" | "ss" | "ff" | "n"
+
+## The following list of articulations mostly corresponds to
+##       symbols 1D110-1D111, 1D17B-1D182, 1D185-1D189, 1D1AA-1D1AD, 1D1B3-1D1B5
+##       from the Western Musical Symbols portion of the Unicode Standard, v. 3.1.
+##       The dot and stroke values may be used in cases where interpretation is
+##       difficult or not desirable.
+data.ARTICULATION =
+  "acc"
+  | "stacc"
+  | "ten"
+  | "stacciss"
+  | "marc"
+  | "marc-stacc"
+  | "acc-marc"
+  | "spicc"
+  | "rip"
+  | "doit"
+  | "plop"
+  | "fall"
+  | "bend"
+  | "flip"
+  | "smear"
+  | "dnbow"
+  | "upbow"
+  | "harm"
+  | "snap"
+  | "fingernail"
+  | "ten-stacc"
+  | "damp"
+  | "dampall"
+  | "open"
+  | "stop"
+  | "dbltongue"
+  | "trpltongue"
+  | "heel"
+  | "toe"
+  | "tap"
+  | "lhpizz"
+  | "dot"
+  | "stroke"
+
+## One or more values from the list given in the definition of
+##       data.ARTICULATION.
+data.ARTICULATIONS = list { data.ARTICULATION+ }
+
+## Dots attribute values (number of augmentation dots) (Read,
+##       113-119, ex. 8-21)
+data.AUGMENTDOT = xsd:nonNegativeInteger { maxInclusive = "4" }
+
+## Placement of barlines: 'mensur' = between staves only,
+##       'staff' = between and across staves as necessary, 'takt' = short line
+##       above staff or through top line. The default value is
+##       'staff'.
+data.BARPLACE = "mensur" | "staff" | "takt"
+
+## Renderings of barlines
+data.BARRENDITION =
+  "dashed"
+  | "dotted"
+  | "dbl"
+  | "dbldashed"
+  | "dbldotted"
+  | "end"
+  | "invis"
+  | "rptstart"
+  | "rptboth"
+  | "rptend"
+  | "single"
+
+## Beam attribute values: initial, medial, terminal. Nested
+##       beaming is permitted.
+data.BEAM = xsd:token { pattern = "[i|m|t][1-6]" }
+
+## One or more from the list given in the definition of the
+##       BEAM datatype.
+data.BEAMS = list { data.BEAM+ }
+
+## Boolean attribute values
+data.BOOLEAN = "true" | "false"
+
+## Values for certainty attribute
+data.CERTAINTY = "high" | "medium" | "low" | "unknown"
+
+## Clef line attribute values
+data.CLEFLINE = xsd:positiveInteger
+
+## Clef shape attribute values (Read,
+##       p.53-56)
+data.CLEFSHAPE = "G" | "GG" | "F" | "C" | "perc" | "TAB"
+
+## Tone-clusters
+data.CLUSTER = "whbox" | "blbox"
+
+## Renderings of curves
+data.CURVERENDITION = "medium" | "wide" | "dashed" | "dotted"
+
+## Logical, that is, written, duration attribute values for
+##       the CMN repertoire. Whole note duration = '1'.
+data.DURATION =
+  "long"
+  | "breve"
+  | "1"
+  | "2"
+  | "4"
+  | "8"
+  | "16"
+  | "32"
+  | "64"
+  | "128"
+  | "256"
+  | "512"
+  | "1024"
+  | "2048"
+
+## Enclosures for editorial notes and
+##       accidentals
+data.ENCLOSURE = "paren" | "brack"
+
+## Font family (for text) attribute values. Mup-acceptable
+##       values: avantgarde, bookman, courier, helvetica, newcentury, palatino,
+##       times.
+data.FONTFAMILY = xsd:token
+
+## Font name (for text) attribute values. Mup-acceptable
+##       values: rom, ital, bold, boldital
+data.FONTNAME = xsd:token
+
+## Font style (for text) attribute values. 'normal' = 'rom' in
+##       Mup.
+data.FONTSTYLE = "ital" | "normal" | "oblique"
+
+## Font weight (for text) attribute values
+data.FONTWEIGHT = "bold"
+
+## In string tablature, the fret number, i.e., [1-9]. The
+##       value 'o' may be used instead of a numerica value to indicate the open
+##       string.
+data.FRETNUMBER =
+  xsd:nonNegativeInteger { minInclusive = "1" maxInclusive = "9" }
+  | xsd:token { pattern = "o" }
+
+## Analytical glissando attribute values: i(nitial), m(edial),
+##       t(erminal)
+data.GLISSANDO = "i" | "m" | "t"
+
+## Do grace notes get time from the current (acc) or previous
+##       (unacc) one?
+data.GRACE = "acc" | "unacc" | "unknown"
+
+## Notehead shapes
+data.HEADSHAPE =
+  "quarter"
+  | "half"
+  | "whole"
+  | "dblwhole"
+  | "filldiamond"
+  | "diamond"
+  | "dwdiamond"
+  | "fillisotriangle"
+  | "isotriangle"
+  | "dwhisotriangle"
+  | "fillpiewedge"
+  | "piewedge"
+  | "dwhpiewedge"
+  | "fillrectangle"
+  | "rectangle"
+  | "dwhrectangle"
+  | "fillrtriangle"
+  | "rtriangle"
+  | "dwrtriangle"
+  | "fillurtriangle"
+  | "urtriangle"
+  | "dwurtriangle"
+  | "fillsemicircle"
+  | "semicircle"
+  | "dwsemicircle"
+  | "fillslash"
+  | "slash"
+  | "dwslash"
+  | "x"
+  | "blank"
+  | "circlex"
+  | "cross"
+
+## Interrupted neume, i.e. neume written as 2 or more
+##       sub-neumes
+data.INEUMENAME =
+  "pessubpunctis"
+  | "climacus"
+  | "scandicus"
+  | "bistropha"
+  | "tristropha"
+  | "pressusminor"
+  | "pressusmaior"
+
+## Interrupted neume forms
+data.INEUMEFORM =
+  "liquescent1"
+  | "liquescent2"
+  | "tied"
+  | "tiedliquescent1"
+  | "tiedliquescent2"
+
+## A token describing the pitch name, inflection, and octave
+##       number of an altered pitch in a key signature.
+data.KEYSIGTOKEN =
+  xsd:token {
+    pattern = "[a-g][s|f|ss|x|ff|n|nf|ns|su|sd|fu|fd|nu|nd][0-9]"
+  }
+
+## Key signature may be indicated by a value showing where the
+##       key is in the circle of fifths. Mixed key signatures, e.g. those
+##       consisting of a mixture of flats and sharps, and key signatures with
+##       unorthodox placement of the accidentals (Read, p. 143) must be indicated
+##       by setting the key.sig attribute to 'mixed' and providing explicit keysig
+##       info in the key.sig.mixed attribute.
+data.KEYSIGNATURE = xsd:token { pattern = "mixed|0|[1-7][f|s]" }
+
+## Indicates how stems should be drawn when more than one
+##       layer is present and stem directions are not indicated on the notes/chords
+##       themselves. '1' indicates that there is only a single layer on a staff.
+##       '2o' means there are two layers with opposing stems. '2f' indicates two
+##       'free' layers; that is, opposing stems will be drawn unless one of the
+##       layers has 'space'. In that case, stem direction in the remaining layer
+##       will be determined as if there were only one layer. '3o' and '3f' are
+##       analogous to '2o' and '2f' with three layers allowed. What about more than
+##       3 layers?
+data.LAYERSCHEME = "1" | "2o" | "2f" | "3o" | "3f"
+
+## Ligature forms
+data.LIGATUREFORM = "recta" | "obliqua"
+
+## Renderings of lines
+data.LINERENDITION =
+  "narrow" | "medium" | "wide" | "dashed" | "dotted" | "wavy"
+
+## Mensuration attribute values
+data.MENSURATIONSIGN = "C" | "O"
+
+## Meter.sym attribute values for CMN
+##       notation
+data.METERSIGN = "common" | "cut"
+
+## MIDI channel numbers
+data.MIDICHANNEL = xsd:positiveInteger { maxInclusive = "16" }
+
+## MIDI values are in the following range
+data.MIDIVALUE = xsd:nonNegativeInteger { maxInclusive = "127" }
+
+## Modes
+data.MODE =
+  "major"
+  | "minor"
+  | "dorian"
+  | "phrygian"
+  | "lydian"
+  | "mixolydian"
+  | "aeolian"
+  | "locrian"
+
+## Music font family
+data.MUSICFONT = xsd:token
+
+## Oct attribute values. The default values conform to
+##       Acoustical Society of America representation. Read, p.
+##       44.
+data.OCTAVE = xsd:nonNegativeInteger { maxInclusive = "9" }
+
+## Page scale factor. Page.scale may be expressed as a
+##       percentage of a programmatically-determined "usual" size or as a ratio of
+##       virtual units to real-world units.
+data.PGSCALE = data.PERCENT | data.RATIO
+
+## Values for real-world unit attributes
+data.PGUNITS = "in" | "cm" | "mm"
+
+## Pclass (pitch class) attribute values
+data.PITCHCLASS = xsd:nonNegativeInteger { maxInclusive = "11" }
+
+## The pitch names (gamut) used within a single octave. The
+##       default values conform to Acoustical Society of America
+##       representation.
+data.PITCHNAME = xsd:token { pattern = "[a-g]" }
+
+## Gestural pitch names need an additional value for when the
+##       notated pitch is not to be sounded.
+data.PITCHNAME.GES = xsd:token { pattern = "[a-g]|none" }
+
+## Pnum (pitch number, e.g. MIDI) attribute
+##       values
+data.PITCHNUMBER = xsd:nonNegativeInteger
+
+## Participant list referencing method.
+data.PLIST = xsd:IDREFS
+
+## Location of symbol relative to other notational
+##       components.
+data.PLACE = "above" | "below"
+
+## For musical material designated to appear on another staff,
+##       the location of the staff relative to the current one; i.e., the staff
+##       above or the staff below.
+data.OTHERSTAFF = "above" | "below"
+
+## Location of musical material relative to a
+##       staff.
+data.STAFFREL = "above" | "below" | "within"
+
+## Relative size attribute values
+data.SIZE = "normal" | "cue"
+
+## i=initial, m=medial, t=terminal. Number is used to match
+##       endpoints of the slur when slurs are nested or overlap, e.g. <note
+##       slur='i1 i2'/><note slur='t1'/><note
+##       slur='t2'/> encodes the fact that two slurs begin on note 1, one
+##       which terminates on note 2 and one which terminates on note
+##       3.
+data.SLUR = xsd:token { pattern = "[i|m|t][1-6]" }
+
+## One or more from the list given in the definition of
+##       data.SLUR.
+data.SLURS = list { data.SLUR+ }
+
+## Slur direction
+data.SLURDIRECTION = "up" | "down"
+
+## Staff location. Staff location includes staff lines,
+##       spaces, and the spaces directly above and below the staff. The value
+##       ranges between 0 (just below the staff) to 2 * number of staff lines
+##       (directly above the staff). For example, on a 5-line staff the lines would
+##       be numbered 1,3,5,7, and 9 while the spaces would be numbered
+##       0,2,4,6,8,10.
+data.STAFFLOC = xsd:nonNegativeInteger
+
+## Stem direction
+data.STEMDIRECTION = "up" | "down"
+
+## Stem modification
+data.STEMMODIFIER =
+  "1slash"
+  | "2slash"
+  | "3slash"
+  | "4slash"
+  | "5slash"
+  | "6slash"
+  | "sprech"
+  | "z"
+
+## Which side of stem?
+data.STEMPOSITION = "left" | "right" | "center"
+
+## Temperament
+data.TEMPERAMENT = "equal" | "just" | "mean" | "pythagorean"
+
+## Text rendition values
+data.TEXTRENDITION =
+  "box"
+  | "circle"
+  | "dblunderline"
+  | "none"
+  | "quote"
+  | "slash"
+  | # 'slash' intended for use in figured bass
+    "smcaps"
+  | "strike"
+  | "sub"
+  | "sup"
+  | "underline"
+
+## Tie attribute values: initial, medial,
+##       terminal
+data.TIE = xsd:token { pattern = "[i|m|t]" }
+
+## Tie direction
+data.TIEDIRECTION = "up" | "down"
+
+## One or more from the list given in the definition of
+##       data.TIE.
+data.TIES = list { data.TIE+ }
+
+## Tuplet attribute values: initial, medial,
+##       terminal
+data.TUPLET = xsd:token { pattern = "[i|m|t][1-6]" }
+
+## One or more from the list given in the definition of
+##       data.TUPLET.
+data.TUPLETS = list { data.TUPLET+ }
+
+## Basic, i.e., single, uninterrupted, neume
+##       names
+data.UNEUMENAME =
+  "punctum"
+  | "virga"
+  | "pes"
+  | "clivis"
+  | "torculus"
+  | "torculusresupinus"
+  | "porrectus"
+  | "porrectusflexus"
+  | "apostropha"
+  | "oriscus"
+  | "pressusmaior"
+  | "pressusminor"
+  | "virgastrata"
+
+## Basic, i.e., single, uninterrupted, neume
+##       forms
+data.UNEUMEFORM =
+  "liquescent1"
+  | "liquescent2"
+  | "liquescent3"
+  | "quilismatic"
+  | "rectangular"
+  | "rhombic"
+  | "tied"
+
+## Distance expressed in terms of staff interline distance;
+##       that is, units of 1/2 the distance between adjacent
+##       staves.
+data.INTERLINE = xsd:decimal

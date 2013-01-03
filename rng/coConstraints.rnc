@@ -1,0 +1,832 @@
+# **************************************************************
+
+# NAME:     Music Encoding Initiative (MEI) schema component:
+#           coConstraints.rng
+# 
+# NOTICE:   Copyright (c) 2010 by the Music Encoding Initiative (MEI)
+#           Council.
+# 
+#           Licensed under the Educational Community License, Version
+#           2.0 (the "License"); you may not use this file except in
+#           compliance with the License. You may obtain a copy of the
+#           License at http://www.osedu.org/licenses/ECL-2.0.
+# 
+#           Unless required by applicable law or agreed to in writing,
+#           software distributed under the License is distributed on
+#           an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#           KIND, either express or implied. See the License for the
+#           specific language governing permissions and limitations
+#           under the License.
+# 
+#           This is a derivative work based on earlier versions of the
+#           schema copyright (c) 2001-2006 Perry Roland and the Rector
+#           and Visitors of the University of Virginia; licensed under
+#           the Educational Community License version 1.0.
+# 
+# CONTACT:  contact@music-encoding.org 
+
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace mei = "http://www.music-encoding.org/ns/mei"
+namespace sch = "http://purl.oclc.org/dsdl/schematron"
+namespace tei = "http://www.tei-c.org/ns/1.0"
+namespace xhtml = "http://www.w3.org/1999/xhtml"
+namespace xlink = "http://www.w3.org/1999/xlink"
+
+sch:schema [
+  "\x{a}" ~
+  "    "
+  sch:ns [ uri = "http://www.music-encoding.org/ns/mei" prefix = "mei" ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [ "Check @when" ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:*[@when]"
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test = "@when = preceding::mei:when/@xml:id"
+        "The value of\x{a}" ~
+        "          @when must be the ID of a when element."
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [ "Check when/@since" ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:when[@since]"
+      "\x{a}" ~
+      "        "
+      sch:let [ name = "thissince" value = "@since" ]
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test =
+          "@since = preceding-sibling::mei:when[@xml:id=$thissince]/@xml:id"
+        "The value of @since must be the ID of a preceding sibling when\x{a}" ~
+        "          element."
+      ]
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test = "@interval and @unit"
+        "If @since is present, @interval\x{a}" ~
+        "          and @unit are also required."
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [ "Check @source" ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:*[@source]"
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test =
+          "every $i in tokenize(@source, '\s+') satisfies           $i=//mei:source/@xml:id"
+        "The values in @source must match the IDs of source\x{a}" ~
+        "          elements."
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:staffgrp"
+      "\x{a}" ~
+      "        "
+      sch:let [
+        name = "countstaves"
+        value = "count(descendant::mei:staffdef)"
+      ]
+      "\x{a}" ~
+      "        "
+      sch:let [
+        name = "countuniqstaves"
+        value = "count(distinct-values(descendant::mei:staffdef/@n))"
+      ]
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test = "$countstaves eq $countuniqstaves"
+        "Each staffdef must\x{a}" ~
+        "          have a unique value for the n attribute."
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [ "Check staffdef/@n" ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:staffdef"
+      "\x{a}" ~
+      "        "
+      sch:let [ name = "thisstaff" value = "@n" ]
+      "\x{a}" ~
+      "        "
+      sch:assert [ test = "@n" "A staffdef must have an n attribute." ]
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test =
+          "@lines or preceding::mei:staffdef[@n=$thisstaff and @lines]"
+        "The\x{a}" ~
+        "          first occurrence of a staff must declare the number of staff\x{a}" ~
+        "          lines."
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [ "Check clef position (staffdef)" ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:staffdef[@clef.line and @lines]"
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test = "number(@clef.line) <= number(@lines)"
+        "The clef\x{a}" ~
+        "          position must be less than or equal to the number of lines on the\x{a}" ~
+        "          staff."
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:staffdef[@clef.line and not(@lines)]"
+      "\x{a}" ~
+      "        "
+      sch:let [ name = "thisstaff" value = "@n" ]
+      "\x{a}" ~
+      "        "
+      sch:let [
+        name = "stafflines"
+        value =
+          "preceding::mei:staffdef[@n=$thisstaff and @lines][1]/@lines"
+      ]
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test = "number(@clef.line) <= number($stafflines)"
+        "The\x{a}" ~
+        "          clef position must be less than or equal to the number of lines on the\x{a}" ~
+        "          staff."
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [ "Check clef position (clefchange)" ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:clefchange[@line]"
+      "\x{a}" ~
+      "        "
+      sch:let [ name = "thisstaff" value = "ancestor::staff/@n" ]
+      "\x{a}" ~
+      "        "
+      sch:let [
+        name = "staffpos"
+        value =
+          "count(ancestor::mei:staff/preceding-sibling::mei:staff) + 1"
+      ]
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test =
+          "number(@line) <= number(preceding::mei:staffdef[@n=$thisstaff and @lines][1]/@lines) or          number(@line) <= number(preceding::mei:staffdef[@n=$staffpos and @lines][1]/@lines)"
+        "The clef position must be less than or equal to the number of lines\x{a}" ~
+        "          on the staff."
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [ "Check clef position (clef)" ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:clef[ancestor::mei:staffdef[@lines]]"
+      "\x{a}" ~
+      "        "
+      sch:let [ name = "thisstaff" value = "ancestor::mei:staffdef/@n" ]
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test =
+          "number(@line) <= number(ancestor::mei:staffdef[@n=$thisstaff and @lines][1]/@lines)"
+        "The clef position must be less than or equal to the number of lines\x{a}" ~
+        "          on the staff."
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:clef[ancestor::mei:staffdef[not(@lines)]]"
+      "\x{a}" ~
+      "        "
+      sch:let [ name = "thisstaff" value = "ancestor::mei:staffdef/@n" ]
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test =
+          "number(@line) <= number(preceding::mei:staffdef[@n=$thisstaff and @lines][1]/@lines)"
+        "The clef position must be less than or equal to the number of lines\x{a}" ~
+        "          on the staff."
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [ "Check expansion/@plist" ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:expansion[@plist]"
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test =
+          "every $i in tokenize(@plist, '\s+') satisfies           $i=ancestor::mei:section/descendant::mei:*[name()='section' or            name()='ending' or name()='rdg'][@xml:id]/@xml:id"
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [ "Check section[expansion]" ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:section[mei:expansion]"
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test =
+          "descendant::mei:section|descendant::mei:ending|descendant::mei:rdg"
+        "Must have descendant section, ending, or rdg elements that can be\x{a}" ~
+        "          pointed to."
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [
+      "Start-type attributes required on some control\x{a}" ~
+      "        events"
+    ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context =
+        "mei:bend|mei:dir|mei:dynam|mei:fermata|mei:gliss|mei:harm|         mei:harppedal|mei:mordent|mei:pedal|mei:trill"
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test = "@startid or @tstamp or @tstamp.ges or @tstamp.real"
+        "\x{a}" ~
+        "          Must have one of the attributes: startid, tstamp, tstamp.ges or\x{a}" ~
+        "          tstamp.real"
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [
+      "Start- and end-type attributes required on some control\x{a}" ~
+      "        events"
+    ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context =
+        "mei:beamspan|mei:hairpin|mei:octave|mei:phrase|mei:slur|         mei:tie|mei:tupletspan"
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test = "@startid or @tstamp or @tstamp.ges or @tstamp.real"
+        "\x{a}" ~
+        "          Must have one of the attributes: startid, tstamp, tstamp.ges or\x{a}" ~
+        "          tstamp.real"
+      ]
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test = "@endid or @dur"
+        "Must have one of the attributes: dur\x{a}" ~
+        "          or endid"
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [ "Check rest/@line" ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:rest[@line]"
+      "\x{a}" ~
+      "        "
+      sch:let [ name = "thisstaff" value = "ancestor::mei:staff/@n" ]
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test =
+          "number(@line) <= number(preceding::mei:staffdef[@n=$thisstaff and @lines][1]/@lines)"
+        "The value of @line must be less than or equal to the number of lines\x{a}" ~
+        "          on the staff."
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [ "Check barline/@taktplace" ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:barline[@taktplace]"
+      "\x{a}" ~
+      "        "
+      sch:let [ name = "staff" value = "ancestor::mei:staff/@n" ]
+      "\x{a}" ~
+      "        "
+      sch:let [
+        name = "staffpos"
+        value =
+          "count(ancestor::mei:staff/preceding-sibling::mei:staff) + 1"
+      ]
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test =
+          "number(@taktplace) <= number(2 * preceding::mei:staffdef[@n=$staff and @lines][1]/@lines)"
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [ "Check @altsym" ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:*[@altsym]"
+      "\x{a}" ~
+      "        "
+      sch:let [ name = "thisaltsym" value = "@altsym" ]
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test =
+          "@altsym = preceding::mei:symboldef[@xml:id=$thisaltsym]/@xml:id"
+        "The value of @altsym must be the ID of a symboldef\x{a}" ~
+        "          element."
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [ "Check @xml:lang" ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:*[starts-with(@xml:lang, 'x-')]"
+      "\x{a}" ~
+      "        "
+      sch:let [ name = "thislang" value = "@xml:lang" ]
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test = "@xml:lang = //mei:language[@xml:id=$thislang]/@xml:id"
+        "The value of @xml:lang must be the ID of a language\x{a}" ~
+        "          element."
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [ "Check measure/@join" ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:measure[@join]"
+      "\x{a}" ~
+      "        "
+      sch:let [ name = "thisjoin" value = "@join" ]
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test = "@join = //mei:measure[@xml:id=$thisjoin]/@xml:id"
+        "The\x{a}" ~
+        "          value of @join must be the ID of a measure element."
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [ "Check @classcode" ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:*[@classcode]"
+      "\x{a}" ~
+      "        "
+      sch:let [ name = "thisclasscode" value = "@classcode" ]
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test =
+          "@classcode = preceding::mei:classcode[@xml:id=$thisclasscode]/@xml:id"
+        "The value of @classcode must be the ID of a classcode\x{a}" ~
+        "          element."
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [ "Check handshift" ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:handshift[@old]"
+      "\x{a}" ~
+      "        "
+      sch:let [ name = "thisold" value = "@old" ]
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test = "@old = preceding::mei:hand[@xml:id=$thisold]/@xml:id"
+        "The value of @old must be the ID of a hand element."
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [ "Check handshift/@new" ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:handshift[@new]"
+      "\x{a}" ~
+      "        "
+      sch:let [ name = "thisnew" value = "@new" ]
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test = "@new = preceding::mei:hand[@xml:id=$thisnew]/@xml:id"
+        "The value of @new must be the ID of a hand element."
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [ "Check harm/@chordref" ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:harm[@chordref]"
+      "\x{a}" ~
+      "        "
+      sch:let [ name = "thischordref" value = "@chordref" ]
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test =
+          "@chordref = preceding::mei:chorddef[@xml:id=$thischordref]/@xml:id"
+        "The value of @chordref must be the ID of a chorddef\x{a}" ~
+        "          element."
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [ "Check @hand" ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:*[@hand]"
+      "\x{a}" ~
+      "        "
+      sch:let [ name = "thishand" value = "@hand" ]
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test = "@hand = preceding::mei:hand[@xml:id=$thishand]/@xml:id"
+        "The\x{a}" ~
+        "          value of @hand must be the ID of a hand element."
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [ "Check custos/@target" ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:custos[@target]"
+      "\x{a}" ~
+      "        "
+      sch:let [ name = "thistarget" value = "@target" ]
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test =
+          "@target = following::mei:note[@xml:id=$thistarget]/@xml:id"
+        "The\x{a}" ~
+        "          value of @target must be the ID of a note element."
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [ "Check @instr" ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context =
+        "mei:chord[@instr]|mei:mrest[@instr]|mei:mspace[@instr]|mei:multirest[@instr]|         mei:note[@instr]|mei:rest[@instr]"
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test =
+          "every $i in tokenize(@instr, '\s+') satisfies           $i=preceding::mei:instrdef[@xml:id]/@xml:id"
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [ "Check barre/@startid and @endid" ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:barre"
+      "\x{a}" ~
+      "        "
+      sch:let [ name = "from" value = "@startid" ]
+      "\x{a}" ~
+      "        "
+      sch:let [ name = "to" value = "@endid" ]
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test =
+          "@startid = preceding-sibling::mei:chordmember[@xml:id=$from]/@xml:id"
+        "The value of @startid must be the ID of a chordmember\x{a}" ~
+        "          element."
+      ]
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test =
+          "@endid = preceding-sibling::mei:chordmember[@xml:id=$to]/@xml:id"
+        "The value of @endid must be the ID of a chordmember\x{a}" ~
+        "          element."
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "    "
+  sch:pattern [
+    "\x{a}" ~
+    "      "
+    sch:title [ "Check @resp" ]
+    "\x{a}" ~
+    "      "
+    sch:rule [
+      context = "mei:*[@resp]"
+      "\x{a}" ~
+      "        "
+      sch:let [ name = "thisresp" value = "@resp" ]
+      "\x{a}" ~
+      "        "
+      sch:assert [
+        test =
+          "@resp = //mei:persname[@xml:id=$thisresp and ancestor::mei:meihead]/@xml:id"
+        "The value of @resp must be the ID of a persname element declared\x{a}" ~
+        "          within the meiheader element."
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "\x{a}" ~
+  "  "
+]

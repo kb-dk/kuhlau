@@ -1,0 +1,246 @@
+# **************************************************************
+
+# NAME:     Music Encoding Initiative (MEI) schema component:
+#           harmony_Module.rng
+# 
+# NOTICE:   Copyright (c) 2010 by the Music Encoding Initiative (MEI)
+#           Council.
+# 
+#           Licensed under the Educational Community License, Version
+#           2.0 (the "License"); you may not use this file except in
+#           compliance with the License. You may obtain a copy of the
+#           License at http://www.osedu.org/licenses/ECL-2.0.
+# 
+#           Unless required by applicable law or agreed to in writing,
+#           software distributed under the License is distributed on
+#           an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#           KIND, either express or implied. See the License for the
+#           specific language governing permissions and limitations
+#           under the License.
+# 
+#           This is a derivative work based on earlier versions of the
+#           schema copyright (c) 2001-2006 Perry Roland and the Rector
+#           and Visitors of the University of Virginia; licensed under
+#           the Educational Community License version 1.0.
+# 
+# CONTACT:  contact@music-encoding.org 
+
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+default namespace mei = "http://www.music-encoding.org/ns/mei"
+namespace sch = "http://purl.oclc.org/dsdl/schematron"
+namespace tei = "http://www.tei-c.org/ns/1.0"
+namespace xhtml = "http://www.w3.org/1999/xhtml"
+namespace xlink = "http://www.w3.org/1999/xlink"
+
+# Harmony Module
+
+# Declare module attr classes
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that describe a fret\x{a}" ~
+    "      location"
+  ]
+]
+att.fretlocation &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the location at which a string\x{a}" ~
+      "          should be stopped against a fret."
+    ]
+  ]
+  attribute fret { data.FRET }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.harm.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.harm.ges &= att.duration.performed
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.harm.log &=
+  att.controlevent,
+  att.startendid,
+  att.duration.timestamp,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "contains a reference to a predefined\x{a}" ~
+      "          <chorddef> element."
+    ]
+  ]
+  attribute chordref { xsd:IDREF }?
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.harm.vis &=
+  att.placement,
+  att.visualoffset,
+  att.visualoffset2.ho,
+  att.visualoffset2.to,
+  att.xy,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates the presence of an extension\x{a}" ~
+      "          symbol, typically a dash or underscore, drawn from the end of the\x{a}" ~
+      "          harmonic indication to the point indicated by the dur\x{a}" ~
+      "          attribute."
+    ]
+  ]
+  attribute extender { data.BOOLEAN }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "when set to 'grid', the chord tablature\x{a}" ~
+      "          grid defined in the chordtable should be rendered instead of the text\x{a}" ~
+      "          contents of the <harm> element; if rendgrid equals\x{a}" ~
+      "          'gridname', both the <harm> element's text and the grid\x{a}" ~
+      "          should be displayed; otherwise, only the 'name' of the chord, i.e.,\x{a}" ~
+      "          the text content of the <harm> element, e.g. 'Cmaj' or\x{a}" ~
+      "          'V7/III', should be rendered."
+    ]
+  ]
+  attribute rendgrid { "grid" | "gridname" }?
+# Declare module model classes
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that group playable chord\x{a}" ~
+    "      definitions."
+  ]
+]
+model.chordtableLike &= chordtable
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that record\x{a}" ~
+    "      harmony."
+  ]
+]
+model.harmLike &= harm*
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that function as control\x{a}" ~
+    "      events; that is, those events that modify or otherwise depend on the\x{a}" ~
+    "      existence of notated events."
+  ]
+]
+model.controleventLike &= model.harmLike
+# Declare module elements
+content.barre = empty
+barre =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "barre ― An indication of fingering in a\x{a}" ~
+      "        chord tablature grid. The startid and endid attributes are used to\x{a}" ~
+      "        indicate the <chordmember> elements on which the barre\x{a}" ~
+      "        starts and finishes respectively. The fret at which the barre should be\x{a}" ~
+      "        created is recorded by the fret attribute."
+    ]
+  ]
+  element barre { attlist.barre, content.barre }
+attlist.barre = att.common, att.fretlocation, att.startendid
+content.chorddef = chordmember*, barre*
+chorddef =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "chord definition ― Chord tablature\x{a}" ~
+      "        definition. An id attribute, while not required by the schema, is needed\x{a}" ~
+      "        so that <harm> elements can reference a particular chord\x{a}" ~
+      "        definition. The pos (position) attribute is provided in order to create\x{a}" ~
+      "        displayable chord tablature grids. <chordmember>\x{a}" ~
+      "        sub-elements record the individual pitches of the chord.\x{a}" ~
+      "        <barre>sub-elements may be used when a single finger is\x{a}" ~
+      "        used to stop multiple strings."
+    ]
+  ]
+  element chorddef { attlist.chorddef, content.chorddef }
+attlist.chorddef =
+  att.common,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the fret position at which the\x{a}" ~
+      "          chord tablature is to be played."
+    ]
+  ]
+  attribute pos { text }?
+content.chordmember = empty
+chordmember =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "chord member ― An individual pitch in a\x{a}" ~
+      "        chord defined by a <chorddef> element. The fing and fret\x{a}" ~
+      "        attributes are provided in order to create displayable chord tablature\x{a}" ~
+      "        grids. The inth (harmonic interval) attribute may be used to facilitate\x{a}" ~
+      "        automated performance of a chord. It gives the number of 1/2 steps above\x{a}" ~
+      "        the bass. Of course, for the bass note itself, inth should be set to\x{a}" ~
+      "        '0'. The fret at which a finger should be placed is recorded in the fret\x{a}" ~
+      "        attribute."
+    ]
+  ]
+  element chordmember { attlist.chordmember, content.chordmember }
+attlist.chordmember =
+  att.common,
+  att.accidental.performed,
+  att.fretlocation,
+  att.intervalharmonic,
+  att.pitched,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates which finger, if any, should\x{a}" ~
+      "          be used to play an individual string. The values 'x' and 'o' indicated\x{a}" ~
+      "          stopped and open strings, respectively."
+    ]
+  ]
+  attribute fing { data.FINGER.FRET }?
+content.chordtable = chorddef+
+chordtable =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "chord table ― Chord/tablature look-up\x{a}" ~
+      "        table. A table may be shared between MEI instances through the use of an\x{a}" ~
+      "        external parsed entity containing the look-up table to be\x{a}" ~
+      "        shared."
+    ]
+  ]
+  element chordtable { attlist.chordtable, content.chordtable }
+attlist.chordtable = att.common
+content.harm =
+  (text
+   | model.textphraseLike.limited
+   | model.graphicprimitiveLike
+   | model.editLike
+   | model.transcriptionLike)*
+harm =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "harmony ― An indication of harmony, e.g.,\x{a}" ~
+      "        chord names, tablature grids, harmonic analysis, figured bass. The\x{a}" ~
+      "        starting point of the harmony may be indicated by either a tstamp,\x{a}" ~
+      "        tstamp.ges, tstamp.real or startid attribute, while the ending point may\x{a}" ~
+      "        be recorded by either a dur, dur.ges or endid attribute. It is a\x{a}" ~
+      "        semantic error not to specify a starting point attribute. The dur\x{a}" ~
+      "        attribute encodes the logical and visual duration of the harmony. Please\x{a}" ~
+      "        note that the dur attribute here is not a true duration, but rather a\x{a}" ~
+      "        time stamp for the end point of the harmony."
+    ]
+  ]
+  element harm { attlist.harm, content.harm }
+attlist.harm =
+  att.common,
+  att.facsimile,
+  att.harm.log,
+  att.harm.vis,
+  att.harm.ges,
+  att.harm.anl

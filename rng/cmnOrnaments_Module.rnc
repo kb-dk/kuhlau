@@ -1,0 +1,240 @@
+# **************************************************************
+
+# NAME:     Music Encoding Initiative (MEI) schema component:
+#           cmnOrnaments_Module.rng
+# 
+# NOTICE:   Copyright (c) 2010 by the Music Encoding Initiative (MEI)
+#           Council.
+# 
+#           Licensed under the Educational Community License, Version
+#           2.0 (the "License"); you may not use this file except in
+#           compliance with the License. You may obtain a copy of the
+#           License at http://www.osedu.org/licenses/ECL-2.0.
+# 
+#           Unless required by applicable law or agreed to in writing,
+#           software distributed under the License is distributed on
+#           an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#           KIND, either express or implied. See the License for the
+#           specific language governing permissions and limitations
+#           under the License.
+# 
+#           This is a derivative work based on earlier versions of the
+#           schema copyright (c) 2001-2006 Perry Roland and the Rector
+#           and Visitors of the University of Virginia; licensed under
+#           the Educational Community License version 1.0.
+# 
+# CONTACT:  contact@music-encoding.org 
+
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+default namespace mei = "http://www.music-encoding.org/ns/mei"
+namespace sch = "http://purl.oclc.org/dsdl/schematron"
+namespace tei = "http://www.tei-c.org/ns/1.0"
+namespace xhtml = "http://www.w3.org/1999/xhtml"
+namespace xlink = "http://www.w3.org/1999/xlink"
+
+# CMN Ornaments Module
+
+# Declare module attr classes
+
+## Accidentals associated with ornaments
+att.ornamentaccid &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the written accidental\x{a}" ~
+      "          associated with an upper neighboring note."
+    ]
+  ]
+  attribute accidupper { data.ACCIDENTAL.EXPLICIT }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the written accidental\x{a}" ~
+      "          associated with a lower neighboring note."
+    ]
+  ]
+  attribute accidlower { data.ACCIDENTAL.EXPLICIT }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.mordent.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.mordent.ges &= empty
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.mordent.log &=
+  att.controlevent,
+  att.startendid,
+  att.ornamentaccid,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "'norm' signals the normal form, that is,\x{a}" ~
+      "          the written note, followed by its lower neighbor, with a return to the\x{a}" ~
+      "          written note, while 'inv' indicates the inverted form, that is, the\x{a}" ~
+      "          principal note, followed by its upper neighbor, with a return to the\x{a}" ~
+      "          principal note. Traditionally, the 'normal' mordent is written as a\x{a}" ~
+      "          short wavy line with a vertical line through it and the inverted\x{a}" ~
+      "          mordent is written without the vertical line. However, the meaning of\x{a}" ~
+      "          these signs is sometimes reversed. See Read, p. 245-246. Another\x{a}" ~
+      "          attribute in the visual domain would be necessary in order to be\x{a}" ~
+      "          completely explicit about which visual symbol is actually to be\x{a}" ~
+      "          rendered."
+    ]
+  ]
+  attribute form { "inv" | "norm" }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "When the long attribute is set to 'yes',\x{a}" ~
+      "          a double or long mordent, consisting of 5 notes, is\x{a}" ~
+      "          indicated."
+    ]
+  ]
+  attribute long { data.BOOLEAN }?
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.mordent.vis &= att.color, att.placement, att.visualoffset
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.trill.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.trill.ges &= att.duration.performed
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.trill.log &=
+  att.controlevent,
+  att.startendid,
+  att.ornamentaccid,
+  att.duration.timestamp
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.trill.vis &=
+  att.color,
+  att.placement,
+  att.visualoffset,
+  att.visualoffset2.ho,
+  att.visualoffset2.to,
+  att.xy
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.turn.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.turn.ges &= empty
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.turn.log &=
+  att.controlevent,
+  att.ornamentaccid,
+  att.startid,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "When the delayed attribute is set to\x{a}" ~
+      "          'yes', the turn begins on the second half of the beat. See Read, p.\x{a}" ~
+      "          246."
+    ]
+  ]
+  attribute delayed { data.BOOLEAN }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates whether the turn begins on the\x{a}" ~
+      "          note above (norm) or on the note below (inv)."
+    ]
+  ]
+  attribute form { "inv" | "norm" }?
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.turn.vis &= att.color, att.placement, att.visualoffset, att.xy
+# Declare module model classes
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups CMN ornament\x{a}" ~
+    "      elements."
+  ]
+]
+model.ornamentLike.cmn &= mordent | trill | turn
+# Declare module elements
+content.mordent = model.eventLike*
+mordent =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "mordent ― An ornament indicating rapid\x{a}" ~
+      "        alternation of the main note with a secondary note, usually a step\x{a}" ~
+      "        below, but sometimes a step above. See Read, p. 245-246. Events may be\x{a}" ~
+      "        contained within <mordent> in order to record precise\x{a}" ~
+      "        performance data. The starting point of the mordent may be indicated by\x{a}" ~
+      "        either a tstamp, tstamp.ges, tstamp.real or startid attribute. It is a\x{a}" ~
+      "        semantic error not to specify a starting point\x{a}" ~
+      "        attribute."
+    ]
+  ]
+  element mordent { attlist.mordent, content.mordent }
+attlist.mordent =
+  att.common,
+  att.facsimile,
+  att.mordent.log,
+  att.mordent.vis,
+  att.mordent.ges,
+  att.mordent.anl
+content.trill = model.eventLike*
+trill =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "trill ― Rapid alternation of a note with\x{a}" ~
+      "        one (usually at the interval of a second) above. Usually, the interval\x{a}" ~
+      "        is understood to be diatonic unless altered by an accidental. The\x{a}" ~
+      "        starting note of the trill; i.e., the written one or the ornamenting\x{a}" ~
+      "        one, and the speed of alternation depends on performance practice.\x{a}" ~
+      "        Events may be contained within <trill> in order to record\x{a}" ~
+      "        precise performance data. The starting point of the trill may be\x{a}" ~
+      "        indicated by either a tstamp, tstamp.ges, tstamp.real or startid\x{a}" ~
+      "        attribute, while the ending point may be recorded by either a dur,\x{a}" ~
+      "        dur.ges or endid attribute. It is a semantic error not to specify a\x{a}" ~
+      "        starting point attribute. Please note that the dur attribute is not a\x{a}" ~
+      "        true duration, but rather a time stamp for the end point of the\x{a}" ~
+      "        trill."
+    ]
+  ]
+  element trill { attlist.trill, content.trill }
+attlist.trill =
+  att.common,
+  att.facsimile,
+  att.trill.log,
+  att.trill.vis,
+  att.trill.ges,
+  att.trill.anl
+content.turn = model.eventLike*
+turn =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "turn ― An ornament consisting of four\x{a}" ~
+      "        notes — the upper neighbor of the written note, the written note, the\x{a}" ~
+      "        lower neighbor, and the written note. See Read, p. 246-247. Events may\x{a}" ~
+      "        be contained within <turn> in order to record precise\x{a}" ~
+      "        performance data. Whether the turn is accented or unaccented may be\x{a}" ~
+      "        inferred from the timestamp — accented turns occur directly on the\x{a}" ~
+      "        affected beat, unaccented ones do not."
+    ]
+  ]
+  element turn { attlist.turn, content.turn }
+attlist.turn =
+  att.common,
+  att.facsimile,
+  att.turn.log,
+  att.turn.vis,
+  att.turn.ges,
+  att.turn.anl

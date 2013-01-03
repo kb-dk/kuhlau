@@ -1,0 +1,605 @@
+# **************************************************************
+
+# NAME:     Music Encoding Initiative (MEI) schema component:
+#           midi_Module.rng
+# 
+# NOTICE:   Copyright (c) 2010 by the Music Encoding Initiative (MEI)
+#           Council.
+# 
+#           Licensed under the Educational Community License, Version
+#           2.0 (the "License"); you may not use this file except in
+#           compliance with the License. You may obtain a copy of the
+#           License at http://www.osedu.org/licenses/ECL-2.0.
+# 
+#           Unless required by applicable law or agreed to in writing,
+#           software distributed under the License is distributed on
+#           an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#           KIND, either express or implied. See the License for the
+#           specific language governing permissions and limitations
+#           under the License.
+# 
+#           This is a derivative work based on earlier versions of the
+#           schema copyright (c) 2001-2006 Perry Roland and the Rector
+#           and Visitors of the University of Virginia; licensed under
+#           the Educational Community License version 1.0.
+# 
+# CONTACT:  contact@music-encoding.org 
+
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+default namespace mei = "http://www.music-encoding.org/ns/mei"
+namespace sch = "http://purl.oclc.org/dsdl/schematron"
+namespace tei = "http://www.tei-c.org/ns/1.0"
+namespace xhtml = "http://www.w3.org/1999/xhtml"
+namespace xlink = "http://www.w3.org/1999/xlink"
+
+# MIDI module
+
+# Declare module attr classes
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that record MIDI channel\x{a}" ~
+    "      information"
+  ]
+]
+att.channelized &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records a MIDI channel\x{a}" ~
+      "          value."
+    ]
+  ]
+  attribute midi.channel { data.MIDICHANNEL }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "specifies the 'on' part of the duty\x{a}" ~
+      "          cycle as a percentage of a note's duration."
+    ]
+  ]
+  attribute midi.duty { data.PERCENT }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "sets the default MIDI port\x{a}" ~
+      "          value."
+    ]
+  ]
+  attribute midi.port { data.MIDIVALUE }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "sets the default MIDI\x{a}" ~
+      "          track."
+    ]
+  ]
+  attribute midi.track { xsd:positiveInteger }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that record MIDI instrument\x{a}" ~
+    "      information"
+  ]
+]
+att.midiinstrument &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "sets the MIDI instrument\x{a}" ~
+      "          number."
+    ]
+  ]
+  attribute midi.instrnum { data.MIDIVALUE }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "provides a label for the MIDI\x{a}" ~
+      "          instrument."
+    ]
+  ]
+  attribute midi.instrname { data.MIDINAMES }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that record MIDI\x{a}" ~
+    "      numbers"
+  ]
+]
+att.midinumber &=
+  [ a:documentation [ xml:lang = "eng" "records a MIDI number." ] ]
+  attribute num { data.MIDIVALUE }
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that record MIDI tempo\x{a}" ~
+    "      information"
+  ]
+]
+att.miditempo &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "contains a MIDI value, that is, the\x{a}" ~
+      "          number of quarter notes per minute in the range from 10 to\x{a}" ~
+      "          1000."
+    ]
+  ]
+  attribute midi.tempo { data.MIDITEMPO }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that record MIDI\x{a}" ~
+    "      values"
+  ]
+]
+att.midivalue &=
+  [ a:documentation [ xml:lang = "eng" "captures a MIDI value." ] ]
+  attribute val { data.MIDIVALUE }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes common to MIDI\x{a}" ~
+    "      events"
+  ]
+]
+att.midi.event &= att.layerident, att.staffident, att.timestamp.musical
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.midi.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.midi.ges &= empty
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.midi.log &= att.layerident, att.staffident
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.midi.vis &= empty
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that record time-base\x{a}" ~
+    "      information"
+  ]
+]
+att.timebase &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates the number of pulses\x{a}" ~
+      "          (sometimes referred to as ticks or divisions) per quarter note. Unlike\x{a}" ~
+      "          MIDI, MEI permits different values for a score and individual\x{a}" ~
+      "          staves."
+    ]
+  ]
+  attribute ppq { xsd:positiveInteger }?
+# Declare module model classes
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements which group MIDI-like\x{a}" ~
+    "      elements."
+  ]
+]
+model.midiLike &= midi
+# Declare module elements
+content.cc = empty
+cc =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "control change ― MIDI parameter/control\x{a}" ~
+      "        change. The num attribute specifies parameter number, while val contains\x{a}" ~
+      "        the parameter value. Each must fall in the range\x{a}" ~
+      "        0-127."
+    ]
+    xhtml:table [
+      "\x{a}" ~
+      "        "
+      xhtml:caption [
+        "A sampling of controllers and their\x{a}" ~
+        "          numbers"
+      ]
+      "\x{a}" ~
+      "        "
+      xhtml:tr [
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "0" ]
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "Bank Select MSB" ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "        "
+      xhtml:tr [
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "1" ]
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "Modulation" ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "        "
+      xhtml:tr [
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "2" ]
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "Breath Control" ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "        "
+      xhtml:tr [
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "5" ]
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "Portamento Time" ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "        "
+      xhtml:tr [
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "7" ]
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "Main Volume" ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "        "
+      xhtml:tr [
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "10" ]
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "Pan" ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "        "
+      xhtml:tr [
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "11" ]
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "Expression" ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "        "
+      xhtml:tr [
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "32" ]
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "Bank Select LSB" ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "        "
+      xhtml:tr [
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "64" ]
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "Sustain Pedal (0=up, 127=down)" ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "        "
+      xhtml:tr [
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "65" ]
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "Portamento Pedal (0=off, 127=on)" ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "        "
+      xhtml:tr [
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "91" ]
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "Reverb" ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "        "
+      xhtml:tr [
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "93" ]
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "Chorus Depth" ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "        "
+      xhtml:tr [
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "120" ]
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "All Sounds Off (0)" ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "        "
+      xhtml:tr [
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "121" ]
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "Reset All Controllers (0)" ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "        "
+      xhtml:tr [
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "123" ]
+        "\x{a}" ~
+        "          "
+        xhtml:td [ "All Notes Off (0)" ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+  ]
+  element cc { attlist.cc, content.cc }
+attlist.cc =
+  att.common.anl,
+  att.common,
+  att.midi.event,
+  att.midinumber,
+  att.midivalue
+content.chan = empty
+chan =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "channel ― MIDI channel\x{a}" ~
+      "        assignment."
+    ]
+  ]
+  element chan { attlist.chan, content.chan }
+attlist.chan =
+  att.common.anl,
+  att.common,
+  att.midi.event,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records a MIDI channel value. The value\x{a}" ~
+      "        must be in the range 1-16."
+    ]
+  ]
+  attribute num { data.MIDICHANNEL }
+content.chanpr = empty
+chanpr =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "channel pressure ― MIDI channel\x{a}" ~
+      "        pressure/after touch. The value of the num attribute must be in the\x{a}" ~
+      "        range 0-127."
+    ]
+  ]
+  element chanpr { attlist.chanpr, content.chanpr }
+attlist.chanpr =
+  att.common.anl, att.common, att.midi.event, att.midinumber
+content.cue = text
+cue =
+  [ a:documentation [ xml:lang = "eng" "cue ― MIDI cue point." ] ]
+  element cue { attlist.cue, content.cue }
+attlist.cue = att.common.anl, att.common, att.midi.event
+content.hex = text
+hex =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "hex ― Arbitrary MIDI data in hexadecimal\x{a}" ~
+      "        form. The element's content must be wrapped in a CDATA section to avoid\x{a}" ~
+      "        parsing errors."
+    ]
+  ]
+  element hex { attlist.hex, content.hex }
+attlist.hex = att.common.anl, att.common, att.midi.event
+content.marker = text
+marker =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "marker ― MIDI marker\x{a}" ~
+      "        meta-event."
+    ]
+  ]
+  element marker { attlist.marker, content.marker }
+attlist.marker = att.common.anl, att.common, att.midi.event
+content.metatext = text
+metatext =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "meta text ― MIDI text\x{a}" ~
+      "        meta-event."
+    ]
+  ]
+  element metatext { attlist.metatext, content.metatext }
+attlist.metatext = att.common.anl, att.common, att.midi.event
+content.midi =
+  (cc
+   | chan
+   | chanpr
+   | cue
+   | hex
+   | marker
+   | metatext
+   | noteoff
+   | noteon
+   | port
+   | prog
+   | seqnum
+   | trkname
+   | vel)*
+midi =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "midi ― Container for elements that contain\x{a}" ~
+      "        information useful when generating MIDI output. The n attribute can be\x{a}" ~
+      "        used to differentiate between multiple MIDI data streams, e.g.\x{a}" ~
+      "        quantized/unquantized, straight/swing, ornamented/as notated,\x{a}" ~
+      "        etc."
+    ]
+  ]
+  element midi { attlist.midi, content.midi }
+attlist.midi =
+  att.common, att.midi.log, att.midi.vis, att.midi.ges, att.midi.anl
+content.noteoff = empty
+noteoff =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "note-off ― MIDI note-off\x{a}" ~
+      "        event."
+    ]
+  ]
+  element noteoff { attlist.noteoff, content.noteoff }
+attlist.noteoff =
+  att.common.anl, att.common, att.midi.event, att.midinumber
+content.noteon = empty
+noteon =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "note-on ― MIDI note-on\x{a}" ~
+      "        event."
+    ]
+  ]
+  element noteon { attlist.noteon, content.noteon }
+attlist.noteon =
+  att.common.anl, att.common, att.midi.event, att.midinumber
+content.port = empty
+port =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "port ― MIDI port. The num attribute must\x{a}" ~
+      "        be in the range 0-127."
+    ]
+  ]
+  element port { attlist.port, content.port }
+attlist.port =
+  att.common.anl, att.common, att.midi.event, att.midinumber
+content.prog = empty
+prog =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "program ― MIDI program change. The num\x{a}" ~
+      "        attribute must be in the range 0-127."
+    ]
+  ]
+  element prog { attlist.prog, content.prog }
+attlist.prog =
+  att.common.anl, att.common, att.midi.event, att.midinumber
+content.seqnum = empty
+seqnum =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "sequence number ― MIDI sequence number.\x{a}" ~
+      "        The num attribute must be in the range 0-65535."
+    ]
+  ]
+  element seqnum { attlist.seqnum, content.seqnum }
+attlist.seqnum =
+  att.common.anl,
+  att.common,
+  att.midi.event,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "holds the MIDI sequence number. The value\x{a}" ~
+      "        must be in the range 0-65535."
+    ]
+  ]
+  attribute num {
+    xsd:nonNegativeInteger { maxInclusive = "65535" }
+  }
+content.trkname = text
+trkname =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "track name ― MIDI track/sequence\x{a}" ~
+      "        name."
+    ]
+  ]
+  element trkname { attlist.trkname, content.trkname }
+attlist.trkname = att.common.anl, att.common, att.midi.event
+content.vel = empty
+vel =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "velocity ― MIDI Note-on/off velocity. The\x{a}" ~
+      "        num attribute must be in the range 0-127."
+    ]
+  ]
+  element vel { attlist.vel, content.vel }
+attlist.vel =
+  att.common.anl,
+  att.common,
+  att.midi.event,
+  att.midinumber,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates whether this is note-on or\x{a}" ~
+      "        note-off velocity data."
+    ]
+  ]
+  attribute form { "on" | "off" }

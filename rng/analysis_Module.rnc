@@ -1,0 +1,192 @@
+# **************************************************************
+
+# NAME:     Music Encoding Initiative (MEI) schema component:
+#           analysis_Module.rng
+# 
+# NOTICE:   Copyright (c) 2010 by the Music Encoding Initiative (MEI)
+#           Council.
+# 
+#           Licensed under the Educational Community License, Version
+#           2.0 (the "License"); you may not use this file except in
+#           compliance with the License. You may obtain a copy of the
+#           License at http://www.osedu.org/licenses/ECL-2.0.
+# 
+#           Unless required by applicable law or agreed to in writing,
+#           software distributed under the License is distributed on
+#           an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#           KIND, either express or implied. See the License for the
+#           specific language governing permissions and limitations
+#           under the License.
+# 
+#           This is a derivative work based on earlier versions of the
+#           schema copyright (c) 2001-2006 Perry Roland and the Rector
+#           and Visitors of the University of Virginia; licensed under
+#           the Educational Community License version 1.0.
+# 
+# CONTACT:  contact@music-encoding.org 
+
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace mei = "http://www.music-encoding.org/ns/mei"
+
+# Analysis module
+
+# Move *.anl attributes defined elsewhere here?  That would allow all
+# *.anl attributes to be controlled by inclusion/exclusion of this module.
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Common analytical attributes. When the\x{a}" ~
+    "      meiLinkAlign module is used, the when attribute is also a member of this\x{a}" ~
+    "      attribute class."
+  ]
+]
+att.common.anl &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "points to an element of which the\x{a}" ~
+      "          current element is a copy."
+    ]
+  ]
+  attribute copyof { xsd:IDREF }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "used to point to other elements that\x{a}" ~
+      "          correspond to this one in a generic fashion."
+    ]
+  ]
+  attribute corresp { xsd:IDREFS }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "used to point to the next event(s) in a\x{a}" ~
+      "          user-defined collection."
+    ]
+  ]
+  attribute next { xsd:IDREFS }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "points to the previous event(s) in a\x{a}" ~
+      "          user-defined collection."
+    ]
+  ]
+  attribute prev { xsd:IDREFS }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "points to an element that is the same as\x{a}" ~
+      "          the current element but is not a literal copy of the current\x{a}" ~
+      "          element."
+    ]
+  ]
+  attribute sameas { xsd:IDREFS }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "points to elements that are synchronous\x{a}" ~
+      "          with the current element."
+    ]
+  ]
+  attribute synch { xsd:IDREFS }?,
+  att.alignment
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes describing the harmonic function\x{a}" ~
+    "      of a single pitch"
+  ]
+]
+att.harmonicfunction &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "describes harmonic function in any\x{a}" ~
+      "          convenient typology."
+    ]
+  ]
+  attribute hfunc { xsd:NMTOKEN }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that describe harmonic\x{a}" ~
+    "      intervals"
+  ]
+]
+att.intervalharmonic &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "encodes the harmonic interval between\x{a}" ~
+      "          this note and other pitches occurring at the same\x{a}" ~
+      "          time."
+    ]
+  ]
+  attribute inth { xsd:NMTOKENS }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that provide for description of\x{a}" ~
+    "      intervallic content"
+  ]
+]
+att.intervallicdesc &=
+  att.intervalharmonic,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "encodes the melodic interval from the\x{a}" ~
+      "          previous pitch."
+    ]
+  ]
+  attribute intm { xsd:NMTOKEN }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes describing melodic\x{a}" ~
+    "      function"
+  ]
+]
+att.melodicfunction &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "describes melodic function in any\x{a}" ~
+      "          convenient typology."
+    ]
+  ]
+  attribute mfunc { xsd:NMTOKEN }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that describe pitch\x{a}" ~
+    "      class"
+  ]
+]
+att.pitchclass &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "holds pitch class\x{a}" ~
+      "          information."
+    ]
+  ]
+  attribute pclass { data.PITCHCLASS }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that specify pitch using\x{a}" ~
+    "      solfa"
+  ]
+]
+att.solfa &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "contains solfa designation, e.g., do,\x{a}" ~
+      "          re, mi, etc., in either a fixed or movable Do\x{a}" ~
+      "          system."
+    ]
+  ]
+  attribute psolfa { text }?

@@ -1,0 +1,216 @@
+# **************************************************************
+
+# NAME:     Music Encoding Initiative (MEI) schema component:
+#           critapp_Module.rng
+# 
+# NOTICE:   Copyright (c) 2010 by the Music Encoding Initiative (MEI)
+#           Council.
+# 
+#           Licensed under the Educational Community License, Version
+#           2.0 (the "License"); you may not use this file except in
+#           compliance with the License. You may obtain a copy of the
+#           License at http://www.osedu.org/licenses/ECL-2.0.
+# 
+#           Unless required by applicable law or agreed to in writing,
+#           software distributed under the License is distributed on
+#           an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#           KIND, either express or implied. See the License for the
+#           specific language governing permissions and limitations
+#           under the License.
+# 
+#           This is a derivative work based on earlier versions of the
+#           schema copyright (c) 2001-2006 Perry Roland and the Rector
+#           and Visitors of the University of Virginia; licensed under
+#           the Educational Community License version 1.0.
+# 
+# CONTACT:  contact@music-encoding.org 
+
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+default namespace mei = "http://www.music-encoding.org/ns/mei"
+namespace sch = "http://purl.oclc.org/dsdl/schematron"
+namespace tei = "http://www.tei-c.org/ns/1.0"
+namespace xhtml = "http://www.w3.org/1999/xhtml"
+namespace xlink = "http://www.w3.org/1999/xlink"
+
+# CritApp Module
+
+# Declare module attr classes
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes common to all elements\x{a}" ~
+    "      representing variant readings"
+  ]
+]
+att.crit &=
+  att.handident,
+  att.responsibility,
+  att.sequence,
+  att.source,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "classifies the cause for the variant\x{a}" ~
+      "          reading, according to any appropriate typology of possible\x{a}" ~
+      "          origins."
+    ]
+  ]
+  attribute cause { xsd:NMTOKEN }?
+
+## Attributes common to elements that may refer to a
+##       source
+att.source &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "contains a list of one or more pointers\x{a}" ~
+      "          indicating the sources which attest to a given reading. Each value\x{a}" ~
+      "          should correspond to the ID of a <source> element\x{a}" ~
+      "          located in the document header."
+    ]
+  ]
+  attribute source { xsd:IDREFS }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.rdg.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.rdg.ges &= empty
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.rdg.log &= empty
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.rdg.vis &= empty
+# Declare module model classes
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that contain a critical\x{a}" ~
+    "      apparatus entry."
+  ]
+]
+model.appLike &= app
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that may appear as part of a\x{a}" ~
+    "      textual variant."
+  ]
+]
+model.rdgPart &=
+  (model.sectionPart
+   | model.ossiaLike
+   | model.controleventLike
+   | model.lyricsLike
+   | model.midiLike
+   | model.layerLike
+   | model.syllableLike
+   | model.sylLike
+   | model.eventLike
+   | model.eventLike.neumes
+   | model.noteModifierLike
+   | model.verseLike
+   | model.eventLike.measureFilling)*
+# Declare module elements
+content.app = lem?, rdg, rdg*
+app =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "apparatus ― Contains one or more\x{a}" ~
+      "        alternative encodings. The alternatives may be thought of as exclusive\x{a}" ~
+      "        or as parallel. The type attribute may contain any convenient\x{a}" ~
+      "        descriptive word, describing the extent of the variation (e.g. note,\x{a}" ~
+      "        phrase, measure, etc.), its text-critical significance (e.g.\x{a}" ~
+      "        significant, accidental, unclear), or the nature of the variation or the\x{a}" ~
+      "        principles required to understand it (e.g. lectio difficilior, usus\x{a}" ~
+      "        auctoris, etc.). This element is modelled on an element in the Text\x{a}" ~
+      "        Encoding Initiative (TEI)."
+    ]
+  ]
+  element app { attlist.app, content.app }
+attlist.app = att.common, att.typed
+content.lem =
+  expansion*,
+  (model.appLike
+   | model.divLike
+   | model.milestoneLike.music
+   | model.scoredefLike
+   | model.staffdefLike
+   | model.staffgrpLike
+   | model.annotLike
+   | model.graphicprimitiveLike
+   | model.editLike
+   | model.transcriptionLike
+   | model.rdgPart)*
+lem =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "lemma ― Contains the lemma, or base text,\x{a}" ~
+      "        of a textual variation. The lem element may also be used, under some\x{a}" ~
+      "        circumstances, to record the base text of the source edition, to mark\x{a}" ~
+      "        the readings of a base witness, to indicate the preference of an editor\x{a}" ~
+      "        or encoder for a particular reading, or to make clear, in cases of\x{a}" ~
+      "        ambiguity, precisely which portion of the main text the variation\x{a}" ~
+      "        applies to. Those who prefer to work without the notion of a base text\x{a}" ~
+      "        may prefer not to use it at all. An integer indicating the position of\x{a}" ~
+      "        this reading in a sequence, when there is reason to presume a sequence\x{a}" ~
+      "        of the variant readings, may be captured in the seq attribute. This\x{a}" ~
+      "        element is modelled on an element in the Text Encoding Initiative\x{a}" ~
+      "        (TEI)."
+    ]
+  ]
+  element lem { attlist.lem, content.lem }
+attlist.lem =
+  att.common,
+  att.crit,
+  att.typed,
+  att.link.common,
+  att.link.external,
+  att.link.internal,
+  att.rdg.anl,
+  att.rdg.ges,
+  att.rdg.log,
+  att.rdg.vis
+content.rdg =
+  expansion*,
+  (model.appLike
+   | model.divLike
+   | model.milestoneLike.music
+   | model.scoredefLike
+   | model.staffdefLike
+   | model.staffgrpLike
+   | model.annotLike
+   | model.graphicprimitiveLike
+   | model.editLike
+   | model.transcriptionLike
+   | model.rdgPart)*
+rdg =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "reading ― Since a reading can be a\x{a}" ~
+      "        multi-measure section, the scoredef element is allowed so that a reading\x{a}" ~
+      "        may have its own meta-data without the overhead of child sections. The\x{a}" ~
+      "        measure sub-element is declared in the meiBase DTD and the pb\x{a}" ~
+      "        sub-element is declared in the meiShared DTD. The app sub-element is\x{a}" ~
+      "        permitted in order to allow nested sub-variants. This element is modelled\x{a}" ~
+      "        on an element in the Text Encoding Initiative (TEI)."
+    ]
+  ]
+  element rdg { attlist.rdg, content.rdg }
+attlist.rdg =
+  att.common,
+  att.crit,
+  att.typed,
+  att.link.common,
+  att.link.external,
+  att.link.internal,
+  att.rdg.anl,
+  att.rdg.ges,
+  att.rdg.log,
+  att.rdg.vis

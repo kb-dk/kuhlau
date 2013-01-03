@@ -1,0 +1,89 @@
+# **************************************************************
+
+# NAME:     Music Encoding Initiative (MEI) schema: mei-all.rng
+#           MEI Technical Document No. 1
+# 
+# NOTICE:   Copyright (c) 2010 by the Music Encoding Initiative (MEI)
+#           Council.
+# 
+#           Licensed under the Educational Community License, Version
+#           2.0 (the "License"); you may not use this file except in
+#           compliance with the License. You may obtain a copy of the
+#           License at http://www.osedu.org/licenses/ECL-2.0.
+# 
+#           Unless required by applicable law or agreed to in writing,
+#           software distributed under the License is distributed on
+#           an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#           KIND, either express or implied. See the License for the
+#           specific language governing permissions and limitations
+#           under the License.
+# 
+#           This is a derivative work based on earlier versions of the
+#           schema copyright (c) 2001-2006 Perry Roland and the Rector
+#           and Visitors of the University of Virginia; licensed under
+#           the Educational Community License version 1.0.
+# 
+# CONTACT:  contact@music-encoding.org 
+
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace mei = "http://www.music-encoding.org/ns/mei"
+namespace sch = "http://purl.oclc.org/dsdl/schematron"
+namespace tei = "http://www.tei-c.org/ns/1.0"
+namespace xhtml = "http://www.w3.org/1999/xhtml"
+namespace xlink = "http://www.w3.org/1999/xlink"
+
+# **************************************************************
+
+# * MEI datatypes                                              *
+
+# **************************************************************
+include "datatypes.rnc" inherit = mei
+# **************************************************************
+
+# * Invoke default attribute and model class declarations      *
+
+# **************************************************************
+include "defaultClassDecls.rnc" inherit = mei
+# **************************************************************
+
+# * Define a class for start elements                          *
+
+# **************************************************************
+model.startLike = mei | music
+# **************************************************************
+
+# * Invoke the startLike class                                 *
+
+# **************************************************************
+start = model.startLike
+# **************************************************************
+
+# * Include modules                                            *
+
+# **************************************************************
+include "coConstraints.rnc" inherit = mei
+# The shared and header modules must be included.
+include "shared_Module.rnc" inherit = mei
+include "header_Module.rnc" inherit = mei
+# One or more of the CMN, mensural, or neumes modules must be
+# included in order to encode musical content.
+include "cmn_Module.rnc" inherit = mei
+include "mensural_Module.rnc" inherit = mei
+include "neumes_Module.rnc" inherit = mei
+# The following modules are optional.
+include "analysis_Module.rnc" inherit = mei
+include "cmnOrnaments_Module.rnc" inherit = mei
+include "corpus_Module.rnc" inherit = mei
+include "critapp_Module.rnc" inherit = mei
+include "edittrans_Module.rnc" inherit = mei
+include "facsimile_Module.rnc" inherit = mei
+include "figtable_Module.rnc" inherit = mei
+include "harmony_Module.rnc" inherit = mei
+include "linkalign_Module.rnc" inherit = mei
+include "lyrics_Module.rnc" inherit = mei
+include "midi_Module.rnc" inherit = mei
+include "namesdates_Module.rnc" inherit = mei
+include "ptrref_Module.rnc" inherit = mei
+include "tablature_Module.rnc" inherit = mei
+include "text_Module.rnc" inherit = mei
+include "usersymbols_Module.rnc" inherit = mei

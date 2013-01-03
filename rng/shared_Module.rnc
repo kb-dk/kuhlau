@@ -1,0 +1,5349 @@
+# **************************************************************
+
+# NAME:     Music Encoding Initiative (MEI) schema component:
+#           shared_Module.rng
+# 
+# NOTICE:   Copyright (c) 2010 by the Music Encoding Initiative (MEI)
+#           Council.
+# 
+#           Licensed under the Educational Community License, Version
+#           2.0 (the "License"); you may not use this file except in
+#           compliance with the License. You may obtain a copy of the
+#           License at http://www.osedu.org/licenses/ECL-2.0.
+# 
+#           Unless required by applicable law or agreed to in writing,
+#           software distributed under the License is distributed on
+#           an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#           KIND, either express or implied. See the License for the
+#           specific language governing permissions and limitations
+#           under the License.
+# 
+#           This is a derivative work based on earlier versions of the
+#           schema copyright (c) 2001-2006 Perry Roland and the Rector
+#           and Visitors of the University of Virginia; licensed under
+#           the Educational Community License version 1.0.
+# 
+# CONTACT:  contact@music-encoding.org 
+
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+default namespace mei = "http://www.music-encoding.org/ns/mei"
+namespace sch = "http://purl.oclc.org/dsdl/schematron"
+namespace tei = "http://www.tei-c.org/ns/1.0"
+namespace xhtml = "http://www.w3.org/1999/xhtml"
+namespace xlink = "http://www.w3.org/1999/xlink"
+
+# Shared Module
+
+# Declare module attr classes
+
+# Generic attr classes
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes for capturing momentary pitch\x{a}" ~
+    "      inflection"
+  ]
+]
+att.accidental &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "captures a written\x{a}" ~
+      "          accidental."
+    ]
+  ]
+  attribute accid { data.ACCIDENTAL.EXPLICIT }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes for capturing momentary pitch\x{a}" ~
+    "      inflection in the gestural domain"
+  ]
+]
+att.accidental.performed &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the performed pitch inflection\x{a}" ~
+      "          when it differs from the written accidental."
+    ]
+  ]
+  attribute accid.ges { data.ACCIDENTAL.IMPLICIT }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes supplying pointers to\x{a}" ~
+    "      user-defined symbols"
+  ]
+]
+att.altsym &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "provides a way of pointing to a\x{a}" ~
+      "          user-defined symbol. It must contain an ID of a\x{a}" ~
+      "          <symboldef> element elsewhere in the\x{a}" ~
+      "          document."
+    ]
+  ]
+  attribute altsym { xsd:IDREF }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes for capturing the written signs\x{a}" ~
+    "      that describe the method of performance"
+  ]
+]
+att.articulation &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "encodes the written articulation(s).\x{a}" ~
+      "          Articulations are normally encoded in order from the notehead outward;\x{a}" ~
+      "          that is, away from the stem. See additional notes at att.vis.note.\x{a}" ~
+      "          Only articulations should be encoded in the artic attribute;\x{a}" ~
+      "          fingerings should be encoded using the <dir>\x{a}" ~
+      "          element."
+    ]
+  ]
+  attribute artic { data.ARTICULATIONS }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes describing the method of\x{a}" ~
+    "      performance"
+  ]
+]
+att.articulation.performed &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records performed articulation that\x{a}" ~
+      "          differs from the written value."
+    ]
+  ]
+  attribute artic.ges { data.ARTICULATIONS }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that record the number of dots of\x{a}" ~
+    "      augmentation"
+  ]
+]
+att.augmentdots &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the number of augmentation dots\x{a}" ~
+      "          required by a dotted duration."
+    ]
+  ]
+  attribute dots { data.AUGMENTDOT }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that describe the source of an\x{a}" ~
+    "      controlled value"
+  ]
+]
+att.authorized &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "contains the name of the list from which\x{a}" ~
+      "          an authorized value is taken."
+    ]
+  ]
+  attribute authority { text }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that capture the placement of\x{a}" ~
+    "      barlines"
+  ]
+]
+att.barplacement &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the location of a\x{a}" ~
+      "          barline."
+    ]
+  ]
+  attribute barplace { data.BARPLACE }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "If takt barlines are to be used, then\x{a}" ~
+      "          the taktplace attribute may be used to denote the staff location of\x{a}" ~
+      "          the shortened barline. The location may include staff lines, spaces,\x{a}" ~
+      "          and the spaces directly above and below the staff. The value ranges\x{a}" ~
+      "          between 0 (just below the staff) to 2 * number of staff lines\x{a}" ~
+      "          (directly above the staff). For example, on a 5-line staff the lines\x{a}" ~
+      "          would be numbered 1,3,5,7, and 9 while the spaces would be numbered\x{a}" ~
+      "          0,2,4,6,8,10. For example, a value of '9' puts the barline through the\x{a}" ~
+      "          top line of a 5-line staff."
+    ]
+  ]
+  attribute taktplace { data.STAFFLOC }?
+
+## Used by layerdef, staffdef, and scoredef to provide default
+##       values for attributes in the visual domain related to
+##       beaming
+att.beaming.vis &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "encodes whether a beam is feathered and\x{a}" ~
+      "          in which direction."
+    ]
+  ]
+  attribute beam.rend { "acc" | "rit" | "norm" }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "captures default beam\x{a}" ~
+      "          slope."
+    ]
+  ]
+  attribute beam.slope { xsd:decimal }?
+[ a:documentation [ xml:lang = "eng" "Bibliographic attributes" ] ]
+att.bibl &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "contains a reference to a field or\x{a}" ~
+      "          element in another descriptive encoding system to which an MEI element\x{a}" ~
+      "          is comparable. Mapping elements from one system to another may help a\x{a}" ~
+      "          repository harvest selected data from the MEI file to build a basic\x{a}" ~
+      "          catalog record. The encoding system from which fields are taken must\x{a}" ~
+      "          be specified. When possible, subfields as well as fields should be\x{a}" ~
+      "          specified, e.g., subfields within MARC fields."
+    ]
+  ]
+  attribute analog { text }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that indicate the calendar system\x{a}" ~
+    "      of a date"
+  ]
+]
+att.calendared &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates the system or calendar to\x{a}" ~
+      "          which a date belongs, for example, Gregorian, Julian, Roman, Mosaic,\x{a}" ~
+      "          Revolutionary, Islamic, etc."
+    ]
+  ]
+  attribute calendar { xsd:NMTOKEN }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Used by staffdef and scoredef to provide\x{a}" ~
+    "      default values for attributes in the logical domain related to\x{a}" ~
+    "      clefs"
+  ]
+]
+att.cleffing.log &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "encodes a value for the clef\x{a}" ~
+      "          symbol."
+    ]
+  ]
+  attribute clef.shape { data.CLEFSHAPE }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "contains a default value for the\x{a}" ~
+      "          position of the clef."
+    ]
+  ]
+  attribute clef.line { data.CLEFLINE }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the amount of octave\x{a}" ~
+      "          displacement to be applied to the clef."
+    ]
+  ]
+  attribute clef.dis { data.OCTAVE.DIS }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the direction of octave\x{a}" ~
+      "          displacement to be applied to the clef."
+    ]
+  ]
+  attribute clef.dis.place { data.PLACE }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Used by staffdef and scoredef to provide\x{a}" ~
+    "      default values for attributes in the visual domain related to\x{a}" ~
+    "      clefs"
+  ]
+]
+att.cleffing.vis &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "describes the color of the\x{a}" ~
+      "          clef."
+    ]
+  ]
+  attribute clef.color { data.COLOR }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "determines whether the clef is to be\x{a}" ~
+      "          displayed."
+    ]
+  ]
+  attribute clef.visible { data.BOOLEAN }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that record the shape of a\x{a}" ~
+    "      clef"
+  ]
+]
+att.clefshape &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "describes a clef's\x{a}" ~
+      "          shape."
+    ]
+  ]
+  attribute shape { data.CLEFSHAPE }?
+[ a:documentation [ xml:lang = "eng" "Visual color attributes" ] ]
+att.color &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "used to indicate visual appearance. Do\x{a}" ~
+      "          not confuse this with the musical term 'color' as used in pre-CMN\x{a}" ~
+      "          notation."
+    ]
+  ]
+  attribute color { data.COLOR }?
+[ a:documentation [ xml:lang = "eng" "Indication of coloration" ] ]
+att.coloration &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates this feature is 'colored';\x{a}" ~
+      "          that is, it is a participant in a change in rhythmic values. In\x{a}" ~
+      "          mensural notation, coloration is indicated by colored notes (red,\x{a}" ~
+      "          black, etc.) where void notes would otherwise occur. In CMN notation,\x{a}" ~
+      "          coloration is indicated by an inverse color; that is, the notehead is\x{a}" ~
+      "          void when it would otherwise be filled and vice\x{a}" ~
+      "          versa."
+    ]
+  ]
+  attribute colored { data.BOOLEAN }?
+[ a:documentation [ xml:lang = "eng" "Common attributes" ] ]
+att.common &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "regularizes the naming of an element and\x{a}" ~
+      "          thus facilitates building links between it and other resources. Each\x{a}" ~
+      "          id attribute within a document must have a unique\x{a}" ~
+      "          value."
+    ]
+  ]
+  attribute xml:id { xsd:ID }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "provides a label (name or number) for an\x{a}" ~
+      "          element. While its value need not be unique, it is required to be a\x{a}" ~
+      "          single token."
+    ]
+  ]
+  attribute n { xsd:NMTOKEN }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes shared by events which rely on\x{a}" ~
+    "      other events for their existence. For example, a slur/phrase marking must\x{a}" ~
+    "      be drawn between or over a group of notes. The slur is therefore a control\x{a}" ~
+    "      event."
+  ]
+]
+att.controlevent &=
+  att.participantident,
+  att.timestamp.musical,
+  att.timestamp.performed,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "signifies the layer within which a\x{a}" ~
+      "          control event is active."
+    ]
+  ]
+  attribute layer {
+    list { xsd:positiveInteger+ }
+  }?,
+  att.staffident
+[
+  a:documentation [
+    xml:lang = "eng"
+    "This attribute class records the position of\x{a}" ~
+    "      a feature within a two-dimensional coordinate system."
+  ]
+]
+att.coordinated &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates the upper-left corner x\x{a}" ~
+      "          coordinate."
+    ]
+  ]
+  attribute ulx { xsd:nonNegativeInteger }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates the upper-left corner y\x{a}" ~
+      "          coordinate."
+    ]
+  ]
+  attribute uly { xsd:nonNegativeInteger }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates the lower-right corner x\x{a}" ~
+      "          coordinate."
+    ]
+  ]
+  attribute lrx { xsd:nonNegativeInteger }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates the lower-left corner x\x{a}" ~
+      "          coordinate."
+    ]
+  ]
+  attribute lry { xsd:nonNegativeInteger }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that describe\x{a}" ~
+    "      curvature"
+  ]
+]
+att.curvature &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the placement of Bezier control\x{a}" ~
+      "          points as a series of space-separated xy coordinates, eg. 19 45 -32\x{a}" ~
+      "          118."
+    ]
+  ]
+  attribute bezier {
+    list { xsd:integer+ }
+  }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "describes a curve as a set of distance\x{a}" ~
+      "          values above or below an imaginary line connecting the endpoints of\x{a}" ~
+      "          the curve. The bulge attribute must contain one or more decimal values\x{a}" ~
+      "          expressed in inter-line units."
+    ]
+  ]
+  attribute bulge {
+    list { xsd:decimal+ }
+  }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "describes a curve with a generic term\x{a}" ~
+      "          indicating whether the curve bows upward or downward. Upward curves go\x{a}" ~
+      "          above the items they cover, while downward curves go under\x{a}" ~
+      "          them."
+    ]
+  ]
+  attribute curvedir { "above" | "below" }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that record the visual rendition\x{a}" ~
+    "      of curves"
+  ]
+]
+att.curverend &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the appearance of the\x{a}" ~
+      "          curve."
+    ]
+  ]
+  attribute rend { data.CURVERENDITION }?
+[ a:documentation [ xml:lang = "eng" "Attributes common to dates" ] ]
+att.datable &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "contains the end point of a date\x{a}" ~
+      "          range."
+    ]
+  ]
+  attribute enddate { data.ISODATE }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "contains an upper boundary for an\x{a}" ~
+      "          uncertain date."
+    ]
+  ]
+  attribute notafter { data.ISODATE }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "contains a lower boundary for an\x{a}" ~
+      "          uncertain date."
+    ]
+  ]
+  attribute notbefore { data.ISODATE }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "gives the value of a date in standard\x{a}" ~
+      "          ISO form."
+    ]
+  ]
+  attribute reg { data.ISODATE }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "contains the starting point of a date\x{a}" ~
+      "          range."
+    ]
+  ]
+  attribute startdate { data.ISODATE }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes for linking metadata to\x{a}" ~
+    "      data"
+  ]
+]
+att.datapointing &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "used to link metadata elements to one or\x{a}" ~
+      "          more data-containing elements."
+    ]
+  ]
+  attribute data { xsd:IDREFS }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that describe distance from the\x{a}" ~
+    "      staff"
+  ]
+]
+att.distances &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the distance from the staff for\x{a}" ~
+      "          dynamic marks in 1/2 inter-line units."
+    ]
+  ]
+  attribute dynam.dist { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the default distance from the\x{a}" ~
+      "          staff of harmonic indications, such as guitar chord grids or\x{a}" ~
+      "          functional labels."
+    ]
+  ]
+  attribute harm.dist { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "determines how far from the staff to\x{a}" ~
+      "          render text elements."
+    ]
+  ]
+  attribute text.dist { xsd:decimal }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that provide a durational default\x{a}" ~
+    "      value"
+  ]
+]
+att.duration.default &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "contains a default duration in those\x{a}" ~
+      "          situations when the first note, rest, chord, etc. in a measure does\x{a}" ~
+      "          not have a duration specified."
+    ]
+  ]
+  attribute dur.default { data.DURATION }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that express duration in musical\x{a}" ~
+    "      terms"
+  ]
+]
+att.duration.musical &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the duration of a feature using\x{a}" ~
+      "          the relative durational values provided by the data.DURATION\x{a}" ~
+      "          datatype."
+    ]
+  ]
+  attribute dur { data.DURATION }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that record performed duration\x{a}" ~
+    "      that differs from a feature's written duration."
+  ]
+]
+att.duration.performed &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records performed duration information\x{a}" ~
+      "          that differs from written duration. Its value may be expressed in any\x{a}" ~
+      "          convenient form, such as measures[s]+ beat[s].beatpart, ppq (MIDI\x{a}" ~
+      "          clicks), Humdrum **recip values, or MusicXML 'divisions',\x{a}" ~
+      "          etc."
+    ]
+  ]
+  attribute dur.ges { text }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that describe duration as a\x{a}" ~
+    "      ratio"
+  ]
+]
+att.duration.ratio &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "along with numbase, describes duration\x{a}" ~
+      "          as a ratio. num is the first value in the ratio, while numbase is the\x{a}" ~
+      "          second."
+    ]
+  ]
+  attribute num { xsd:positiveInteger }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "along with num, describes duration as a\x{a}" ~
+      "          ratio. num is the first value in the ratio, while numbase is the\x{a}" ~
+      "          second."
+    ]
+  ]
+  attribute numbase { xsd:positiveInteger }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that express duration as a\x{a}" ~
+    "      timestamp for the ending point"
+  ]
+]
+att.duration.timestamp &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "encodes the duration of a feature as a\x{a}" ~
+      "          timestamp for its endpoint rather than as a relative durational\x{a}" ~
+      "          value."
+    ]
+  ]
+  attribute dur { data.MEASUREBEAT }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that capture characters used to\x{a}" ~
+    "      enclose symbols having a cautionary or editorial\x{a}" ~
+    "      function"
+  ]
+]
+att.enclosingchars &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the characters often used to\x{a}" ~
+      "          mark accidentals, articulations, and sometimes notes as having a\x{a}" ~
+      "          cautionary or editorial function. For an example of cautionary\x{a}" ~
+      "          accidentals enclosed in parentheses, see Read, p. 131, ex.\x{a}" ~
+      "          9-14."
+    ]
+  ]
+  attribute enclose { data.ENCLOSURE }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that apply to all written events,\x{a}" ~
+    "      e.g., beam, beatrpt, chord, note, etc."
+  ]
+]
+att.event &=
+  att.layerident?,
+  att.staffident?,
+  att.timestamp.musical,
+  att.timestamp.performed
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes indicating the attachment of a\x{a}" ~
+    "      fermata to the feature"
+  ]
+]
+att.fermatapresent &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates the attachment of a fermata to\x{a}" ~
+      "          this element. If visual information about the fermata needs to be\x{a}" ~
+      "          recorded, then a <fermata> element should be employed\x{a}" ~
+      "          instead."
+    ]
+  ]
+  attribute fermata { data.STAFFREL }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that describe the symbol used to\x{a}" ~
+    "      group a set of staves"
+  ]
+]
+att.staffgroupingsym &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "specifies the symbol used to group a set\x{a}" ~
+      "          of staves."
+    ]
+  ]
+  attribute symbol { "brace" | "bracket" | "line" | "none" }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes which identify a document\x{a}" ~
+    "      hand"
+  ]
+]
+att.handident &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "signifies the hand responsible for an\x{a}" ~
+      "          action. The value must be the ID of a <hand> element\x{a}" ~
+      "          declared in the header."
+    ]
+  ]
+  attribute hand { xsd:IDREF }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that record horizontal\x{a}" ~
+    "      alignment"
+  ]
+]
+att.horizontalalign &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records horizontal\x{a}" ~
+      "          alignment."
+    ]
+  ]
+  attribute halign { "left" | "right" | "center" | "justify" }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes which identify a MIDI\x{a}" ~
+    "      instrument"
+  ]
+]
+att.instrumentident &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "provides a way of pointing to a MIDI\x{a}" ~
+      "          instrument definition. It must contain the ID of an\x{a}" ~
+      "          <instrdef> element elsewhere in the\x{a}" ~
+      "          document."
+    ]
+  ]
+  attribute instr { xsd:IDREF }?
+att.internetmedia &=
+  
+  ## specifies the applicable MIME (multimedia internet mail
+  ##           extension) type. The value should be a valid MIME media type defined
+  ##           by the Internet Engineering Task Force in RFC 2046.
+  attribute mimetype { text }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes indicating that elements are\x{a}" ~
+    "      semantically linked; that is, while the parts are encoded separately,\x{a}" ~
+    "      together they may be thought of as a single intellectual\x{a}" ~
+    "      object"
+  ]
+]
+att.joined &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "used for linking visually separate\x{a}" ~
+      "          slurs, sometimes necessary due to system breaks, that form a single\x{a}" ~
+      "          musical phrase. Also used to indicate a measure which metrically\x{a}" ~
+      "          completes the current one. Record the IDs of the separately encoded\x{a}" ~
+      "          components, excluding this one."
+    ]
+  ]
+  attribute join { xsd:IDREFS }?
+
+## Used by staffdef and scoredef to provide default values for
+##       attributes in the logical domain related to key
+##       signatures
+att.keysigs.log &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "contains an accidental for the tonic\x{a}" ~
+      "          key, if one is required, e.g., if key.pname equals 'c' and key.accid\x{a}" ~
+      "          equals 's', then a tonic of C# is indicated."
+    ]
+  ]
+  attribute key.accid { data.ACCIDENTAL.IMPLICIT }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates major, minor, or other\x{a}" ~
+      "          tonality."
+    ]
+  ]
+  attribute key.mode { data.MODE }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "holds the pitch name of the tonic key,\x{a}" ~
+      "          e.g. 'c' for the key of C."
+    ]
+  ]
+  attribute key.pname { data.PITCHNAME }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates where the key lies in the\x{a}" ~
+      "          circle of fifths."
+    ]
+  ]
+  attribute key.sig { data.KEYSIGNATURE }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "Mixed key signatures, e.g. those\x{a}" ~
+      "          consisting of a mixture of flats and sharps (Read, p. 143, ex. 9-39),\x{a}" ~
+      "          and key signatures with unorthodox placement of the accidentals (Read,\x{a}" ~
+      "          p. 141) must be indicated by setting the key.sig attribute to 'mixed'\x{a}" ~
+      "          and providing explicit keysig info in the key.sig.mixed attribute or\x{a}" ~
+      "          in the <keysig> element. It is intended that\x{a}" ~
+      "          key.sig.mixed contain a series of tokens with each token containing\x{a}" ~
+      "          pitch name, accidental, and octave, such as 'As4 Cs5 Ef5' that\x{a}" ~
+      "          indicate what key accidentals should be rendered and where they should\x{a}" ~
+      "          be placed."
+    ]
+  ]
+  attribute key.sig.mixed {
+    list {
+      xsd:NMTOKEN { pattern = "[a-g](s|f|n|x|ff)[0-9]" }+
+    }
+  }?
+
+## Used by staffdef and scoredef to provide default values for
+##       attributes in the visual domain related to key
+##       signatures
+att.keysigs.vis &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates whether the key signature\x{a}" ~
+      "          should be displayed."
+    ]
+  ]
+  attribute key.sig.show { data.BOOLEAN }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "determines whether cautionary\x{a}" ~
+      "          accidentals should be displayed at a key change."
+    ]
+  ]
+  attribute key.sig.showchange { data.BOOLEAN }?
+
+## Attributes that record display labels for a
+##       feature
+att.labels &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "provides a label for a group of staves\x{a}" ~
+      "          on pages after the first page."
+    ]
+  ]
+  attribute label.abbr { text }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "provides a label for a group of staves\x{a}" ~
+      "          on the first page; label.abbr is used thereafter."
+    ]
+  ]
+  attribute label.full { text }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Language attributes common to text\x{a}" ~
+    "      elements"
+  ]
+]
+att.lang &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "identifies the language of the word or\x{a}" ~
+      "          text phrase marked. The values for this attribute are language 'tags'\x{a}" ~
+      "          as defined in BCP 47. All language tags that make use of private use\x{a}" ~
+      "          subtags must be documented in a corresponding language element in the\x{a}" ~
+      "          MEI header whose id attribute is the same as the language tag's\x{a}" ~
+      "          value."
+    ]
+  ]
+  attribute xml:lang { xsd:language }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that identify the layer to which\x{a}" ~
+    "      a feature applies"
+  ]
+]
+att.layerident &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "identifies the layer to which a feature\x{a}" ~
+      "          applies."
+    ]
+  ]
+  attribute layer { xsd:positiveInteger }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes for identifying the staff line\x{a}" ~
+    "      with which a feature is associated"
+  ]
+]
+att.lineloc &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates the line upon which a feature\x{a}" ~
+      "          stands. The value must be in the range between 1 and the number of\x{a}" ~
+      "          lines on the staff."
+    ]
+  ]
+  attribute line { data.CLEFLINE }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that record the visual rendition\x{a}" ~
+    "      of lines"
+  ]
+]
+att.linerend &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the appearance of a\x{a}" ~
+      "          line."
+    ]
+  ]
+  attribute rend { data.LINERENDITION }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes common to all linking\x{a}" ~
+    "      elements"
+  ]
+]
+att.link.common &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "defines whether a link occurs\x{a}" ~
+      "          automatically or must be requested by the user. It is used in\x{a}" ~
+      "          conjunction with the show attribute to determine link\x{a}" ~
+      "          behavior."
+    ]
+  ]
+  attribute xlink:actuate {
+    "onLoad" | "onRequest" | "other" | "none"
+  }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates a property of the entire link.\x{a}" ~
+      "          The value of the role attribute must be a URI reference as defined in\x{a}" ~
+      "          [IETF RFC 2396], except that if the URI scheme used is allowed to have\x{a}" ~
+      "          absolute and relative forms, the URI portion must be absolute. The URI\x{a}" ~
+      "          reference identifies some resource that describes the intended\x{a}" ~
+      "          property. When no value is supplied, no particular role value is to be\x{a}" ~
+      "          inferred."
+    ]
+  ]
+  attribute xlink:role { xsd:anyURI }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "defines whether a remote resource that\x{a}" ~
+      "          is the target of a link appears at the point of the link, replaces the\x{a}" ~
+      "          existing link, or appears in a new window."
+    ]
+  ]
+  attribute xlink:show { "new" | "replace" | "other" | "none" }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "in contrast with the role attribute,\x{a}" ~
+      "          allows the target resource to be characterized using any convenient\x{a}" ~
+      "          classification scheme or typology."
+    ]
+  ]
+  attribute targettype { xsd:NMTOKEN }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "contains a human-readable description of\x{a}" ~
+      "          the entire link. A value is optional; if a value is supplied, it\x{a}" ~
+      "          should contain a string that describes the resource. The use of this\x{a}" ~
+      "          information is highly dependent on the type of processing being done.\x{a}" ~
+      "          It may be used, for example, to make titles available to applications\x{a}" ~
+      "          used by visually impaired users, or to create a table of links, or to\x{a}" ~
+      "          present help text that appears when a user lets a mouse pointer hover\x{a}" ~
+      "          over a starting resource."
+    ]
+  ]
+  attribute xlink:title { text }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Linking attributes for external referencing\x{a}" ~
+    "      elements"
+  ]
+]
+att.link.external &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "uses a previously-declared entity to\x{a}" ~
+      "          identify an external electronic object."
+    ]
+  ]
+  attribute entityref { xsd:ENTITY }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "allows the use of an\x{a}" ~
+      "          previously-undeclared URI to identify an external electronic\x{a}" ~
+      "          object."
+    ]
+  ]
+  attribute xlink:href { data.URI }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Linking attributes for internal referencing\x{a}" ~
+    "      elements"
+  ]
+]
+att.link.internal &= att.participantident
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that describe default typography\x{a}" ~
+    "      of lyrics"
+  ]
+]
+att.lyricstyle &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "describes the alignment of lyric\x{a}" ~
+      "          syllables associated with a note or chord."
+    ]
+  ]
+  attribute lyric.align { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "sets the font family default value for\x{a}" ~
+      "          lyrics."
+    ]
+  ]
+  attribute lyric.fam { data.FONTFAMILY }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "sets the font name default value for\x{a}" ~
+      "          lyrics."
+    ]
+  ]
+  attribute lyric.name { data.FONTNAME }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "sets the default font size value for\x{a}" ~
+      "          lyrics."
+    ]
+  ]
+  attribute lyric.size { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "sets the default font style value for\x{a}" ~
+      "          lyrics."
+    ]
+  ]
+  attribute lyric.style { data.FONTSTYLE }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "sets the default font weight value for\x{a}" ~
+      "          lyrics."
+    ]
+  ]
+  attribute lyric.weight { data.FONTWEIGHT }?
+
+## Attributes that record the unit of measurement in which a
+##       value is expressed
+att.measurement &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates the units used for a\x{a}" ~
+      "          measurement, usually using the standard symbol for the desired\x{a}" ~
+      "          unit."
+    ]
+  ]
+  attribute unit { xsd:NMTOKEN }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that describe horizontal\x{a}" ~
+    "      dimensions"
+  ]
+]
+att.width &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "measurement of the horizontal dimension\x{a}" ~
+      "          of an entity. For example, some music printing systems rely on measure\x{a}" ~
+      "          width data for rendering. The width attribute may be used to capture\x{a}" ~
+      "          this data for interchange with these systems."
+    ]
+  ]
+  attribute width { xsd:decimal }?
+
+## Attributes describing a writing medium, such as pencil or
+##       ink
+att.medium &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "describes the writing\x{a}" ~
+      "          medium."
+    ]
+  ]
+  attribute medium { text }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that record the version of MEI in\x{a}" ~
+    "      use"
+  ]
+]
+att.meiversion &=
+  [
+    a:defaultValue = "2010-05"
+    a:documentation [
+      xml:lang = "eng"
+      "records the version of MEI used by the\x{a}" ~
+      "          file."
+    ]
+  ]
+  attribute meiversion { "2010-05" }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes indicating the relationship\x{a}" ~
+    "      between a measure or barline and the prevailing meter"
+  ]
+]
+att.meterbar &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "a value of 'c' (complete) indicates a\x{a}" ~
+      "          metrically complete measure, 'i' (incomplete) indicates a measure with\x{a}" ~
+      "          not enough beats, while 'o' (overfull) is for measures with too many\x{a}" ~
+      "          beats."
+    ]
+  ]
+  attribute complete { "c" | "i" | "o" }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates whether or not a barline is\x{a}" ~
+      '          "controlling"; that is, if it indicates a point of alignment across\x{a}' ~
+      "          all the parts. Barlines within a score are usually controlling; that\x{a}" ~
+      '          is, they "line up". Barlines within parts may or may not be\x{a}' ~
+      "          controlling. When applied to <measure>, this attribute\x{a}" ~
+      "          indicates the nature of the right barline but not the\x{a}" ~
+      "          left."
+    ]
+  ]
+  attribute control { data.BOOLEAN }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Used by staffdef and scoredef to provide\x{a}" ~
+    "      default values for attributes in the logical domain related to meter\x{a}" ~
+    "      signature"
+  ]
+]
+att.meters.log &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "captures the number of beats in a\x{a}" ~
+      "          measure, that is, the top number of the meter\x{a}" ~
+      "          signature."
+    ]
+  ]
+  attribute meter.count { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "contains the number indicating the beat\x{a}" ~
+      "          unit, that is, the bottom number of the meter\x{a}" ~
+      "          signature."
+    ]
+  ]
+  attribute meter.unit { xsd:decimal }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Used by staffdef and scoredef to provide\x{a}" ~
+    "      default values for attributes in the visual domain related to meter\x{a}" ~
+    "      signature"
+  ]
+]
+att.meters.vis &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "contains indication of how the meter\x{a}" ~
+      "          signature should be rendered."
+    ]
+  ]
+  attribute meter.rend { "denomsym" | "norm" | "invis" }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "determines whether a new meter signature\x{a}" ~
+      "          should be displayed when the meter signature\x{a}" ~
+      "          changes."
+    ]
+  ]
+  attribute meter.showchange { data.BOOLEAN }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates the use of a meter symbol\x{a}" ~
+      "          instead of a numeric meter signature, that is, 'C' for common time or\x{a}" ~
+      "          'C' with a slash for cut time."
+    ]
+  ]
+  attribute meter.sym { data.METERSIGN }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that record tempo in terms of\x{a}" ~
+    "      beats per minute"
+  ]
+]
+att.mmtempo &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "used to describe tempo in terms of beats\x{a}" ~
+      "          (meter signature denominator) per minute, ala M.M. (Maezel's\x{a}" ~
+      "          Metronome)."
+    ]
+  ]
+  attribute mm { data.TEMPOVALUE }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that indicate programmatic\x{a}" ~
+    "      numbering"
+  ]
+]
+att.multinummeasures &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates whether programmatically\x{a}" ~
+      "          calculated counts of multiple measures of rest (mrest) and whole\x{a}" ~
+      "          measure repeats (mrpt) in parts should be rendered."
+    ]
+  ]
+  attribute multi.number { data.BOOLEAN }?
+[ a:documentation [ xml:lang = "eng" "Attributes shared by names" ] ]
+att.name &=
+  att.authorized,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "used to record a value which serves as a\x{a}" ~
+      "          primary key in an external database."
+    ]
+  ]
+  attribute dbkey { xsd:NMTOKEN }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "used to record a pointer to the\x{a}" ~
+      "          regularized form of the name."
+    ]
+  ]
+  attribute nymref { xsd:IDREF }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "used to specify further information\x{a}" ~
+      "          about the entity referenced by this name, for example, the occupation\x{a}" ~
+      "          of a person or the status of a place."
+    ]
+  ]
+  attribute role { text }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that record written\x{a}" ~
+    "      octave"
+  ]
+]
+att.octave &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "captures written octave\x{a}" ~
+      "          information."
+    ]
+  ]
+  attribute oct { data.OCTAVE }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that record a default value for\x{a}" ~
+    "      octave"
+  ]
+]
+att.octavedefault &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "contains a default octave specification\x{a}" ~
+      "          for use when the first note, rest, chord, etc. in a measure does not\x{a}" ~
+      "          have an octave value specified."
+    ]
+  ]
+  attribute octave.default { data.OCTAVE }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that record placement of notes on\x{a}" ~
+    "      a single-line staff"
+  ]
+]
+att.onelinestaff &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "determines the placement of notes on a\x{a}" ~
+      "          1-line staff. A value of 'yes' places all notes on the line, while a\x{a}" ~
+      "          value of 'no' places stems-up notes above the line and stems-down\x{a}" ~
+      "          notes below the line."
+    ]
+  ]
+  attribute ontheline { data.BOOLEAN }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes describing the amount and\x{a}" ~
+    "      direction of octave displacement"
+  ]
+]
+att.octavedisplacement &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the amount of octave\x{a}" ~
+      "          displacement."
+    ]
+  ]
+  attribute dis { data.OCTAVE.DIS }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the direction of octave\x{a}" ~
+      "          displacement."
+    ]
+  ]
+  attribute dis.place { data.PLACE }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes listing the participants in a\x{a}" ~
+    "      collection"
+  ]
+]
+att.participantident &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "contains a space separated list of ID\x{a}" ~
+      "          references that identify logical events that participate in a\x{a}" ~
+      "          collection, such as notes under a phrase mark."
+    ]
+  ]
+  attribute plist { data.PLIST }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that record written pitch\x{a}" ~
+    "      name"
+  ]
+]
+att.pitch &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "contains a written pitch\x{a}" ~
+      "          name."
+    ]
+  ]
+  attribute pname { data.PITCHNAME }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that record written pitch name\x{a}" ~
+    "      and octave number"
+  ]
+]
+att.pitched &= att.pitch, att.octave
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes capturing placement\x{a}" ~
+    "      information"
+  ]
+]
+att.placement &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "captures the placement of the item with\x{a}" ~
+      "          respect to the staff with which it is associated."
+    ]
+  ]
+  attribute place { data.STAFFREL }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that record relative\x{a}" ~
+    "      size"
+  ]
+]
+att.relativesize &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "describes the relative size of a\x{a}" ~
+      "          feature."
+    ]
+  ]
+  attribute size { data.SIZE }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes capturing information regarding\x{a}" ~
+    "      responsibility for some aspect of the text's creation, transcription,\x{a}" ~
+    "      editing, or encoding."
+  ]
+]
+att.responsibility &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "captures information regarding\x{a}" ~
+      "          responsibility for some aspect of the text's creation, transcription,\x{a}" ~
+      "          editing, or encoding. Its value must point to one or more identifiers\x{a}" ~
+      "          declared in the document header."
+    ]
+  ]
+  attribute resp { xsd:IDREFS }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that describe relative\x{a}" ~
+    "      size"
+  ]
+]
+att.scalable &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates how the feature should be\x{a}" ~
+      "          scaled when rendered."
+    ]
+  ]
+  attribute scale { data.PERCENT }?
+[ a:documentation [ xml:lang = "eng" ] ]
+att.sequence &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "used to assign a sequence number related\x{a}" ~
+      "          to the order in which the encoded features carrying this attribute are\x{a}" ~
+      "          believed to have occurred."
+    ]
+  ]
+  attribute seq { xsd:positiveInteger }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes for recording the number of\x{a}" ~
+    "      slashes that accompany a feature"
+  ]
+]
+att.slashcount &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates the number of slashes to be\x{a}" ~
+      "          rendered along with the feature."
+    ]
+  ]
+  attribute slash { data.SLASH }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes for marking the presence of a\x{a}" ~
+    "      slur"
+  ]
+]
+att.slurpresent &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates that this element participates\x{a}" ~
+      "          in a slur."
+    ]
+  ]
+  attribute slur { data.SLURS }?
+[ a:documentation [ xml:lang = "eng" ] ]
+att.staffident &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "signifies the staff on which a notated\x{a}" ~
+      "        event occurs or to which a control event applies."
+    ]
+  ]
+  attribute staff {
+    list { xsd:positiveInteger+ }
+  }
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that identify location on a staff\x{a}" ~
+    "      in terms of lines and spaces"
+  ]
+]
+att.staffloc &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "holds the staff location of the\x{a}" ~
+      "          feature."
+    ]
+  ]
+  attribute loc { data.STAFFLOC }?
+[ a:documentation [ xml:lang = "eng" ] ]
+att.startid &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "holds a reference to the first element\x{a}" ~
+      "          in a sequence of events to which the feature\x{a}" ~
+      "          applies."
+    ]
+  ]
+  attribute startid { xsd:IDREF }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes recording the IDs of the first\x{a}" ~
+    "      and last elements of a sequence of elements to which the current element\x{a}" ~
+    "      is associated."
+  ]
+]
+att.startendid &=
+  att.startid,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates the final element in a\x{a}" ~
+      "          sequence of events to which the feature applies."
+    ]
+  ]
+  attribute endid { xsd:IDREF }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that describe the properties of\x{a}" ~
+    "      stemmed features; that is, chords and notes"
+  ]
+]
+att.stemmed &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "describes the direction of a\x{a}" ~
+      "          stem."
+    ]
+  ]
+  attribute stem.dir { data.STEMDIRECTION }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "encodes the stem\x{a}" ~
+      "          length."
+    ]
+  ]
+  attribute stem.len { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the position of the stem in\x{a}" ~
+      "          relation to the notehead(s)."
+    ]
+  ]
+  attribute stem.pos { data.STEMPOSITION }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the output x coordinate of the\x{a}" ~
+      "          stem's attachment point."
+    ]
+  ]
+  attribute stem.x { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the output y coordinate of the\x{a}" ~
+      "          stem's attachment point."
+    ]
+  ]
+  attribute stem.y { xsd:decimal }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that hold associated sung text\x{a}" ~
+    "      syllables"
+  ]
+]
+att.syltext &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "holds an associated sung text\x{a}" ~
+      "          syllable."
+    ]
+  ]
+  attribute syl { text }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that describe default text\x{a}" ~
+    "      typography"
+  ]
+]
+att.textstyle &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "provides a default value for the font\x{a}" ~
+      "          family name of text (other than lyrics) when this information is not\x{a}" ~
+      "          provided on the individual elements."
+    ]
+  ]
+  attribute text.fam { data.FONTFAMILY }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "provides a default value for the font\x{a}" ~
+      "          name of text (other than lyrics) when this information is not provided\x{a}" ~
+      "          on the individual elements."
+    ]
+  ]
+  attribute text.name { data.FONTNAME }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "provides a default value for the font\x{a}" ~
+      "          size of text (other than lyrics) when this information is not provided\x{a}" ~
+      "          on the individual elements."
+    ]
+  ]
+  attribute text.size { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "provides a default value for the font\x{a}" ~
+      "          style of text (other than lyrics) when this information is not\x{a}" ~
+      "          provided on the individual elements."
+    ]
+  ]
+  attribute text.style { data.FONTSTYLE }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "provides a default value for the font\x{a}" ~
+      "          weight for text (other than lyrics) when this information is not\x{a}" ~
+      "          provided on the individual elements."
+    ]
+  ]
+  attribute text.weight { data.FONTWEIGHT }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that indicate the presence of a\x{a}" ~
+    "      tie"
+  ]
+]
+att.tiepresent &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates that this element participates\x{a}" ~
+      "          in a tie. If visual information about the tie needs to be recorded,\x{a}" ~
+      "          then a <tie> element should be\x{a}" ~
+      "          employed."
+    ]
+  ]
+  attribute tie { data.TIE }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that record a time stamp in terms\x{a}" ~
+    "      of musical time, i.e., beats[.fractional beat part]"
+  ]
+]
+att.timestamp.musical &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "encodes the onset time in terms of\x{a}" ~
+      "          musical time, i.e., beats[.fractional beat part]"
+    ]
+  ]
+  attribute tstamp { data.BEAT }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that record a time stamp in terms\x{a}" ~
+    "      of relative or real time."
+  ]
+]
+att.timestamp.performed &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "used to record the onset time in pulses\x{a}" ~
+      "          per quarter note (ppq, MusicXML divisions, or MIDI clicks) since the\x{a}" ~
+      "          start of the file."
+    ]
+  ]
+  attribute tstamp.ges { xsd:nonNegativeInteger }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "used to record the onset time in pulses\x{a}" ~
+      "          per quarter note (ppq, MusicXML divisions, or MIDI clicks) since the\x{a}" ~
+      "          start of the file."
+    ]
+  ]
+  attribute tstamp.real { data.ISOTIME }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes that describe\x{a}" ~
+    "      transposition"
+  ]
+]
+att.transposition &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the amount of diatonic pitch\x{a}" ~
+      "          shift, e.g. C to C# = 0, C to Db = 1. Transposition requires both\x{a}" ~
+      "          trans.diat and trans.semi attributes in order to distinguish the\x{a}" ~
+      "          difference, for example, between a transposition from C to C# and one\x{a}" ~
+      "          from C to Db."
+    ]
+  ]
+  attribute trans.diat { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "contains the amount of pitch shift in\x{a}" ~
+      "          semitones, C to C# = 1, C to Db = 1. Transposition requires both\x{a}" ~
+      "          trans.diat and trans.semi attributes in order to distinguish the\x{a}" ~
+      "          difference, for example, between a transposition from C to C# and one\x{a}" ~
+      "          from C to Db."
+    ]
+  ]
+  attribute trans.semi { xsd:decimal }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes for indicating the presence of a\x{a}" ~
+    "      tuplet"
+  ]
+]
+att.tupletpresent &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates that this feature participates\x{a}" ~
+      "          in a tuplet."
+    ]
+  ]
+  attribute tuplet { data.TUPLETS }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Attributes which can be used to classify or\x{a}" ~
+    "      subclassify features"
+  ]
+]
+att.typed &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "characterizes the element in some sense,\x{a}" ~
+      "          using any convenient classification scheme or\x{a}" ~
+      "          typology."
+    ]
+  ]
+  attribute type { xsd:NMTOKEN }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "provide any sub-classification for the\x{a}" ~
+      "          element, additional to that given by its type\x{a}" ~
+      "          attribute."
+    ]
+  ]
+  attribute subtype { xsd:NMTOKEN }?
+[ a:documentation [ xml:lang = "eng" "Typographical attributes" ] ]
+att.typography &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "contains the name of a\x{a}" ~
+      "          font-family."
+    ]
+  ]
+  attribute fontfam { data.FONTFAMILY }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the name of the\x{a}" ~
+      "          font."
+    ]
+  ]
+  attribute fontname { data.FONTNAME }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates the size of the font in\x{a}" ~
+      "          printers' points, i.e., 1/72nd of an inch."
+    ]
+  ]
+  attribute fontsize { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the style of the font, i.e,\x{a}" ~
+      "          italic, oblique, or normal."
+    ]
+  ]
+  attribute fontstyle { data.FONTSTYLE }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "used to indicate bold\x{a}" ~
+      "          type."
+    ]
+  ]
+  attribute fontweight { data.FONTWEIGHT }?
+
+## Attributes describing whether a feature should be
+##       displayed
+att.visibility &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates if a feature should be\x{a}" ~
+      "          rendered when the notation is presented graphically or\x{a}" ~
+      "          sounded."
+    ]
+  ]
+  attribute visible { data.BOOLEAN }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Horizontal offset\x{a}" ~
+    "      attributes"
+  ]
+]
+att.visualoffset.ho &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records a horizontal adjustment of a\x{a}" ~
+      "          feature's programmatically-determined location in terms of staff\x{a}" ~
+      "          interline distance; that is, units of 1/2 the distance between\x{a}" ~
+      "          adjacent staves."
+    ]
+  ]
+  attribute ho { data.INTERLINE }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Horizontal offset attributes specified in\x{a}" ~
+    "      terms of time"
+  ]
+]
+att.visualoffset.to &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records a timestamp adjustment of a\x{a}" ~
+      "          feature's programmatically-determined location in musical terms; that\x{a}" ~
+      "          is, beats."
+    ]
+  ]
+  attribute to { data.TSTAMPOFFSET }?
+[ a:documentation [ xml:lang = "eng" "Vertical offset attributes" ] ]
+att.visualoffset.vo &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the vertical adjustment of a\x{a}" ~
+      "          feature's programmatically-determined location in terms of staff\x{a}" ~
+      "          interline distance; that is, units of 1/2 the distance between\x{a}" ~
+      "          adjacent staves."
+    ]
+  ]
+  attribute vo { data.INTERLINE }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Visual offset attributes. Some items may\x{a}" ~
+    "      have their location recorded in terms of offsets from their\x{a}" ~
+    "      programmatically-determined location. The ho attribute records the\x{a}" ~
+    "      horizontal offset while vo records the vertical. The to attribute holds a\x{a}" ~
+    "      timestamp offset, the most common use of which is as an alternative to the\x{a}" ~
+    "      ho attribute."
+  ]
+]
+att.visualoffset &=
+  att.visualoffset.ho, att.visualoffset.to, att.visualoffset.vo
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Horizontal offset requiring a pair of\x{a}" ~
+    "      attributes"
+  ]
+]
+att.visualoffset2.ho &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the horizontal adjustment of a\x{a}" ~
+      "          feature's programmatically-determined start point."
+    ]
+  ]
+  attribute startho { data.INTERLINE }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the horizontal adjustment of a\x{a}" ~
+      "          feature's programmatically-determined end point."
+    ]
+  ]
+  attribute endho { data.INTERLINE }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Horizontal offset attributes requiring a\x{a}" ~
+    "      pair of attributes specified in terms of time"
+  ]
+]
+att.visualoffset2.to &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records a timestamp adjustment of a\x{a}" ~
+      "          feature's programmatically-determined start point."
+    ]
+  ]
+  attribute startto { data.TSTAMPOFFSET }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records a timestamp adjustment of a\x{a}" ~
+      "          feature's programmatically-determined end point."
+    ]
+  ]
+  attribute endto { data.TSTAMPOFFSET }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Vertical offset attributes requiring a pair\x{a}" ~
+    "      of attributes"
+  ]
+]
+att.visualoffset2.vo &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records a vertical adjustment of a\x{a}" ~
+      "          feature's programmatically-determined start point."
+    ]
+  ]
+  attribute startvo { data.INTERLINE }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records a vertical adjustment of a\x{a}" ~
+      "          feature's programmatically-determined end point."
+    ]
+  ]
+  attribute endvo { data.INTERLINE }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Visual offset attributes. Some items may\x{a}" ~
+    "      have their location recorded in terms of pairs of offsets from their\x{a}" ~
+    "      programmatically-determined location. The startho and endho attributes\x{a}" ~
+    "      record the horizontal offsets of the start and end points of the item,\x{a}" ~
+    "      respectively. Similarly, the startvo and endvo attributes record the\x{a}" ~
+    "      vertical offsets of the start and end points of the item. The startto and\x{a}" ~
+    "      endto attributes hold timestamp offsets, the most common use of which is\x{a}" ~
+    "      as alternatives to the ho attributes."
+  ]
+]
+att.visualoffset2 &=
+  att.visualoffset2.ho, att.visualoffset2.to, att.visualoffset2.vo
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Output coordinate attributes. Some elements\x{a}" ~
+    "      may have their exact rendered *output* coordinates recorded. x and y\x{a}" ~
+    "      attributes indicate where to place the rendered output. Recording the\x{a}" ~
+    "      coordinates of a feature in a facsimile requires the use of the facs\x{a}" ~
+    "      attribute."
+  ]
+]
+att.xy &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "encodes an x coordinate for a feature in\x{a}" ~
+      "          an output coordinate system. When it is necessary to record the\x{a}" ~
+      "          placement of a feature in a facsimile image, use the facs\x{a}" ~
+      "          attribute."
+    ]
+  ]
+  attribute x { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "encodes an y coordinate for a feature in\x{a}" ~
+      "          an output coordinate system. When it is necessary to record the\x{a}" ~
+      "          placement of a feature in a facsimile image, use the facs\x{a}" ~
+      "          attribute."
+    ]
+  ]
+  attribute y { xsd:decimal }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Output coordinate attributes. Some elements\x{a}" ~
+    "      may need 2 coordinate pairs to record their rendered *output*\x{a}" ~
+    "      coordinates."
+  ]
+]
+att.xy2 &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "encodes the optional 2nd x\x{a}" ~
+      "          coordinate."
+    ]
+  ]
+  attribute x2 { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "encodes the optional 2nd y\x{a}" ~
+      "          coordinate."
+    ]
+  ]
+  attribute y2 { xsd:decimal }?
+# Domain attr classes for musical elements
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.accid.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.accid.ges &= empty
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.accid.log &=
+  att.accidental,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records whether the accidental has an\x{a}" ~
+      "          editorial or cautionary function."
+    ]
+  ]
+  attribute func { "caution" | "edit" }?
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.accid.vis &=
+  att.color,
+  att.visualoffset.ho,
+  att.visualoffset.vo,
+  att.xy,
+  att.enclosingchars,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "captures the placement of the accidental\x{a}" ~
+      "          relative to the staff."
+    ]
+  ]
+  attribute place { "above" | "below" | "staff" }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.annot.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.annot.ges &= att.duration.performed
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Logical domain attributes for annot. Values\x{a}" ~
+    "      for the type attribute can be taken from any convenient typology of\x{a}" ~
+    "      annotation suitable to the work in hand; e.g. annotation, gloss, citation,\x{a}" ~
+    "      digression, preliminary, temporary, etc."
+  ]
+]
+att.annot.log &=
+  att.startendid,
+  att.duration.timestamp,
+  att.layerident,
+  att.staffident?,
+  att.timestamp.musical,
+  att.timestamp.performed
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.annot.vis &= empty
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.artic.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.artic.ges &= empty
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.artic.log &= att.articulation
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.artic.vis &=
+  att.color, att.placement, att.visualoffset, att.xy, att.enclosingchars
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.barline.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.barline.ges &= att.timestamp.musical
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.barline.log &=
+  att.meterbar,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the appearance of the\x{a}" ~
+      "          barline."
+    ]
+  ]
+  attribute rend { data.BARRENDITION }?
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.barline.vis &=
+  att.barplacement, att.color, att.measurement, att.width
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.chord.anl &= att.common.anl, att.melodicfunction
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.chord.ges &=
+  att.articulation.performed,
+  att.duration.performed,
+  att.instrumentident
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Logical domain attributes for chord. The\x{a}" ~
+    "      artic, dots, and dur attributes encode the written articulations,\x{a}" ~
+    "      augmentation dots, and duration values. The beam, fermata, lv, slur, syl,\x{a}" ~
+    "      tie, and tuplet attributes may be used to indicate the attachment of these\x{a}" ~
+    "      things to this chord. If visual information about these things needs to be\x{a}" ~
+    "      recorded, then either the elements corresponding to these attributes or\x{a}" ~
+    "      the attributes available in the att.vis.chord class should be\x{a}" ~
+    "      employed."
+  ]
+]
+att.chord.log &=
+  att.event,
+  att.articulation,
+  att.augmentdots,
+  att.duration.musical,
+  att.fermatapresent,
+  att.syltext,
+  att.slurpresent,
+  att.tiepresent,
+  att.tupletpresent
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Visual domain attributes for chord. The\x{a}" ~
+    "      slur, slur.dir, slur.rend, tie, tie.dir, and tie.rend attributes here are\x{a}" ~
+    "      syntactic sugar for these attributes on each of the chord's individual\x{a}" ~
+    "      notes. The values here apply to all the notes in the chord. If some notes\x{a}" ~
+    "      are slurred or tied while others aren't, then the individual note\x{a}" ~
+    "      attributes must be used."
+  ]
+]
+att.chord.vis &=
+  att.altsym,
+  att.color,
+  att.relativesize,
+  att.stemmed,
+  att.visibility,
+  att.visualoffset.ho,
+  att.visualoffset.to,
+  att.xy,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates an alternative notehead should\x{a}" ~
+      "          be displayed instead of individual noteheads. See Read, p. 320-321,\x{a}" ~
+      "          re: tone clusters."
+    ]
+  ]
+  attribute cluster { data.CLUSTER }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.clef.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.clef.ges &= empty
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.clef.log &=
+  att.clefshape, att.lineloc, att.octave, att.octavedisplacement
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.clef.vis &= att.altsym, att.color
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.clefchange.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.clefchange.ges &= empty
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.clefchange.log &=
+  att.clefshape, att.lineloc, att.octave, att.octavedisplacement
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.clefchange.vis &= att.altsym, att.color
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributess"
+  ]
+]
+att.custos.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.custos.ges &= empty
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.custos.log &=
+  att.pitched,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "encodes the target note when its pitch\x{a}" ~
+      "          differs from the pitch at which the custos appears."
+    ]
+  ]
+  attribute target { xsd:IDREF }?
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.custos.vis &= att.altsym, att.color
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.dir.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.dir.ges &= att.duration.performed
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.dir.log &= att.controlevent, att.startendid, att.duration.timestamp
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.dir.vis &=
+  att.placement,
+  att.visualoffset,
+  att.visualoffset2.ho,
+  att.visualoffset2.to,
+  att.xy
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.dot.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.dot.ges &= empty
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.dot.log &=
+  att.staffloc,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the function of the dot; that\x{a}" ~
+      "          is, whether it is a dot of augmentation or a dot of\x{a}" ~
+      "          division."
+    ]
+  ]
+  attribute form { "aug" | "div" }?
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.dot.vis &=
+  att.color, att.visualoffset.ho, att.visualoffset.vo, att.xy
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.dynam.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.dynam.ges &= att.duration.performed, att.midivalue
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.dynam.log &=
+  att.controlevent, att.startendid, att.duration.timestamp
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.dynam.vis &=
+  att.placement,
+  att.visualoffset,
+  att.visualoffset2.ho,
+  att.visualoffset2.to,
+  att.xy
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.ending.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.ending.ges &= empty
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.ending.log &= empty
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.ending.vis &= empty
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.grpsym.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.grpsym.ges &= empty
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.grpsym.log &= att.staffgroupingsym
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.grpsym.vis &= att.visualoffset, att.xy
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.layer.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.layer.ges &= empty
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.layer.log &= empty
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.layer.vis &= att.visibility
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.layerdef.anl &= empty
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.layerdef.ges &= att.instrumentident
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.layerdef.log &= att.duration.default, att.octavedefault
+att.layerdef.vis &= att.visibility, att.beaming.vis, att.textstyle
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.measure.anl &= att.common.anl
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Gestural domain attributes. The tstamp.ges\x{a}" ~
+    "      and tstamp.real attributes encode the onset time of the measure. In\x{a}" ~
+    "      reality, this is usually the same as the onset time of the first event in\x{a}" ~
+    "      the measure."
+  ]
+]
+att.measure.ges &= att.timestamp.performed
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Logical domain attributes. The n attribute\x{a}" ~
+    "      contains a name or number associated with the measure (Read, p. 445).\x{a}" ~
+    "      Often, this is an integer, but not always. For example, some measures,\x{a}" ~
+    "      especially incomplete measures or those under an ending mark, may have\x{a}" ~
+    "      labels that contain an integer plus a suffix, such as '12a'. Measures may\x{a}" ~
+    "      even have labels, especially in editorial or analytical uses of MEI, that\x{a}" ~
+    "      are entirely non-numeric strings. Measure numbers may be machine-generated\x{a}" ~
+    "      instead of encoding them in the markup. However, an explicit measure\x{a}" ~
+    "      number should restart numbering with the given value. The join attribute\x{a}" ~
+    "      may be used to indicate another measure which metrically completes the\x{a}" ~
+    "      current, incomplete one one."
+  ]
+]
+att.measure.log &=
+  att.meterbar,
+  att.joined,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates the visual rendition of the\x{a}" ~
+      "          left barline. It is present here only for facilitation of translation\x{a}" ~
+      "          from legacy encodings which use it. Usually, it can be safely\x{a}" ~
+      "          ignored."
+    ]
+  ]
+  attribute left { data.BARRENDITION }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates the function of the right\x{a}" ~
+      "          barline and is structurally important."
+    ]
+  ]
+  attribute right { data.BARRENDITION }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.note.anl &=
+  att.common.anl,
+  att.harmonicfunction,
+  att.intervallicdesc,
+  att.melodicfunction,
+  att.pitchclass,
+  att.solfa
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.note.ges &=
+  att.accidental.performed,
+  att.articulation.performed,
+  att.duration.performed,
+  att.instrumentident,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records performed octave information\x{a}" ~
+      "          that differs from the written value."
+    ]
+  ]
+  attribute oct.ges { data.OCTAVE }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records pitch name information that\x{a}" ~
+      "          differs from the written value."
+    ]
+  ]
+  attribute pname.ges { data.PITCHNAME.GES }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "holds a pitch-to-number mapping, a\x{a}" ~
+      "          base-40 or MIDI note number, for example."
+    ]
+  ]
+  attribute pnum { data.PITCHNUMBER }?
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.note.log &=
+  att.event,
+  att.accidental,
+  att.articulation,
+  att.augmentdots,
+  att.duration.musical,
+  att.fermatapresent,
+  att.pitched,
+  att.syltext,
+  att.slurpresent,
+  att.tiepresent,
+  att.tupletpresent
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.note.vis &=
+  att.altsym,
+  att.color,
+  att.coloration,
+  att.enclosingchars,
+  att.relativesize,
+  att.stemmed,
+  att.visibility,
+  att.visualoffset.ho,
+  att.visualoffset.to,
+  att.xy,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "used to override the headshape normally\x{a}" ~
+      "          used for the given duration."
+    ]
+  ]
+  attribute headshape { data.HEADSHAPE }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.pad.anl &= empty
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.pad.ges &= empty
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.pad.log &=
+  att.event,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "captures the amount of horizontal space to\x{a}" ~
+      "        be added, expressed in one-half inter-line staff distance\x{a}" ~
+      "        units."
+    ]
+  ]
+  attribute num { xsd:decimal }
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.pad.vis &= empty
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.part.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.part.ges &= empty
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.part.log &= empty
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.part.vis &= empty
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.parts.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.parts.ges &= empty
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.parts.log &= empty
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.parts.vis &= empty
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.phrase.anl &= att.common.anl, att.joined
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.phrase.ges &= att.duration.performed
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.phrase.log &=
+  att.controlevent, att.startendid, att.duration.timestamp
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.phrase.vis &=
+  att.color, att.visualoffset, att.visualoffset2, att.xy, att.xy2
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.rest.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.rest.ges &= att.duration.performed, att.instrumentident
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.rest.log &=
+  att.augmentdots,
+  att.event,
+  att.duration.musical,
+  att.fermatapresent,
+  att.tupletpresent
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.rest.vis &=
+  att.altsym, att.color, att.relativesize, att.visualoffset, att.xy
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.sb.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.sb.ges &= empty
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.sb.log &= empty
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.sb.vis &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates whether hash marks should be\x{a}" ~
+      "          rendered between systems. See Read, p. 436, ex.\x{a}" ~
+      "          26-3."
+    ]
+  ]
+  attribute rend { "hash" }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.score.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.score.ges &= empty
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.score.log &= empty
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.score.vis &= empty
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.scoredef.anl &= empty
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Gestural domain attributes for scoredef. The\x{a}" ~
+    "      values set in these attributes act as score-wide defaults for attributes\x{a}" ~
+    "      that are not set in descendant elements. For example, the grace attribute\x{a}" ~
+    "      value here applies to all the grace attribute values in the score (or,\x{a}" ~
+    "      more accurately, until the next <scoredef> element) without\x{a}" ~
+    "      having to individually set each note's grace attribute value. The midi.*\x{a}" ~
+    "      attributes function as default values when creating sounding output. The\x{a}" ~
+    "      tune.* attributes provide the capability of recording a tuning reference\x{a}" ~
+    "      pitch. "
+  ]
+]
+att.scoredef.ges &=
+  att.channelized,
+  att.timebase,
+  att.miditempo,
+  att.mmtempo,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "holds the pitch name of a tuning\x{a}" ~
+      "          reference pitch."
+    ]
+  ]
+  attribute tune.pname { data.PITCHNAME }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "holds a value for cycles per second,\x{a}" ~
+      "          i.e., Hertz, for a tuning reference pitch."
+    ]
+  ]
+  attribute tune.Hz { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "provides a label for the tuning system,\x{a}" ~
+      "          'just', for example."
+    ]
+  ]
+  attribute tune.temper { data.TEMPERAMENT }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Logical domain attributes for scoredef in\x{a}" ~
+    "      the CMN repertoire. The values set in these attributes act as score-wide\x{a}" ~
+    "      defaults for attributes that are not set in descendant elements. "
+  ]
+]
+att.scoredef.log &=
+  att.cleffing.log,
+  att.duration.default,
+  att.keysigs.log,
+  att.meters.log,
+  att.octavedefault,
+  att.transposition
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Visual domain attributes for scoredef in the\x{a}" ~
+    "      CMN repertoire"
+  ]
+]
+att.scoredef.vis &=
+  att.barplacement,
+  att.cleffing.vis,
+  att.distances,
+  att.keysigs.vis,
+  att.lyricstyle,
+  att.meters.vis,
+  att.multinummeasures,
+  att.onelinestaff,
+  att.textstyle,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "describes where ending marks should be\x{a}" ~
+      "          displayed."
+    ]
+  ]
+  attribute ending.rend { "top" | "barred" | "grouped" }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates whether measure numbers should\x{a}" ~
+      "          be displayed."
+    ]
+  ]
+  attribute mnum.visible { data.BOOLEAN }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "sets the default music font\x{a}" ~
+      "          name."
+    ]
+  ]
+  attribute music.name { data.MUSICFONT }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "sets the default music font\x{a}" ~
+      "          size."
+    ]
+  ]
+  attribute music.size { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "display only those staves with\x{a}" ~
+      "          notes?"
+    ]
+  ]
+  attribute optimize { data.BOOLEAN }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "describes the physical height of the\x{a}" ~
+      "          rendered output page."
+    ]
+  ]
+  attribute page.height { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "describes the physical width of the\x{a}" ~
+      "          rendered output page."
+    ]
+  ]
+  attribute page.width { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "contains the real-world measurement\x{a}" ~
+      "          units (inches, centimeters, millimeters) used to describe the rendered\x{a}" ~
+      "          page height, width, and margins."
+    ]
+  ]
+  attribute page.units { data.PGUNITS }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates the amount of whitespace at\x{a}" ~
+      "          the top of a rendered score page."
+    ]
+  ]
+  attribute page.topmar { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates the amount of whitespace at\x{a}" ~
+      "          the bottom of a rendered score page."
+    ]
+  ]
+  attribute page.botmar { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates the amount of whitespace at\x{a}" ~
+      "          the left side of a rendered score page."
+    ]
+  ]
+  attribute page.leftmar { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates the amount of whitespace at\x{a}" ~
+      "          the right side of a rendered score page."
+    ]
+  ]
+  attribute page.rightmar { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates the number of logical pages to\x{a}" ~
+      "          be rendered on a single physical page."
+    ]
+  ]
+  attribute page.panels { data.PAGE.PANELS }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates how the page should be scaled\x{a}" ~
+      "          when rendered."
+    ]
+  ]
+  attribute page.scale { data.PGSCALE }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "describes a note's spacing relative to\x{a}" ~
+      "          its time value."
+    ]
+  ]
+  attribute spacing.packexp { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "describes the note spacing of\x{a}" ~
+      "          output."
+    ]
+  ]
+  attribute spacing.packfact { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "sets the minimum amount of space between\x{a}" ~
+      "          staves in the same system."
+    ]
+  ]
+  attribute spacing.staff { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "contains a space-separated pair of\x{a}" ~
+      "          numbers describing the minimum and maximum amount of space between\x{a}" ~
+      "          systems."
+    ]
+  ]
+  attribute spacing.system { text }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "describes the amount of whitespace at\x{a}" ~
+      "          the left system margin relative to page.leftmar"
+    ]
+  ]
+  attribute system.leftmar { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "describes the amount of whitespace at\x{a}" ~
+      "          the right system margin relative to page.rightmar"
+    ]
+  ]
+  attribute system.rightmar { xsd:decimal }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "describes the distance from page's top\x{a}" ~
+      "          edge to the first system; used for first page only"
+    ]
+  ]
+  attribute system.topmar { xsd:decimal }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.section.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.section.ges &= empty
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.section.log &= empty
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.section.vis &=
+  
+  ## indicates that staves begin again with this
+  ##           section.
+  attribute restart { data.BOOLEAN }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.space.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.space.ges &= att.duration.performed
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.space.log &=
+  att.augmentdots,
+  att.event,
+  att.duration.musical,
+  att.fermatapresent,
+  att.tupletpresent
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.space.vis &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates whether a space is\x{a}" ~
+      "          'compressable', i.e., if it may be removed at the disgression of\x{a}" ~
+      "          processing software."
+    ]
+  ]
+  attribute compressable { data.BOOLEAN }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.staff.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.staff.ges &= empty
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.staff.log &= empty
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.staff.vis &= att.visibility
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.staffdef.anl &= empty
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Gestural domain attributes for staffdef in\x{a}" ~
+    "      the CMN repertoire"
+  ]
+]
+att.staffdef.ges &= att.instrumentident, att.timebase
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Logical domain attributes for\x{a}" ~
+    "      staffdef"
+  ]
+]
+att.staffdef.log &=
+  att.cleffing.log,
+  att.duration.default,
+  att.keysigs.log,
+  att.meters.log,
+  att.octavedefault,
+  att.transposition
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Visual domain attributes for\x{a}" ~
+    "      staffdef"
+  ]
+]
+att.staffdef.vis &=
+  att.cleffing.vis,
+  att.distances,
+  att.keysigs.vis,
+  att.labels,
+  att.lyricstyle,
+  att.meters.vis,
+  att.multinummeasures,
+  att.onelinestaff,
+  att.scalable,
+  att.textstyle,
+  att.visibility,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "determines whether to display guitar\x{a}" ~
+      "          chord grids."
+    ]
+  ]
+  attribute grid.show { data.BOOLEAN }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates the number of layers and their\x{a}" ~
+      "          stem directions."
+    ]
+  ]
+  attribute layerscheme { data.LAYERSCHEME }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates the number of\x{a}" ~
+      "          stafflines."
+    ]
+  ]
+  attribute lines { xsd:positiveInteger }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "encodes the colors of the staff lines.\x{a}" ~
+      "          The value is structured; that is, it should have the same number of\x{a}" ~
+      "          space-separated RGB values as the number of lines indicated by the\x{a}" ~
+      "          lines attribute. A line can be made invisible by assigning it the same\x{a}" ~
+      "          RGB value as the background, usually white."
+    ]
+  ]
+  attribute lines.color {
+    list { data.COLOR+ }
+  }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records whether all stafflines are\x{a}" ~
+      "          visible."
+    ]
+  ]
+  attribute lines.visible { data.BOOLEAN }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the absolute distance (as\x{a}" ~
+      "          opposed to the relative distances recorded in <scoredef>\x{a}" ~
+      "          elements) between this staff and the preceding one in the same system.\x{a}" ~
+      "          This value is meaningless for the first staff in a system since the\x{a}" ~
+      "          spacing.system attribute indicates the spacing between\x{a}" ~
+      "          systems."
+    ]
+  ]
+  attribute spacing { xsd:decimal }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.staffgrp.anl &= empty
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.staffgrp.ges &= att.instrumentident
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.staffgrp.log &= empty
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.staffgrp.vis &=
+  att.labels,
+  att.staffgroupingsym,
+  att.visibility,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates whether barlines go across the\x{a}" ~
+      "          space between staves (true) or are only drawn across the lines of each\x{a}" ~
+      "          staff (false)."
+    ]
+  ]
+  attribute barthru { data.BOOLEAN }?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.syl.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.syl.ges &= empty
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.syl.log &=
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "describes the symbols typically used to\x{a}" ~
+      "          indicate breaks between syllables: s (_s_pace) = word separator, d\x{a}" ~
+      "          (_d_ash) = syllable separator, u (_u_nderscore) = syllable extension,\x{a}" ~
+      "          t (_t_ilde) = syllable elision"
+    ]
+  ]
+  attribute con { "s" | "d" | "u" | "t" }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the position of a syllable\x{a}" ~
+      "          within a word."
+    ]
+  ]
+  attribute wordpos { "i" | "m" | "t" }?
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.syl.vis &=
+  att.typography, att.visualoffset, att.xy, att.horizontalalign
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Analytical domain\x{a}" ~
+    "      attributes"
+  ]
+]
+att.tempo.anl &= att.common.anl
+[ a:documentation [ xml:lang = "eng" "Gestural domain attributes" ] ]
+att.tempo.ges &= att.miditempo, att.mmtempo
+[ a:documentation [ xml:lang = "eng" "Logical domain attributes" ] ]
+att.tempo.log &= att.controlevent, att.startid
+[ a:documentation [ xml:lang = "eng" "Visual domain attributes" ] ]
+att.tempo.vis &=
+  att.placement,
+  att.visualoffset,
+  att.visualoffset2.ho,
+  att.visualoffset2.to,
+  att.xy
+# Declare module model classes
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements used to represent a postal\x{a}" ~
+    "      address."
+  ]
+]
+model.addressLike &= address
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups annotation-like\x{a}" ~
+    "      elements."
+  ]
+]
+model.annotLike &= annot
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements containing a bibliographic\x{a}" ~
+    "      description."
+  ]
+]
+model.biblLike &= bibl
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that may appear as part of a\x{a}" ~
+    "      bibliographic description."
+  ]
+]
+model.biblPart &= model.editionLike
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that contain the text of a\x{a}" ~
+    "      caption or other text displayed along with a figure."
+  ]
+]
+model.captionLike &= caption
+model.controleventLike &= (dir | dynam | phrase | tempo)*
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that contain information\x{a}" ~
+    "      regarding changes of clef."
+  ]
+]
+model.clefchangePart &= clef*
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements containing date\x{a}" ~
+    "      expressions."
+  ]
+]
+model.dateLike &= date
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements containing bibliographic\x{a}" ~
+    "      edition information."
+  ]
+]
+model.editionLike &= edition
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups editorial intervention\x{a}" ~
+    "      elements."
+  ]
+]
+model.editorialLike &= abbr | expan
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that represent alternative\x{a}" ~
+    "      endings."
+  ]
+]
+model.endingLike &= ending
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups event elements that occur in all\x{a}" ~
+    "      notational repertoires."
+  ]
+]
+model.eventLike &=
+  (barline
+   | chord
+   | clefchange
+   | custos
+   | model.keysigLike
+   | note
+   | pad
+   | rest
+   | space)*
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups identifier-like\x{a}" ~
+    "      elements."
+  ]
+]
+model.identifierLike &= identifier
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements used to declare a MIDI\x{a}" ~
+    "      instrument."
+  ]
+]
+model.instrdefLike &= instrdef
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that represent accidentals\x{a}" ~
+    "      in a key signature."
+  ]
+]
+model.keyaccidLike &= keyaccid
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that have the same function\x{a}" ~
+    "      as a key signature."
+  ]
+]
+model.keysigLike &= keysig
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements used to assign a label to\x{a}" ~
+    "      other parts of a document."
+  ]
+]
+model.labelLike &= label
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that permit declaration of\x{a}" ~
+    "      layer properties."
+  ]
+]
+model.layerdefLike &= layerdef
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that function as notational\x{a}" ~
+    "      layers within a staff."
+  ]
+]
+model.layerLike &= layer
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that function like line\x{a}" ~
+    "      breaks."
+  ]
+]
+model.lbLike &= lb
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups notated events at the layer\x{a}" ~
+    "      level."
+  ]
+]
+model.layerPart &=
+  model.eventLike | model.eventLike.neumes | model.midiLike
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements used to represent generic\x{a}" ~
+    "      structural divisions of music notation."
+  ]
+]
+model.mdivLike &= mdiv
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that contain meta-data about\x{a}" ~
+    "      a single page."
+  ]
+]
+model.metaLike.page &= fw*, pgdesc?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups meta-data elements that may appear in\x{a}" ~
+    "      running headers or footers of a score."
+  ]
+]
+model.metaLike.score &= pghead1?, pghead2?, pgfoot1?, pgfoot2?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that represent a\x{a}" ~
+    "      measurement."
+  ]
+]
+model.measurementLike &= model.numLike
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups milestone-style elements found in\x{a}" ~
+    "      music notation."
+  ]
+]
+model.milestoneLike.music &= model.pbLike | sb
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups milestone-style elements found in\x{a}" ~
+    "      text."
+  ]
+]
+model.milestoneLike.text &= model.lbLike | model.pbLike
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that may appear as part of a\x{a}" ~
+    "      music element."
+  ]
+]
+model.musicPart &= model.frontLike?, (body | group)?, model.backLike?
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that contain\x{a}" ~
+    "      names."
+  ]
+]
+model.nameLike &= name
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that modify note-like\x{a}" ~
+    "      features."
+  ]
+]
+model.noteModifierLike &= accid | artic | dot
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that denote a number or a\x{a}" ~
+    "      quantity."
+  ]
+]
+model.numLike &= num
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements which may appear as part of\x{a}" ~
+    "      the paragraph content model. A paragraph may contain inline elements and\x{a}" ~
+    "      all the other block-level elements except lg and itself."
+  ]
+]
+model.paracontentPart &=
+  model.quoteLike
+  | model.listLike
+  | model.tableLike
+  | model.textphraseLike
+  | model.editLike
+  | model.transcriptionLike
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups paragraph-like\x{a}" ~
+    "      elements."
+  ]
+]
+model.pLike &= p
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that represent a separate\x{a}" ~
+    "      performer part."
+  ]
+]
+model.partLike &= part
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that group separate\x{a}" ~
+    "      performer parts."
+  ]
+]
+model.partsLike &= parts
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups pagebreak-like\x{a}" ~
+    "      elements."
+  ]
+]
+model.pbLike &= pb
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that mark typographical\x{a}" ~
+    "      features."
+  ]
+]
+model.rendLike &= rend | stack
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that denote a corporate\x{a}" ~
+    "      entity that holds a bibliographic item."
+  ]
+]
+model.repositoryLike &= repository
+model.scoredefLike &= scoredef
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that represent a\x{a}" ~
+    "      score."
+  ]
+]
+model.scoreLike &= score
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that may appear as part of a\x{a}" ~
+    "      score."
+  ]
+]
+model.scorePart &= model.sectionLike | model.endingLike
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that represent a segment of\x{a}" ~
+    "      music notation."
+  ]
+]
+model.sectionLike &= section
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that may appear as part of a\x{a}" ~
+    "      section."
+  ]
+]
+model.sectionPart &=
+  (model.sectionLike | model.endingLike | model.staffLike)*
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that permit declaration of\x{a}" ~
+    "      staff properties."
+  ]
+]
+model.staffdefLike &= staffdef
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that may appear more than\x{a}" ~
+    "      once in the declaration of staff features."
+  ]
+]
+model.staffdefPart &= (clef | model.keysigLike)*
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that permit declaration of\x{a}" ~
+    "      staff group properties."
+  ]
+]
+model.staffgrpLike &= staffgrp
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that function like\x{a}" ~
+    "      staves."
+  ]
+]
+model.staffLike &= staff
+model.staffPart &= (model.layerLike)*
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups block-level text\x{a}" ~
+    "      elements."
+  ]
+]
+model.textcomponentLike &=
+  model.quoteLike
+  | model.listLike
+  | model.pLike
+  | model.tableLike
+  | model.lgLike
+[
+  a:documentation [
+    xml:lang = "eng"
+    "Phrase-level text\x{a}" ~
+    "      elements."
+  ]
+]
+model.textphraseLike &=
+  model.locrefLike
+  | model.addressLike
+  | model.annotLike
+  | model.biblLike
+  | model.editorialLike
+  | model.nameLike
+  | model.nameLike.agent
+  | model.nameLike.place
+  | model.nameLike.label
+  | model.dateLike
+  | model.rendLike
+  | model.measurementLike
+  | model.titleLike
+  | model.identifierLike
+  | model.figureLike
+  | model.milestoneLike.text
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups textual elements that occur as part\x{a}" ~
+    "      of the representation of the score, as opposed to the textual matter which\x{a}" ~
+    "      accompanies it. This class is equivalent to the model.textphraseLike class\x{a}" ~
+    "      without the pb element."
+  ]
+]
+model.textphraseLike.limited &=
+  model.locrefLike
+  | model.addressLike
+  | model.biblLike
+  | model.editorialLike
+  | model.nameLike
+  | model.nameLike.agent
+  | model.nameLike.place
+  | model.nameLike.label
+  | model.dateLike
+  | model.rendLike
+  | model.measurementLike
+  | model.titleLike
+  | model.identifierLike
+  | model.figureLike
+  | model.lbLike
+[
+  a:documentation [
+    xml:lang = "eng"
+    "groups elements that denote names of a\x{a}" ~
+    "      bibliographic item."
+  ]
+]
+model.titleLike &= title
+# Declare module elements
+content.abbr =
+  (text
+   | model.textphraseLike
+   | model.editLike
+   | model.transcriptionLike)*
+abbr =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "abbreviation ― A generic element for a\x{a}" ~
+      "        shortened form of a word, including an acronym. The type attribute may\x{a}" ~
+      "        be used to classify the abbreviation according to some convenient\x{a}" ~
+      "        typology. Sample values include: suspension - the abbreviation provides\x{a}" ~
+      "        the first letter(s) of the word or phrase, omitting the remainder;\x{a}" ~
+      "        contraction - the abbreviation omits some letter(s) in the middle;\x{a}" ~
+      "        brevigraph - the abbreviation comprises a special symbol or mark;\x{a}" ~
+      "        superscription - the abbreviation includes writing above the line;\x{a}" ~
+      "        acronym - the abbreviation comprises the initial letters of the words of\x{a}" ~
+      "        a phrase; title - the abbreviation is for a title of address (Dr, Ms,\x{a}" ~
+      "        Mr, ...); organization - the abbreviation is for the name of an\x{a}" ~
+      "        organization; geographic - the abbreviation is for a geographic name.\x{a}" ~
+      "        This tag is the mirror image of the <expan> tag; both\x{a}" ~
+      "        allow the encoder to transcribe both an abbreviation and its expansion.\x{a}" ~
+      "        In <abbr>, however, the original is transcribed as the\x{a}" ~
+      "        content of the element and the expansion as an attribute value;\x{a}" ~
+      "        <expan> reverses this. The choice between the two is up to\x{a}" ~
+      "        the user. The <abbr> tag is not required; if appropriate,\x{a}" ~
+      "        the encoder may transcribe abbreviations in the source text silently,\x{a}" ~
+      "        without tagging them. If abbreviations are not transcribed directly but\x{a}" ~
+      "        expanded silently, then the MEI header should so indicate. The cert\x{a}" ~
+      "        attribute signifies the degree of certainty ascribed to the expansion of\x{a}" ~
+      "        the abbreviation. The expan attribute gives an expansion of the\x{a}" ~
+      "        abbreviation. The resp attribute contains an ID reference to an element\x{a}" ~
+      "        containing the name of the editor or transcriber responsible for\x{a}" ~
+      "        supplying the expansion of the abbreviation. This element is modelled on\x{a}" ~
+      "        an element in the Text Encoding Initiative (TEI)."
+    ]
+  ]
+  element abbr { attlist.abbr, content.abbr }
+attlist.abbr =
+  att.common,
+  att.edit,
+  att.facsimile,
+  att.lang,
+  att.trans,
+  att.typed,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "records the expansion of the\x{a}" ~
+      "          abbreviation."
+    ]
+  ]
+  attribute expan { text }?
+content.accid = empty
+accid =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "accidental ― Records a temporary\x{a}" ~
+      "        alteration to the pitch of a note. An accidental may raise a pitch by\x{a}" ~
+      "        one or two semitones or it may cancel a previous accidental or part of a\x{a}" ~
+      "        key signature. This element provides an alternative to the accid and\x{a}" ~
+      "        accid.ges attributes on the <note> element. The element\x{a}" ~
+      "        should be used when specific display info, such as size or color, needs\x{a}" ~
+      "        to be recorded for the accidental or when multiple accidentals occur on\x{a}" ~
+      "        a single note. The func attribute can be used to differentiate between\x{a}" ~
+      "        the accidental's functions, such as 'cautionary' or\x{a}" ~
+      "        'editorial'."
+    ]
+  ]
+  element accid { attlist.accid, content.accid }
+attlist.accid =
+  att.common,
+  att.facsimile,
+  att.typography,
+  att.accid.log,
+  att.accid.vis,
+  att.accid.ges,
+  att.accid.anl
+content.address = addressline+
+address =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "address ― Contains a postal address, for\x{a}" ~
+      "        example of a publisher, an organization, or an individual. This element\x{a}" ~
+      "        is modelled on an element in the Text Encoding Initiative\x{a}" ~
+      "        (TEI)."
+    ]
+  ]
+  element address { attlist.address, content.address }
+attlist.address = att.common, att.facsimile, att.lang
+content.addressline =
+  (text
+   | model.textphraseLike
+   | model.editLike
+   | model.transcriptionLike)*
+addressline =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "addressline ― Single line of a postal\x{a}" ~
+      "        address. This element may be repeated as many times as necessary to\x{a}" ~
+      "        enter all lines of an address. This element is modelled on elements in\x{a}" ~
+      "        Encoded Archival Description (EAD) and the Text Encoding Initiative\x{a}" ~
+      "        (TEI)."
+    ]
+  ]
+  element addressline { attlist.addressline, content.addressline }
+attlist.addressline = att.common, att.facsimile, att.lang
+content.annot =
+  (text
+   | model.textcomponentLike
+   | model.textphraseLike
+   | model.editLike
+   | model.transcriptionLike)*
+annot =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "annotation ― Provides a short statement\x{a}" ~
+      "        explaining the text or indicating the basis for an assertion. It is used\x{a}" ~
+      "        for both general comments and for an annotation of the musical text.\x{a}" ~
+      "        <annot> provides a way to group participating *events*\x{a}" ~
+      "        and/or *control events*, the notes that form a descending bass line or\x{a}" ~
+      "        phrase marks, for example, and provide a label for or comment regarding\x{a}" ~
+      "        the group. A list of event IDs may be given in the plist attribute. An\x{a}" ~
+      "        editorial or analytical comment or observation, encoded elsewhere, such\x{a}" ~
+      "        as in the front or back matter, in score text elements, or in an\x{a}" ~
+      "        external document may be pointed to using the link.common,\x{a}" ~
+      "        link.internal, or link.external attributes. Alternatively, the\x{a}" ~
+      "        observation may be included directly within the <annot>\x{a}" ~
+      "        element. The <annot> element, along with other elements\x{a}" ~
+      "        with attributes from the att.link.external class, may also be used to\x{a}" ~
+      "        link/synchronize elements within the MEI file to external media such as\x{a}" ~
+      "        images or sound recordings. The ID of the MEI element(s) to be linked\x{a}" ~
+      "        from should be encoded in the plist attribute while the link to the\x{a}" ~
+      "        external media may be encoded in the href or entityref attributes or in\x{a}" ~
+      "        the body of the annotation using <extref> or\x{a}" ~
+      "        <extptr> elements. The starting point of the annotation\x{a}" ~
+      "        may be indicated by either a tstamp, tstamp.ges, tstamp.real or startid\x{a}" ~
+      "        attribute, while the ending point may be recorded by either a dur,\x{a}" ~
+      "        dur.ges or endid attribute. The resp attribute records the editor(s)\x{a}" ~
+      "        responsible for identifying or creating the\x{a}" ~
+      "        annotation."
+    ]
+  ]
+  element annot { attlist.annot, content.annot }
+attlist.annot =
+  att.common,
+  att.facsimile,
+  att.lang,
+  att.source,
+  att.typed,
+  att.annot.log,
+  att.annot.vis,
+  att.annot.ges,
+  att.annot.anl,
+  att.link.common,
+  att.link.internal,
+  att.link.external,
+  att.responsibility
+content.artic = empty
+artic =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "articulation ― An indication of how to\x{a}" ~
+      "        play a note or chord. Articulations typically affect duration, such as\x{a}" ~
+      "        staccato marks, or the force of attack, such as accents. This element\x{a}" ~
+      "        provides an alternative to the artic attributes on the\x{a}" ~
+      "        <note> and <chord> elements. It should be\x{a}" ~
+      "        used when specific display info, such as size or color, needs to be\x{a}" ~
+      "        recorded for the articulation or when multiple articulation marks occur\x{a}" ~
+      "        on a single note or chord."
+    ]
+  ]
+  element artic { attlist.artic, content.artic }
+attlist.artic =
+  att.common,
+  att.facsimile,
+  att.typography,
+  att.artic.log,
+  att.artic.vis,
+  att.artic.ges,
+  att.artic.anl
+content.barline = empty
+barline =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "barline ― Vertical line drawn through one\x{a}" ~
+      "        or more staves that divides musical notation into metrical units. This\x{a}" ~
+      "        element is provided for repertoires, such as mensural notation, that\x{a}" ~
+      "        lack measures. Because the barline element's attributes, from which the\x{a}" ~
+      "        logical and visual characteristics of the barline can be discerned,\x{a}" ~
+      "        largely duplicate those of measure, the use of barline is not necessary\x{a}" ~
+      "        within measure elements in CMN."
+    ]
+  ]
+  element barline { attlist.barline, content.barline }
+attlist.barline =
+  att.common,
+  att.facsimile,
+  att.link.common,
+  att.link.internal,
+  att.link.external,
+  att.barline.log,
+  att.barline.vis,
+  att.barline.ges,
+  att.barline.anl
+content.bibl = (text | model.biblPart | model.textphraseLike)*
+bibl =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "bibliographic reference ― Provides a\x{a}" ~
+      "        citation for a published work. <bibref> may contain a mix\x{a}" ~
+      "        of text and more specific elements such as <title>,\x{a}" ~
+      "        <edition>, <persname>, and\x{a}" ~
+      "        <corpname>. This element may also function as a hypertext\x{a}" ~
+      "        reference to an external electronic resource. Do not confuse this\x{a}" ~
+      "        element with <ref>, which is an internal link from one\x{a}" ~
+      "        place in the MEI document to another place in the same\x{a}" ~
+      "        document."
+    ]
+  ]
+  element bibl { attlist.bibl, content.bibl }
+attlist.bibl =
+  att.common,
+  att.facsimile,
+  att.lang,
+  att.link.common,
+  att.link.external
+content.body = model.mdivLike+
+body =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "body ― This element contains the actual\x{a}" ~
+      "        music data of the MEI encoding, as opposed to the header, front, and\x{a}" ~
+      "        back elements, which do not. When the music can be broken into\x{a}" ~
+      "        high-level, discrete, linear segments, such as movements of a symphony,\x{a}" ~
+      "        there may be multiple <mdiv> elements within this element.\x{a}" ~
+      "        This is the highest level indication of the structure of the music. This\x{a}" ~
+      "        element is modelled on an element in the Text Encoding Initiative\x{a}" ~
+      "        (TEI)."
+    ]
+  ]
+  element body { attlist.body, content.body }
+attlist.body = att.common
+content.caption =
+  (text
+   | model.textphraseLike
+   | model.editLike
+   | model.transcriptionLike)*
+caption =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "caption ― A label which accompanies an\x{a}" ~
+      "        illustration or a table."
+    ]
+  ]
+  element caption { attlist.caption, content.caption }
+attlist.caption = att.common, att.facsimile, att.lang
+content.chord = (note | artic)*
+chord =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "chord ― A simultaneous sounding of two or\x{a}" ~
+      "        more notes in the same layer *with the same duration*."
+    ]
+  ]
+  element chord { attlist.chord, content.chord }
+attlist.chord =
+  att.common,
+  att.facsimile,
+  att.chord.log,
+  att.chord.vis,
+  att.chord.ges,
+  att.chord.anl
+content.clef = empty
+clef =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "clef ― Indication of the exact location of\x{a}" ~
+      "        a particular note on the staff and, therefore, the other notes as well.\x{a}" ~
+      "        This element provides an alternative to the staff element's clef.*\x{a}" ~
+      "        attributes. It should be used when specific display info, such as size\x{a}" ~
+      "        or color, needs to be recorded for the clef or when multiple,\x{a}" ~
+      "        simultaneous clefs occur on a single staff."
+    ]
+  ]
+  element clef { attlist.clef, content.clef }
+attlist.clef =
+  att.common,
+  att.facsimile,
+  att.clef.anl,
+  att.clef.ges,
+  att.clef.log,
+  att.clef.vis
+content.clefchange = model.clefchangePart
+clefchange =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "clef change ― A temporary change of\x{a}" ~
+      "        clef."
+    ]
+  ]
+  element clefchange { attlist.clefchange, content.clefchange }
+attlist.clefchange =
+  att.common,
+  att.event,
+  att.facsimile,
+  att.clefchange.log,
+  att.clefchange.vis,
+  att.clefchange.ges,
+  att.clefchange.anl
+content.custos = empty
+custos =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "custos ― Symbol placed at the end of a\x{a}" ~
+      "        line of music to indicate the first note of the next line. Sometimes\x{a}" ~
+      '        called a "direct". The most common visual form is a sign resembling a\x{a}' ~
+      "        mordent. Other graphical forms may be indicated by the altsym attribute.\x{a}" ~
+      "        Together the pname and oct attributes identify the location where the\x{a}" ~
+      "        custos appears. "
+    ]
+  ]
+  element custos { attlist.custos, content.custos }
+attlist.custos =
+  att.common,
+  att.facsimile,
+  att.source,
+  att.custos.log,
+  att.custos.vis,
+  att.custos.ges,
+  att.custos.anl
+content.date = (text | model.textphraseLike)*
+date =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "date ― A date in any format, including a\x{a}" ~
+      "        date range. A date range may be expressed either as textual content,\x{a}" ~
+      "        e.g., <date>March 1-21, 1812</date>, or\x{a}" ~
+      "        using date sub-elements, possibly combined with text, e.g.,\x{a}" ~
+      "        <date> <date>March 1,\x{a}" ~
+      "        1812</date> - <date>March 21,\x{a}" ~
+      "        1812</date> </date>. The latter form is\x{a}" ~
+      "        useful when the starting and ending points of the date range require\x{a}" ~
+      "        qualification. This element is modelled on an element in the Text\x{a}" ~
+      "        Encoding Initiative (TEI)."
+    ]
+  ]
+  element date { attlist.date, content.date }
+attlist.date =
+  att.bibl,
+  att.calendared,
+  att.common,
+  att.datable,
+  att.edit,
+  att.facsimile,
+  att.lang
+content.dir =
+  (text
+   | model.textphraseLike.limited
+   | model.graphicprimitiveLike
+   | model.editLike
+   | model.transcriptionLike)*
+dir =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "directive ― A text expression that is on\x{a}" ~
+      "        the score (typically above, below, or between staves, but not on the\x{a}" ~
+      "        staff) not encoded elsewhere in more specific elements, such as\x{a}" ~
+      "        <tempo> or <dynam>. Examples include text\x{a}" ~
+      "        strings, such as 'affettuoso' or fingering numbers, and music symbols,\x{a}" ~
+      "        such as segno and coda symbols, fermatas over a barline, etc. Directives\x{a}" ~
+      "        can be control elements. That is, they can linked via their attributes\x{a}" ~
+      "        to other events. The starting point of the directive may be indicated by\x{a}" ~
+      "        either a tstamp, tstamp.ges, tstamp.real or startid attribute, while the\x{a}" ~
+      "        ending point may be recorded by either a dur, dur.ges or endid\x{a}" ~
+      "        attribute. It is a semantic error not to specify a starting point\x{a}" ~
+      "        attribute."
+    ]
+  ]
+  element dir { attlist.dir, content.dir }
+attlist.dir =
+  att.common,
+  att.facsimile,
+  att.lang,
+  att.typed,
+  att.dir.log,
+  att.dir.vis,
+  att.dir.ges,
+  att.dir.anl
+content.dot = empty
+dot =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "dot ― This element provides an alternative\x{a}" ~
+      "        to the dots attribute on chord, note, rest, space, tuplet, and\x{a}" ~
+      "        tupletspan elements. It should be used when specific display info, such\x{a}" ~
+      "        as size or color, needs to be recorded for the dot. This element may\x{a}" ~
+      "        also be used for dots of division in the mensural\x{a}" ~
+      "        repertoire."
+    ]
+  ]
+  element dot { attlist.dot, content.dot }
+attlist.dot =
+  att.common,
+  att.facsimile,
+  att.dot.log,
+  att.dot.vis,
+  att.dot.ges,
+  att.dot.anl
+content.dynam =
+  (text
+   | model.textphraseLike.limited
+   | model.editLike
+   | model.transcriptionLike)*
+dynam =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "dynamic ― Indication of the volume of a\x{a}" ~
+      "        note, phrase, or section of music. This element may be used for\x{a}" ~
+      "        instantaneous or continuous textual dynamics, e.g. 'p', 'mf', or 'cresc.\x{a}" ~
+      "        poco a poco'. The <hairpin> element should be used for\x{a}" ~
+      "        graphical, i.e., crescendo and diminuendo, dynamic markings. The\x{a}" ~
+      "        starting point of the dynamic marking may be indicated by either a\x{a}" ~
+      "        tstamp, tstamp.ges, tstamp.real or startid attribute, while the ending\x{a}" ~
+      "        point may be recorded by either a dur, dur.ges or endid attribute. It is\x{a}" ~
+      "        a semantic error not to specify a starting point attribute. Please note\x{a}" ~
+      "        that the dur attribute is not a true duration, but rather a time stamp\x{a}" ~
+      "        for the end point of the dynamic mark. A MIDI value associated with the\x{a}" ~
+      "        graphical dynamic sign may be recorded in the val\x{a}" ~
+      "        attribute."
+    ]
+  ]
+  element dynam { attlist.dynam, content.dynam }
+attlist.dynam =
+  att.common,
+  att.facsimile,
+  att.lang,
+  att.dynam.log,
+  att.dynam.vis,
+  att.dynam.ges,
+  att.dynam.anl
+content.edition = (text | model.textphraseLike.limited)*
+edition =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "edition designation ― A word or text\x{a}" ~
+      "        phrase that indicates a difference in either content or form between the\x{a}" ~
+      "        item being described and a related item previously issued by the same\x{a}" ~
+      "        publisher/distributor (e.g. 2nd edition, version 2.0, etc.), or\x{a}" ~
+      "        simultaneously issued by either the same publisher/distributor or\x{a}" ~
+      "        another publisher/distributor (e.g. large print edition, British\x{a}" ~
+      "        edition, etc.). This element is modelled on an element in the Text\x{a}" ~
+      "        Encoding Initiative (TEI)."
+    ]
+  ]
+  element edition { attlist.edition, content.edition }
+attlist.edition = att.common, att.bibl
+content.ending =
+  expansion*,
+  (model.appLike
+   | model.divLike
+   | model.milestoneLike.music
+   | model.scoredefLike
+   | model.staffdefLike
+   | model.staffgrpLike
+   | model.annotLike
+   | model.graphicprimitiveLike
+   | model.editLike
+   | model.transcriptionLike
+   | model.sectionPart)*
+ending =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "ending ― Alternative ending for a repeated\x{a}" ~
+      "        passage of music; i.e., prima volta, seconda volta, etc. The scoredef\x{a}" ~
+      "        element is allowed as a sub-element so that an ending may have its own\x{a}" ~
+      "        meta-data without the overhead of child <section>s. Div\x{a}" ~
+      "        sub-elements are not allowed within ending in order to avoid collisions\x{a}" ~
+      "        with the brackets that are usually displayed over endings. Endings may\x{a}" ~
+      "        *not* contain other ending elements."
+    ]
+  ]
+  element ending { attlist.ending, content.ending }
+attlist.ending =
+  att.common,
+  att.facsimile,
+  att.typed,
+  att.link.common,
+  att.link.external,
+  att.link.internal,
+  att.ending.anl,
+  att.ending.ges,
+  att.ending.log,
+  att.ending.vis
+content.expan =
+  (text
+   | model.textphraseLike
+   | model.editLike
+   | model.transcriptionLike)*
+expan =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "expansion ― Contains the expansion of an\x{a}" ~
+      "        abbreviation. The type attribute may be used to classify the\x{a}" ~
+      "        abbreviation according to some convenient typology. This element is the\x{a}" ~
+      "        mirror image of <abbr>. Both allow the encoder to\x{a}" ~
+      "        transcribe both an abbreviation and its expansion. In\x{a}" ~
+      "        <abbr>, however, the original is transcribed as the\x{a}" ~
+      "        content of the element and the expansion as an attribute value;\x{a}" ~
+      "        <expan> reverses this. The choice between the two elements\x{a}" ~
+      "        is up to the user. If appropriate, the encoder may expand abbreviations\x{a}" ~
+      "        in the source text silently, without tagging them. If this is done, the\x{a}" ~
+      "        MEI header should indicate this has been done. The abbr attribute gives\x{a}" ~
+      "        the abbreviation in its unexpanded form. The cert attribute signifies\x{a}" ~
+      "        the degree of certainty ascribed to the expansion of the abbreviation.\x{a}" ~
+      "        The resp attribute contains an ID reference to an element containing the\x{a}" ~
+      "        name of the editor or transcriber responsible for supplying the\x{a}" ~
+      "        expansion of the abbreviation held as the content of the\x{a}" ~
+      "        <expan> element. This element is modelled on an element in\x{a}" ~
+      "        the Text Encoding Initiative (TEI)."
+    ]
+  ]
+  element expan { attlist.expan, content.expan }
+attlist.expan =
+  att.common,
+  att.edit,
+  att.facsimile,
+  att.lang,
+  att.trans,
+  att.typed,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "captures the unabbreviated form of the\x{a}" ~
+      "          text."
+    ]
+  ]
+  attribute abbr { text }?
+content.expansion = empty
+expansion =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "expansion ― Indicates how a section may be\x{a}" ~
+      "        programmatically expanded into its 'through-composed' form. The plist\x{a}" ~
+      "        attribute contains an ordered list of IDs of descendant\x{a}" ~
+      "        <section>, <ending>, <lem>, or\x{a}" ~
+      '        <rdg> elements. For example, the sequence "A End1 A End2"\x{a}' ~
+      "        indicates that the section labelled 'A' comes first, then the ending\x{a}" ~
+      "        labelled 'End1', followed by the 'A' section again, and finally the\x{a}" ~
+      "        ending labelled 'End2'."
+    ]
+  ]
+  element expansion { attlist.expansion, content.expansion }
+attlist.expansion =
+  att.common, att.source, att.typed, att.participantident
+content.fw =
+  (text
+   | model.textcomponentLike
+   | model.textphraseLike.limited
+   | model.editLike
+   | model.transcriptionLike
+   | model.appLike)*
+fw =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "forme work ― This element is intended for\x{a}" ~
+      "        capture of header/footer material that is non-repeating; that is, it\x{a}" ~
+      "        occurs on isolated pages. For recurring headers and footers use pgheadN\x{a}" ~
+      "        and pgfootN elements. This element is modelled on an element in the Text\x{a}" ~
+      "        Encoding Initiative (TEI)."
+    ]
+  ]
+  element fw { attlist.fw, content.fw }
+attlist.fw = att.common, att.facsimile, att.lang, att.typed
+content.group = (music | group), (music | group)*
+group =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "group ― Enables the gathering of multiple\x{a}" ~
+      "        documents into a single file. Because its model contains the music\x{a}" ~
+      "        element, each of the documents can have its own front and back matter.\x{a}" ~
+      "        This element is modelled on an element in the Text Encoding Initiative\x{a}" ~
+      "        (TEI)."
+    ]
+  ]
+  element group { attlist.group, content.group }
+attlist.group = att.common
+content.grpsym = model.labelLike*
+grpsym =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "group symbol ― A brace or bracket used to\x{a}" ~
+      "        group two or more staves of a score or part. This element provides an\x{a}" ~
+      "        alternative to the staffgrp element's symbol attribute. It may be used\x{a}" ~
+      "        when exact placement or editorial details for the grouping symbol must\x{a}" ~
+      "        be recorded."
+    ]
+  ]
+  element grpsym { attlist.grpsym, content.grpsym }
+attlist.grpsym =
+  att.common,
+  att.facsimile,
+  att.grpsym.log,
+  att.grpsym.vis,
+  att.grpsym.ges,
+  att.grpsym.anl
+content.identifier =
+  (text
+   | model.textphraseLike
+   | model.editLike
+   | model.transcriptionLike)*
+identifier =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "identifier ― An alpha-numeric string that\x{a}" ~
+      "        establishes the identity of the described material, such as an\x{a}" ~
+      "        International Standard Book/Music Number, Library of Congress Control\x{a}" ~
+      "        Number, publisher's number, plate number, a personal identification\x{a}" ~
+      "        number, an entry in a bibliography or catalog, etc. The type attribute\x{a}" ~
+      "        may be used to indicate the system from which the identifier was\x{a}" ~
+      "        derived."
+    ]
+  ]
+  element identifier { attlist.identifier, content.identifier }
+attlist.identifier = att.bibl, att.common, att.facsimile, att.typed
+content.instrgrp = model.instrdefLike+
+instrgrp =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "instrument group ― Collects MIDI\x{a}" ~
+      "        instrument definitions."
+    ]
+  ]
+  element instrgrp { attlist.instrgrp, content.instrgrp }
+attlist.instrgrp = att.common
+content.instrdef = empty
+instrdef =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "instrument definition ― MIDI instrument\x{a}" ~
+      "        declaration. This element provides a starting or default instrument\x{a}" ~
+      "        declaration for a staff, a group of staves, or a layer. MIDI prog\x{a}" ~
+      "        elements may then change the instrument as necessary."
+    ]
+  ]
+  element instrdef { attlist.instrdef, content.instrdef }
+attlist.instrdef = att.common, att.channelized, att.midiinstrument
+content.keyaccid = empty
+keyaccid =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "key accidental ― Accidental in a key\x{a}" ~
+      "        signature. It is a semantic error not to provide either the x and y pair\x{a}" ~
+      "        of attributes or the staffloc attribute."
+    ]
+  ]
+  element keyaccid { attlist.keyaccid, content.keyaccid }
+attlist.keyaccid =
+  att.accidental,
+  att.common,
+  att.enclosingchars,
+  att.facsimile,
+  att.pitched,
+  att.staffloc,
+  att.xy,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "specifies whether the accidental allows\x{a}" ~
+      "          written enharmonic values (explicit) or only performed (implicit)\x{a}" ~
+      "          values."
+    ]
+  ]
+  attribute form { "implicit" | "explicit" }?
+content.keychange = model.keyaccidLike*
+keychange =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "key change ― Change of key\x{a}" ~
+      "        signature."
+    ]
+  ]
+  element keychange { attlist.keychange, content.keychange }
+attlist.keychange = att.common, att.facsimile
+content.keysig = model.keyaccidLike*
+keysig =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "key signature ― This element may be used\x{a}" ~
+      "        as an alternative to the key.* attributes (especially key.sig.mixed) on\x{a}" ~
+      "        scoredef and staffdef."
+    ]
+  ]
+  element keysig { attlist.keysig, content.keysig }
+attlist.keysig =
+  att.common,
+  att.facsimile,
+  att.accidental,
+  att.pitch,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates major, minor, or other\x{a}" ~
+      "          tonality."
+    ]
+  ]
+  attribute mode { data.MODE }?
+content.label =
+  (text
+   | model.textphraseLike.limited
+   | model.editLike
+   | model.transcriptionLike)*
+label =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "label ― A text string that identifies a\x{a}" ~
+      "        staff or staff group."
+    ]
+  ]
+  element label { attlist.label, content.label }
+attlist.label = att.common, att.facsimile, att.source
+content.layer =
+  (model.appLike
+   | model.divLike
+   | model.milestoneLike.music
+   | model.scoredefLike
+   | model.staffdefLike
+   | model.staffgrpLike
+   | model.annotLike
+   | model.graphicprimitiveLike
+   | model.editLike
+   | model.transcriptionLike
+   | model.layerPart)*
+layer =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "layer ― An independent stream of events on\x{a}" ~
+      "        a staff. The term 'layer' in used instead of 'voice' in order to avoid\x{a}" ~
+      "        confusion between 'voice' and 'voice leading'. The n attribute is used\x{a}" ~
+      "        to establish a connection back to the appropriate layerdef\x{a}" ~
+      "        element."
+    ]
+  ]
+  element layer { attlist.layer, content.layer }
+attlist.layer =
+  att.common,
+  att.facsimile,
+  att.layer.log,
+  att.layer.vis,
+  att.layer.ges,
+  att.layer.anl
+content.layerdef = model.instrdefLike*
+layerdef =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "layer definition ― Container for layer\x{a}" ~
+      "        meta-information."
+    ]
+  ]
+  element layerdef { attlist.layerdef, content.layerdef }
+attlist.layerdef =
+  att.common,
+  att.layerdef.log,
+  att.layerdef.vis,
+  att.layerdef.ges,
+  att.layerdef.anl
+content.lb = empty
+lb =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "line break ― An empty formatting element\x{a}" ~
+      "        that forces text to begin on a new line. The n attribute should be used\x{a}" ~
+      "        to record a label for the line, i.e., most likely a line number. See\x{a}" ~
+      "        comment on <verse> element for description of func\x{a}" ~
+      "        attribute. Do not confuse this element with the <sb>\x{a}" ~
+      "        element, which performs a similar function for musical notation. This\x{a}" ~
+      "        element is modelled on an element in the Text Encoding Initiative\x{a}" ~
+      "        (TEI)."
+    ]
+  ]
+  element lb { attlist.lb, content.lb }
+attlist.lb =
+  att.common,
+  att.facsimile,
+  att.source,
+  att.typed,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "states whether the line break follows a\x{a}" ~
+      "          single line or a line group."
+    ]
+  ]
+  attribute func { "line" | "group" }?
+content.mdiv = (model.scoreLike?, model.partsLike?) | model.mdivLike*
+mdiv =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "musical division ― The mdiv element may\x{a}" ~
+      "        contain one or both of 2 possible views of the music. The score view is\x{a}" ~
+      "        the traditional full and open score while the parts view contains each\x{a}" ~
+      "        performer's view of the score; that is, his part. These 2 views are\x{a}" ~
+      "        necessary because it is not always possible or desirable to generate one\x{a}" ~
+      "        from the other. The score and parts elements are placed here and not\x{a}" ~
+      "        directly within the body element because score and part characteristics\x{a}" ~
+      "        may change from mdiv to mdiv. For example, the 2nd movement of a\x{a}" ~
+      "        symphony may require different performing forces (and therefore\x{a}" ~
+      "        different score and part layout) than the other movements. The mdiv\x{a}" ~
+      "        element may be recursively nested in order to represent music which\x{a}" ~
+      "        exhibits this kind of structure. For example, an opera is normally\x{a}" ~
+      "        divided into acts, which are in turn divided into scenes. This may be\x{a}" ~
+      "        represented by the following markup: <mdiv> <- the\x{a}" ~
+      "        opera <mdiv> <- act I <mdiv>\x{a}" ~
+      "        <- scene i <mdiv> <- scene ii\x{a}" ~
+      "        </mdiv> <mdiv> <- act II\x{a}" ~
+      "        <mdiv> <- scene i <mdiv> <-\x{a}" ~
+      "        scene ii </mdiv> </mdiv>"
+    ]
+  ]
+  element mdiv { attlist.mdiv, content.mdiv }
+attlist.mdiv = att.common, att.facsimile, att.typed
+mei =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "mei ― The document element for a single\x{a}" ~
+      "        document, containing a header and data. The <mei> element\x{a}" ~
+      "        defines a particular instance of a document encoded with the MEI schema.\x{a}" ~
+      "        The name of this element should not be changed in order to assure an\x{a}" ~
+      "        absolute minimum level of MEI compliance."
+    ]
+  ]
+  element mei { attlist.mei, meihead, music }
+attlist.mei =
+  att.meiversion,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "regularizes the naming of an element and\x{a}" ~
+      "          thus facilitates building links between it and other resources. Each\x{a}" ~
+      "          id attribute within a document must have a unique\x{a}" ~
+      "          value."
+    ]
+  ]
+  attribute xml:id { xsd:ID }?
+music =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "music ― Container for everything else in\x{a}" ~
+      "        the document apart from the header."
+    ]
+  ]
+  element music { attlist.music, model.facsimileLike*, model.musicPart }
+attlist.music = att.common, att.meiversion
+content.name =
+  (text
+   | model.textphraseLike
+   | model.editLike
+   | model.transcriptionLike)*
+name =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "name ― Contains the name of an entity that\x{a}" ~
+      "        is difficult to tag more specifically as a <corpname>,\x{a}" ~
+      "        <geogname>, <persname>, or\x{a}" ~
+      "        <title>. The <name> element may be used in\x{a}" ~
+      "        place of the more specific elements when it is not known what kind of\x{a}" ~
+      "        name is being described or when a high degree of precision is not\x{a}" ~
+      "        necessary. For example, the <name> element might be used\x{a}" ~
+      '        when it is not clear whether the name "Bach" refers to a person or a\x{a}' ~
+      "        geographic feature. The <name> element may be used for an\x{a}" ~
+      "        individual, such as 'Henry VIII, King of England'; a corporate body,\x{a}" ~
+      "        such as 'The Beatles'; a geographical place; or a generative mechanical\x{a}" ~
+      "        process. When name parts are needed, use <name>\x{a}" ~
+      "        sub-elements. The recommended values for the type attribute are: pers,\x{a}" ~
+      "        corp, place, process. The <date> sub-element is available\x{a}" ~
+      "        within <name> in order to record any dates, associated\x{a}" ~
+      "        with the name, i.e., birth and death in the case of persons or creation\x{a}" ~
+      "        and dissolution in the case of a corporate entity or place. The name of\x{a}" ~
+      "        the list from which a controlled value is taken, such as the Thesaurus\x{a}" ~
+      "        of Geographic Names (TGN) or Library of Congress Name Authority File\x{a}" ~
+      "        (LCNAF), may be recorded using the authority attribute. This element is\x{a}" ~
+      "        modelled on an element in Encoded Archival Description\x{a}" ~
+      "        (EAD)."
+    ]
+  ]
+  element name { attlist.name, content.name }
+attlist.name =
+  att.bibl, att.common, att.facsimile, att.lang, att.name, att.typed
+content.note =
+  (model.eventLike
+   | model.noteModifierLike
+   | model.verseLike
+   | model.sylLike
+   | model.appLike
+   | model.editLike
+   | model.transcriptionLike)*
+note =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "note ― A single pitched event. (Read, p.\x{a}" ~
+      "        63) The note element is allowed to contain other events for situations\x{a}" ~
+      "        where a single (usually ornamented) written note is representative of a\x{a}" ~
+      "        group of performed notes. The accid and artic sub-elements may be used\x{a}" ~
+      "        instead of the note element's attributes when accid and artic represent\x{a}" ~
+      "        first-class objects, e.g., when they require attributes, such as x and y\x{a}" ~
+      "        location attributes. Similarly, the syl sub-element may be used instead\x{a}" ~
+      "        of the syl attribute. The verse sub-element may be used to group text\x{a}" ~
+      "        syllables by verse. The colored attribute may be used to indicate\x{a}" ~
+      "        coloration. In the mensural repertoire, coloration is a temporary change\x{a}" ~
+      "        in the underlying mensuration from perfect to imperfect. In the CMN\x{a}" ~
+      "        repertoire, coloration is an inversion of the note head's normal\x{a}" ~
+      "        rendition, that is, the notehead is void when it would otherwise be\x{a}" ~
+      "        filled and vice versa. Do not confuse this with visual\x{a}" ~
+      "        color."
+    ]
+  ]
+  element note { attlist.note, content.note }
+attlist.note =
+  att.common,
+  att.facsimile,
+  att.note.log,
+  att.note.vis,
+  att.note.ges,
+  att.note.anl
+content.num =
+  (text
+   | model.textphraseLike
+   | model.editLike
+   | model.transcriptionLike)*
+num =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "number ― Numeric information in any form.\x{a}" ~
+      "        This element is used only when it is necessary to display a number in a\x{a}" ~
+      "        special way or to identify it with a type attribute."
+    ]
+  ]
+  element num { attlist.num, content.num }
+attlist.num = att.common, att.facsimile, att.lang, att.measurement
+content.p = (text | model.paracontentPart)*
+p =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "paragraph ― One or more text phrases that\x{a}" ~
+      "        form a logical prose passage. A paragraph is usually typographically\x{a}" ~
+      "        distinct: The text usually begins on a new line and the first letter of\x{a}" ~
+      "        the content is often indented, enlarged, or both. This element is\x{a}" ~
+      "        modelled on elements in Encoded Archival Description, Text Encoding\x{a}" ~
+      "        Initiative (TEI), and HTML."
+    ]
+  ]
+  element p { attlist.p, content.p }
+attlist.p = att.common, att.facsimile, att.lang, att.xy
+content.pad = empty
+pad =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "pad ― An indication of extra visual space\x{a}" ~
+      "        between notational elements."
+    ]
+  ]
+  element pad { attlist.pad, content.pad }
+attlist.pad =
+  att.common, att.pad.log, att.pad.vis, att.pad.ges, att.pad.anl
+content.parts = model.partLike*
+parts =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "parts ― Gathers performers'\x{a}" ~
+      "        parts."
+    ]
+  ]
+  element parts { attlist.parts, content.parts }
+attlist.parts =
+  att.common,
+  att.typed,
+  att.parts.log,
+  att.parts.vis,
+  att.parts.ges,
+  att.parts.anl
+content.part = model.scorePart*
+part =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "part ― An alternative visual rendition of\x{a}" ~
+      "        the score from a particular performer's point of view. Part elements are\x{a}" ~
+      "        not used in the score to indicate voice leading. Next attributes on\x{a}" ~
+      "        event elements should be used for this purpose. Part elements are useful\x{a}" ~
+      "        for encoding individual parts when there is no score, such as early\x{a}" ~
+      "        music part books, when the music has non-aligning barlines, when\x{a}" ~
+      "        different layout, such as page turns, are needed for the score and\x{a}" ~
+      "        parts, or for accommodating software that requires part-by-part\x{a}" ~
+      "        encoding. When assembly of the parts into a score is desired and there\x{a}" ~
+      "        are non-aligning barlines, barlines which indicate points of alignment\x{a}" ~
+      "        across all the parts may be marked as 'controlling', while non-aligning\x{a}" ~
+      "        ones may be marked as 'non-controlling'."
+    ]
+  ]
+  element part { attlist.part, content.part }
+attlist.part =
+  att.common,
+  att.typed,
+  att.part.log,
+  att.part.vis,
+  att.part.ges,
+  att.part.anl
+content.pb = model.metaLike.page
+pb =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "page break ― The n attribute records the\x{a}" ~
+      "        page number in the source. It need not be an integer, e.g. 'iv', or\x{a}" ~
+      "        'p17-3'. The logical page number can be calculated by counting previous\x{a}" ~
+      "        <pb> ancestor elements. When used in a score context, a\x{a}" ~
+      "        page break implies an accompanying system break. This element is\x{a}" ~
+      "        modelled on an element in the Text Encoding Initiative\x{a}" ~
+      "        (TEI)."
+    ]
+  ]
+  element pb { attlist.pb, content.pb }
+attlist.pb =
+  att.common,
+  att.facsimile,
+  att.link.common,
+  att.link.external,
+  att.source,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "states the side of a leaf (as in a\x{a}" ~
+      "          manuscript) on which the content following the <pb>\x{a}" ~
+      "          element occurs."
+    ]
+  ]
+  attribute func { "verso" | "recto" }?
+content.pgdesc =
+  (text
+   | model.graphicprimitiveLike
+   | model.textcomponentLike
+   | model.annotLike
+   | model.locrefLike)*
+pgdesc =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "page description ― Contains a brief prose\x{a}" ~
+      "        description of the appearance or description of the content of a\x{a}" ~
+      "        physical page. Best practice suggests the use of controlled vocabulary.\x{a}" ~
+      "        Don't confuse this element with a figure caption. A caption is text\x{a}" ~
+      "        primarily intended for display with an illustration. It may or may not\x{a}" ~
+      "        function as a description of the illustration."
+    ]
+  ]
+  element pgdesc { attlist.pgdesc, content.pgdesc }
+attlist.pgdesc = att.common, att.lang
+content.pgfoot1 =
+  (text
+   | model.textcomponentLike
+   | model.textphraseLike.limited
+   | model.editLike
+   | model.transcriptionLike
+   | model.appLike)*
+pgfoot1 =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "page footer 1 ― A running footer on the\x{a}" ~
+      "        first page. This element is a specialized form of the fw element.\x{a}" ~
+      "        Auto-generated page numbers may be indicated with a processing\x{a}" ~
+      "        instruction. The pgheadN and pgfootN elements should *not* be used to\x{a}" ~
+      "        encode textual notes/annotations."
+    ]
+  ]
+  element pgfoot1 { attlist.pgfoot1, content.pgfoot1 }
+attlist.pgfoot1 = att.common, att.facsimile, att.lang
+content.pgfoot2 =
+  (text
+   | model.textcomponentLike
+   | model.textphraseLike.limited
+   | model.editLike
+   | model.transcriptionLike
+   | model.appLike)*
+pgfoot2 =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "page footer 2 ― A running header on the\x{a}" ~
+      "        pages following the first. This element is a specialized form of the fw\x{a}" ~
+      "        element. Auto-generated page numbers may be indicated with a processing\x{a}" ~
+      "        instruction. The pgheadN and pgfootN elements should *not* be used to\x{a}" ~
+      "        encode textual notes/annotations."
+    ]
+  ]
+  element pgfoot2 { attlist.pgfoot2, content.pgfoot2 }
+attlist.pgfoot2 = att.common, att.facsimile, att.lang
+content.pghead1 =
+  (text
+   | model.textcomponentLike
+   | model.textphraseLike.limited
+   | model.editLike
+   | model.transcriptionLike
+   | model.appLike)*
+pghead1 =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "page header 1 ― A running header on the\x{a}" ~
+      "        first page. This element is a specialized form of the fw element for\x{a}" ~
+      "        capturing the table-formatted textual data that often appears on the\x{a}" ~
+      "        first page of printed music. It may also be used for similarly formatted\x{a}" ~
+      "        material in manuscripts. The pgheadN and pgfootN elements should *not*\x{a}" ~
+      "        be used to encode textual notes/annotations. Auto-generated page numbers\x{a}" ~
+      "        may be indicated with a processing instruction."
+    ]
+  ]
+  element pghead1 { attlist.pghead1, content.pghead1 }
+attlist.pghead1 = att.common, att.facsimile, att.lang
+content.pghead2 =
+  (text
+   | model.textcomponentLike
+   | model.textphraseLike.limited
+   | model.editLike
+   | model.transcriptionLike
+   | model.appLike)*
+pghead2 =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "page header 2 ― A running header on the\x{a}" ~
+      "        pages following the first. This element is a specialized form of the fw\x{a}" ~
+      "        element. The pgheadN and pgfootN elements should *not* be used to encode\x{a}" ~
+      "        textual notes/annotations. Auto-generated page numbers may be indicated\x{a}" ~
+      "        with a processing instruction."
+    ]
+  ]
+  element pghead2 { attlist.pghead2, content.pghead2 }
+attlist.pghead2 = att.common, att.facsimile, att.lang
+content.phrase = empty
+phrase =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "phrase ― Historically, a phrase mark\x{a}" ~
+      '        indicated a "unified melodic idea", while the term "slur" was used for\x{a}' ~
+      '        two-note legato patterns. (Read, p. 265). Nowadays, however, "phrase"\x{a}' ~
+      '        and "slur" are often used interchangably (Read, p. 265-266), since the\x{a}' ~
+      "        visual rendition of the two concepts is the same. MEI provides two\x{a}" ~
+      "        distinct elements so that those users wishing to maintain a distinction\x{a}" ~
+      "        for historical reasons may do so. If the user does not want to maintain\x{a}" ~
+      "        the distinction, then the more generic <slur> element\x{a}" ~
+      "        should be employed. The starting point of the phrase may be indicated by\x{a}" ~
+      "        either a tstamp, tstamp.ges, tstamp.real or startid attribute, while the\x{a}" ~
+      "        ending point may be recorded by either a dur, dur.ges or endid\x{a}" ~
+      "        attribute. It is a semantic error not to specify one starting and one\x{a}" ~
+      "        ending type of attribute. Either place, bulge, or bezier attributes may\x{a}" ~
+      "        be used to record the curvature of the phrase. Please note that the dur\x{a}" ~
+      "        attribute here is not a true duration, but rather a time stamp for the\x{a}" ~
+      "        end point of the phrase mark."
+    ]
+  ]
+  element phrase { attlist.phrase, content.phrase }
+attlist.phrase =
+  att.common,
+  att.facsimile,
+  att.phrase.log,
+  att.phrase.vis,
+  att.phrase.ges,
+  att.phrase.anl
+content.rend =
+  (text
+   | model.textphraseLike
+   | model.editLike
+   | model.transcriptionLike)*
+rend =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "rend ― A formatting element indicating\x{a}" ~
+      "        special visual rendering, e.g., bold or italicized, of a text word or\x{a}" ~
+      "        phrase. When an entire element should be rendered in a special way, a\x{a}" ~
+      "        style sheet function should be used instead of the <rend>\x{a}" ~
+      "        element."
+    ]
+  ]
+  element rend { attlist.rend, content.rend }
+attlist.rend =
+  att.color,
+  att.common,
+  att.lang,
+  att.typography,
+  att.horizontalalign,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "used to extend the values of the rend\x{a}" ~
+      "          attribute. One or the other of the rend and altrend attributes is\x{a}" ~
+      "          required."
+    ]
+  ]
+  attribute altrend { text }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "captures the appearance of the text. One\x{a}" ~
+      "          or the other of the rend and altrend attributes is\x{a}" ~
+      "          required."
+    ]
+  ]
+  attribute rend { data.TEXTRENDITION }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "A positive value for rotation rotates\x{a}" ~
+      "          the text in a counter-clockwise fashion, while negative values produce\x{a}" ~
+      "          clockwise rotation. "
+    ]
+  ]
+  attribute rotation { data.DEGREES }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "specifies the vertical alignment of the\x{a}" ~
+      "          element content."
+    ]
+  ]
+  attribute valign { "top" | "middle" | "bottom" | "baseline" }?
+content.repository = (text | model.textphraseLike.limited)*
+repository =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "repository ― Institution or agency which\x{a}" ~
+      "        holds a bibliographic item. Sub-units of the institution may be marked\x{a}" ~
+      "        with <repository> sub-elements. The name of the list from\x{a}" ~
+      "        which a controlled value is taken may be recorded using the authority\x{a}" ~
+      "        attribute. This element is modelled on an element in Encoded Archival\x{a}" ~
+      "        Description (EAD)."
+    ]
+  ]
+  element repository { attlist.repository, content.repository }
+attlist.repository =
+  att.bibl, att.common, att.facsimile, att.lang, att.name, att.typed
+content.rest = empty
+rest =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "rest ― A non-sounding event found in the\x{a}" ~
+      "        source being transcribed (Read, p. 96-102). Do not confuse this element\x{a}" ~
+      "        with the space element, which is used as an aid for visual\x{a}" ~
+      "        alignment."
+    ]
+  ]
+  element rest { attlist.rest, content.rest }
+attlist.rest =
+  att.common,
+  att.facsimile,
+  att.rest.log,
+  att.rest.vis,
+  att.rest.ges,
+  att.rest.anl
+content.sb = custos?
+sb =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "system break ― An empty formatting element\x{a}" ~
+      "        that forces notation to begin on a new line. Do not confuse this element\x{a}" ~
+      "        with the <lb> element, which performs a similar function\x{a}" ~
+      "        in prose."
+    ]
+  ]
+  element sb { attlist.sb, content.sb }
+attlist.sb =
+  att.common,
+  att.facsimile,
+  att.source,
+  att.sb.log,
+  att.sb.vis,
+  att.sb.ges,
+  att.sb.anl
+content.score =
+  (model.appLike
+   | model.divLike
+   | model.milestoneLike.music
+   | model.scoredefLike
+   | model.staffdefLike
+   | model.staffgrpLike
+   | model.annotLike
+   | model.graphicprimitiveLike
+   | model.editLike
+   | model.transcriptionLike
+   | model.scorePart)*
+score =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "score ― Full score view of the mdiv. Since\x{a}" ~
+      "        the measure element is optional, a score may consist entirely of\x{a}" ~
+      "        pagebreaks, each of which points to a page image. Div elements are\x{a}" ~
+      "        allowed preceding and following sections of music data in order to\x{a}" ~
+      "        accommodate blocks of explanatory text."
+    ]
+  ]
+  element score { attlist.score, content.score }
+attlist.score =
+  att.common,
+  att.typed,
+  att.score.log,
+  att.score.vis,
+  att.score.ges,
+  att.score.anl
+content.scoredef =
+  model.alignLike*,
+  model.chordtableLike?,
+  model.symboltableLike?,
+  model.keysigLike?,
+  model.metaLike.score,
+  instrgrp?,
+  (model.staffgrpLike?)
+scoredef =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "score definition ― Container for score\x{a}" ~
+      "        meta-information."
+    ]
+  ]
+  element scoredef { attlist.scoredef, content.scoredef }
+attlist.scoredef =
+  att.common,
+  att.scoredef.log,
+  att.scoredef.vis,
+  att.scoredef.ges,
+  att.scoredef.anl
+content.section =
+  expansion*,
+  (model.appLike
+   | model.divLike
+   | model.milestoneLike.music
+   | model.scoredefLike
+   | model.staffdefLike
+   | model.staffgrpLike
+   | model.annotLike
+   | model.graphicprimitiveLike
+   | model.editLike
+   | model.transcriptionLike
+   | model.sectionPart)*
+section =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "section ― Container for actual music data.\x{a}" ~
+      "        The linking attributes are available here so that this element can point\x{a}" ~
+      "        to external media objects or to related internal elements, such as\x{a}" ~
+      "        annotations."
+    ]
+  ]
+  element section { attlist.section, content.section }
+attlist.section =
+  att.common,
+  att.facsimile,
+  att.typed,
+  att.link.common,
+  att.link.external,
+  att.link.internal,
+  att.section.log,
+  att.section.vis,
+  att.section.ges,
+  att.section.anl
+content.space = empty
+space =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "space ― A placeholder used to fill an\x{a}" ~
+      "        incomplete measure, layer, etc. most often so that the combined duration\x{a}" ~
+      "        of the events equals the number of beats in the\x{a}" ~
+      "        measure."
+    ]
+  ]
+  element space { attlist.space, content.space }
+attlist.space =
+  att.common,
+  att.facsimile,
+  att.space.log,
+  att.space.vis,
+  att.space.ges,
+  att.space.anl
+content.stack = (text | model.textphraseLike)*
+stack =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "stacked text ― An inline table with a\x{a}" ~
+      "        single column."
+    ]
+  ]
+  element stack { attlist.stack, content.stack }
+attlist.stack =
+  att.common,
+  att.facsimile,
+  att.lang,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "gives the delimiter used to mark the\x{a}" ~
+      "          portions of text that are to be stacked."
+    ]
+  ]
+  attribute delim { text }?,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "specifies how the stacked text should be\x{a}" ~
+      "          aligned."
+    ]
+  ]
+  attribute align { "left" | "right" | "center" | "rightdigit" }?
+content.staff =
+  (model.appLike
+   | model.divLike
+   | model.milestoneLike.music
+   | model.scoredefLike
+   | model.staffdefLike
+   | model.staffgrpLike
+   | model.annotLike
+   | model.graphicprimitiveLike
+   | model.editLike
+   | model.transcriptionLike
+   | model.staffPart)*
+staff =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "staff ― A group of equidistant horizontal\x{a}" ~
+      "        lines on which notes are placed in order to represent pitch. In MEI,\x{a}" ~
+      "        however, <staff> is a grouping element for individual\x{a}" ~
+      "        'strands' of notes, rests, etc. that may or may not be rendered on staff\x{a}" ~
+      "        lines; that is, diastematic and nondiastematic signs. The n attribute\x{a}" ~
+      "        functions as a connection back to the appropriate staffdef element where\x{a}" ~
+      "        logical and visual information about the staff is recorded. If the n\x{a}" ~
+      "        attribute is omitted, encoding order is presumed to match the staff\x{a}" ~
+      "        order. Of course, if data is supplied for only a subset of staves found\x{a}" ~
+      "        in a printed source, the n attribute must be supplied."
+    ]
+  ]
+  element staff { attlist.staff, content.staff }
+attlist.staff =
+  att.common,
+  att.facsimile,
+  att.staff.log,
+  att.staff.vis,
+  att.staff.ges,
+  att.staff.anl
+content.staffdef =
+  model.labelLike*,
+  (model.instrdefLike | model.layerdefLike | model.staffdefPart)*
+staffdef =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "staff definition ― Container for staff\x{a}" ~
+      "        meta-information."
+    ]
+  ]
+  element staffdef { attlist.staffdef, content.staffdef }
+attlist.staffdef =
+  att.common,
+  att.staffdef.log,
+  att.staffdef.vis,
+  att.staffdef.ges,
+  att.staffdef.anl
+content.staffgrp =
+  grpsym*,
+  model.labelLike*,
+  model.instrdefLike*,
+  (model.staffgrpLike | model.staffdefLike)+,
+  grpsym*
+staffgrp =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "staff group ― A group of bracketed or\x{a}" ~
+      "        braced staves. Bracketed staff groups may contain other bracketed or\x{a}" ~
+      "        braced staff groups or single staves. See Read, p. 35-38, examples p.\x{a}" ~
+      "        434, 438. System is the more proper name for this concept (Read, p.\x{a}" ~
+      "        37-38)."
+    ]
+  ]
+  element staffgrp { attlist.staffgrp, content.staffgrp }
+attlist.staffgrp =
+  att.common,
+  att.facsimile,
+  att.staffgrp.log,
+  att.staffgrp.vis,
+  att.staffgrp.ges,
+  att.staffgrp.anl
+content.syl =
+  (text
+   | model.textphraseLike.limited
+   | model.editLike
+   | model.transcriptionLike)*
+syl =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "syllable ― Individual lyric syllable. Do\x{a}" ~
+      "        not confuse this element with the syllable element. The align attribute\x{a}" ~
+      "        indicates the horizontal alignment of the syllable with respect to the\x{a}" ~
+      "        note to which it is attached."
+    ]
+  ]
+  element syl { attlist.syl, content.syl }
+attlist.syl =
+  att.common,
+  att.facsimile,
+  att.syl.log,
+  att.syl.vis,
+  att.syl.ges,
+  att.syl.anl
+content.tempo =
+  (text
+   | model.textphraseLike.limited
+   | model.graphicprimitiveLike
+   | model.editLike
+   | model.transcriptionLike)*
+tempo =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "tempo ― Text and symbols descriptive of\x{a}" ~
+      '        tempo, mood, or style, e.g., "allarg.", "a tempo", "cantabile",\x{a}' ~
+      '        "Moderato", "[qtrnote]=60", "Moderato [qtrnote] =60"). Both\x{a}' ~
+      "        instantaneous and continuous tempo markings may be encoded using this\x{a}" ~
+      "        element. Please note that the dur attribute here is expressed in musical\x{a}" ~
+      "        time, i.e., beats or other time stamp. Therefore, it is not a true\x{a}" ~
+      "        duration, but rather a time stamp for the end point of the\x{a}" ~
+      "        directive."
+    ]
+  ]
+  element tempo { attlist.tempo, content.tempo }
+attlist.tempo =
+  att.common,
+  att.facsimile,
+  att.lang,
+  att.tempo.log,
+  att.tempo.vis,
+  att.tempo.ges,
+  att.tempo.anl
+content.title =
+  (text
+   | model.textphraseLike
+   | model.editLike
+   | model.transcriptionLike)*
+title =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "title ― Title of a bibliographic entity.\x{a}" ~
+      "        The type attribute may be used to classify the title according to some\x{a}" ~
+      "        convenient typology. Sample values include: main (main title),\x{a}" ~
+      "        subordinate (subtitle, title of part), abbreviated (abbreviated form of\x{a}" ~
+      "        title), alternative (alternate title by which the work is also known),\x{a}" ~
+      "        translated (translated form of title), uniform (collective title). The\x{a}" ~
+      "        type attribute is provided for convenience in analysing titles and\x{a}" ~
+      "        processing them according to their type; where such specialized\x{a}" ~
+      "        processing is not necessary, there is no need for such analysis, and the\x{a}" ~
+      "        entire title, including subtitles and any parallel titles, may be\x{a}" ~
+      "        enclosed within a single <title> element. Title parts may\x{a}" ~
+      "        be encoded in <title> sub-elements. The name of the list\x{a}" ~
+      "        from which a controlled value is taken may be recorded using the\x{a}" ~
+      "        authority attribute. This element is modelled on an element in the Text\x{a}" ~
+      "        Encoding Initiative (TEI)."
+    ]
+  ]
+  element title { attlist.title, content.title }
+attlist.title =
+  att.common,
+  att.facsimile,
+  att.lang,
+  att.name,
+  att.typed,
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "indicates whether this is the title of\x{a}" ~
+      "          an article, monograph, journal, series, or unpublished\x{a}" ~
+      "          material."
+    ]
+  ]
+  attribute level { "a" | "m" | "j" | "s" | "u" }?
+content.titlepage =
+  (model.textcomponentLike | model.milestoneLike.text)+
+titlepage =
+  [
+    a:documentation [
+      xml:lang = "eng"
+      "title page ― Contains a transcription of\x{a}" ~
+      "        the title page of a text. It may be used within the physdesc element\x{a}" ~
+      "        when no other transcription is provided. This element is modelled on an\x{a}" ~
+      "        element in Encoded Archival Description (EAD)."
+    ]
+  ]
+  element titlepage { attlist.titlepage, content.titlepage }
+attlist.titlepage = att.common, att.facsimile, att.lang
