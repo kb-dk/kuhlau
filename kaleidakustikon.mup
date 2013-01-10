@@ -60,12 +60,12 @@ music
 music
   // m. 7
   1 1: [down]8g4 bm;[down]8c#5;[down]8e5;[down]8d5;[down]8b4;[down]8g4 ebm;
-  2 1: 4f2;[down]4c4a3f3; [down]4c4a3f3; 
+  2 1: 4f2;[down]4d4b3; [down]4d4b3; 
   bar mnum=8
 
 music
   // m. 8
-  1 1: [up]8e5;[down]4c5;[up]8bn4 bm;[up]8b&4;[up]8g4 ebm;
+  1 1: [up]8e4;[down]4c5;[up]8bn4 bm;[up]8b&4;[up]8g4 ebm;
   2 1: [up]4c3;[up]4c4b3e3; [up]4c4b3e3; 
   2 2: [down]2.c3;
   bar mnum=9
@@ -88,7 +88,7 @@ music
 
 music
   // m. 12
-  1 1: 4.c5;8bn5 bm;8b&5;8g5 ebm;
+  1 1: 4.c6;8bn5 bm;8b&5;8g5 ebm;
   2 1: 8c3 bm;8c4 ebm;[down]8e3b3 bm; 8c4;[down]8e3b3; 8c4 ebm;
   bar mnum=13
 
@@ -142,7 +142,7 @@ music
   bar mnum=19
 
   // m. 19
-  1 2: 8f5 =_p2tieend  bm;8d5;8a5;8c5;8b5;8g5 ebm;
+  1 2: 8f5 =_p2tieend  bm;8d6;8a5;8c6;8b5;8g5 ebm;
   2 1: [up]4b2;[up]4f3b3d4; [up]4f3b3d4; 
   bar mnum=20
 
