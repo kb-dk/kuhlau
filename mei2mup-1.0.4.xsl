@@ -3273,6 +3273,7 @@
     <xsl:variable name="note_style">
       <xsl:if test="@grace">
         <xsl:text>grace;</xsl:text>
+	<xsl:if test="@grace = 'unacc'">slash 1</xsl:if>
       </xsl:if>
       <!--
       <xsl:if test="@size='cue'">
