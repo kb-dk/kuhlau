@@ -2835,9 +2835,14 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:if>
-    <xsl:if test="@num.visible='no'">
-      <xsl:text>n</xsl:text>
-    </xsl:if>
+    <xsl:choose>
+      <xsl:when test="@num.visible='no'">
+	<xsl:text>n</xsl:text>
+      </xsl:when>
+      <xsl:when test="@num.visible='yes'">
+	<xsl:text>y</xsl:text>
+      </xsl:when>
+    </xsl:choose>
     <xsl:choose>
       <xsl:when test="@dur">
         <xsl:text>,</xsl:text>
