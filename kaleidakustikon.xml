@@ -45,9 +45,9 @@
 	      <staff n="1">
 		<layer>
 		  <note pname="f" oct="5" dur="4" />
-		  <note pname="g" oct="5" dur="8" grace="unacc"/>
+		  <note pname="g" oct="5" dur="8" grace="unacc" xml:id="grace.2.1"/>
 		  <beam>
-		    <note pname="f" oct="5" dur="8" stem.dir="down"  />
+		    <note pname="f" oct="5" dur="8" stem.dir="down" xml:id="endgrace.2.1" />
 		    <note pname="e" oct="5" dur="8" stem.dir="down" />
 		    <note pname="f" oct="5" dur="8" stem.dir="down" />
 		    <note pname="c" oct="5" dur="8" stem.dir="down" />
@@ -847,10 +847,32 @@
 	      </staff>
 	      <staff n="2">
 		<layer>
-		  <note pname="b" oct="4" dur="4" />
+		  <note pname="b" oct="2" dur="4" />
 		  <chord dur="4">
-		    <note pname="b" oct="4" />
+		    <note pname="b" oct="3" />
+		    <note pname="d" oct="4" />
 		  </chord>
+		  <chord dur="4">
+		    <note pname="f" oct="3" />
+		    <note pname="e" oct="4" />
+		  </chord>
+		</layer>
+	      </staff>
+	    </measure>
+	    <measure n="26" right="rptend">
+	      <staff n="1">
+		<layer>
+		  <note pname="b" dur="4" />
+		  <rest dur="4" />
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <chord dur="4">
+		    <note pname="b" oct="3" />
+		    <note pname="d" oct="4" />
+		  </chord>
+		  <note pname="b" oct="2" dur="4" />
 		</layer>
 	      </staff>
 	    </measure>
