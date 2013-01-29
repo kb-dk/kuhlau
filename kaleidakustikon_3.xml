@@ -104,7 +104,7 @@
 	    </measure>
 	  </section>
 	  <section xml:id="c.3">
-	    <measure n="3">	    
+	    <measure n="5">	    
 	      <staff n="1">
 		<layer>
 		  <note pname="e" oct="5" dur="8" stem.dir="down" />
@@ -134,7 +134,7 @@
 	    </measure>
 	  </section>
 	  <section xml:id="d.3">
-	    <measure n="4">
+	    <measure n="6">
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -165,7 +165,7 @@
 	    </measure>
 	  </section>
 	  <section xml:id="e.3">
-	    <measure n="5">	    
+	    <measure n="7">	    
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -196,7 +196,7 @@
 	    </measure>
 	  </section>
 	  <section xml:id="f.3">
-	    <measure n="6">	    
+	    <measure n="8">	    
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -220,7 +220,7 @@
 	    </measure>
 	  </section>
 	  <section xml:id="g.3">
-	    <measure n="7">	    
+	    <measure n="9">	    
 	      <staff n="1">
 		<layer>
 		  <note pname="e" oct="4" dur="8" stem.dir="up" />
@@ -249,7 +249,7 @@
 		</layer>
 	      </staff>
 	    </measure>
-	    <measure n="8" right="rptend">	    
+	    <measure n="10" right="rptboth">	    
 	      <staff n="1">
 		<layer>
 		  <note pname="f" oct="4" dur="4"/>
@@ -268,6 +268,331 @@
 	      </staff>
 	    </measure>
 
+	  </section>
+
+	  <!-- this is really section h.2, but we repeat it, since eight cards
+	       were lost -->
+
+	  <section xml:id="h.3">
+	    <measure n="11" >
+	      <staff n="1">
+		<layer>
+		  <beam>
+		    <note pname="c" oct="5" dur="8" stem.dir="down"/>
+		    <note pname="e" oct="5" dur="8" stem.dir="down"/>
+		  </beam>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <rest dur="4" />
+		</layer>
+	      </staff>
+	    </measure>
+	    <measure n="12" >
+	      <staff n="1">
+		<layer>
+		  <note pname="g" oct="5" dur="4" />
+		  <!-- @@check: står ngt obegripligt i transkriptionen -->
+		  <note pname="a" oct="5" dur="8" grace="unacc"/>
+		  <beam>
+		    <note pname="g" oct="5" dur="8" stem.dir="down"  />
+		    <note pname="f" accid="s" oct="5" dur="8" stem.dir="down" />
+		    <note pname="g" oct="5" dur="8" stem.dir="down" />
+		    <note pname="a" oct="5" dur="8" stem.dir="down" />
+		  </beam>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <beam>
+		    <note pname="c" oct="3" dur="8"/>
+		    <note pname="c" oct="4" dur="8"/>
+		  </beam>
+
+		  <!-- @@check I split this beam up, in the way it was in the
+		       other bars -->
+		  <beam>
+		    <chord tstamp="1" dur="8" stem.dir="down"  >
+		      <note pname="e" oct="3"/>
+		      <note pname="b" oct="3"/>
+		    </chord>
+		    <note pname="c" oct="4" dur="8"/>
+		    <chord tstamp="1" dur="8" stem.dir="down"  >
+		      <note pname="e" oct="3"/>
+		      <note pname="b" oct="3"/>
+		    </chord>
+		    <note pname="c" oct="4" dur="8"/>
+		  </beam>
+		</layer>
+	      </staff>
+	    </measure>
+	  </section>
+	  <section xml:id="i.3">
+	    <measure n="13">
+	      <staff n="1">
+		<layer>
+		  <note pname="b" oct="5" dur="2" />
+		  <beam>
+		    <note pname="a" oct="5" dur="8"/>
+		    <note pname="g" oct="5" dur="8"/>
+		  </beam>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <beam>
+		    <note pname="c" oct="3" dur="8"/>
+		    <note pname="c" oct="4" dur="8"/>
+		  </beam>
+
+		  <!-- @@check I split this beam up, in the way it was in the
+		       other bars -->
+		  <beam>
+		    <chord tstamp="1" dur="8" stem.dir="down"  >
+		      <note pname="e" oct="3"/>
+		      <note pname="g" oct="3"/>
+		    </chord>
+		    <note pname="c" oct="4" dur="8"/>
+		    <chord tstamp="1" dur="8" stem.dir="down"  >
+		      <note pname="e" oct="3"/>
+		      <note pname="g" oct="3"/>
+		    </chord>
+		    <note pname="c" oct="4" dur="8"/>
+		  </beam>
+		</layer>
+	      </staff>
+	    </measure>
+	  </section>
+	  <section xml:id="k.3">
+	    <measure n="14">
+	      <staff n="1">
+		<layer>
+		  <beam>
+		    <note pname="f" oct="5" dur="8" />
+		    <note pname="e" oct="5" dur="8" />
+		    <note pname="g" oct="5" dur="8" />
+		    <note pname="f" oct="5" dur="8" />
+		    <note pname="a" oct="5" dur="8" />
+		    <note pname="f" oct="5" dur="8" />
+		  </beam>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <beam>
+		    <note pname="c" oct="3" dur="8"/>
+		    <note pname="c" oct="4" dur="8"/>
+		  </beam>
+		  <!-- @@check there was a shorthand notation which I didn't
+		       know how to generate in MEI -->
+		  <beam>
+		    <chord  dur="8" stem.dir="down">
+		      <note pname="f" oct="3"/>
+		      <note pname="a" oct="3" />
+		    </chord>
+		    <note pname="c" oct="4" dur="8"/>
+		    <chord  dur="8" stem.dir="down">
+		      <note pname="f" oct="3"/>
+		      <note pname="a" oct="3" />
+		    </chord>
+		    <note pname="c" oct="4" dur="8"/>
+		  </beam>
+		</layer>
+	      </staff>
+	    </measure>
+	  </section>
+	  <section xml:id="l.3">
+	    <measure n="15">
+	      <staff n="1">
+		<layer>
+		  <beam>
+		    <tuplet dur="4" num.place="below" num.format="count" num="3">
+		      <note pname="c" oct="5" dur="8" stem.dir="down" />
+		      <note pname="f" oct="5" dur="8" stem.dir="down" />
+		      <note pname="a" oct="5" dur="8" stem.dir="down" />
+		    </tuplet>
+		  </beam>
+		  <beam>
+		    <tuplet dur="4" num.place="below" num.format="count" num="3">
+		      <note pname="c" oct="6" dur="8" stem.dir="down" />
+		      <note pname="a" oct="5" dur="8" stem.dir="down" />
+		      <note pname="f" oct="5" dur="8" stem.dir="down" />
+		    </tuplet>
+		  </beam>
+		  <beam>
+		    <tuplet dur="4" num.place="below" num.format="count" num="3">
+		      <note pname="c" oct="5" dur="8" stem.dir="down" />
+		      <note pname="a" oct="4" dur="8" stem.dir="down" />
+		      <note pname="f" oct="4" dur="8" stem.dir="down" />
+		    </tuplet>
+		  </beam>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+
+		  <beam>
+		    <note pname="c" oct="3" dur="8"/>
+		    <note pname="c" oct="4" dur="8"/>
+		  </beam>
+
+		  <!-- @@check there was a shorthand notation which I didn't
+		       know how to generate in MEI -->
+
+		  <beam>
+		    <chord  dur="8" stem.dir="down">
+		      <note pname="f" oct="3"/>
+		      <note pname="a" oct="3" />
+		    </chord>
+		    <note pname="c" oct="4" dur="8"/>
+		    <chord  dur="8" stem.dir="down">
+		      <note pname="f" oct="3"/>
+		      <note pname="a" oct="3" />
+		    </chord>
+		    <note pname="c" oct="4" dur="8"/>
+		  </beam>
+
+		</layer>
+
+
+	      </staff>
+	    </measure>
+	  </section>
+	  <section xml:id="m.3">
+	    <measure n="16">
+	      <staff n="1">
+		<layer>
+		  <note pname="e" oct="4" dur="8" stem.dir="up" />
+		  <note pname="d" oct="5" dur="4" stem.dir="down" />
+		  <beam>
+		    <note pname="b" accid="n" oct="4" dur="8" stem.dir="up" />
+		    <note pname="c" oct="5" dur="8" stem.dir="up" />		    
+		    <note pname="e" oct="4" dur="8" stem.dir="up" />		    
+		  </beam>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <beam>
+		    <note pname="c" oct="3" dur="8" stem.dir="down"/>
+		    <note pname="c" oct="4" dur="8" stem.dir="down"/>
+		  </beam>
+
+		  <!-- @@check there was a shorthand notation which I didn't
+		       know how to generate in MEI -->
+
+		  <beam>
+		    <chord  dur="8" stem.dir="down">
+		      <note pname="g" oct="3"/>
+		      <note pname="b" oct="3" />
+		    </chord>
+		    <note pname="c" oct="4" dur="8"/>
+		    <chord  dur="8" stem.dir="down">
+		      <note pname="g" oct="3"/>
+		      <note pname="b" oct="3" />
+		    </chord>
+		    <note pname="c" oct="4" dur="8"/>
+		  </beam>
+
+
+		</layer>
+	      </staff>
+
+
+	    </measure>
+	  </section>
+	  <section xml:id="n.3">
+	    <measure n="17">
+	    <staff n="1" xml:id="slur.n3.staf1">
+	      <layer>
+		<beam>
+		  <note pname="e" oct="4" 
+			stem.dir="down" 
+			xml:id="slurstartn3"/>
+		  <note pname="f" oct="4" stem.dir="down" />
+		  <note pname="a" oct="4" stem.dir="down" />
+		  <note pname="c" oct="5" stem.dir="down" />
+		  <note pname="a" oct="5" stem.dir="down" />
+		  <note pname="g" oct="5" 
+			stem.dir="down" xml:id="slurendn3"/>
+		</beam>
+	      </layer>
+	    </staff>
+
+	    <slur startid="slurstartn3"
+		  endid="slurendn3" staff="1" 
+		  curvedir="above"/>
+
+	    <staff n="2">
+	      <layer>
+		  <beam>
+		    <note pname="c" oct="3" dur="8"/>
+		    <note pname="c" oct="4" dur="8"/>
+		  </beam>
+
+		  <!-- @@check there was a shorthand notation which I didn't
+		       know how to generate in MEI -->
+
+		  <beam>
+		    <chord  dur="8" stem.dir="down">
+		      <note pname="f" oct="3"/>
+		      <note pname="a" oct="3" />
+		    </chord>
+		    <note pname="c" oct="4" dur="8"/>
+		    <chord  dur="8" stem.dir="down">
+		      <note pname="f" oct="3"/>
+		      <note pname="a" oct="3" />
+		    </chord>
+		    <note pname="c" oct="4" dur="8"/>
+		  </beam>
+		</layer>
+	      </staff>
+	    </measure>
+	  </section>
+	  <section xml:id="o.3">
+	    <measure n="18">
+	      <staff n="1">
+		<layer>
+		  <note pname="f" oct="5" dur="4" stem.dir="down" />
+		  <chord dur="4" stem.dir="down" >
+		    <note pname="a" oct="4" />
+		    <note pname="a" oct="5" />
+		  </chord>
+		  <chord dur="4" stem.dir="down" >
+		    <note pname="f" oct="4" />
+		    <note pname="f" oct="5" />
+		  </chord>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <beam>
+		    <note pname="c" oct="3" dur="8" stem.dir="down"/>
+		    <note pname="c" oct="4" dur="8" stem.dir="down"/>
+		    <note pname="a" oct="2" dur="8" stem.dir="down"/>
+		    <note pname="a" oct="3" dur="8" stem.dir="down"/>
+		    <note pname="f" oct="2" dur="8" stem.dir="down"/>
+		    <note pname="f" oct="3" dur="8" stem.dir="down"/>
+		  </beam>
+		</layer>
+	      </staff>
+	    </measure>
+	    <measure n="19" right="rptend">
+	      <staff n="1">
+		<layer>
+		  <chord dur="2" stem.dir="down" >
+		    <note pname="c" oct="5" />
+		    <note pname="c" oct="6" />
+		  </chord>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <note pname="c" oct="2" dur="2" stem.dir="up" />
+		</layer>
+	      </staff>
+	    </measure>
 	  </section>
 	</score>
       </mdiv>
