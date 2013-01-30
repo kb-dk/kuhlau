@@ -40,38 +40,92 @@ music
   bar mnum=4
 
 music
-  // m. 3
+  // m. 5
   1 1: [down]8e5;[down]4b5;[down]8g5 bm;[down]8e5;[down]8c5 ebm;
   2 1: 4c3;[down]4c4b3g3; [down]4c4b3g3; 
-  bar mnum=4
-
-music
-  // m. 4
-  1 1: 8bn4 bm;8c5;8b&4;8c5;8g4;8c5 ebm;
-  2 1: 4c3;[down]4c4g3e3; [down]4c4g3e3; 
-  bar mnum=5
-
-music
-  // m. 5
-  1 1: [down]8a4 bm;[down]8a5;[down]8g5;[down]8f5;[down]8e5;[down]8f5 ebm;
-  2 1: 4f2;[down]4c4a3f3; [down]4c4a3f3; 
   bar mnum=6
 
 music
   // m. 6
-  1 1: [down]8g4 bm;[down]8b4;[down]8d5;[down]8g5;[down]8b5;[down]8d6 ebm;
-  2 1: [down]2.b3d4; 
+  1 1: 8bn4 bm;8c5;8b&4;8c5;8g4;8c5 ebm;
+  2 1: 4c3;[down]4c4g3e3; [down]4c4g3e3; 
   bar mnum=7
 
 music
   // m. 7
+  1 1: [down]8a4 bm;[down]8a5;[down]8g5;[down]8f5;[down]8e5;[down]8f5 ebm;
+  2 1: 4f2;[down]4c4a3f3; [down]4c4a3f3; 
+  bar mnum=8
+
+music
+  // m. 8
+  1 1: [down]8g4 bm;[down]8b4;[down]8d5;[down]8g5;[down]8b5;[down]8d6 ebm;
+  2 1: [down]2.b3d4; 
+  bar mnum=9
+
+music
+  // m. 9
   1 1: [up]8e4;[down]4c5;[up]8e4 bm;[up]8c5;[up]8e4 ebm;
   2 1: [up]4c3;[up]4g3b3; [up]4g3b3; 
   2 2: [down]2.c3;
-  bar mnum=8
+  bar mnum=10
 
-  // m. 8
+  // m. 10
   1 1: 4f4;4r; 
   2 1: [down]4c4a3f3; 4f2;
+  repeatboth mnum=11
+
+music
+  // m. 11
+  1 1: [down]8c5 bm;[down]8e5 ebm;
+  2 1: 4r; 
+  bar mnum=12
+
+  // m. 12
+  1 1: 4g5;[grace;slash 1]8a5;[down]8g5 bm;[down]8f#5;[down]8g5;[down]8a5 ebm;
+  2 1: 8c3 bm;8c4 ebm;[down]8e3b3 bm; 8c4;[down]8e3b3; 8c4 ebm;
+  bar mnum=13
+
+music
+  // m. 13
+  1 1: 2b5;8a5 bm;8g5 ebm;
+  2 1: 8c3 bm;8c4 ebm;[down]8e3g3 bm; 8c4;[down]8e3g3; 8c4 ebm;
+  bar mnum=14
+
+music
+  // m. 14
+  1 1: 8f5 bm;8e5;8g5;8f5;8a5;8f5 ebm;
+  2 1: 8c3 bm;8c4 ebm;[down]8f3a3 bm; 8c4;[down]8f3a3; 8c4 ebm;
+  bar mnum=15
+
+music
+  // m. 15
+  1 1: {[down]8c5 bm;[down]8f5;[down]8a5 ebm;} below 3,4;{[down]8c6 bm;[down]8a5;[down]8f5 ebm;} below 3,4;{[down]8c5 bm;[down]8a4;[down]8f4 ebm;} below 3,4;
+  2 1: 8c3 bm;8c4 ebm;[down]8f3a3 bm; 8c4;[down]8f3a3; 8c4 ebm;
+  bar mnum=16
+
+music
+  // m. 16
+  1 1: [up]8e4;[down]4d5;[up]8bn4 bm;[up]8c5;[up]8e4 ebm;
+  2 1: [down]8c3 bm;[down]8c4 ebm;[down]8g3b3 bm; 8c4;[down]8g3b3; 8c4 ebm;
+  bar mnum=17
+
+music
+  // m. 17
+  1 1: [down]8e4 =_slurstartn3  bm;[down]8f4;[down]8a4;[down]8c5;[down]8a5;[down]8g5 =_slurendn3  ebm;
+  2 1: 8c3 bm;8c4 ebm;[down]8f3a3 bm; 8c4;[down]8f3a3; 8c4 ebm;
+  // slur encoded in last measure
+  bar mnum=18
+
+music
+  // m. 18
+  1 1: [down]4f5;[down]4a4a5; [down]4f4f5; 
+  2 1: [down]8c3 bm;[down]8c4;[down]8a2;[down]8a3;[down]8f2;[down]8f3 ebm;
+  bar mnum=19
+
+  // m. 19
+  1 1: [down]2c5c6; 
+  2 1: [up]2c2;
+  medium curve (_slurstartn3.x, _slurstartn3.y+3) to (_slurendn3.x, _slurendn3.y+3) bulge 8 // slur m.17
   repeatend
 

@@ -222,7 +222,7 @@
 	      <staff n="1">
 		<layer>
 		  <note pname="e" oct="4" dur="8" stem.dir="up" />
-		  <note pname="c" oct="5" dur="4" stem.dir="down" />
+		  <note pname="c" oct="5" dur="4" stem.dir="up" />
 		  <beam>
 		    <note pname="b" oct="4" dur="8" accid="n" stem.dir="up"/>
 		    <note pname="b" oct="4" dur="8" accid="f" stem.dir="up"/>
@@ -486,7 +486,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="m.2">
+	  <section xml:id="n.2">
 	    <measure n="16">
 	      <staff n="1">
 		<layer>
@@ -584,7 +584,7 @@
 		      key.pname="b" 
 		      meter.count="3" 
 		      meter.unit="4" />
-	    <measure n="18">
+	    <measure n="19">
 	      <staff n="1">
 		<layer n="1">
 		  <note pname="f" oct="5" dur="4" xml:id="p2tiestart" tie="m"  />
@@ -598,7 +598,7 @@
 		</layer>
 	      </staff>
 	    </measure>
-	    <measure n="19">
+	    <measure n="20">
 	      <staff n="1">
 		<layer n="2">
 		  <beam>
@@ -636,7 +636,7 @@
 	  </section>
 
 	  <section xml:id="q.2">
-	    <measure n="20">
+	    <measure n="21">
 
 	      <staff n="1">
 		<layer>
@@ -670,7 +670,7 @@
 	    </measure>
 	  </section>
 	  <section xml:id="r.2">
-	    <measure n="21">
+	    <measure n="22">
 
 	      <staff n="1">
 		<layer>
@@ -707,7 +707,7 @@
 	  </section>
 
 	  <section xml:id="s.2">
-	    <measure n="22">
+	    <measure n="23">
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -729,13 +729,16 @@
 		  <chord dur="4" stem.dir="up" >
 		    <note pname="f" oct="3"  />
 		    <note pname="a" oct="3" />
-		    <note pname="e" oct="4" />
-		  </chord>
+		    <note pname="e" oct="4" accid="f" /> <!-- @@check: asc@kb.dk proposes accid="f" ???-->
+		  </chord> 
+		  
+		  <!-- Would be an F7 rather than FMaj7, which doesn't fit a
+		       dominant function -->
 
 		  <chord dur="4" stem.dir="up" >
 		    <note pname="f" oct="3" />
 		    <note pname="a" oct="3" />
-		    <note pname="e" oct="4" />
+		    <note pname="e" oct="4" accid="f" /> <!-- @@check:  accid="f" ???-->
 		  </chord>
 
 		</layer>
@@ -744,7 +747,7 @@
 	  </section>
 
 	  <section xml:id="t.2">
-	    <measure n="23">
+	    <measure n="24">
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -757,7 +760,7 @@
 		  </beam>
 		  <beam>
 		    <note pname="c" oct="5" dur="8" stem.dir="down"/>
-		    <note pname="e" oct="5" dur="8" stem.dir="down"/>
+		    <note pname="e" oct="5" dur="8" stem.dir="down" accid="f" /> 
 		  </beam>
 		</layer>
 	      </staff>
@@ -768,13 +771,13 @@
 		  <chord dur="4" stem.dir="up" >
 		    <note pname="f" oct="3"  />
 		    <note pname="c" oct="4" />
-		    <note pname="e" oct="4" />
+		    <note pname="e" oct="4" accid="f" />  <!-- @@check:  accid="f" ???-->
 		  </chord>
 
 		  <chord dur="4" stem.dir="up" >
 		    <note pname="f" oct="3" />
 		    <note pname="c" oct="4" />
-		    <note pname="e" oct="4" />
+		    <note pname="e" oct="4" accid="f" />  <!-- @@check: accid="f" ???-->
 		  </chord>
 
 		</layer>
@@ -783,10 +786,10 @@
 	  </section>
 
 	  <section xml:id="u.2">
-	    <measure n="24">
+	    <measure n="25">
 	      <staff n="1">
 		<layer>
-		  <note pname="e" oct="5" dur="8" />
+		  <note pname="e" oct="5" dur="8" accid="f"  />
 		  <note pname="c" oct="6" dur="4" />
 		  <beam>
 		    <note pname="a" oct="5" dur="8" />
@@ -817,7 +820,7 @@
 	    </measure>
 	  </section>
 	  <section xml:id="v.2">	    
-	    <measure n="25">
+	    <measure n="26">
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -857,7 +860,7 @@
 		</layer>
 	      </staff>
 	    </measure>
-	    <measure n="26" right="rptend">
+	    <measure n="27" right="rptend">
 	      <staff n="1">
 		<layer>
 		  <note pname="b" dur="4" />

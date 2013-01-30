@@ -1,7 +1,7 @@
-// Kaleidakustikon
+// Kaleidakustikon Layer 2
 
 header
-  title "Kaleidakustikon"
+  title "Kaleidakustikon Layer 2"
   title ""
 
 score
@@ -65,7 +65,7 @@ music
 
 music
   // m. 8
-  1 1: [up]8e4;[down]4c5;[up]8bn4 bm;[up]8b&4;[up]8g4 ebm;
+  1 1: [up]8e4;[up]4c5;[up]8bn4 bm;[up]8b&4;[up]8g4 ebm;
   2 1: [up]4c3;[up]4c4b3e3; [up]4c4b3e3; 
   2 2: [down]2.c3;
   bar mnum=9
@@ -136,55 +136,55 @@ staff 2
 
 music
 music
-  // m. 18
+  // m. 19
   1 1: 4f5~up =_p2tiestart ;
   2 1: 4r; 
-  bar mnum=19
-
-  // m. 19
-  1 2: 8f5 =_p2tieend  bm;8d6;8a5;8c6;8b5;8g5 ebm;
-  2 1: [up]4b2;[up]4f3b3d4; [up]4f3b3d4; 
   bar mnum=20
 
-music
   // m. 20
-  1 1: [down]4.f5;[down]8f5 bm;[down]8f5;[down]8f5 ebm;
+  1 2: 8f5 =_p2tieend  bm;8d6;8a5;8c6;8b5;8g5 ebm;
   2 1: [up]4b2;[up]4f3b3d4; [up]4f3b3d4; 
   bar mnum=21
 
 music
   // m. 21
-  1 1: [up]8f5 bm;[up]8b5;[up]8d6;[up]8f6;[up]8b6;[up]8b4 ebm;
+  1 1: [down]4.f5;[down]8f5 bm;[down]8f5;[down]8f5 ebm;
   2 1: [up]4b2;[up]4f3b3d4; [up]4f3b3d4; 
   bar mnum=22
 
 music
   // m. 22
-  1 1: [down]8bn4 bm;[down]8c5 ebm;8r; [up]8f4 bm;[up]8f4;[up]8f4 ebm;
-  2 1: [up]4f2;[up]4f3a3e4; [up]4f3a3e4; 
+  1 1: [up]8f5 bm;[up]8b5;[up]8d6;[up]8f6;[up]8b6;[up]8b4 ebm;
+  2 1: [up]4b2;[up]4f3b3d4; [up]4f3b3d4; 
   bar mnum=23
 
 music
   // m. 23
-  1 1: [up]8f4 bm;[up]8a4 ebm;[down]8a4 bm;[down]8c5 ebm;[down]8c5 bm;[down]8e5 ebm;
-  2 1: [up]4f2;[up]4f3c4e4; [up]4f3c4e4; 
+  1 1: [down]8bn4 bm;[down]8c5 ebm;8r; [up]8f4 bm;[up]8f4;[up]8f4 ebm;
+  2 1: [up]4f2;[up]4f3a3e&4; [up]4f3a3e&4; 
   bar mnum=24
 
 music
   // m. 24
-  1 1: 8e5;4c6;8a5 bm;8f5;8e5 ebm;
-  2 1: [up]4f2;[up]4f3a3c4; [up]4f3a3c4; 
+  1 1: [up]8f4 bm;[up]8a4 ebm;[down]8a4 bm;[down]8c5 ebm;[down]8c5 bm;[down]8e&5 ebm;
+  2 1: [up]4f2;[up]4f3c4e&4; [up]4f3c4e&4; 
   bar mnum=25
 
 music
   // m. 25
-  1 1: {[down]8d5 bm;[down]8d6;[down]8b5 ebm;} below 3,4;{[down]8f5 bm;[down]8d5;[down]8b4 ebm;} below 3,4;{[down]8a4 bm;[down]8g5;[down]8f5 ebm;} below 3,4;
-  2 1: 4b2;4b3d4; 4f3e4; 
+  1 1: 8e&5;4c6;8a5 bm;8f5;8e5 ebm;
+  2 1: [up]4f2;[up]4f3a3c4; [up]4f3a3c4; 
   bar mnum=26
 
+music
   // m. 26
+  1 1: {[down]8d5 bm;[down]8d6;[down]8b5 ebm;} below 3,4;{[down]8f5 bm;[down]8d5;[down]8b4 ebm;} below 3,4;{[down]8a4 bm;[down]8g5;[down]8f5 ebm;} below 3,4;
+  2 1: 4b2;4b3d4; 4f3e4; 
+  bar mnum=27
+
+  // m. 27
   1 1: 4b4;4r; 
   2 1: 4b3d4; 4b2;
-  medium curve (_p2tiestart.x, _p2tiestart.y+1.75) to (_p2tieend.x, _p2tieend.y+1.75) bulge 1 // tie m.18
+  medium curve (_p2tiestart.x, _p2tiestart.y+1.75) to (_p2tieend.x, _p2tieend.y+1.75) bulge 1 // tie m.19
   repeatend
 
