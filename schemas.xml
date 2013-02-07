@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0">
+  <uri resource="kaleidakustikon_4.xml" uri="rng/mei-all.rnc"/>
   <uri resource="kaleidakustikon_3.xml" uri="rng/mei-all.rnc"/>
   <uri resource="kaleidakustikon_2.xml" uri="rng/mei-all.rnc"/>
 </locatingRules>

@@ -161,13 +161,13 @@ music
 music
   // m. 23
   1 1: [down]8bn4 bm;[down]8c5 ebm;8r; [up]8f4 bm;[up]8f4;[up]8f4 ebm;
-  2 1: [up]4f2;[up]4f3a3e&4; [up]4f3a3e&4; 
+  2 1: [up]4f2;[up]4f3a3e4; [up]4f3a3e4; 
   bar mnum=24
 
 music
   // m. 24
-  1 1: [up]8f4 bm;[up]8a4 ebm;[down]8a4 bm;[down]8c5 ebm;[down]8c5 bm;[down]8e&5 ebm;
-  2 1: [up]4f2;[up]4f3c4e&4; [up]4f3c4e&4; 
+  1 1: [up]8f4 bm;[up]8a4 ebm;[down]8a4 bm;[down]8c5 ebm;[down]8c5 bm;[down]8e5 ebm;
+  2 1: [up]4f2;[up]4f3c4e4; [up]4f3c4e4; 
   bar mnum=25
 
 music

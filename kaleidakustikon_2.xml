@@ -729,7 +729,7 @@
 		  <chord dur="4" stem.dir="up" >
 		    <note pname="f" oct="3"  />
 		    <note pname="a" oct="3" />
-		    <note pname="e" oct="4" accid="f" /> <!-- @@check: asc@kb.dk proposes accid="f" ???-->
+		    <note pname="e" oct="4"  /> <!-- @@check: asc@kb.dk proposes accid="f" ???-->
 		  </chord> 
 		  
 		  <!-- Would be an F7 rather than FMaj7, which doesn't fit a
@@ -738,7 +738,7 @@
 		  <chord dur="4" stem.dir="up" >
 		    <note pname="f" oct="3" />
 		    <note pname="a" oct="3" />
-		    <note pname="e" oct="4" accid="f" /> <!-- @@check:  accid="f" ???-->
+		    <note pname="e" oct="4" /> <!-- @@check:  accid="f" ???-->
 		  </chord>
 
 		</layer>
@@ -760,7 +760,7 @@
 		  </beam>
 		  <beam>
 		    <note pname="c" oct="5" dur="8" stem.dir="down"/>
-		    <note pname="e" oct="5" dur="8" stem.dir="down" accid="f" /> 
+		    <note pname="e" oct="5" dur="8" stem.dir="down" /> 
 		  </beam>
 		</layer>
 	      </staff>
@@ -771,13 +771,13 @@
 		  <chord dur="4" stem.dir="up" >
 		    <note pname="f" oct="3"  />
 		    <note pname="c" oct="4" />
-		    <note pname="e" oct="4" accid="f" />  <!-- @@check:  accid="f" ???-->
+		    <note pname="e" oct="4" />  <!-- @@check:  accid="f" ???-->
 		  </chord>
 
 		  <chord dur="4" stem.dir="up" >
 		    <note pname="f" oct="3" />
 		    <note pname="c" oct="4" />
-		    <note pname="e" oct="4" accid="f" />  <!-- @@check: accid="f" ???-->
+		    <note pname="e" oct="4" />  <!-- @@check: accid="f" ???-->
 		  </chord>
 
 		</layer>
