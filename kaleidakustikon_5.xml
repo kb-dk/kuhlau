@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mei xmlns="http://www.music-encoding.org/ns/mei"
+     meiversion="2010-05">
+  <meihead>
+    <filedesc>
+      <titlestmt>
+	<title>Kaleidakustikon Layer 2</title>
+      </titlestmt>
+      <pubstmt>
+      </pubstmt>
+    </filedesc>
+  </meihead>
+  <music>
+    <body>
+      <mdiv>
+	<score>
+	  <scoredef>
+	    <staffgrp symbol="brace">
+	      <staffdef n="1" clef.line="2" clef.shape="G"/>
+	      <staffdef n="2" clef.line="4" clef.shape="F"/>
+	    </staffgrp>
+	  </scoredef>
+	  <!-- A bundt first card -->
+	  <section xml:id="a.5" type="A">
+	    <scoredef key.sig="1f" 
+		      key.pname="f" 
+		      meter.count="3" 
+		      meter.unit="4" />
+	    <measure n="1">
+	      <staff n="1">
+		<layer>
+		  <beam>
+		    <note pname="f" oct="4" dur="8" stem.dir="up" />
+		    <note pname="a" oct="4" dur="8" stem.dir="up" />
+		  </beam>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <rest dur="4"/>
+		</layer>
+	      </staff>
+	    </measure>
+	    <measure n="2">
+	      <staff n="1">
+		<layer>
+		  <beam>
+		    <note pname="a" oct="4" dur="8" stem.dir="down" />
+		    <note pname="c" oct="5" dur="8" stem.dir="down" />
+		    <note pname="c" oct="5" dur="8" stem.dir="down" />
+		    <note pname="f" oct="5" dur="8" stem.dir="down" />
+		    <note pname="f" oct="5" dur="8" stem.dir="down" />
+		    <note pname="a" oct="5" dur="8" stem.dir="down" />
+		  </beam>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <note pname="f" oct="2" dur="4" />
+		  <chord dur="4" stem.dir="down" >
+		    <note pname="f" oct="3" />
+		    <note pname="a" oct="3" />
+		    <note pname="c" oct="4" />
+		  </chord>
+		  <chord dur="4" stem.dir="down" >
+		    <note pname="f" oct="3" />
+		    <note pname="a" oct="3" />
+		    <note pname="c" oct="4" />
+		  </chord>
+		</layer>
+	      </staff>
+	    </measure>
+	  </section>
+	</score>
+      </mdiv>
+    </body>
+  </music>
+</mei>
