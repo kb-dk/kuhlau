@@ -21,7 +21,7 @@
 	    </staffgrp>
 	  </scoredef>
 	  <!-- A bundt first card -->
-	  <section xml:id="a.2">
+	  <section xml:id="a.2" type="A">
 	    <scoredef key.sig="1f" 
 		      key.pname="f" 
 		      meter.count="3" 
@@ -71,7 +71,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="b.2">
+	  <section xml:id="b.2"  type="A">
 	    <measure n="3">
 	      <staff n="1">
 		<layer>
@@ -102,7 +102,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="c.2">
+	  <section xml:id="c.2"  type="A">
 	    <measure n="4">
 	      <staff n="1">
 		<layer>
@@ -133,7 +133,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="d.2">
+	  <section xml:id="d.2"  type="A">
 	    <measure n="5">
 	      <staff n="1">
 		<layer>
@@ -162,7 +162,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="e.2">
+	  <section xml:id="e.2"  type="A">
 	    <measure n="6">
 	      <staff n="1">
 		<layer>
@@ -188,7 +188,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="f.2">
+	  <section xml:id="f.2"  type="A">
 	    <measure n="7">
 	      <staff n="1">
 		<layer>
@@ -217,7 +217,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="g.2">
+	  <section xml:id="g.2"  type="A">
 	    <measure n="8">
 	      <staff n="1">
 		<layer>
@@ -268,7 +268,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="h.2">
+	  <section xml:id="h.2"  type="B">
 	    <measure n="10" >
 	      <staff n="1">
 		<layer>
@@ -323,7 +323,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="i.2">
+	  <section xml:id="i.2"  type="B">
 	    <measure n="12">
 	      <staff n="1">
 		<layer>
@@ -362,7 +362,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="k.2">
+	  <section xml:id="k.2"  type="B">
 	    <measure n="13">
 	      <staff n="1">
 		<layer>
@@ -406,7 +406,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="l.2">
+	  <section xml:id="l.2"  type="B">
 	    <measure n="14">
 	      <staff n="1">
 		<layer>
@@ -444,7 +444,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="m.2">
+	  <section xml:id="m.2"  type="B">
 	    <measure n="15">
 	      <staff n="1">
 		<layer>
@@ -486,7 +486,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="n.2">
+	  <section xml:id="n.2"  type="B">
 	    <measure n="16">
 	      <staff n="1">
 		<layer>
@@ -526,7 +526,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="o.2">
+	  <section xml:id="o.2"  type="B">
 	    <measure n="17">
 	      <staff n="1">
 		<layer>
@@ -579,7 +579,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="p.2">
+	  <section xml:id="p.2" type="C">
 	    <scoredef key.sig="2f" 
 		      key.pname="b" 
 		      meter.count="3" 
@@ -635,7 +635,7 @@
 
 	  </section>
 
-	  <section xml:id="q.2">
+	  <section xml:id="q.2" type="C">
 	    <measure n="21">
 
 	      <staff n="1">
@@ -669,7 +669,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="r.2">
+	  <section xml:id="r.2" type="C">
 	    <measure n="22">
 
 	      <staff n="1">
@@ -706,7 +706,7 @@
 	    </measure>
 	  </section>
 
-	  <section xml:id="s.2">
+	  <section xml:id="s.2" type="C">
 	    <measure n="23">
 	      <staff n="1">
 		<layer>
@@ -746,7 +746,7 @@
 	    </measure>
 	  </section>
 
-	  <section xml:id="t.2">
+	  <section xml:id="t.2" type="C">
 	    <measure n="24">
 	      <staff n="1">
 		<layer>
@@ -785,7 +785,7 @@
 	    </measure>
 	  </section>
 
-	  <section xml:id="u.2">
+	  <section xml:id="u.2" type="C">
 	    <measure n="25">
 	      <staff n="1">
 		<layer>
@@ -819,7 +819,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="v.2">	    
+	  <section xml:id="v.2" type="C">	    
 	    <measure n="26">
 	      <staff n="1">
 		<layer>

@@ -21,7 +21,7 @@
 	      <staffdef n="2" clef.line="4" clef.shape="F"/>
 	    </staffgrp>
 	  </scoredef>
-	  <section xml:id="a.3">
+	  <section xml:id="a.3" type="A">
 	    <scoredef key.sig="1f" 
 		      key.pname="f" 
 		      meter.count="3" 
@@ -72,7 +72,7 @@
 
 	    </measure>
 	  </section>
-	  <section xml:id="b.3">
+	  <section xml:id="b.3"  type="A">
 	    <measure n="3">
 	      <staff n="1">
 		<layer>
@@ -103,7 +103,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="c.3">
+	  <section xml:id="c.3"  type="A">
 	    <measure n="4">	    
 	      <staff n="1">
 		<layer>
@@ -133,7 +133,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="d.3">
+	  <section xml:id="d.3"  type="A">
 	    <measure n="5">
 	      <staff n="1">
 		<layer>
@@ -164,7 +164,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="e.3">
+	  <section xml:id="e.3"  type="A">
 	    <measure n="6">	    
 	      <staff n="1">
 		<layer>
@@ -195,7 +195,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="f.3">
+	  <section xml:id="f.3"  type="A">
 	    <measure n="7">	    
 	      <staff n="1">
 		<layer>
@@ -219,7 +219,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="g.3">
+	  <section xml:id="g.3"  type="A">
 	    <measure n="8">	    
 	      <staff n="1">
 		<layer>
@@ -273,7 +273,7 @@
 	  <!-- this is really section h.11, since eight cards
 	       were lost -->
 
-	  <section xml:id="h.11">
+	  <section xml:id="h.11"  type="B">
 	    <scoredef 
 		key.sig="4f"
 		key.pname="f"
@@ -325,7 +325,7 @@
 	    </measure>
 	  </section>
 
-	  <section xml:id="i.3">
+	  <section xml:id="i.3" type="B">
 	    <measure n="12">
 	      <staff n="1">
 		<layer>
@@ -361,7 +361,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="k.3">
+	  <section xml:id="k.3" type="B">
 	    <measure n="13">
 	      <staff n="1">
 		<layer>
@@ -399,7 +399,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="l.3">
+	  <section xml:id="l.3" type="B">
 	    <measure n="14">
 	      <staff n="1">
 		<layer>
@@ -456,7 +456,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="m.3">
+	  <section xml:id="m.3" type="B">
 	    <measure n="15">
 	      <staff n="1">
 		<layer>
@@ -499,7 +499,7 @@
 
 	    </measure>
 	  </section>
-	  <section xml:id="n.3">
+	  <section xml:id="n.3" type="B">
 	    <measure n="16">
 	    <staff n="1" xml:id="slur.n3.staf1">
 	      <layer>
@@ -547,7 +547,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="o.3">
+	  <section xml:id="o.3" type="B">
 	    <measure n="17">
 	      <staff n="1">
 		<layer>
@@ -591,7 +591,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="p.3">
+	  <section xml:id="p.3" type="C">
 	    <scoredef key.sig="2f" 
 		      key.pname="b" 
 		      meter.count="3" 
@@ -641,7 +641,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="q.3">
+	  <section xml:id="q.3" type="C">
 	    <measure n="21">
 	    <staff n="1">
 	      <layer>
@@ -672,7 +672,7 @@
 	    </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="r.3">
+	  <section xml:id="r.3" type="C">
 	    <measure n="22">
 	    <staff n="1">
 	      <layer>
@@ -705,7 +705,7 @@
 	    </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="s.3">
+	  <section xml:id="s.3" type="C">
 	    <measure n="23">
 	      <staff n="1">
 		<layer>
@@ -730,7 +730,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-	  <section xml:id="t.3">
+	  <section xml:id="t.3" type="C">
 	    <measure n="24">
 	      <staff n="1">
 		<layer>
@@ -770,7 +770,7 @@
 	    </measure>
 	  </section>
 
-	  <section xml:id="u.3">
+	  <section xml:id="u.3" type="C">
 	    <measure n="25">
 	      <staff n="1">
 		<layer>
@@ -807,7 +807,7 @@
 
 	  </section>
 
-	  <section xml:id="v.3">
+	  <section xml:id="v.3" type="C">
 	    <measure n="26">
 	      <staff n="1">
 		<layer>
