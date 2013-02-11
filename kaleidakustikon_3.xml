@@ -626,13 +626,13 @@
 		<layer>
 		  <note pname="b" oct="2" dur="4" stem.dir="up"/>
 
-		  <chord dur="4" stem.dir="up">
+		  <chord dur="4" stem.dir="down">
 		    <note pname="f" oct="3" />
 		    <note pname="b" oct="3" />
 		    <note pname="d" oct="4" />
 		  </chord>
 
-		  <chord dur="4" stem.dir="up">
+		  <chord dur="4" stem.dir="down">
 		    <note pname="f" oct="3" />
 		    <note pname="b" oct="3" />
 		    <note pname="d" oct="4" />
