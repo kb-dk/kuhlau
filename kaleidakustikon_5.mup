@@ -1,0 +1,35 @@
+// Kaleidakustikon Layer 2
+
+header
+  title "Kaleidakustikon Layer 2"
+  title ""
+
+score
+  vscheme=3f
+  packfact=.5
+  scale=.75 // turned on for testing
+  measnum=y // turned on for testing
+  staffs=2
+  brace=1-2
+
+staff 1
+  clef=treble
+
+staff 2
+  clef=bass
+
+score
+  time=3/4
+  key=1&
+
+music
+  // m. 1
+  1 1: [up]8f4 bm;[up]8a4 ebm;
+  2 1: 4r; 
+  bar mnum=2
+
+  // m. 2
+  1 1: [down]8a4 bm;[down]8c5;[down]8c5;[down]8f5;[down]8f5;[down]8a5 ebm;
+  2 1: 4f2;[down]4f3a3c4; [down]4f3a3c4; 
+  bar
+
