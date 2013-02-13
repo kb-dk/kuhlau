@@ -838,13 +838,13 @@
 		  <note pname="d" oct="5" dur="8" stem.dir="down" />
 		  <note pname="b" oct="5" dur="4" stem.dir="down" />
 		  <note pname="b" oct="4" dur="8" stem.dir="down" />
-		  <beam xml:id="v5sync">
+		  <beam>
 		    <note pname="g" oct="5" dur="8" dots="1" stem.dir="up" />
 		    <note pname="f" oct="5" dur="16" stem.dir="up"/>
 		  </beam>
 		</layer>
-		<layer synch="v5sync">
-		  <rest dur="2"  />
+		<layer>
+		  <space dur="2"  />
 		  <note pname="a" oct="4" dur="4" stem.dir="down" />
 		</layer>
 	      </staff>
