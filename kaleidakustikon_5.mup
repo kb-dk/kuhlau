@@ -174,7 +174,7 @@ music
 music
   // m. 26
   1 1: [down]8d5;[down]4b5;[down]8b4;[up]8.g5 bm;[up]16f5 ebm;
-  1 2: 2r; [down]4a4;
+  1 2: 2s; [down]4a4;
   2 1: [down]4g3b3; [down]4e3c4; [down]4f3e4; 
   bar mnum=27
 
