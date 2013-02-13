@@ -760,21 +760,23 @@
 		  </beam>
 		</layer>
 	      </staff>
+
 	      <staff n="2">
 		<layer>
 		  <note pname="f" oct="2" dur="4" stem.dir="up" />
 		  <chord dur="4" stem.dir="down">
 		    <note pname="f" oct="3" />
-		    <note pname="a" oct="3" />
+		    <note pname="c" oct="4" />
 		    <note pname="e" oct="4" />
 		  </chord>
 		  <chord dur="4" stem.dir="down">
 		    <note pname="f" oct="3" />
-		    <note pname="a" oct="3" />
+		    <note pname="c" oct="4" />
 		    <note pname="e" oct="4" />
 		  </chord>
 
 		</layer>
+		
 	      </staff>
 	    </measure>
 	  </section>

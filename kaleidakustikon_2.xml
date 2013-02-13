@@ -726,7 +726,7 @@
 		<layer>
 		  <note pname="f" oct="2" dur="4" stem.dir="up"/>
 		  
-		  <chord dur="4" stem.dir="up" >
+		  <chord dur="4" stem.dir="down" >
 		    <note pname="f" oct="3"  />
 		    <note pname="a" oct="3" />
 		    <note pname="e" oct="4"  /> <!-- @@check: asc@kb.dk proposes accid="f" ???-->
@@ -735,7 +735,7 @@
 		  <!-- Would be an F7 rather than FMaj7, which doesn't fit a
 		       dominant function -->
 
-		  <chord dur="4" stem.dir="up" >
+		  <chord dur="4" stem.dir="down" >
 		    <note pname="f" oct="3" />
 		    <note pname="a" oct="3" />
 		    <note pname="e" oct="4" /> <!-- @@check:  accid="f" ???-->

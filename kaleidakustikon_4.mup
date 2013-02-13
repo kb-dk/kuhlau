@@ -184,7 +184,7 @@ music
 music
   // m. 24
   1 1: [up]8f4 bm;[up]8a4;[up]8c5;[up]8bn4;[up]8d5;[up]8c5 ebm;
-  2 1: [up]4f2;[down]4f3a3e4; [down]4f3a3e4; 
+  2 1: [up]4f2;[down]4f3c4e4; [down]4f3c4e4; 
   bar mnum=25
 
 music
