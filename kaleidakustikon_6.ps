@@ -1,0 +1,3506 @@
+%!PS-Adobe-1.0
+%%Creator: Mup (Version 6.1)
+%%Title: music:  from kaleidakustikon_6.mup
+%%CreationDate: Wed Feb 13 15:11:40 2013
+%%Pages: (atend)
+%%DocumentFonts: (atend)
+%%BoundingBox: 0 0 612 792
+%%DocumentMedia: Default 612 792 0 () ()
+%%Orientation: Portrait
+%%EndComments
+% Mup prolog Copyright (c) 1995, 1996, 1997, 1998, 1999, 2000, 2003, 2004,
+% 2008, 2009, 2012 by Arkkra Enterprises
+% All rights reserved
+
+% Mup PostScript Prolog 6.1 for use with Mup 6.1
+
+% lwid is used as the width of a standard (thin) line in the music
+% character definitions.
+/lwid 70 def
+/halflwid lwid 2 div def
+
+% Define the following for use in do_upshortnote, do_dnshortnote, and
+% do_shortrest; it has to be done outside of the music font definition.
+/utildict 10 dict def
+utildict begin
+	/setnumflags	{	/numflags	exch def } def
+	/sethooksm1	{	/hooksm1	exch def } def
+	/setoffsets	{	/offsets	exch def } def
+	/setx		{	/x		exch def } def
+	/sety		{	/y		exch def } def
+end
+
+% Define a music character font.  Each music character is defined as if it
+% were a normal ASCII character in a strange font where "A" looks like a
+% treble clef, "B" looks like a bass clef, etc.
+
+/mfont0 100 dict def
+mfont0 begin
+	/FontType 3 def
+	/FontMatrix [ .001 0 0 0.001 0 0 ] def
+	/FontBBox [ -2000 -4030 2000 4030 ] def
+	/FontName (Mfont0) def
+
+	% set up Encoding vector with standard names
+	/Encoding 256 array def
+	StandardEncoding Encoding copy
+	pop
+
+	% the following definitions are used for quarter rests
+	/topx -170 def /topy 950 def
+	/cor1x 250 def /cor1y 450 def
+	/cor2x -300 def /cor2y 200 def
+	/cor3x 250 def /cor3y -400 def
+
+	% the following definitions are used for double sharps
+	/limit 300 halflwid add def
+	/off 70 def
+	/inbendsmall limit 200 sub def
+	/inbendbig limit 20 sub def
+	/outbendsmall 100 def
+	/outbendbig outbendsmall off add def
+
+	%%%%% define routines that will be used by multiple characters %%%%%
+	/do_1n {
+		gsave
+		newpath -10 rotate 1.6 1 scale
+		0 0 325 0 360 arc		%outer ellipse
+		1 1.6 div 1 scale 10 rotate	%back to original
+		35 rotate 0.85 1.1 scale
+		0 0 275 0 360 arc		%inner ellipse
+		eofill
+		grestore
+	} def
+	/do_upflag {
+		-315 0 moveto
+		-300 100 -100 480 0 600 curveto
+		300 960 350 1500 200 1700 curveto
+		130 1700 lineto
+		350 1200 50 650 -315 600 curveto
+		fill
+	} def
+	/do_flat {
+		-250 -400 moveto	%outer edge of loop
+		500 0 350 650 -250 160 curveto
+		-250 160 lwid sub lineto %inner edge of loop
+		100 400 300 0 -250 -400 lwid add curveto
+		fill
+
+		lwid setlinewidth	%stem
+		-250 1100 moveto -250 -400 lineto stroke
+	} def
+	/do_diamond {
+		newpath
+		420 0 moveto 0 300 lineto -420 0 lineto
+		0 -300 lineto closepath
+		259 -29 moveto -41 185 lineto -259 29 lineto
+		41 -185 lineto closepath
+		eofill
+	} def
+	/do_2n {
+		gsave
+		newpath 25 rotate 1.4 1 scale
+		0 0 315 0 360 arc		%outer ellipse
+		1 1.4 div 1 scale		%back to original
+		1.3 0.5 scale
+		0 0 310 0 360 arc		%inner ellipse
+		eofill
+		grestore
+	} def
+	/do_4n {
+		gsave
+		newpath 25 rotate 1.35 1 scale
+		0 0 310 0 360 arc fill
+		grestore
+	} def
+	/do_com {
+		newpath
+		330 250 150 0 360 arc fill	%knob at upper right
+		465 300 moveto			%outer boundary
+		410 500 200 635 0 635 curveto
+		-750 635 -750 -635 0 -635 curveto
+		350 -635 480 -300 500 -100 curveto
+		430 -100 lineto			%inner boundary
+		380 -300 250 -565 0 -565 curveto
+		-450 -565 -450 565 0 565 curveto
+		200 565 370 350 395 300 curveto
+		fill
+	} def
+	/do_ferm {
+		0 0 800 lwid sub 0 180 arc	%inner arc
+		-800 0 lineto
+		0 270 lwid sub 800 180 0 arcn	%outer arc
+		800 0 lineto fill
+		0 120 120 0 360 arc fill	%the dot
+	} def
+	/do_mor {
+		gsave
+		0.7 1 scale	%scrunch the following horizontally
+		45 rotate	%to pretend all lines horz or vertical
+		0 1 1 {
+			pop	%we don't need the loop variable
+			%one half of the mordent
+			0 40 moveto 350 40 lineto 350 -460 lineto
+			750 -460 lineto 750 -540 lineto
+			150 -540 lineto 150 -40 lineto
+			0 -40 lineto fill
+			180 rotate	%to do the other half
+		} for
+		grestore
+	} def
+	/do_turn {
+		gsave
+		0 1 1 {
+			pop	%we don't need the loop variable
+			0 -100 moveto	%outer boundary
+			200 -400 625 -400 625 0 curveto
+			625 200 500 325 300 325 curveto
+			300 185 lineto	%inner boundary
+			450 255 555 150 555 0 curveto
+			555 -350 250 -250 0 100 curveto
+			fill
+			300 255 70 0 360 arc fill %knob on end
+			180 rotate	%to do the other half
+		} for
+		grestore
+	} def
+
+	/do_upshortnote {
+		utildict begin
+		setnumflags		%set numflags from the stack
+		gsave
+		-330 0 translate	%half a flag width
+		do_4n			%do a quarter note head
+		lwid setlinewidth
+		370 0 moveto
+		370 2100 numflags 2 sub flagsep mul add lineto stroke
+		670 2100 numflags 2 sub flagsep mul add translate
+		1 -1 scale		%reflect across X axis
+		0 1 numflags 1 sub {
+			do_upflag	%do an upflag
+			pop		%we don't need the loop variable
+			0 flagsep translate
+		} for
+		grestore
+		end
+	} def
+
+	/do_dnshortnote {
+		utildict begin
+		setnumflags		%set numflags from the stack
+		do_4n			%do a quarter note head
+		lwid setlinewidth
+		-370 0 moveto
+		-370 -2100 numflags 2 sub flagsep mul sub lineto stroke
+		gsave
+		-70 -2100 numflags 2 sub flagsep mul sub translate
+		0 1 numflags 1 sub {
+			do_upflag	%do an upflag
+			pop		%we don't need the loop variable
+			0 flagsep translate
+		} for
+		grestore
+		end
+	} def
+
+	/do_shortrest {
+		utildict begin
+		sety setx setoffsets sethooksm1	%set variable from the stack
+		gsave
+		-105.8 offsets mul -600 offsets mul translate
+		0 1 hooksm1 {		%loop once per hook
+			newpath
+			1 setlinewidth
+			gsave
+			1 1.2 scale
+			-150 300 1.2 div 140 0 360 arc fill 	%the dot
+			grestore
+			lwid setlinewidth
+			-50 700 550 255 315 arc		%rest of the hook
+			hooksm1 lt { stroke 105.8 600 translate } if
+		} for
+		x y lineto stroke
+		grestore
+		end
+	} def
+
+
+	% subsidiary dictionary of character definitions
+	/CharStrings 128 dict def
+	CharStrings begin
+
+		/.notdef {} def
+
+		% Here are the definitions of the characters.  A stepsize here
+		% is 300 units (assuming the character is drawn at its default
+		% size).
+
+		% gclef
+		/A {
+			newpath
+			%start with inner curl, inside boundary
+			-50 -300 moveto
+			-450 600 700 700 750 0 curveto
+			750 -800 -700 -800 -700 200 curveto
+			-700 900 500 1400 520 2250 curveto
+			520 2900 300 3000 200 3000 curveto
+			100 3000 -400 2500 -200 1800 curveto
+			350 -600 lineto
+			720 -1600 0 -1650 -400 -1400 curveto
+
+			%go back to start, drawing the other boundary
+			-400 -1480 lineto
+			0 -1700 800 -1700 430 -600 curveto
+			-120 1800 lineto
+			-300 2400 200 2800 250 2800 curveto
+			400 2800 430 2700 430 2450 curveto
+			430 1800 -900 1200 -900 300 curveto
+			-750 -900 800 -900 850 0 curveto
+			900 1100 -750 900 -120 -300 curveto fill
+
+			%circle at the bottom
+			-300 -1250 250 0 360 arc fill
+		} def
+
+		% fclef
+		/B {
+			newpath
+			%start with outside boundary, at bottom
+			-1000 -1700 moveto
+			100 -1100 500 -600 450 0 curveto
+			450 850 -1100 850 -950 0 curveto
+
+			%go back to start, drawing the other boundary
+			-880 0 lineto
+			-920 400 -600 560 -300 560 curveto
+			0 560 150 400 150 0 curveto
+			150 -400 100 -900 -1000 -1620 curveto fill
+
+			%circle at the left
+			newpath
+			-700 0 250 0 360 arc fill
+
+			%do the two dots after the main curve
+			700 -300 100 0 360 arc fill
+			700 300 100 0 360 arc fill
+		} def
+
+		% cclef
+		/C {
+			gsave
+			%do upper curved part, then scale to do mirror image
+			0 1 1 {
+				pop	%we don't need the loop variable
+				%outer boundary of curve
+				-170 0 moveto 100 300 lineto
+				400 -200 750 300 750 650 curveto
+				750 1100 450 1235 250 1235 curveto
+				0 1235 -143 1100 -143 950 curveto
+
+				%inner boundary of curve
+				0 950 lineto
+				0 1100 30 1165 250 1165 curveto
+				300 1165 450 1100 450 650 curveto
+				450 400 400 -100 100 400 curveto
+				-270 0 lineto fill
+				%stroke
+				%-270 0 moveto 100 400 lineto
+				%400 -100 450 400 450 650 curveto
+				%450 1100 300 1165 250 1165 curveto
+				%30 1165 0 1100 0 950 curveto
+				%stroke
+
+				%elliptical ball at end of curve
+				gsave
+				1.3 1 scale
+				10 950 120 0 360 arc fill
+				grestore
+				1 -1 scale	%reflect across X axis
+			} for
+			grestore
+
+			% two vertical lines on the left
+			300 setlinewidth -600 -1200 halflwid sub moveto
+			-600 1200 halflwid add lineto stroke
+			lwid setlinewidth -300 -1200 halflwid sub moveto
+			-300 1200 halflwid add lineto stroke
+		} def
+
+		% dblwhole
+		/D {
+			do_1n		%do a whole note
+			lwid setlinewidth
+			-490 -600 moveto -490 600 lineto stroke
+			490 -600 moveto 490 600 lineto stroke
+		} def
+
+		% 1n
+		/E {
+			do_1n		%do a whole note
+		} def
+
+		% 2n
+		/F {
+			do_2n		%do a half note
+		} def
+
+		% 4n
+		/G {
+			do_4n		%do a quarter note head
+		} def
+
+		% upflag
+		/H {
+			do_upflag		%do an upflag
+		} def
+
+		% dnflag
+		/I {
+			gsave
+			1 -1 scale	%reflect across X axis
+			do_upflag		%do an upflag
+			grestore
+		} def
+
+		% dwhrest
+		/J {
+			300 setlinewidth
+			0 0 moveto 0 600 lineto stroke
+		} def
+
+		% 1rest
+		/K {
+			lwid setlinewidth
+			-750 600 moveto 750 600 lineto stroke
+			300 setlinewidth
+			-400 450 moveto 400 450 lineto stroke
+		} def
+
+		% 2rest
+		/L {
+			lwid setlinewidth
+			-750 0 moveto 750 0 lineto stroke
+			300 setlinewidth
+			-400 150 moveto 400 150 lineto stroke
+		} def
+
+		% 4rest
+		/M {
+			newpath
+			cor3x cor3y halflwid add moveto
+			%-400 -200 -450 -650 50 -950 lwid add curveto
+			-450 -50 -450 -650 50 -950 lwid add curveto
+			-150 -650 -100 -250 cor3x cor3y halflwid sub curveto
+			fill
+
+			cor1x cor1y moveto cor1x 200 sub cor1y 200 add lineto
+			cor2x cor2y lineto cor2x 200 add cor2y 200 sub lineto
+			fill
+
+			lwid setlinewidth
+			topx topy moveto cor1x cor1y lineto stroke
+			cor2x cor2y moveto cor3x cor3y lineto stroke
+		} def
+
+		% 8rest
+		/N {
+			0 0 0 -600 do_shortrest
+		} def
+
+		% 16rest
+		/O {
+			1 1 100 -1200 do_shortrest
+		} def
+
+		% 32rest
+		/P {
+			2 1 0 -1800 do_shortrest
+		} def
+
+		% 64rest
+		/Q {
+			3 2 -80 -2100 do_shortrest
+		} def
+
+		% 128rest
+		/R {
+			4 2 -150 -2700 do_shortrest
+		} def
+
+		% 256rest
+		/S {
+			5 3 -280 -3300 do_shortrest
+		} def
+
+		% dot
+		/T {
+			newpath
+			0 0 120 0 360 arc fill
+		} def
+
+		% nat
+		/U {
+			% fill crossbars so that we can do parallelograms
+			-235 -470 moveto -235 -270 lineto
+			235 -130 lineto 235 -330 lineto fill
+			-235 130 moveto -235 330 lineto
+			235 470 lineto 235 270 lineto fill
+
+			% vertical strokes
+			lwid setlinewidth
+			-200 -380 moveto -200 850 lineto stroke
+			200 -850 moveto 200 380 lineto stroke
+		} def
+
+		% sharp
+		/V {
+			% fill crossbars so that we can do parallelograms
+			-325 -480 moveto -325 -280 lineto
+			325 -120 lineto 325 -320 lineto fill
+			-325 120 moveto -325 320 lineto
+			325 480 lineto 325 280 lineto fill
+
+			% vertical strokes
+			lwid setlinewidth
+			-150 -930 moveto -150 880 lineto stroke
+			150 -880 moveto 150 930 lineto stroke
+		} def
+
+		% flat
+		/W {
+			do_flat		%do a flat
+		} def
+
+		% dblsharp
+		/X {
+			gsave
+			0 1 3 {		%loop once for each of 4 sticks
+				pop	%we don't need the loop variable
+				0 off neg moveto
+				outbendbig outbendsmall lineto
+				inbendbig inbendsmall lineto
+				limit limit lineto
+				inbendsmall inbendbig lineto
+				outbendsmall outbendbig lineto
+				off neg 0 lineto
+				fill
+				-90 rotate
+			} for
+			grestore
+		} def
+
+		% dblflat
+		/Y {
+			-290 580 290 {	%loop once for each flat
+
+				gsave
+				1 setlinewidth
+				0 translate	%translate left/right (loop var)
+				do_flat		%do a flat
+				grestore
+
+			} for
+		} def
+
+		% xnote
+		/Z {
+			gsave
+			1.15 1 scale 120 setlinewidth 1 setlinecap	%round
+			-300 -300 moveto 300 300 lineto stroke
+			-300 300 moveto 300 -300 lineto stroke
+			grestore
+		} def
+
+		% dwhdiamond
+		/a {
+			do_diamond	%do a diamond
+			lwid setlinewidth
+			-420 -600 moveto -420 600 lineto stroke
+			420 -600 moveto 420 600 lineto stroke
+		} def
+
+		% diamond
+		/b {
+			do_diamond	%do a diamond
+		} def
+
+		% filldiamond
+		/c {
+			420 0 moveto 0 300 lineto
+			-420 0 lineto 0 -300 lineto fill
+		} def
+
+		% up2n
+		/d {
+			lwid setlinewidth
+			380 0 moveto 380 2100 lineto stroke
+			do_2n		%do a half note
+		} def
+
+		% dn2n
+		/e {
+			lwid setlinewidth
+			-380 0 moveto -380 -2100 lineto stroke
+			do_2n		%do a half note
+		} def
+
+		% up4n
+		/f {
+			do_4n		%do a quarter note head
+			lwid setlinewidth
+			370 0 moveto 370 2100 lineto stroke
+		} def
+
+		% dn4n
+		/g {
+			do_4n		%do a quarter note head
+			lwid setlinewidth
+			-370 0 moveto -370 -2100 lineto stroke
+		} def
+
+		% up8n
+		/h {
+			gsave
+			-330 0 translate	% half a flag width
+			do_4n		%do a quarter note head
+			lwid setlinewidth
+			370 0 moveto 370 2100 lineto stroke
+			670 2100 translate
+			1 -1 scale	%reflect across X axis
+			do_upflag		%do an upflag
+			grestore
+		} def
+
+		% dn8n
+		/i {
+			do_4n		%do a quarter note head
+			lwid setlinewidth
+			-370 0 moveto -370 -2100 lineto stroke
+			gsave
+			-70 -2100 translate
+			do_upflag		%do an upflag
+			grestore
+		} def
+
+		% up16n
+		/j {
+			2 do_upshortnote
+		} def
+
+		% dn16n
+		/k {
+			2 do_dnshortnote
+		} def
+
+		% up32n
+		/l {
+			3 do_upshortnote
+		} def
+
+		% dn32n
+		/m {
+			3 do_dnshortnote
+		} def
+
+		% up64n
+		/n {
+			4 do_upshortnote
+		} def
+
+		% dn64n
+		/o {
+			4 do_dnshortnote
+		} def
+
+		% up128n
+		/p {
+			5 do_upshortnote
+		} def
+
+		% dn128n
+		/q {
+			5 do_dnshortnote
+		} def
+
+		% up256n
+		/r {
+			6 do_upshortnote
+		} def
+
+		% dn256n
+		/s {
+			6 do_dnshortnote
+		} def
+
+		% com
+		/t {
+			do_com		%do a common time symbol
+		} def
+
+		% cut
+		/u {
+			do_com		%do a common time symbol
+			lwid setlinewidth
+			0 -900 moveto 0 900 lineto stroke
+		} def
+
+		% begped
+		/v {
+			lwid setlinewidth
+			-200 600 moveto -200 0 lineto 200 0 lineto stroke
+		} def
+
+		% pedal
+		/w {
+			lwid setlinewidth
+			-500 0 moveto -450 0 lineto 0 600 lineto
+			450 0 lineto 500 0 lineto stroke
+		} def
+
+		% endped
+		/x {
+			lwid setlinewidth
+			200 600 moveto 200 0 lineto -200 0 lineto stroke
+		} def
+
+		% dnbow
+		/y {
+			lwid setlinewidth
+			-350 0 moveto -350 900 lineto stroke
+			350 0 moveto 350 900 lineto stroke
+			200 setlinewidth
+			-350 800 moveto 350 800 lineto stroke
+		} def
+
+		% upbow
+		/z {
+			lwid setlinewidth
+			-300 900 moveto 0 0 lineto 300 900 lineto stroke
+		} def
+
+		% wedge
+		/one {
+			0 0 moveto -150 500 lineto 150 500 lineto fill
+		} def
+
+		% uwedge
+		/two {
+			-150 0 moveto 150 0 lineto 0 500 lineto fill
+		} def
+
+		% ferm
+		/three {
+			newpath
+			do_ferm		%do a right side up fermata
+		} def
+
+		% uferm
+		/four {
+			newpath
+			gsave
+			0 270 lwid sub 800 add translate %baseline at bottom
+			180 rotate			%upside down
+			do_ferm		%do a right side up fermata
+			grestore
+		} def
+
+		% sign
+		/five {
+			gsave
+			%do upper left curved part, upper right dot;
+			%then rotate 180 to do other half
+			0 1 1 {
+				pop	%we don't need the loop variable
+				0 100 moveto		%inner boundary
+				-1000 300 -400 750 -200 700 curveto
+				-200 800 lineto		%outer boundary
+				-550 900 -1100 100 0 -100 curveto
+				fill
+				%dot at end of curve
+				-200 700 100 0 360 arc fill
+				%dot in upper right quadrant
+				500 200 70 0 360 arc fill
+				180 rotate
+			} for
+			grestore
+
+			%slash through middle
+			lwid setlinewidth
+			-400 -800 moveto 400 800 lineto stroke
+		} def
+
+		% coda
+		/six {
+			newpath
+			gsave
+			0.6 1 scale
+			0 0 550 0 360 arc	%outside boundary
+			1 0.6 div 1 scale	%back to original
+			0.9 1 scale
+			0 0 650 0 360 arc	%inside boundary
+			eofill
+			grestore
+			lwid setlinewidth
+			0 -850 moveto 0 850 lineto stroke
+			-800 0 moveto 800 0 lineto stroke
+		} def
+
+		% mor
+		/seven {
+			do_mor		%do a mordent
+		} def
+
+		% invmor
+		/eight {
+			do_mor		%do a mordent
+			lwid setlinewidth
+			0 -450 moveto 0 450 lineto stroke
+		} def
+
+		% turn
+		/nine {
+			do_turn		%do a turn
+		} def
+
+		% invturn
+		/zero {
+			gsave
+			1 -1 scale	%reflect across X axis
+			do_turn		%do a turn
+			grestore
+		} def
+
+		% acc_gt
+		/numbersign {
+			lwid setlinewidth
+			-500 300 moveto 500 0 lineto -500 -300 lineto stroke
+		} def
+
+		% acc_hat
+		/dollar {
+			newpath
+			-365 0 moveto 0 860 lineto 365 0 lineto
+			150 0 lineto -75 530 lineto -300 0 lineto fill
+		} def
+
+		% acc_uhat
+		/quotedbl {
+			newpath
+			365 860 moveto 0 0 lineto -365 860 lineto
+			-150 860 lineto 75 330 lineto 300 860 lineto fill
+		} def
+
+		% tr
+		/asterisk {
+			%vertical bar of t
+			-350 1000 moveto -550 200 lineto
+			-612.5 -50 -212.5 -50 -160 200 curveto
+			-230 200 lineto
+			-300 50 -420 50 -400 200 curveto
+			-200 1000 lineto fill
+
+			%crossbar of t and vertical bar of r
+			-700 600 moveto -160 600 lineto
+			20 600 30 520 60 440 curveto
+			-50 0 lineto 70 0 lineto 180 440 lineto
+			190 480 100 670 -150 670 curveto
+			-690 670 lineto fill
+
+			%horizontal curve of r
+			100 480 moveto
+			300 630 450 700 650 550 curveto
+			560 480 lineto
+			450 630 300 560 100 390 curveto
+			fill
+
+			%knob at end of r
+			600 460 100 0 360 arc fill
+		} def
+
+		% leg
+		/comma {
+			100 setlinewidth
+			-400 0 moveto 400 0 lineto stroke
+		} def
+
+		% rr
+		/hyphen {
+			100 setlinewidth
+			-400 0 moveto 0 1000 lineto stroke
+			0 0 moveto 400 1000 lineto stroke
+		} def
+
+		% measrpt
+		/period {
+			newpath -450 400 150 0 360 arc fill
+			newpath 450 -400 150 0 360 arc fill
+			200 setlinewidth
+			-550 -600 moveto 550 600 lineto stroke
+		} def
+
+		% copyright
+		/slash {
+			lwid setlinewidth
+			newpath 0 400 400 0 360 arc stroke
+			newpath 0 400 200 45 315 arc stroke
+		} def
+
+		% dim
+		/quoteleft {
+			50 setlinewidth
+			newpath 0 640 220 0 360 arc stroke
+		} def
+
+		% halfdim
+		/quoteright {
+			50 setlinewidth
+			newpath 0 640 220 0 360 arc stroke
+			newpath -340 300 moveto 340 980 lineto stroke
+		} def
+
+		% triangle
+		/asciicircum {
+			50 setlinewidth
+			newpath -340 -10 moveto 0 710 lineto
+			340 -10 lineto closepath stroke
+		} def
+
+		% qwhrest
+		/ampersand {
+			300 setlinewidth
+			0 -600 moveto 0 600 lineto stroke
+		} def
+
+		% ll1rest
+		/exclam {
+			310 setlinewidth
+			-400 455 moveto 400 450 lineto stroke
+		} def
+
+		% ll2rest
+		/at {
+			310 setlinewidth
+			-400 145 moveto 400 150 lineto stroke
+		} def
+	end
+
+	/BuildChar {
+
+		exch begin
+		Encoding exch get
+
+		dup
+		Mcbbox0 exch get
+		aload pop setcachedevice
+
+		CharStrings exch get
+		exec
+		end
+	} def
+end
+
+
+% Define another music character font, since there are too many to fit in one
+% font.  It works the same way as the first one.
+
+/mfont1 100 dict def
+mfont1 begin
+	/FontType 3 def
+	/FontMatrix [ .001 0 0 0.001 0 0 ] def
+	/FontBBox [ -2000 -4030 2000 4030 ] def
+	/FontName (Mfont1) def
+
+	% set up Encoding vector with standard names
+	/Encoding 256 array def
+	StandardEncoding Encoding copy
+	pop
+
+	%%%%% define routines that will be used by multiple characters %%%%%
+
+	/do_dwh_bars {
+		% the two bars surrounding a double whole note
+		lwid setlinewidth
+		-420 -600 moveto -420 600 lineto stroke
+		420 -600 moveto 420 600 lineto stroke
+	} def
+	/do_righttriangle {
+		newpath
+		420 270 moveto -420 270 lineto 350 -300 lineto 420 -300 lineto
+		350 150 moveto -140 150 lineto 350 -213 lineto
+		eofill
+	} def
+	/do_fillrighttriangle {
+		newpath
+		420 270 moveto -420 270 lineto 350 -300 lineto 420 -300 lineto
+		fill
+	} def
+	/do_rectangle {
+		newpath
+		420 270 moveto -420 270 lineto -420 -270 lineto 420 -270 lineto
+		350 150 moveto -350 150 lineto -350 -150 lineto 350 -150 lineto
+		eofill
+	} def
+	/do_isostriangle {
+		newpath
+		0 300 moveto -420 -270 lineto 420 -270 lineto
+		0 182 moveto -245 -150 lineto 245 -150 lineto
+		eofill
+	} def
+	/do_piewedge {
+		newpath
+		0 -300 moveto 0 -244 514 35 145 arc
+		0 -209 moveto 0 -244 394 43 137 arc
+		eofill
+	} def
+	/do_semicircle {
+		newpath
+		gsave
+		1 1.357 scale 420 199 moveto 0 199 420 180 360 arc
+		1 1.09 scale 350 111 moveto 0 199 350 194.1 345.9 arc
+		eofill
+		grestore
+	} def
+	/do_slashhead {
+		newpath
+		lwid setlinewidth
+		-620 -530 moveto -480 -670 lineto 620 530 lineto 480 670 lineto
+		closepath stroke
+	} def
+
+	% subsidiary dictionary of character definitions
+	/CharStrings 128 dict def
+	CharStrings begin
+
+		/.notdef {} def
+
+		% Here are the definitions of the characters.  A stepsize here
+		% is 300 units (assuming the character is drawn at its default
+		% size).
+
+		% dwhrighttriangle
+		/A {
+			do_righttriangle
+			do_dwh_bars
+		} def
+
+		% righttriangle
+		/B {
+			do_righttriangle
+		} def
+
+		% fillrighttriangle
+		/C {
+			newpath
+			420 270 moveto -420 270 lineto 350 -300 lineto
+			420 -300 lineto
+			fill
+		} def
+
+		% udwhrighttriangle
+		/D {
+			gsave
+			180 rotate
+			do_righttriangle
+			do_dwh_bars
+			grestore
+		} def
+
+		% urighttriangle
+		/E {
+			gsave
+			180 rotate
+			do_righttriangle
+			grestore
+		} def
+
+		% ufillrighttriangle
+		/F {
+			gsave
+			180 rotate
+			do_fillrighttriangle
+			grestore
+		} def
+
+		% dwhrectangle
+		/G {
+			do_rectangle
+			do_dwh_bars
+		} def
+
+		% rectangle
+		/H {
+			do_rectangle
+		} def
+
+		% fillrectangle
+		/I {
+			newpath
+			420 270 moveto -420 270 lineto -420 -270 lineto
+			420 -270 lineto
+			fill
+		} def
+
+		% dwhisostriangle
+		/J {
+			do_isostriangle
+			do_dwh_bars
+		} def
+
+		% isostriangle
+		/K {
+			do_isostriangle
+		} def
+
+		% fillisostriangle
+		/L {
+			newpath
+			0 300 moveto -420 -270 lineto 420 -270 lineto
+			fill
+		} def
+
+		% dwhpiewedge
+		/M {
+			do_piewedge
+			do_dwh_bars
+		} def
+
+		% piewedge
+		/N {
+			do_piewedge
+		} def
+
+		% fillpiewedge
+		/O {
+			newpath
+			0 -300 moveto 0 -244 514 35 145 arc
+			fill
+		} def
+
+		% dwhsemicircle
+		/P {
+			do_semicircle
+			do_dwh_bars
+		} def
+
+		% semicircle
+		/Q {
+			do_semicircle
+		} def
+
+		% fillsemicircle
+		/R {
+			newpath
+			gsave
+			1 570 420 div scale
+			420 199 moveto 0 199 420 180 360 arc
+			fill
+			grestore
+		} def
+
+		% dwhslashhead
+		/S {
+			do_slashhead
+			lwid setlinewidth
+			-650 -600 moveto -650 600 lineto stroke
+			650 -600 moveto 650 600 lineto stroke
+		} def
+
+		% slashhead
+		/T {
+			do_slashhead
+		} def
+
+		% fillslashhead
+		/U {
+			newpath
+			200 setlinewidth
+			-550 -600 moveto 550 600 lineto stroke
+		} def
+
+		% blankhead
+		/V {
+			%print nothing
+		} def
+	end
+
+	/BuildChar {
+
+		exch begin
+		Encoding exch get
+
+		dup
+		Mcbbox1 exch get
+		aload pop setcachedevice
+
+		CharStrings exch get
+		exec
+		end
+	} def
+end
+
+
+% General routines for printing any music character, invoked by each music
+% character's specific routine below.  The scaling factor (default 1) needs
+% to be multiplied by 10 to get the actual size.  These routines restore the
+% preexisting current font when they are done.
+
+/printmchar0 {
+	gsave
+	/musicchar exch def
+	/Mfont0 findfont exch 10 mul scalefont setfont moveto 
+	musicchar show
+	grestore
+} def
+/printmchar1 {
+	gsave
+	/musicchar exch def
+	/Mfont1 findfont exch 10 mul scalefont setfont moveto 
+	musicchar show
+	grestore
+} def
+
+% Define each music character name to be a routine that prints the character.
+% Each character is to be invoked as in this example:
+%	100 200 1 gclef		% at (100, 200), scale to default size & print
+
+/gclef			{ (A) printmchar0 } def
+/fclef			{ (B) printmchar0 } def
+/cclef			{ (C) printmchar0 } def
+/dblwhole		{ (D) printmchar0 } def
+/1n			{ (E) printmchar0 } def
+/2n			{ (F) printmchar0 } def
+/4n			{ (G) printmchar0 } def
+/upflag			{ (H) printmchar0 } def
+/dnflag			{ (I) printmchar0 } def
+/dwhrest		{ (J) printmchar0 } def
+/1rest			{ (K) printmchar0 } def
+/2rest			{ (L) printmchar0 } def
+/4rest			{ (M) printmchar0 } def
+/8rest			{ (N) printmchar0 } def
+/16rest			{ (O) printmchar0 } def
+/32rest			{ (P) printmchar0 } def
+/64rest			{ (Q) printmchar0 } def
+/128rest		{ (R) printmchar0 } def
+/256rest		{ (S) printmchar0 } def
+/dot			{ (T) printmchar0 } def
+/nat			{ (U) printmchar0 } def
+/sharp			{ (V) printmchar0 } def
+/flat			{ (W) printmchar0 } def
+/dblsharp		{ (X) printmchar0 } def
+/dblflat		{ (Y) printmchar0 } def
+/xnote			{ (Z) printmchar0 } def
+/dwhdiamond		{ (a) printmchar0 } def
+/diamond		{ (b) printmchar0 } def
+/filldiamond		{ (c) printmchar0 } def
+/up2n			{ (d) printmchar0 } def
+/dn2n			{ (e) printmchar0 } def
+/up4n			{ (f) printmchar0 } def
+/dn4n			{ (g) printmchar0 } def
+/up8n			{ (h) printmchar0 } def
+/dn8n			{ (i) printmchar0 } def
+/up16n			{ (j) printmchar0 } def
+/dn16n			{ (k) printmchar0 } def
+/up32n			{ (l) printmchar0 } def
+/dn32n			{ (m) printmchar0 } def
+/up64n			{ (n) printmchar0 } def
+/dn64n			{ (o) printmchar0 } def
+/up128n			{ (p) printmchar0 } def
+/dn128n			{ (q) printmchar0 } def
+/up256n			{ (r) printmchar0 } def
+/dn256n			{ (s) printmchar0 } def
+/com			{ (t) printmchar0 } def
+/cut			{ (u) printmchar0 } def
+/begped			{ (v) printmchar0 } def
+/pedal			{ (w) printmchar0 } def
+/endped			{ (x) printmchar0 } def
+/dnbow			{ (y) printmchar0 } def
+/upbow			{ (z) printmchar0 } def
+/wedge			{ (1) printmchar0 } def
+/uwedge			{ (2) printmchar0 } def
+/ferm			{ (3) printmchar0 } def
+/uferm			{ (4) printmchar0 } def
+/sign			{ (5) printmchar0 } def
+/coda			{ (6) printmchar0 } def
+/mor			{ (7) printmchar0 } def
+/invmor			{ (8) printmchar0 } def
+/turn			{ (9) printmchar0 } def
+/invturn		{ (0) printmchar0 } def
+/acc_gt			{ (#) printmchar0 } def
+/acc_hat		{ ($) printmchar0 } def
+/acc_uhat		{ (") printmchar0 } def
+/tr			{ (*) printmchar0 } def
+/leg			{ (,) printmchar0 } def
+/rr			{ (-) printmchar0 } def
+/measrpt		{ (.) printmchar0 } def
+/copyright		{ (/) printmchar0 } def
+/dim			{ (`) printmchar0 } def
+/halfdim		{ (') printmchar0 } def
+/triangle		{ (^) printmchar0 } def
+/qwhrest		{ (&) printmchar0 } def
+/ll1rest		{ (!) printmchar0 } def
+/ll2rest		{ (@) printmchar0 } def
+/dwhrighttriangle	{ (A) printmchar1 } def
+/righttriangle		{ (B) printmchar1 } def
+/fillrighttriangle	{ (C) printmchar1 } def
+/udwhrighttriangle	{ (D) printmchar1 } def
+/urighttriangle		{ (E) printmchar1 } def
+/ufillrighttriangle	{ (F) printmchar1 } def
+/dwhrectangle		{ (G) printmchar1 } def
+/rectangle		{ (H) printmchar1 } def
+/fillrectangle		{ (I) printmchar1 } def
+/dwhisostriangle	{ (J) printmchar1 } def
+/isostriangle		{ (K) printmchar1 } def
+/fillisostriangle	{ (L) printmchar1 } def
+/dwhpiewedge		{ (M) printmchar1 } def
+/piewedge		{ (N) printmchar1 } def
+/fillpiewedge		{ (O) printmchar1 } def
+/dwhsemicircle		{ (P) printmchar1 } def
+/semicircle		{ (Q) printmchar1 } def
+/fillsemicircle		{ (R) printmchar1 } def
+/dwhslashhead		{ (S) printmchar1 } def
+/slashhead		{ (T) printmchar1 } def
+/fillslashhead		{ (U) printmchar1 } def
+/blankhead		{ (V) printmchar1 } def
+
+
+% Define routines for Mup output other than music characters.
+
+/stepsize 3 def	   % define a step size as 3 points (at default magnification)
+
+% x1 y1 x2 lines dist staffscale staff
+%		draw a staff starting at x1, y1 and extending to x2 with "lines"
+%		lines, 2*dist*stepsize apart, scaled by staffscale
+/staff {
+	/staffscale exch def
+	/dist exch def
+	/lines exch def
+	/x2 exch def
+	/y1 exch def
+	/x1 exch def
+	0.7 staffscale mul setlinewidth
+	1 lines sub  2  lines 1 sub {	% loop from bottom line to top line
+		dup stepsize mul staffscale mul dist mul y1 add x1 exch moveto
+		stepsize mul staffscale mul dist mul y1 add x2 exch lineto stroke
+	} for
+} def
+
+% x y1 y2 bracket	draw a bracket; y1 is the top
+/bracket {
+	/y2 exch def
+	/y1 exch def
+	/x exch def
+	gsave
+	3 setlinewidth
+	x 2 sub y1 1 add moveto
+	x 2 sub y2 1 sub lineto
+	stroke
+	x 2 sub y1 1 add moveto
+	x 1 sub y1 1 add   x 3 add y1 1 add   x 5 add y1 6 add   curveto
+	x 6 add y1 5 add lineto
+	x 5 add y1 2 add   x 1 add y1 2 sub   x 2 sub y1 2 sub   curveto
+	fill
+	x 2 sub y2 1 sub moveto
+	x 1 sub y2 1 sub   x 3 add y2 1 sub   x 5 add y2 6 sub   curveto
+	x 6 add y2 5 sub lineto
+	x 5 add y2 2 sub   x 1 add y2 2 add   x 2 sub y2 2 add   curveto
+	fill
+	grestore
+} def
+
+% x y1 y2 right repeatbracket	draw a bracket for a repeat; y1 is the top,
+%				right==1 means facing to the right
+/repeatbracket {
+	/right exch def
+	/y2 exch def
+	/y1 exch def
+	/x exch def
+	gsave
+	right 0 eq {
+		x y1 y2 add 2 div translate
+		180 rotate
+		0 x sub 0 y1 y2 add 2 div sub translate
+	} if
+	x 4.5 sub y1 1 add moveto
+	x 0 sub y1 1 add   x 2 add y1 1 add   x 6 add y1 5 add   curveto
+	x 6 add y1 4 add lineto
+	x 6 add y1 2 add   x 1 add y1 2 sub   x 4.5 sub y1 1.5 sub   curveto
+	fill
+	x 4.5 sub y2 1 sub moveto
+	x 0 sub y2 1 sub   x 2 add y2 1 sub   x 6 add y2 5 sub   curveto
+	x 6 add y2 4 sub lineto
+	x 6 add y2 2 sub   x 1 add y2 2 add   x 4.5 sub y2 1.5 add   curveto
+	fill
+	grestore
+} def
+
+% x y1 y2 brace		draw a brace; y1 is the top
+/brace {
+	/y2 exch def
+	/y1 exch def
+	/x exch def
+	gsave
+	x 6 sub y1 y2 add 2 div translate
+	/topy y1 y2 sub 2 div 1 sub def
+	0.667 1 scale
+	0 1 1 {
+		pop
+		%0 topy moveto 0 0 lineto stroke
+		0 0 moveto
+		16 topy 0.2 mul   -11 topy 0.6 mul   8 topy   curveto
+		8.7 topy lineto
+		-7 topy 0.7 mul   20 topy 0.3 mul   1 0   curveto
+		fill
+		1 -1 scale	% flip to do bottom half
+	} for
+	grestore
+} def
+
+% endx endy wavy staffscale	draw a wavy line from current point to here,
+%				scaled by staffscale
+/wavy {
+	/staffscale exch def
+	/endy exch def		% define the end point of the line
+	/endx exch def
+	currentpoint		% line starts at current point
+	/begy exch def		% define the beginning point of the line
+	/begx exch def
+	gsave
+	/dx endx begx sub def	% find delta x and delta y
+	/dy endy begy sub def
+	/r dx dx mul dy dy mul add sqrt def	% hypotenuse
+	/theta dy dx atan def			% angle with positive x axis
+	begx begy translate	% change axes so that we can draw the line
+	theta rotate		%   from (0, 0) to (r, 0)
+	staffscale staffscale scale	% scale everything by staffscale
+	/scaledr r staffscale div def	% but scale r in reverse to keep length
+
+	% Each outer loop draws one cycle of the squiggle.  It continues until
+	% we are at or beyond the desired end point.
+	0 0 moveto
+	0 6 scaledr {
+		gsave
+		% first loop draws left half of squiggle; second draws right
+		0 1 1 {
+			0.0 0.4 moveto
+			2.0 1.9 3.4 2.3 3.9 0.0 curveto
+			2.1 0.0 lineto
+			1.9 0.8 1.4 0.7 0.0 -0.4 curveto
+			fill
+			pop 180 rotate -6 0 translate
+		} for
+		grestore
+
+		pop 6 0 translate	% shift axes right one squiggle
+	} for
+
+	grestore
+} def
+
+% x y space frets fretno numvert curvel curver [ f1 f2 f3 ... ] grid
+%				print a guitar grid diagram
+/grid {
+	/grid_positions exch def % 0="o", -1="x", -2=nothing, positive=dot
+	/curver exch def	% right string for curve, 0 if none
+	/curvel exch def	% left string for curve, 0 if none
+	/numvert exch def	% vertical position to print fretno, 0 if none
+	/fretno exch def	% fret no. to print at right, 0 if none
+	/frets exch def		% number of fret lines
+	/space exch def		% points between two neighboring lines
+	/y exch def		% y coord of top fret line
+	/x exch def		% x coord of left strings
+
+	gsave
+	/strings grid_positions length def	% number of strings
+	/lmarky 0.4 space mul y add def		% lowest Y of a "o" or "x"
+	space 10 div setlinewidth
+	2 setlinecap
+
+	% draw the lines of the grid
+	0  1  strings 1 sub {	% loop from left string to right string
+		dup space mul x add y moveto
+		space mul x add frets 1 sub space mul y exch sub lineto stroke
+	} for
+	0  -1  1 frets sub {	% loop from top fret (nut) to bottom fret
+		dup space mul y add x exch moveto
+		space mul y add strings 1 sub space mul x add exch lineto stroke
+	} for
+
+	% draw the curved line if there is one
+	curvel 0 gt {
+		% within strings curvel to curver, find smallest positive fret
+		/minfret 1000 def
+		curvel 1 curver {
+			/strno exch def
+			/grid_p grid_positions strno 1 sub get def
+			grid_p 0 gt grid_p minfret lt and {
+				/minfret grid_p def
+			} if
+		} for
+
+		% if curve goes above top fret, other marks must be higher
+		minfret 1 eq {
+			/hmarky 1.2 space mul y add def
+		} {
+			/hmarky lmarky def
+		} ifelse
+
+		/strdiff curver curvel sub def
+		space 8 div setlinewidth
+
+		% set endpoint coords of curve; higher if curve is short
+		/curvex1 curvel 1 sub space mul x add def
+		/curvex2 curver 1 sub space mul x add def
+		/curvey 1 minfret sub space mul y add def
+		strdiff 3 lt {
+			/curvey 0.2 strdiff div space mul curvey add def
+		} if
+
+		% move to left end, set other points, draw curve
+		curvex1 curvey moveto
+
+		curvex1 curvex2 curvex1 sub 3 div add
+		curvey space 0.4 strdiff sqrt mul mul add
+
+		curvex2 curvex2 curvex1 sub 3 div sub
+		curvey space 0.4 strdiff sqrt mul mul add
+
+		curvex2 curvey curveto stroke
+	} if
+
+	space 10 div setlinewidth
+
+	% draw dots and x and o marks
+	0  1  strings 1 sub {	% loop from left string to right string
+		/strno exch def	% first string is 0
+		/grid_p grid_positions strno get def
+		/strx strno space mul x add def
+
+		% set Y of mark higher if curved line covers this string
+		strno 1 add curvel ge  strno 1 add curver le  and {
+			/marky hmarky def
+		} {
+			/marky lmarky def
+		} ifelse
+
+		grid_p -1 eq {		% draw an X above the string
+			/xhwid space 3 div def
+			strx xhwid sub marky xhwid sub moveto
+			strx xhwid add marky xhwid add lineto stroke
+			strx xhwid sub marky xhwid add moveto
+			strx xhwid add marky xhwid sub lineto stroke
+		} if
+		grid_p 0 eq {		% draw a circle above the string
+			strx marky space 0.3 mul 0 360 arc stroke
+		} if
+		grid_p 1 ge {		% draw a dot by the proper fret
+			strx y grid_p space mul sub space 3 div add
+			space 3 div 0 360 arc fill
+		} if
+	} for
+
+	% print "X fr" if requested
+	fretno 0 gt {
+		/Palatino-Roman findfont space 1.9 mul scalefont setfont
+		x strings 0.5 sub space mul add
+		y space numvert 0.3 add mul sub moveto
+		fretno 2 string cvs show ( fr) show
+	} if
+	grestore
+} def
+
+% x1 y1 x2 y2 whitebox		draw a white rectangle with opposite
+%				corners of (x1,y1) and (x2,y2)
+/whitebox {
+	/y2 exch def
+	/x2 exch def
+	/y1 exch def
+	/x1 exch def
+	1.0 setgray
+	newpath
+	x1 y1 moveto
+	x1 y2 lineto
+	x2 y2 lineto
+	x2 y1 lineto
+	closepath
+	fill
+	stroke
+	0.0 setgray
+} def
+
+
+/LineNum 0 def
+/InputFile (unknown) def
+
+% n linenum
+/linenum {
+	/LineNum exch def
+} def
+
+% (inputfilename) inputfile
+/inputfile {
+	/InputFile exch def
+} def
+
+% find size of Encoding and make a dictionary
+% that size for bounding box information
+mfont0 begin
+/dictsize Encoding length def
+mfont0 /Mcbbox0 dictsize dict put
+
+% temporarily redefine printmchar0 to get code
+5 dict begin
+/printmchar0 { {} forall } def
+
+Mcbbox0 Encoding gclef get [ 1790.0 0 -915.0 -1605.0 865.0 3015.0 ] put
+Mcbbox0 Encoding fclef get [ 1840.0 0 -1015.0 -1705.0 815.0 655.0 ] put
+Mcbbox0 Encoding cclef get [ 1540.0 0 -765.0 -1245.0 765.0 1255.0 ] put
+Mcbbox0 Encoding dblwhole get [ 1090.0 0 -535.0 -605.0 545.0 615.0 ] put
+Mcbbox0 Encoding 1n get [ 1080.0 0 -535.0 -335.0 535.0 345.0 ] put
+Mcbbox0 Encoding 2n get [ 880.0 0 -435.0 -345.0 435.0 355.0 ] put
+Mcbbox0 Encoding 4n get [ 840.0 0 -415.0 -335.0 415.0 345.0 ] put
+Mcbbox0 Encoding upflag get [ 640.0 0 -335.0 -5.0 295.0 1715.0 ] put
+Mcbbox0 Encoding dnflag get [ 640.0 0 -335.0 -1705.0 295.0 15.0 ] put
+Mcbbox0 Encoding qwhrest get [ 340.0 0 -165.0 -605.0 165.0 615.0 ] put
+Mcbbox0 Encoding dwhrest get [ 340.0 0 -165.0 -5.0 165.0 615.0 ] put
+Mcbbox0 Encoding 1rest get [ 1540.0 0 -765.0 -15.0 765.0 645.0 ] put
+Mcbbox0 Encoding 2rest get [ 1540.0 0 -765.0 -45.0 765.0 315.0 ] put
+Mcbbox0 Encoding 4rest get [ 650.0 0 -345.0 -885.0 295.0 995.0 ] put
+Mcbbox0 Encoding 8rest get [ 750.0 0 -305.0 -625.0 435.0 485.0 ] put
+Mcbbox0 Encoding 16rest get [ 830.0 0 -415.0 -1215.0 405.0 485.0 ] put
+Mcbbox0 Encoding 32rest get [ 940.0 0 -415.0 -1215.0 515.0 1085.0 ] put
+Mcbbox0 Encoding 64rest get [ 1040.0 0 -515.0 -1515.0 515.0 1085.0 ] put
+Mcbbox0 Encoding 128rest get [ 1140.0 0 -515.0 -1515.0 615.0 1685.0 ] put
+Mcbbox0 Encoding 256rest get [ 1250.0 0 -625.0 -2115.0 615.0 1685.0 ] put
+Mcbbox0 Encoding ll1rest get [ 840.0 0 -415.0 -15.0 415.0 625.0 ] put
+Mcbbox0 Encoding ll2rest get [ 840.0 0 -415.0 -15.0 415.0 325.0 ] put
+Mcbbox0 Encoding dot get [ 280.0 0 -135.0 -125.0 135.0 135.0 ] put
+Mcbbox0 Encoding nat get [ 520.0 0 -255.0 -855.0 255.0 865.0 ] put
+Mcbbox0 Encoding sharp get [ 700.0 0 -345.0 -935.0 345.0 945.0 ] put
+Mcbbox0 Encoding flat get [ 580.0 0 -295.0 -405.0 275.0 1115.0 ] put
+Mcbbox0 Encoding dblsharp get [ 720.0 0 -355.0 -345.0 355.0 355.0 ] put
+Mcbbox0 Encoding dblflat get [ 1160.0 0 -585.0 -405.0 565.0 1115.0 ] put
+Mcbbox0 Encoding xnote get [ 880.0 0 -435.0 -365.0 435.0 375.0 ] put
+Mcbbox0 Encoding dwhdiamond get [ 950.0 0 -465.0 -605.0 475.0 615.0 ] put
+Mcbbox0 Encoding diamond get [ 880.0 0 -435.0 -305.0 435.0 315.0 ] put
+Mcbbox0 Encoding filldiamond get [ 880.0 0 -435.0 -305.0 435.0 315.0 ] put
+Mcbbox0 Encoding up2n get [ 880.0 0 -435.0 -345.0 435.0 2115.0 ] put
+Mcbbox0 Encoding dn2n get [ 880.0 0 -435.0 -2105.0 435.0 355.0 ] put
+Mcbbox0 Encoding up4n get [ 850.0 0 -415.0 -335.0 425.0 2115.0 ] put
+Mcbbox0 Encoding dn4n get [ 840.0 0 -415.0 -2105.0 415.0 345.0 ] put
+Mcbbox0 Encoding com get [ 1110.0 0 -585.0 -645.0 515.0 655.0 ] put
+Mcbbox0 Encoding cut get [ 1110.0 0 -585.0 -905.0 515.0 915.0 ] put
+Mcbbox0 Encoding begped get [ 470.0 0 -245.0 -45.0 215.0 615.0 ] put
+Mcbbox0 Encoding pedal get [ 1040.0 0 -515.0 -45.0 515.0 675.0 ] put
+Mcbbox0 Encoding endped get [ 480.0 0 -215.0 -45.0 255.0 615.0 ] put
+Mcbbox0 Encoding dnbow get [ 810.0 0 -395.0 -5.0 405.0 915.0 ] put
+Mcbbox0 Encoding upbow get [ 720.0 0 -355.0 -115.0 355.0 925.0 ] put
+Mcbbox0 Encoding wedge get [ 340.0 0 -165.0 -5.0 165.0 515.0 ] put
+Mcbbox0 Encoding uwedge get [ 340.0 0 -165.0 -5.0 165.0 515.0 ] put
+Mcbbox0 Encoding ferm get [ 1640.0 0 -815.0 -5.0 815.0 1015.0 ] put
+Mcbbox0 Encoding uferm get [ 1640.0 0 -815.0 -5.0 815.0 1015.0 ] put
+Mcbbox0 Encoding sign get [ 1340.0 0 -665.0 -825.0 665.0 835.0 ] put
+Mcbbox0 Encoding coda get [ 1640.0 0 -815.0 -855.0 815.0 865.0 ] put
+Mcbbox0 Encoding mor get [ 1320.0 0 -655.0 -285.0 655.0 295.0 ] put
+Mcbbox0 Encoding invmor get [ 1320.0 0 -655.0 -455.0 655.0 465.0 ] put
+Mcbbox0 Encoding turn get [ 1300.0 0 -645.0 -335.0 645.0 345.0 ] put
+Mcbbox0 Encoding invturn get [ 1300.0 0 -645.0 -335.0 645.0 345.0 ] put
+Mcbbox0 Encoding acc_gt get [ 1170.0 0 -525.0 -345.0 635.0 355.0 ] put
+Mcbbox0 Encoding acc_hat get [ 780.0 0 -385.0 -5.0 385.0 875.0 ] put
+Mcbbox0 Encoding acc_uhat get [ 780.0 0 -385.0 -5.0 385.0 875.0 ] put
+Mcbbox0 Encoding tr get [ 1440.0 0 -715.0 -5.0 715.0 1015.0 ] put
+Mcbbox0 Encoding leg get [ 840.0 0 -415.0 -55.0 415.0 65.0 ] put
+Mcbbox0 Encoding rr get [ 940.0 0 -465.0 -25.0 465.0 1035.0 ] put
+Mcbbox0 Encoding dim get [ 540.0 0 -265.0 -15.0 265.0 905.0 ] put
+Mcbbox0 Encoding halfdim get [ 760.0 0 -375.0 -15.0 375.0 1015.0 ] put
+Mcbbox0 Encoding triangle get [ 800.0 0 -395.0 -45.0 395.0 785.0 ] put
+Mcbbox0 Encoding measrpt get [ 1300.0 0 -645.0 -675.0 645.0 685.0 ] put
+Mcbbox0 Encoding copyright get [ 920.0 0 -455.0 -45.0 455.0 855.0 ] put
+Mcbbox0 Encoding up8n get [ 1390.0 0 -745.0 -335.0 635.0 2115.0 ] put
+Mcbbox0 Encoding dn8n get [ 840.0 0 -415.0 -2105.0 415.0 345.0 ] put
+Mcbbox0 Encoding up16n get [ 1390.0 0 -745.0 -335.0 635.0 2115.0 ] put
+Mcbbox0 Encoding dn16n get [ 840.0 0 -415.0 -2105.0 415.0 345.0 ] put
+Mcbbox0 Encoding up32n get [ 1390.0 0 -745.0 -335.0 635.0 2595.0 ] put
+Mcbbox0 Encoding dn32n get [ 840.0 0 -415.0 -2585.0 415.0 345.0 ] put
+Mcbbox0 Encoding up64n get [ 1390.0 0 -745.0 -335.0 635.0 3075.0 ] put
+Mcbbox0 Encoding dn64n get [ 840.0 0 -415.0 -3065.0 415.0 345.0 ] put
+Mcbbox0 Encoding up128n get [ 1390.0 0 -745.0 -335.0 635.0 3555.0 ] put
+Mcbbox0 Encoding dn128n get [ 840.0 0 -415.0 -3545.0 415.0 345.0 ] put
+Mcbbox0 Encoding up256n get [ 1390.0 0 -745.0 -335.0 635.0 3975.0 ] put
+Mcbbox0 Encoding dn256n get [ 840.0 0 -415.0 -3965.0 415.0 345.0 ] put
+
+end
+end
+
+/Mfont0 mfont0 definefont
+
+
+% find size of Encoding and make a dictionary
+% that size for bounding box information
+mfont1 begin
+/dictsize Encoding length def
+mfont1 /Mcbbox1 dictsize dict put
+
+% temporarily redefine printmchar1 to get code
+5 dict begin
+/printmchar1 { {} forall } def
+
+Mcbbox1 Encoding dwhrighttriangle get [ 950.0 0 -465.0 -605.0 475.0 615.0 ] put
+Mcbbox1 Encoding righttriangle get [ 880.0 0 -435.0 -305.0 435.0 285.0 ] put
+Mcbbox1 Encoding fillrighttriangle get [ 880.0 0 -435.0 -305.0 435.0 285.0 ] put
+Mcbbox1 Encoding udwhrighttriangle get [ 950.0 0 -465.0 -605.0 475.0 615.0 ] put
+Mcbbox1 Encoding urighttriangle get [ 880.0 0 -435.0 -275.0 435.0 315.0 ] put
+Mcbbox1 Encoding ufillrighttriangle get [ 880.0 0 -435.0 -275.0 435.0 315.0 ] put
+Mcbbox1 Encoding dwhrectangle get [ 950.0 0 -465.0 -605.0 475.0 615.0 ] put
+Mcbbox1 Encoding rectangle get [ 880.0 0 -435.0 -275.0 435.0 285.0 ] put
+Mcbbox1 Encoding fillrectangle get [ 880.0 0 -435.0 -275.0 435.0 285.0 ] put
+Mcbbox1 Encoding dwhisostriangle get [ 950.0 0 -465.0 -605.0 475.0 615.0 ] put
+Mcbbox1 Encoding isostriangle get [ 880.0 0 -435.0 -275.0 435.0 315.0 ] put
+Mcbbox1 Encoding fillisostriangle get [ 880.0 0 -435.0 -275.0 435.0 315.0 ] put
+Mcbbox1 Encoding dwhpiewedge get [ 950.0 0 -465.0 -605.0 475.0 615.0 ] put
+Mcbbox1 Encoding piewedge get [ 880.0 0 -435.0 -305.0 435.0 285.0 ] put
+Mcbbox1 Encoding fillpiewedge get [ 880.0 0 -435.0 -305.0 435.0 285.0 ] put
+Mcbbox1 Encoding dwhsemicircle get [ 950.0 0 -465.0 -605.0 475.0 615.0 ] put
+Mcbbox1 Encoding semicircle get [ 880.0 0 -435.0 -305.0 435.0 285.0 ] put
+Mcbbox1 Encoding fillsemicircle get [ 880.0 0 -435.0 -305.0 435.0 285.0 ] put
+Mcbbox1 Encoding dwhslashhead get [ 1410.0 0 -695.0 -725.0 705.0 735.0 ] put
+Mcbbox1 Encoding slashhead get [ 1380.0 0 -685.0 -725.0 685.0 735.0 ] put
+Mcbbox1 Encoding fillslashhead get [ 1300.0 0 -645.0 -675.0 645.0 685.0 ] put
+Mcbbox1 Encoding blankhead get [ 880.0 0 -435.0 -275.0 435.0 285.0 ] put
+
+end
+end
+
+/Mfont1 mfont1 definefont
+
+/flagsep 1.60 300 mul def	 % 1.60 stepsizes
+%%BeginFeature: *PageSize Default
+<< /PageSize [ 612 792 ] >> setpagedevice
+%%EndFeature
+%%EndProlog
+%%Page: 1 1
+save
+0.750000 0.750000 scale
+%  S_SSV
+(kaleidakustikon_6.mup) inputfile
+7 linenum
+%  S_SSV
+15 linenum
+%  S_SSV
+18 linenum
+%  S_SSV
+21 linenum
+%  S_FEED
+27 linenum
+88.79 949.15 768.00 5 1.000000 1.000000 staff
+88.79 884.61 768.00 5 1.000000 1.000000 staff
+87.79 961.15 872.61 brace
+0.70 setlinewidth
+88.79 961.15 moveto
+88.79 872.61 lineto stroke
+%  S_CLEFSIG
+27 linenum
+100.58 943.15 1.000000 gclef
+100.83 890.61 1.000000 fclef
+116.62 949.15 1.000000 flat
+116.62 878.61 1.000000 flat
+/NewCenturySchlbk-Bold findfont
+16 scalefont
+setfont
+122.36 949.15 moveto
+(3) show
+/NewCenturySchlbk-Bold findfont
+16 scalefont
+setfont
+122.36 937.23 moveto
+(4) show
+/NewCenturySchlbk-Bold findfont
+16 scalefont
+setfont
+122.36 884.61 moveto
+(3) show
+/NewCenturySchlbk-Bold findfont
+16 scalefont
+setfont
+122.36 872.69 moveto
+(4) show
+%  S_CHHEAD
+27 linenum
+%  S_STAFF
+% staff 1
+save
+143.93 955.15 0.583333 4n
+145.93 955.64 moveto
+145.93 968.72 lineto stroke
+147.70 968.72 0.583333 dnflag
+newpath
+142.68 958.97 moveto
+149.18 965.97 lineto
+149.18 964.47 lineto
+142.68 957.47 lineto
+closepath
+fill
+155.64 952.15 1.000000 4n
+151.95 951.40 moveto
+151.95 932.67 lineto stroke
+173.50 949.15 1.000000 4n
+165.04 949.15 1.000000 nat
+169.81 948.40 moveto
+169.81 930.58 lineto stroke
+newpath
+151.60 934.17 moveto
+170.16 932.08 lineto
+170.16 929.08 lineto
+151.60 931.17 lineto
+closepath
+fill
+restore
+%  S_STAFF
+% staff 2
+save
+155.64 884.61 1.000000 4rest
+restore
+%  S_BAR
+29 linenum
+0.70 setlinewidth
+186.80 961.15 moveto
+186.80 937.15 lineto stroke
+186.80 896.61 moveto
+186.80 872.61 lineto stroke
+%  S_CHHEAD
+32 linenum
+%  S_STAFF
+% staff 1
+save
+193.66 955.15 0.583333 4n
+195.66 955.64 moveto
+195.66 968.72 lineto stroke
+197.42 968.72 0.583333 dnflag
+newpath
+192.41 958.97 moveto
+198.91 965.97 lineto
+198.91 964.47 lineto
+192.41 957.47 lineto
+closepath
+fill
+205.36 952.15 1.000000 4n
+201.68 951.40 moveto
+201.68 929.25 lineto stroke
+222.26 949.15 1.000000 4n
+213.81 949.15 1.000000 nat
+218.58 948.40 moveto
+218.58 930.38 lineto stroke
+230.76 955.15 0.583333 4n
+232.77 955.64 moveto
+232.77 968.72 lineto stroke
+234.53 968.72 0.583333 dnflag
+241.68 952.15 1.000000 4n
+237.99 951.40 moveto
+237.99 931.67 lineto stroke
+252.44 949.15 1.000000 4n
+248.76 948.40 moveto
+248.76 932.38 lineto stroke
+263.20 952.15 1.000000 4n
+259.52 951.40 moveto
+259.52 933.10 lineto stroke
+274.81 961.15 1.000000 4n
+271.13 960.40 moveto
+271.13 933.87 lineto stroke
+newpath
+201.33 930.75 moveto
+271.48 935.37 lineto
+271.48 932.37 lineto
+201.33 927.75 lineto
+closepath
+fill
+restore
+%  S_STAFF
+% staff 2
+save
+205.36 869.61 1.000000 4n
+0.70 setlinewidth
+209.04 870.36 moveto
+209.04 890.61 lineto stroke
+241.68 902.61 1.000000 4n
+235.44 902.61 moveto
+247.91 902.61 lineto stroke
+241.68 896.61 1.000000 4n
+241.68 890.61 1.000000 4n
+237.99 901.86 moveto
+237.99 869.61 lineto stroke
+263.20 902.61 1.000000 4n
+256.97 902.61 moveto
+269.44 902.61 lineto stroke
+263.20 896.61 1.000000 4n
+263.20 890.61 1.000000 4n
+259.52 901.86 moveto
+259.52 869.61 lineto stroke
+restore
+%  S_BAR
+34 linenum
+0.70 setlinewidth
+288.12 961.15 moveto
+288.12 937.15 lineto stroke
+288.12 896.61 moveto
+288.12 872.61 lineto stroke
+%  S_CHHEAD
+38 linenum
+%  S_STAFF
+% staff 1
+save
+298.09 967.15 1.000000 4n
+307.36 970.15 1.000000 dot
+291.86 967.15 moveto
+304.33 967.15 lineto stroke
+294.41 966.40 moveto
+294.41 946.15 lineto stroke
+326.27 958.15 1.000000 4n
+322.59 957.40 moveto
+322.59 940.29 lineto stroke
+337.03 964.15 1.000000 4n
+333.35 963.40 moveto
+333.35 940.29 lineto stroke
+348.64 961.15 1.000000 4n
+344.95 960.40 moveto
+344.95 940.29 lineto stroke
+newpath
+322.24 941.79 moveto
+345.30 941.79 lineto
+345.30 938.79 lineto
+322.24 938.79 lineto
+closepath
+fill
+restore
+%  S_STAFF
+% staff 2
+save
+298.09 869.61 1.000000 4n
+0.70 setlinewidth
+301.78 870.36 moveto
+301.78 890.61 lineto stroke
+315.68 902.61 1.000000 4n
+309.45 902.61 moveto
+321.91 902.61 lineto stroke
+315.68 896.61 1.000000 4n
+315.68 890.61 1.000000 4n
+312.00 901.86 moveto
+312.00 869.61 lineto stroke
+337.03 902.61 1.000000 4n
+330.80 902.61 moveto
+343.27 902.61 lineto stroke
+337.03 896.61 1.000000 4n
+337.03 890.61 1.000000 4n
+333.35 901.86 moveto
+333.35 869.61 lineto stroke
+restore
+%  S_BAR
+40 linenum
+0.70 setlinewidth
+361.94 961.15 moveto
+361.94 937.15 lineto stroke
+361.94 896.61 moveto
+361.94 872.61 lineto stroke
+%  S_CHHEAD
+44 linenum
+%  S_STAFF
+% staff 1
+save
+370.48 970.15 1.000000 4n
+364.24 967.15 moveto
+376.71 967.15 lineto stroke
+366.79 969.40 moveto
+366.79 946.88 lineto stroke
+389.30 961.15 1.000000 4n
+379.95 961.15 1.000000 sharp
+385.62 960.40 moveto
+385.62 943.71 lineto stroke
+400.06 967.15 1.000000 4n
+393.83 967.15 moveto
+406.29 967.15 lineto stroke
+396.38 966.40 moveto
+396.38 941.90 lineto stroke
+410.82 964.15 1.000000 4n
+407.14 963.40 moveto
+407.14 940.09 lineto stroke
+421.59 958.15 1.000000 4n
+417.91 957.40 moveto
+417.91 938.28 lineto stroke
+433.19 952.15 1.000000 4n
+429.51 951.40 moveto
+429.51 936.33 lineto stroke
+newpath
+366.44 948.38 moveto
+429.86 937.83 lineto
+429.86 934.83 lineto
+366.44 945.38 lineto
+closepath
+fill
+restore
+%  S_STAFF
+% staff 2
+save
+370.48 881.61 1.000000 4n
+0.70 setlinewidth
+374.16 882.36 moveto
+374.16 902.61 lineto stroke
+400.06 902.61 1.000000 4n
+393.83 902.61 moveto
+406.29 902.61 lineto stroke
+400.06 893.61 1.000000 4n
+400.06 887.61 1.000000 4n
+396.38 901.86 moveto
+396.38 866.61 lineto stroke
+421.59 902.61 1.000000 4n
+415.36 902.61 moveto
+427.82 902.61 lineto stroke
+421.59 893.61 1.000000 4n
+421.59 887.61 1.000000 4n
+417.91 901.86 moveto
+417.91 866.61 lineto stroke
+restore
+%  S_BAR
+46 linenum
+0.70 setlinewidth
+446.50 961.15 moveto
+446.50 937.15 lineto stroke
+446.50 896.61 moveto
+446.50 872.61 lineto stroke
+%  S_CHHEAD
+50 linenum
+%  S_STAFF
+% staff 1
+save
+456.48 949.15 1.000000 4n
+465.74 952.15 1.000000 dot
+452.80 948.40 moveto
+452.80 928.15 lineto stroke
+484.65 943.15 1.000000 4n
+488.34 943.90 moveto
+488.34 966.63 lineto stroke
+495.42 952.15 1.000000 4n
+499.10 952.90 moveto
+499.10 969.87 lineto stroke
+507.02 955.15 1.000000 4n
+510.70 955.90 moveto
+510.70 973.36 lineto stroke
+newpath
+487.99 968.13 moveto
+511.05 974.86 lineto
+511.05 971.86 lineto
+487.99 965.13 lineto
+closepath
+fill
+restore
+%  S_STAFF
+% staff 2
+save
+456.48 881.61 1.000000 4n
+0.70 setlinewidth
+460.16 882.36 moveto
+460.16 902.61 lineto stroke
+474.07 902.61 1.000000 4n
+467.84 902.61 moveto
+480.30 902.61 lineto stroke
+474.07 893.61 1.000000 4n
+474.07 887.61 1.000000 4n
+470.39 901.86 moveto
+470.39 866.61 lineto stroke
+495.42 902.61 1.000000 4n
+489.19 902.61 moveto
+501.65 902.61 lineto stroke
+495.42 893.61 1.000000 4n
+495.42 887.61 1.000000 4n
+491.74 901.86 moveto
+491.74 866.61 lineto stroke
+restore
+%  S_BAR
+52 linenum
+0.70 setlinewidth
+520.33 961.15 moveto
+520.33 937.15 lineto stroke
+520.33 896.61 moveto
+520.33 872.61 lineto stroke
+%  S_CHHEAD
+56 linenum
+%  S_STAFF
+% staff 1
+save
+528.98 946.15 1.000000 4n
+525.30 945.40 moveto
+525.30 929.65 lineto stroke
+539.74 952.15 1.000000 4n
+536.06 951.40 moveto
+536.06 929.65 lineto stroke
+550.51 961.15 1.000000 4n
+546.82 960.40 moveto
+546.82 929.65 lineto stroke
+561.27 967.15 1.000000 4n
+555.04 967.15 moveto
+566.00 967.15 lineto stroke
+557.59 966.40 moveto
+557.59 929.65 lineto stroke
+572.03 973.15 1.000000 4n
+565.80 973.15 moveto
+578.27 973.15 lineto stroke
+567.80 967.15 moveto
+578.27 967.15 lineto stroke
+568.35 972.40 moveto
+568.35 929.65 lineto stroke
+583.64 946.15 1.000000 4n
+579.95 945.40 moveto
+579.95 929.65 lineto stroke
+newpath
+524.95 931.15 moveto
+580.30 931.15 lineto
+580.30 928.15 lineto
+524.95 928.15 lineto
+closepath
+fill
+restore
+%  S_STAFF
+% staff 2
+save
+528.98 869.61 1.000000 4n
+0.70 setlinewidth
+532.66 870.36 moveto
+532.66 890.61 lineto stroke
+550.51 902.61 1.000000 4n
+544.27 902.61 moveto
+556.74 902.61 lineto stroke
+550.51 896.61 1.000000 4n
+550.51 890.61 1.000000 4n
+546.82 901.86 moveto
+546.82 869.61 lineto stroke
+572.03 902.61 1.000000 4n
+565.80 902.61 moveto
+578.27 902.61 lineto stroke
+572.03 896.61 1.000000 4n
+572.03 890.61 1.000000 4n
+568.35 901.86 moveto
+568.35 869.61 lineto stroke
+restore
+%  S_BAR
+58 linenum
+0.70 setlinewidth
+596.94 961.15 moveto
+596.94 937.15 lineto stroke
+596.94 896.61 moveto
+596.94 872.61 lineto stroke
+%  S_CHHEAD
+62 linenum
+%  S_STAFF
+% staff 1
+save
+605.59 943.15 1.000000 4n
+601.91 942.40 moveto
+601.91 920.61 lineto stroke
+616.24 964.15 1.000000 4n
+612.56 963.40 moveto
+612.56 921.14 lineto stroke
+633.79 946.15 1.000000 4n
+625.02 946.15 1.000000 flat
+630.11 945.40 moveto
+630.11 922.02 lineto stroke
+651.46 967.15 1.000000 4n
+642.69 967.15 1.000000 flat
+645.23 967.15 moveto
+657.69 967.15 lineto stroke
+647.78 966.40 moveto
+647.78 922.91 lineto stroke
+662.23 940.15 1.000000 4n
+658.54 939.40 moveto
+658.54 923.45 lineto stroke
+673.83 961.15 1.000000 4n
+670.15 960.40 moveto
+670.15 924.03 lineto stroke
+newpath
+601.56 922.11 moveto
+670.50 925.53 lineto
+670.50 922.53 lineto
+601.56 919.11 lineto
+closepath
+fill
+restore
+%  S_STAFF
+% staff 2
+save
+605.59 905.61 1.000000 4n
+0.70 setlinewidth
+599.36 902.61 moveto
+611.83 902.61 lineto stroke
+605.59 899.61 1.000000 4n
+601.91 904.86 moveto
+601.91 878.61 lineto stroke
+633.79 911.61 1.000000 4n
+627.56 908.61 moveto
+640.02 908.61 lineto stroke
+627.56 902.61 moveto
+640.02 902.61 lineto stroke
+633.79 905.61 1.000000 4n
+627.56 902.61 moveto
+640.02 902.61 lineto stroke
+633.79 899.61 1.000000 4n
+625.34 899.61 1.000000 nat
+630.11 910.86 moveto
+630.11 878.61 lineto stroke
+662.23 896.61 1.000000 4n
+653.45 896.61 1.000000 flat
+662.23 884.61 1.000000 4n
+662.23 878.61 1.000000 4n
+653.77 878.61 1.000000 nat
+658.54 895.86 moveto
+658.54 859.61 lineto stroke
+restore
+%  S_BAR
+64 linenum
+0.70 setlinewidth
+687.14 961.15 moveto
+687.14 937.15 lineto stroke
+687.14 896.61 moveto
+687.14 872.61 lineto stroke
+%  S_CHHEAD
+68 linenum
+%  S_STAFF
+% staff 1
+save
+699.68 937.15 1.000000 4n
+703.36 937.90 moveto
+703.36 971.65 lineto stroke
+710.45 943.15 1.000000 4n
+714.13 943.90 moveto
+714.13 971.65 lineto stroke
+721.21 949.15 1.000000 4n
+724.89 949.90 moveto
+724.89 971.65 lineto stroke
+731.97 955.15 1.000000 4n
+735.66 955.90 moveto
+735.66 971.65 lineto stroke
+742.74 952.15 1.000000 4n
+746.42 952.90 moveto
+746.42 971.65 lineto stroke
+754.34 937.15 1.000000 4n
+758.02 937.90 moveto
+758.02 971.65 lineto stroke
+newpath
+703.01 973.15 moveto
+758.37 973.15 lineto
+758.37 970.15 lineto
+703.01 970.15 lineto
+closepath
+fill
+restore
+%  S_STAFF
+% staff 2
+save
+695.78 881.61 1.000000 4n
+0.70 setlinewidth
+699.47 882.36 moveto
+699.47 902.61 lineto stroke
+721.21 899.61 1.000000 4n
+721.21 893.61 1.000000 4n
+724.89 894.36 moveto
+724.89 915.61 lineto stroke
+742.74 899.61 1.000000 4n
+742.74 893.61 1.000000 4n
+746.42 894.36 moveto
+746.42 915.61 lineto stroke
+703.58 881.61 1.000000 2n
+713.06 881.61 1.000000 dot
+699.68 880.86 moveto
+699.68 861.61 lineto stroke
+restore
+%  S_BAR
+71 linenum
+0.70 setlinewidth
+767.65 961.15 moveto
+767.65 937.15 lineto stroke
+767.65 896.61 moveto
+767.65 872.61 lineto stroke
+%  S_FEED
+74 linenum
+50.50 800.61 768.00 5 1.000000 1.000000 staff
+/Times-Roman findfont
+11 scalefont
+setfont
+55.00 827.73 moveto
+(9) show
+50.50 745.42 768.00 5 1.000000 1.000000 staff
+49.50 812.61 733.42 brace
+50.50 812.61 moveto
+50.50 733.42 lineto stroke
+%  S_CLEFSIG
+74 linenum
+62.29 794.61 1.000000 gclef
+62.54 751.42 1.000000 fclef
+78.33 800.61 1.000000 flat
+78.33 739.42 1.000000 flat
+%  S_CHHEAD
+74 linenum
+%  S_STAFF
+% staff 1
+save
+97.37 791.61 1.000000 4n
+101.05 792.36 moveto
+101.05 812.61 lineto stroke
+115.84 800.61 1.000000 4rest
+restore
+%  S_STAFF
+% staff 2
+save
+97.37 757.42 1.000000 4n
+97.37 751.42 1.000000 4n
+0.70 setlinewidth
+93.69 756.67 moveto
+93.69 730.42 lineto stroke
+115.84 730.42 1.000000 4n
+119.52 731.17 moveto
+119.52 751.42 lineto stroke
+restore
+%  S_BAR
+76 linenum
+147.87 803.61 1.000000 dot
+147.87 797.61 1.000000 dot
+133.87 803.61 1.000000 dot
+133.87 797.61 1.000000 dot
+3.00 setlinewidth
+138.37 812.61 moveto
+138.37 788.61 lineto stroke
+143.37 812.61 moveto
+143.37 788.61 lineto stroke
+0.70 setlinewidth
+147.87 748.42 1.000000 dot
+147.87 742.42 1.000000 dot
+133.87 748.42 1.000000 dot
+133.87 742.42 1.000000 dot
+3.00 setlinewidth
+138.37 757.42 moveto
+138.37 733.42 lineto stroke
+143.37 757.42 moveto
+143.37 733.42 lineto stroke
+0.70 setlinewidth
+%  S_CHHEAD
+80 linenum
+%  S_STAFF
+% staff 1
+save
+157.50 803.61 1.000000 4n
+153.82 802.86 moveto
+153.82 782.61 lineto stroke
+restore
+%  S_STAFF
+% staff 2
+save
+157.50 742.42 1.000000 4n
+0.70 setlinewidth
+161.18 743.17 moveto
+161.18 763.42 lineto stroke
+restore
+%  S_BAR
+82 linenum
+0.70 setlinewidth
+176.53 812.61 moveto
+176.53 788.61 lineto stroke
+176.53 757.42 moveto
+176.53 733.42 lineto stroke
+%  S_CHHEAD
+85 linenum
+%  S_STAFF
+% staff 1
+save
+190.11 803.61 1.000000 2n
+199.59 803.61 1.000000 dot
+186.21 802.86 moveto
+186.21 782.61 lineto stroke
+restore
+%  S_STAFF
+% staff 2
+save
+190.11 742.42 1.000000 2n
+199.59 742.42 1.000000 dot
+0.70 setlinewidth
+194.01 743.17 moveto
+194.01 763.42 lineto stroke
+restore
+%  S_BAR
+87 linenum
+0.70 setlinewidth
+231.23 812.61 moveto
+231.23 788.61 lineto stroke
+231.23 757.42 moveto
+231.23 733.42 lineto stroke
+%  S_CHHEAD
+91 linenum
+%  S_STAFF
+% staff 1
+save
+239.78 824.61 1.000000 4n
+233.54 824.61 moveto
+246.01 824.61 lineto stroke
+233.54 818.61 moveto
+244.01 818.61 lineto stroke
+236.09 823.86 moveto
+236.09 802.11 lineto stroke
+249.90 821.61 1.000000 4n
+245.17 818.61 moveto
+256.13 818.61 lineto stroke
+246.22 820.86 moveto
+246.22 799.11 lineto stroke
+260.03 815.61 1.000000 4n
+269.29 815.61 1.000000 dot
+256.35 814.86 moveto
+256.35 794.61 lineto stroke
+291.24 809.61 1.000000 4n
+287.56 808.86 moveto
+287.56 788.61 lineto stroke
+290.59 788.61 1.000000 upflag
+newpath
+235.74 803.61 moveto
+246.57 800.61 lineto
+246.57 797.61 lineto
+235.74 800.61 lineto
+closepath
+fill
+restore
+%  S_STAFF
+% staff 2
+save
+239.78 742.42 1.000000 4n
+0.70 setlinewidth
+236.09 741.67 moveto
+236.09 724.45 lineto stroke
+249.90 763.42 1.000000 4n
+243.67 763.42 moveto
+256.13 763.42 lineto stroke
+246.22 762.67 moveto
+246.22 728.14 lineto stroke
+260.03 760.42 1.000000 4n
+260.03 754.42 1.000000 4n
+256.35 759.67 moveto
+256.35 736.11 lineto stroke
+270.15 763.42 1.000000 4n
+263.92 763.42 moveto
+276.39 763.42 lineto stroke
+266.47 762.67 moveto
+266.47 739.80 lineto stroke
+280.28 760.42 1.000000 4n
+280.28 754.42 1.000000 4n
+276.60 759.67 moveto
+276.60 735.96 lineto stroke
+291.24 763.42 1.000000 4n
+285.01 763.42 moveto
+297.48 763.42 lineto stroke
+287.56 762.67 moveto
+287.56 739.95 lineto stroke
+newpath
+235.74 725.95 moveto
+246.57 729.64 lineto
+246.57 726.64 lineto
+235.74 722.95 lineto
+closepath
+fill
+newpath
+256.00 737.61 moveto
+266.82 741.30 lineto
+266.82 738.30 lineto
+256.00 734.61 lineto
+closepath
+fill
+newpath
+276.25 737.46 moveto
+287.91 741.45 lineto
+287.91 738.45 lineto
+276.25 734.46 lineto
+closepath
+fill
+restore
+%  S_BAR
+93 linenum
+0.70 setlinewidth
+304.02 812.61 moveto
+304.02 788.61 lineto stroke
+304.02 757.42 moveto
+304.02 733.42 lineto stroke
+%  S_CHHEAD
+97 linenum
+%  S_STAFF
+% staff 1
+save
+312.56 815.61 1.000000 4n
+308.88 814.86 moveto
+308.88 795.97 lineto stroke
+322.69 812.61 1.000000 4n
+319.01 811.86 moveto
+319.01 794.90 lineto stroke
+332.81 818.61 1.000000 4n
+326.58 818.61 moveto
+339.05 818.61 lineto stroke
+329.13 817.86 moveto
+329.13 793.83 lineto stroke
+342.94 809.61 1.000000 4n
+339.26 808.86 moveto
+339.26 792.76 lineto stroke
+353.07 812.61 1.000000 4n
+349.38 811.86 moveto
+349.38 791.69 lineto stroke
+364.03 806.61 1.000000 4n
+360.35 805.86 moveto
+360.35 790.53 lineto stroke
+newpath
+308.53 797.47 moveto
+360.70 792.03 lineto
+360.70 789.03 lineto
+308.53 794.47 lineto
+closepath
+fill
+restore
+%  S_STAFF
+% staff 2
+save
+312.56 742.42 1.000000 4n
+0.70 setlinewidth
+308.88 741.67 moveto
+308.88 724.45 lineto stroke
+322.69 763.42 1.000000 4n
+316.46 763.42 moveto
+328.92 763.42 lineto stroke
+319.01 762.67 moveto
+319.01 728.14 lineto stroke
+332.81 757.42 1.000000 4n
+332.81 751.42 1.000000 4n
+329.13 756.67 moveto
+329.13 734.92 lineto stroke
+342.94 763.42 1.000000 4n
+336.71 763.42 moveto
+349.17 763.42 lineto stroke
+339.26 762.67 moveto
+339.26 734.92 lineto stroke
+353.07 757.42 1.000000 4n
+353.07 751.42 1.000000 4n
+349.38 756.67 moveto
+349.38 734.92 lineto stroke
+364.03 763.42 1.000000 4n
+357.80 763.42 moveto
+370.26 763.42 lineto stroke
+360.35 762.67 moveto
+360.35 734.92 lineto stroke
+newpath
+308.53 725.95 moveto
+319.36 729.64 lineto
+319.36 726.64 lineto
+308.53 722.95 lineto
+closepath
+fill
+newpath
+328.78 736.42 moveto
+360.70 736.42 lineto
+360.70 733.42 lineto
+328.78 733.42 lineto
+closepath
+fill
+restore
+%  S_BAR
+99 linenum
+0.70 setlinewidth
+376.81 812.61 moveto
+376.81 788.61 lineto stroke
+376.81 757.42 moveto
+376.81 733.42 lineto stroke
+%  S_CHHEAD
+103 linenum
+%  S_STAFF
+% staff 1
+save
+385.35 803.61 1.000000 4n
+394.61 803.61 1.000000 dot
+381.67 802.86 moveto
+381.67 782.61 lineto stroke
+415.73 788.61 1.000000 4n
+419.41 789.36 moveto
+419.41 812.53 lineto stroke
+425.85 794.61 1.000000 4n
+429.53 795.36 moveto
+429.53 812.53 lineto stroke
+436.82 791.61 1.000000 4n
+440.50 792.36 moveto
+440.50 812.53 lineto stroke
+newpath
+419.06 814.03 moveto
+440.85 814.03 lineto
+440.85 811.03 lineto
+419.06 811.03 lineto
+closepath
+fill
+restore
+%  S_STAFF
+% staff 2
+save
+385.35 742.42 1.000000 4n
+0.70 setlinewidth
+381.67 741.67 moveto
+381.67 724.45 lineto stroke
+395.48 763.42 1.000000 4n
+389.24 763.42 moveto
+401.71 763.42 lineto stroke
+391.79 762.67 moveto
+391.79 728.14 lineto stroke
+405.60 757.42 1.000000 4n
+405.60 751.42 1.000000 4n
+401.92 756.67 moveto
+401.92 734.92 lineto stroke
+415.73 763.42 1.000000 4n
+409.49 763.42 moveto
+421.96 763.42 lineto stroke
+412.04 762.67 moveto
+412.04 734.92 lineto stroke
+425.85 757.42 1.000000 4n
+425.85 751.42 1.000000 4n
+422.17 756.67 moveto
+422.17 734.92 lineto stroke
+436.82 763.42 1.000000 4n
+430.58 763.42 moveto
+443.05 763.42 lineto stroke
+433.13 762.67 moveto
+433.13 734.92 lineto stroke
+newpath
+381.32 725.95 moveto
+392.14 729.64 lineto
+392.14 726.64 lineto
+381.32 722.95 lineto
+closepath
+fill
+newpath
+401.57 736.42 moveto
+433.48 736.42 lineto
+433.48 733.42 lineto
+401.57 733.42 lineto
+closepath
+fill
+restore
+%  S_BAR
+105 linenum
+0.70 setlinewidth
+449.59 812.61 moveto
+449.59 788.61 lineto stroke
+449.59 757.42 moveto
+449.59 733.42 lineto stroke
+%  S_CHHEAD
+109 linenum
+%  S_STAFF
+% staff 1
+save
+458.13 788.61 1.000000 4n
+461.81 789.36 moveto
+461.81 809.61 lineto stroke
+464.83 809.61 1.000000 dnflag
+473.25 803.61 1.000000 4n
+469.57 802.86 moveto
+469.57 782.61 lineto stroke
+493.50 800.61 1.000000 4n
+497.18 801.36 moveto
+497.18 816.43 lineto stroke
+503.62 794.61 1.000000 4n
+507.31 795.36 moveto
+507.31 812.74 lineto stroke
+514.59 788.61 1.000000 4n
+518.27 789.36 moveto
+518.27 808.75 lineto stroke
+newpath
+496.83 817.93 moveto
+518.62 810.25 lineto
+518.62 807.25 lineto
+496.83 814.93 lineto
+closepath
+fill
+restore
+%  S_STAFF
+% staff 2
+save
+458.13 742.42 1.000000 4n
+0.70 setlinewidth
+454.44 741.67 moveto
+454.44 724.45 lineto stroke
+473.25 763.42 1.000000 4n
+467.02 763.42 moveto
+479.48 763.42 lineto stroke
+469.57 762.67 moveto
+469.57 729.96 lineto stroke
+483.37 760.42 1.000000 4n
+483.37 754.42 1.000000 4n
+479.69 759.67 moveto
+479.69 737.92 lineto stroke
+493.50 763.42 1.000000 4n
+487.27 763.42 moveto
+499.73 763.42 lineto stroke
+489.82 762.67 moveto
+489.82 737.92 lineto stroke
+503.62 760.42 1.000000 4n
+503.62 754.42 1.000000 4n
+499.94 759.67 moveto
+499.94 737.92 lineto stroke
+514.59 763.42 1.000000 4n
+508.36 763.42 moveto
+520.82 763.42 lineto stroke
+510.91 762.67 moveto
+510.91 737.92 lineto stroke
+newpath
+454.09 725.95 moveto
+469.92 731.46 lineto
+469.92 728.46 lineto
+454.09 722.95 lineto
+closepath
+fill
+newpath
+479.34 739.42 moveto
+511.26 739.42 lineto
+511.26 736.42 lineto
+479.34 736.42 lineto
+closepath
+fill
+restore
+%  S_BAR
+111 linenum
+0.70 setlinewidth
+527.37 812.61 moveto
+527.37 788.61 lineto stroke
+527.37 757.42 moveto
+527.37 733.42 lineto stroke
+%  S_CHHEAD
+115 linenum
+%  S_STAFF
+% staff 1
+save
+535.91 791.61 1.000000 4n
+532.23 790.86 moveto
+532.23 773.85 lineto stroke
+546.03 797.61 1.000000 4n
+542.35 796.86 moveto
+542.35 777.00 lineto stroke
+556.16 803.61 1.000000 4n
+552.48 802.86 moveto
+552.48 780.15 lineto stroke
+566.29 803.61 1.000000 4n
+562.60 802.86 moveto
+562.60 783.29 lineto stroke
+576.41 818.61 1.000000 4n
+570.18 818.61 moveto
+582.64 818.61 lineto stroke
+572.73 817.86 moveto
+572.73 786.44 lineto stroke
+587.38 815.61 1.000000 4n
+583.69 814.86 moveto
+583.69 789.85 lineto stroke
+newpath
+531.88 775.35 moveto
+584.04 791.35 lineto
+584.04 788.35 lineto
+531.88 772.35 lineto
+closepath
+fill
+restore
+%  S_STAFF
+% staff 2
+save
+535.91 742.42 1.000000 4n
+0.70 setlinewidth
+532.23 741.67 moveto
+532.23 724.45 lineto stroke
+546.03 763.42 1.000000 4n
+539.80 763.42 moveto
+552.27 763.42 lineto stroke
+542.35 762.67 moveto
+542.35 728.14 lineto stroke
+556.16 757.42 1.000000 4n
+556.16 751.42 1.000000 4n
+552.48 756.67 moveto
+552.48 734.92 lineto stroke
+566.29 763.42 1.000000 4n
+560.05 763.42 moveto
+572.52 763.42 lineto stroke
+562.60 762.67 moveto
+562.60 734.92 lineto stroke
+576.41 757.42 1.000000 4n
+576.41 751.42 1.000000 4n
+572.73 756.67 moveto
+572.73 734.92 lineto stroke
+587.38 763.42 1.000000 4n
+581.14 763.42 moveto
+593.61 763.42 lineto stroke
+583.69 762.67 moveto
+583.69 734.92 lineto stroke
+newpath
+531.88 725.95 moveto
+542.70 729.64 lineto
+542.70 726.64 lineto
+531.88 722.95 lineto
+closepath
+fill
+newpath
+552.13 736.42 moveto
+584.04 736.42 lineto
+584.04 733.42 lineto
+552.13 733.42 lineto
+closepath
+fill
+restore
+%  S_BAR
+117 linenum
+0.70 setlinewidth
+600.15 812.61 moveto
+600.15 788.61 lineto stroke
+600.15 757.42 moveto
+600.15 733.42 lineto stroke
+%  S_CHHEAD
+121 linenum
+%  S_STAFF
+% staff 1
+save
+615.75 812.61 1.000000 4n
+612.07 811.86 moveto
+612.07 789.30 lineto stroke
+625.88 809.61 1.000000 4n
+622.19 808.86 moveto
+622.19 788.46 lineto stroke
+636.00 815.61 1.000000 4n
+632.32 814.86 moveto
+632.32 787.61 lineto stroke
+646.13 812.61 1.000000 4n
+642.45 811.86 moveto
+642.45 786.77 lineto stroke
+656.24 818.61 1.000000 4n
+650.01 818.61 moveto
+662.48 818.61 lineto stroke
+652.56 817.86 moveto
+652.56 785.92 lineto stroke
+674.00 800.61 1.000000 4n
+665.54 800.61 1.000000 nat
+670.31 799.86 moveto
+670.31 784.44 lineto stroke
+newpath
+611.72 790.80 moveto
+670.66 785.94 lineto
+670.66 782.94 lineto
+611.72 787.80 lineto
+closepath
+fill
+restore
+%  S_STAFF
+% staff 2
+save
+615.75 760.42 1.000000 2n
+607.08 760.42 1.000000 nat
+625.23 760.42 1.000000 dot
+615.75 751.42 1.000000 2n
+625.23 754.42 1.000000 dot
+615.75 745.42 1.000000 2n
+625.23 748.42 1.000000 dot
+0.70 setlinewidth
+611.85 759.67 moveto
+611.85 724.42 lineto stroke
+restore
+%  S_BAR
+123 linenum
+0.70 setlinewidth
+686.77 812.61 moveto
+686.77 788.61 lineto stroke
+686.77 757.42 moveto
+686.77 733.42 lineto stroke
+%  S_CHHEAD
+126 linenum
+%  S_STAFF
+% staff 1
+save
+695.53 803.61 1.000000 2n
+691.63 802.86 moveto
+691.63 782.61 lineto stroke
+restore
+%  S_STAFF
+% staff 2
+save
+695.53 742.42 1.000000 4n
+0.70 setlinewidth
+691.85 741.67 moveto
+691.85 724.45 lineto stroke
+705.66 748.42 1.000000 4n
+701.98 747.67 moveto
+701.98 728.14 lineto stroke
+715.78 754.42 1.000000 4n
+712.10 753.67 moveto
+712.10 731.82 lineto stroke
+726.75 763.42 1.000000 4n
+720.52 763.42 moveto
+732.98 763.42 lineto stroke
+723.07 762.67 moveto
+723.07 735.81 lineto stroke
+newpath
+691.50 725.95 moveto
+723.42 737.31 lineto
+723.42 734.31 lineto
+691.50 722.95 lineto
+closepath
+fill
+restore
+%  S_BAR
+128 linenum
+743.02 803.61 1.000000 dot
+743.02 797.61 1.000000 dot
+747.02 812.61 moveto
+747.02 788.61 lineto stroke
+3.00 setlinewidth
+751.02 812.61 moveto
+751.02 788.61 lineto stroke
+0.70 setlinewidth
+743.02 748.42 1.000000 dot
+743.02 742.42 1.000000 dot
+747.02 757.42 moveto
+747.02 733.42 lineto stroke
+3.00 setlinewidth
+751.02 757.42 moveto
+751.02 733.42 lineto stroke
+0.70 setlinewidth
+%  S_SSV
+130 linenum
+%  S_CLEFSIG
+136 linenum
+758.77 800.61 1.000000 flat
+764.26 809.61 1.000000 flat
+758.77 739.42 1.000000 flat
+764.26 748.42 1.000000 flat
+%  S_FEED
+136 linenum
+50.50 661.42 768.00 5 1.000000 1.000000 staff
+/Times-Roman findfont
+11 scalefont
+setfont
+55.00 688.54 moveto
+(19) show
+50.50 600.25 768.00 5 1.000000 1.000000 staff
+49.50 673.42 588.25 brace
+50.50 673.42 moveto
+50.50 588.25 lineto stroke
+%  S_CLEFSIG
+136 linenum
+62.29 655.42 1.000000 gclef
+62.54 606.25 1.000000 fclef
+78.33 661.42 1.000000 flat
+83.82 670.42 1.000000 flat
+78.33 594.25 1.000000 flat
+83.82 603.25 1.000000 flat
+101.56 664.42 1.000000 dot
+101.56 658.42 1.000000 dot
+98.56 673.42 moveto
+98.56 649.42 lineto stroke
+3.00 setlinewidth
+94.56 673.42 moveto
+94.56 649.42 lineto stroke
+0.70 setlinewidth
+101.56 603.25 1.000000 dot
+101.56 597.25 1.000000 dot
+98.56 612.25 moveto
+98.56 588.25 lineto stroke
+3.00 setlinewidth
+94.56 612.25 moveto
+94.56 588.25 lineto stroke
+0.70 setlinewidth
+%  S_CHHEAD
+136 linenum
+%  S_STAFF
+% staff 1
+save
+117.67 673.42 1.000000 4n
+113.99 672.67 moveto
+113.99 653.48 lineto stroke
+129.03 679.42 1.000000 4n
+122.79 679.42 moveto
+135.26 679.42 lineto stroke
+125.34 678.67 moveto
+125.34 657.50 lineto stroke
+newpath
+113.64 654.98 moveto
+125.69 659.00 lineto
+125.69 656.00 lineto
+113.64 651.98 lineto
+closepath
+fill
+restore
+%  S_STAFF
+% staff 2
+save
+117.67 600.25 1.000000 4rest
+restore
+%  S_BAR
+138 linenum
+0.70 setlinewidth
+142.13 673.42 moveto
+142.13 649.42 lineto stroke
+142.13 612.25 moveto
+142.13 588.25 lineto stroke
+%  S_CHHEAD
+141 linenum
+%  S_STAFF
+% staff 1
+save
+150.74 685.42 1.000000 4n
+144.50 685.42 moveto
+156.97 685.42 lineto stroke
+144.50 679.42 moveto
+154.97 679.42 lineto stroke
+147.05 684.67 moveto
+147.05 660.33 lineto stroke
+161.25 682.42 1.000000 4n
+156.52 679.42 moveto
+165.98 679.42 lineto stroke
+157.57 681.67 moveto
+157.57 660.33 lineto stroke
+171.77 688.42 1.000000 4n
+165.54 685.42 moveto
+178.00 685.42 lineto stroke
+167.54 679.42 moveto
+176.00 679.42 lineto stroke
+168.09 687.67 moveto
+168.09 660.33 lineto stroke
+182.28 679.42 1.000000 4n
+177.55 679.42 moveto
+187.02 679.42 lineto stroke
+178.60 678.67 moveto
+178.60 660.33 lineto stroke
+192.80 682.42 1.000000 4n
+188.07 679.42 moveto
+199.03 679.42 lineto stroke
+189.12 681.67 moveto
+189.12 660.33 lineto stroke
+204.15 676.42 1.000000 4n
+200.47 675.67 moveto
+200.47 660.33 lineto stroke
+newpath
+146.70 661.83 moveto
+200.82 661.83 lineto
+200.82 658.83 lineto
+146.70 658.83 lineto
+closepath
+fill
+restore
+%  S_STAFF
+% staff 2
+save
+150.74 594.25 1.000000 4n
+0.70 setlinewidth
+154.42 595.00 moveto
+154.42 615.25 lineto stroke
+171.77 621.25 1.000000 4n
+165.54 618.25 moveto
+178.00 618.25 lineto stroke
+171.77 615.25 1.000000 4n
+171.77 606.25 1.000000 4n
+168.09 620.50 moveto
+168.09 585.25 lineto stroke
+192.80 621.25 1.000000 4n
+186.57 618.25 moveto
+199.03 618.25 lineto stroke
+192.80 615.25 1.000000 4n
+192.80 606.25 1.000000 4n
+189.12 620.50 moveto
+189.12 585.25 lineto stroke
+restore
+%  S_BAR
+143 linenum
+0.70 setlinewidth
+217.26 673.42 moveto
+217.26 649.42 lineto stroke
+217.26 612.25 moveto
+217.26 588.25 lineto stroke
+%  S_CHHEAD
+147 linenum
+%  S_STAFF
+% staff 1
+save
+227.38 673.42 1.000000 2n
+223.48 672.67 moveto
+223.48 652.42 lineto stroke
+262.62 673.42 1.000000 4n
+271.89 676.42 1.000000 dot
+258.94 672.67 moveto
+258.94 653.92 lineto stroke
+281.09 673.42 1.000000 4n
+277.40 672.67 moveto
+277.40 653.92 lineto stroke
+newpath
+258.59 655.42 moveto
+277.75 655.42 lineto
+277.75 652.42 lineto
+258.59 652.42 lineto
+closepath
+fill
+newpath
+277.05 660.42 moveto
+268.99 660.42 lineto
+268.99 657.42 lineto
+277.05 657.42 lineto
+closepath
+fill
+restore
+%  S_STAFF
+% staff 2
+save
+227.38 594.25 1.000000 4n
+0.70 setlinewidth
+231.06 595.00 moveto
+231.06 615.25 lineto stroke
+245.69 621.25 1.000000 4n
+239.46 618.25 moveto
+251.92 618.25 lineto stroke
+245.69 615.25 1.000000 4n
+245.69 606.25 1.000000 4n
+242.01 620.50 moveto
+242.01 585.25 lineto stroke
+262.62 621.25 1.000000 4n
+256.39 618.25 moveto
+268.85 618.25 lineto stroke
+262.62 615.25 1.000000 4n
+262.62 606.25 1.000000 4n
+258.94 620.50 moveto
+258.94 585.25 lineto stroke
+restore
+%  S_BAR
+149 linenum
+0.70 setlinewidth
+290.46 673.42 moveto
+290.46 649.42 lineto stroke
+290.46 612.25 moveto
+290.46 588.25 lineto stroke
+%  S_CHHEAD
+153 linenum
+%  S_STAFF
+% staff 1
+save
+299.07 673.42 1.000000 4n
+295.38 672.67 moveto
+295.38 657.90 lineto stroke
+309.58 688.42 1.000000 4n
+303.35 685.42 moveto
+315.81 685.42 lineto stroke
+303.35 679.42 moveto
+313.81 679.42 lineto stroke
+305.90 687.67 moveto
+305.90 655.34 lineto stroke
+320.10 682.42 1.000000 4n
+315.37 679.42 moveto
+326.33 679.42 lineto stroke
+316.42 681.67 moveto
+316.42 652.77 lineto stroke
+330.61 673.42 1.000000 4n
+326.93 672.67 moveto
+326.93 650.20 lineto stroke
+341.13 667.42 1.000000 4n
+337.45 666.67 moveto
+337.45 647.64 lineto stroke
+352.48 661.42 1.000000 4n
+348.80 660.67 moveto
+348.80 644.86 lineto stroke
+newpath
+295.03 659.40 moveto
+349.15 646.36 lineto
+349.15 643.36 lineto
+295.03 656.40 lineto
+closepath
+fill
+restore
+%  S_STAFF
+% staff 2
+save
+299.07 594.25 1.000000 4n
+0.70 setlinewidth
+302.75 595.00 moveto
+302.75 615.25 lineto stroke
+320.10 621.25 1.000000 4n
+313.87 618.25 moveto
+326.33 618.25 lineto stroke
+320.10 615.25 1.000000 4n
+320.10 606.25 1.000000 4n
+316.42 620.50 moveto
+316.42 585.25 lineto stroke
+341.13 621.25 1.000000 4n
+334.90 618.25 moveto
+347.36 618.25 lineto stroke
+341.13 615.25 1.000000 4n
+341.13 606.25 1.000000 4n
+337.45 620.50 moveto
+337.45 585.25 lineto stroke
+restore
+%  S_BAR
+155 linenum
+0.70 setlinewidth
+365.59 673.42 moveto
+365.59 649.42 lineto stroke
+365.59 612.25 moveto
+365.59 588.25 lineto stroke
+%  S_CHHEAD
+159 linenum
+%  S_STAFF
+% staff 1
+save
+381.03 661.42 1.000000 4n
+372.58 661.42 1.000000 nat
+377.35 660.67 moveto
+377.35 638.86 lineto stroke
+391.55 664.42 1.000000 4n
+387.87 663.67 moveto
+387.87 638.11 lineto stroke
+402.07 670.42 1.000000 4n
+398.38 669.67 moveto
+398.38 637.36 lineto stroke
+412.58 667.42 1.000000 4n
+408.90 666.67 moveto
+408.90 636.62 lineto stroke
+423.11 664.42 1.000000 4n
+419.43 663.67 moveto
+419.43 635.87 lineto stroke
+433.54 661.42 1.000000 16rest
+443.71 652.42 1.000000 4n
+440.02 651.67 moveto
+440.02 634.41 lineto stroke
+newpath
+377.00 640.36 moveto
+440.37 635.91 lineto
+440.37 632.91 lineto
+377.00 637.36 lineto
+closepath
+fill
+newpath
+439.67 640.91 moveto
+431.61 641.48 lineto
+431.61 638.48 lineto
+439.67 637.91 lineto
+closepath
+fill
+restore
+%  S_STAFF
+% staff 2
+save
+381.03 624.25 1.000000 2n
+390.51 627.25 1.000000 dot
+0.70 setlinewidth
+374.59 624.25 moveto
+387.48 624.25 lineto stroke
+374.59 618.25 moveto
+387.48 618.25 lineto stroke
+381.03 612.25 1.000000 2n
+390.51 615.25 1.000000 dot
+381.03 606.25 1.000000 2n
+390.51 609.25 1.000000 dot
+377.14 623.50 moveto
+377.14 585.25 lineto stroke
+restore
+%  S_BAR
+161 linenum
+0.70 setlinewidth
+453.08 673.42 moveto
+453.08 649.42 lineto stroke
+453.08 612.25 moveto
+453.08 588.25 lineto stroke
+%  S_CHHEAD
+165 linenum
+%  S_STAFF
+% staff 1
+save
+461.69 652.42 1.000000 4n
+465.37 653.17 moveto
+465.37 675.47 lineto stroke
+472.20 655.42 1.000000 4n
+475.88 656.17 moveto
+475.88 677.27 lineto stroke
+482.72 658.42 1.000000 4n
+486.40 659.17 moveto
+486.40 679.07 lineto stroke
+493.23 661.42 1.000000 4n
+496.92 662.17 moveto
+496.92 680.87 lineto stroke
+503.75 664.42 1.000000 4n
+507.43 665.17 moveto
+507.43 682.67 lineto stroke
+515.10 667.42 1.000000 4n
+518.79 668.17 moveto
+518.79 684.61 lineto stroke
+newpath
+465.02 676.97 moveto
+519.14 686.11 lineto
+519.14 683.11 lineto
+465.02 673.97 lineto
+closepath
+fill
+restore
+%  S_STAFF
+% staff 2
+save
+461.69 585.25 1.000000 4n
+0.70 setlinewidth
+465.37 586.00 moveto
+465.37 606.25 lineto stroke
+482.72 624.25 1.000000 4n
+476.49 624.25 moveto
+488.95 624.25 lineto stroke
+476.49 618.25 moveto
+488.95 618.25 lineto stroke
+482.72 618.25 1.000000 4n
+476.49 618.25 moveto
+488.95 618.25 lineto stroke
+482.72 606.25 1.000000 4n
+479.04 623.50 moveto
+479.04 585.25 lineto stroke
+503.75 624.25 1.000000 4n
+497.52 624.25 moveto
+509.98 624.25 lineto stroke
+497.52 618.25 moveto
+509.98 618.25 lineto stroke
+503.75 618.25 1.000000 4n
+497.52 618.25 moveto
+509.98 618.25 lineto stroke
+503.75 606.25 1.000000 4n
+500.07 623.50 moveto
+500.07 585.25 lineto stroke
+restore
+%  S_BAR
+167 linenum
+0.70 setlinewidth
+528.21 673.42 moveto
+528.21 649.42 lineto stroke
+528.21 612.25 moveto
+528.21 588.25 lineto stroke
+%  S_CHHEAD
+171 linenum
+%  S_STAFF
+% staff 1
+save
+536.81 670.42 1.000000 4n
+533.13 669.67 moveto
+533.13 652.45 lineto stroke
+547.33 685.42 1.000000 4n
+541.10 685.42 moveto
+552.06 685.42 lineto stroke
+541.10 679.42 moveto
+551.56 679.42 lineto stroke
+543.65 684.67 moveto
+543.65 656.28 lineto stroke
+557.77 685.42 1.000000 4n
+553.04 685.42 moveto
+564.00 685.42 lineto stroke
+553.54 679.42 moveto
+562.00 679.42 lineto stroke
+554.09 684.67 moveto
+554.09 661.68 lineto stroke
+567.83 682.42 1.000000 4n
+563.10 679.42 moveto
+572.57 679.42 lineto stroke
+564.15 681.67 moveto
+564.15 661.68 lineto stroke
+577.90 679.42 1.000000 4n
+573.17 679.42 moveto
+584.13 679.42 lineto stroke
+574.22 678.67 moveto
+574.22 661.68 lineto stroke
+587.96 676.42 1.000000 4n
+584.28 675.67 moveto
+584.28 656.79 lineto stroke
+598.03 673.42 1.000000 4n
+594.34 672.67 moveto
+594.34 654.76 lineto stroke
+608.52 670.42 1.000000 4n
+604.84 669.67 moveto
+604.84 652.65 lineto stroke
+/NewCenturySchlbk-BoldItalic findfont
+11 scalefont
+setfont
+564.67 688.05 moveto
+(3) show
+/NewCenturySchlbk-BoldItalic findfont
+11 scalefont
+setfont
+595.07 679.05 moveto
+(3) show
+newpath
+532.78 653.95 moveto
+544.00 657.78 lineto
+544.00 654.78 lineto
+532.78 650.95 lineto
+closepath
+fill
+newpath
+553.74 663.18 moveto
+574.57 663.18 lineto
+574.57 660.18 lineto
+553.74 660.18 lineto
+closepath
+fill
+newpath
+583.93 658.29 moveto
+605.19 654.15 lineto
+605.19 651.15 lineto
+583.93 655.29 lineto
+closepath
+fill
+restore
+%  S_STAFF
+% staff 2
+save
+536.81 585.25 1.000000 4n
+0.70 setlinewidth
+540.50 586.00 moveto
+540.50 606.25 lineto stroke
+557.77 618.25 1.000000 4n
+551.54 618.25 moveto
+564.00 618.25 lineto stroke
+557.77 612.25 1.000000 4n
+557.77 606.25 1.000000 4n
+554.09 617.50 moveto
+554.09 585.25 lineto stroke
+587.96 618.25 1.000000 4n
+581.73 618.25 moveto
+594.19 618.25 lineto stroke
+587.96 612.25 1.000000 4n
+587.96 606.25 1.000000 4n
+584.28 617.50 moveto
+584.28 585.25 lineto stroke
+restore
+%  S_BAR
+173 linenum
+0.70 setlinewidth
+619.19 673.42 moveto
+619.19 649.42 lineto stroke
+619.19 612.25 moveto
+619.19 588.25 lineto stroke
+%  S_CHHEAD
+177 linenum
+%  S_STAFF
+% staff 1
+save
+636.44 664.42 1.000000 4n
+627.09 664.42 1.000000 sharp
+632.76 663.67 moveto
+632.76 644.59 lineto stroke
+646.96 667.42 1.000000 4n
+643.27 666.67 moveto
+643.27 646.66 lineto stroke
+657.47 673.42 1.000000 4n
+661.15 674.17 moveto
+661.15 689.39 lineto stroke
+667.99 670.42 1.000000 4n
+671.67 671.17 moveto
+671.67 688.00 lineto stroke
+678.43 667.42 1.000000 4n
+682.11 668.17 moveto
+682.11 684.30 lineto stroke
+696.25 664.42 1.000000 4n
+687.79 664.42 1.000000 nat
+699.93 665.17 moveto
+699.93 682.91 lineto stroke
+newpath
+632.41 646.09 moveto
+643.62 648.16 lineto
+643.62 645.16 lineto
+632.41 643.09 lineto
+closepath
+fill
+newpath
+660.80 690.89 moveto
+672.02 689.50 lineto
+672.02 686.50 lineto
+660.80 687.89 lineto
+closepath
+fill
+newpath
+681.76 685.80 moveto
+700.28 684.41 lineto
+700.28 681.41 lineto
+681.76 682.80 lineto
+closepath
+fill
+657.47 655.42 1.000000 4n
+653.79 654.67 moveto
+653.79 636.42 lineto stroke
+678.43 658.42 1.000000 4n
+674.75 657.67 moveto
+674.75 638.42 lineto stroke
+restore
+%  S_STAFF
+% staff 2
+save
+636.44 615.25 1.000000 4n
+636.44 609.25 1.000000 4n
+0.70 setlinewidth
+632.76 614.50 moveto
+632.76 588.25 lineto stroke
+657.47 618.25 1.000000 4n
+651.24 618.25 moveto
+663.70 618.25 lineto stroke
+657.47 603.25 1.000000 4n
+653.79 617.50 moveto
+653.79 582.25 lineto stroke
+678.43 624.25 1.000000 4n
+672.20 624.25 moveto
+684.66 624.25 lineto stroke
+672.20 618.25 moveto
+684.66 618.25 lineto stroke
+678.43 606.25 1.000000 4n
+674.75 623.50 moveto
+674.75 585.25 lineto stroke
+restore
+%  S_BAR
+180 linenum
+0.70 setlinewidth
+709.35 673.42 moveto
+709.35 649.42 lineto stroke
+709.35 612.25 moveto
+709.35 588.25 lineto stroke
+%  S_CHHEAD
+183 linenum
+%  S_STAFF
+% staff 1
+save
+719.26 661.42 1.000000 4n
+715.57 660.67 moveto
+715.57 640.42 lineto stroke
+738.40 661.42 1.000000 4rest
+restore
+%  S_STAFF
+% staff 2
+save
+719.26 615.25 1.000000 4n
+719.26 600.25 1.000000 4n
+0.70 setlinewidth
+715.57 614.50 moveto
+715.57 579.25 lineto stroke
+738.40 585.25 1.000000 4n
+742.09 586.00 moveto
+742.09 606.25 lineto stroke
+restore
+%  S_BAR
+185 linenum
+758.50 664.42 1.000000 dot
+758.50 658.42 1.000000 dot
+762.50 673.42 moveto
+762.50 649.42 lineto stroke
+3.00 setlinewidth
+766.50 673.42 moveto
+766.50 649.42 lineto stroke
+0.70 setlinewidth
+758.50 603.25 1.000000 dot
+758.50 597.25 1.000000 dot
+762.50 612.25 moveto
+762.50 588.25 lineto stroke
+3.00 setlinewidth
+766.50 612.25 moveto
+766.50 588.25 lineto stroke
+0.70 setlinewidth
+%  Printing header/footer
+/Times-Roman findfont
+12 scalefont
+setfont
+348.82 998.35 moveto
+(Kaleidakustikon Layer 6) show
+/Times-Roman findfont
+12 scalefont
+setfont
+408.00 985.61 moveto
+showpage
+restore
+%%Trailer
+%%DocumentFonts: /Times-Roman /NewCenturySchlbk-Bold /NewCenturySchlbk-BoldItalic /Mfont0 
+%%Pages: 1
