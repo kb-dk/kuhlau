@@ -259,7 +259,6 @@
 	      <staff n="2">
 		<layer>
 		  <chord dur="4" stem.dir="down"  >
-		    <note pname="c" oct="4" />
 		    <note pname="a" oct="3" />
 		    <note pname="f" oct="3" />
 		  </chord>
