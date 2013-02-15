@@ -29,7 +29,7 @@ declare variable $queries := <p:properties>
 </head>
 <body>
 <h1>Kaleidakustikon</h1>
-<p>Choose card and layer</p>
+<p>Choose cards and layers</p>
 <form method="get" action="card_selector.xq">
 Get it as <input type="submit" name="getitas" value="xml"/>
 <table>
