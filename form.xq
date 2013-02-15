@@ -30,17 +30,41 @@ declare variable $queries := <properties>
 <table>
 {
 
-	for $row in (1 to count(collection("/db/kuhlau/kaleidakustikon")//m:section[substring-before(@xml:id/string(),".")="a"]))
+  for $row in ("A","B","C")
+  return
+  <tr> 
+    <th valign="top">{$row}</th>
+    {
+      let $lables:=
+	for $id in collection("/db/kuhlau/kaleidakustikon")//m:section[@type/string()=$row]/@xml:id/string()
+	return substring-before($id,".")
+	
+      for $lable in distinct-values($lables)
+      return
+      <td valign="top">
+      {
+	for $sect in collection("/db/kuhlau/kaleidakustikon")//m:section[substring-before(@xml:id/string(),".")=$lable]
+	order by $sect//m:section/@xml:id/string()
 	return
-	<tr> {
-		for $bndl in $queries/*
-		let $key:=$bndl/@key/string()
-		let $select:=$bndl/string()
-(:		let $layer:=substring-after(collection("/db/kuhlau/kaleidakustikon")//m:section[substring-before(@xml:id/string(),".")=$key][$row]/@xml:id/string(),"."):)
-		return collection("/db/kuhlau/kaleidakustikon")//m:section[substring-before(@xml:id/string(),".")=$key][$row]
-(:		return <td>{($key,$layer)}</td>:)
-	} </tr>
+	for $alt in $sect//m:section/@xml:id
+	let $layer:=substring-after($alt/string(),".")
+	return
+	<p>
+	  {
+	    if($queries//properties/@key/string()=$layer) then
+	      <strong>
+		{($lable,", ",$layer)}
+	      </strong>
+	    else
+	      ($lable,", ",$layer)
+	  }
+	</p>
+      } 
+      </td>
+    }
+  </tr>
 }
+
 </table>
 </body>
 </html>
