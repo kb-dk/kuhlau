@@ -9,12 +9,14 @@ declare namespace app="http://kb.dk/this/app";
 declare namespace m="http://www.music-encoding.org/ns/mei";
 declare namespace ft="http://exist-db.org/xquery/lucene";
 
+declare option exist:serialize "method=xml media-type=text/xml"; 
+
 declare variable $bundles := ("a","b","c","d","e","f","g","h","i","k","l","m","n","o","p","q","r","s","t","u","v");
 
 declare variable $queries := <properties> 
 {for $bundle in $bundles
 	let $param := <property key="{$bundle}">
-	{request:get-parameter($bundle,"2")}</property>
+	{request:get-parameter($bundle,request:get-parameter("default","2"))}</property>
 	return $param
 }
 </properties>;
@@ -44,7 +46,10 @@ declare variable $queries := <properties>
 
 	for $q in $queries/*
 	let $id:=concat($q/@key/string(),".",$q/string())
-	let $node:=collection("/db/kuhlau/kaleidakustikon")//m:section[contains(@xml:id/string(),$id)]
+	let $node:=if(collection("/db/kuhlau/kaleidakustikon")//m:section/@xml:id/string()=$id) then
+	collection("/db/kuhlau/kaleidakustikon")//m:section[@xml:id/string()=$id]
+else
+	collection("/db/kuhlau/kaleidakustikon")//m:section[@type/string()="missing"]
 	return (<id>{$id}</id>,$node)
 
 (:
