@@ -15,18 +15,18 @@ declare variable $bundles := ("a","b","c","d","e","f","g","h","i","k","l","m","n
 
 declare variable $queries := <properties> 
 {for $bundle in $bundles
-	let $param := <property key="{$bundle}">
-	{request:get-parameter($bundle,request:get-parameter("default","2"))}</property>
-	return $param
+let $param := <property key="{$bundle}">
+{request:get-parameter($bundle,request:get-parameter("default","2"))}</property>
+return $param
 }
 </properties>;
 
 <mei xmlns="http://www.music-encoding.org/ns/mei"
-     meiversion="2010-05">
+meiversion="2010-05">
   <meihead>
     <filedesc>
       <titlestmt>
-	<title>Kaleidakustikon Layer 5</title>
+	<title>Kaleidakustikon generated tune</title>
       </titlestmt>
       <pubstmt>
       </pubstmt>
@@ -42,22 +42,22 @@ declare variable $queries := <properties>
 	      <staffdef n="2" clef.line="4" clef.shape="F"/>
 	    </staffgrp>
 	  </scoredef>
-{
+	  {
 
-	for $q in $queries/*
-	let $id:=concat($q/@key/string(),".",$q/string())
-	let $node:=if(collection("/db/kuhlau/kaleidakustikon")//m:section/@xml:id/string()=$id) then
-	collection("/db/kuhlau/kaleidakustikon")//m:section[@xml:id/string()=$id]
-else
-	collection("/db/kuhlau/kaleidakustikon")//m:section[@type/string()="missing"]
-	return (<id>{$id}</id>,$node)
+	    for $q in $queries/*
+	    let $id:=concat($q/@key/string(),".",$q/string())
+	    let $node:=if(collection("/db/kuhlau/kaleidakustikon")//m:section/@xml:id/string()=$id) then
+	      collection("/db/kuhlau/kaleidakustikon")//m:section[@xml:id/string()=$id]
+	    else
+	      collection("/db/kuhlau/kaleidakustikon")//m:section[@type/string()="missing"]
+	      return (<id>{$id}</id>,$node)
 
-(:
+		(:
 	for $card in 
 	collection("/db/kuhlau/kaleidakustikon/")//m:section[@type="C"]
 	return $card
-:)
-}
+	  :)
+	  }
 	</score>
       </mdiv>
     </body>

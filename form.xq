@@ -8,25 +8,30 @@ declare namespace util="http://exist-db.org/xquery/util";
 declare namespace app="http://kb.dk/this/app";
 declare namespace m="http://www.music-encoding.org/ns/mei";
 declare namespace ft="http://exist-db.org/xquery/lucene";
+declare namespace p="http://kb.dk/p/";
 
 declare option exist:serialize "method=xml media-type=text/html"; 
 
 
 declare variable $bundles := ("a","b","c","d","e","f","g","h","i","k","l","m","n","o","p","q","r","s","t","u","v");
 
-declare variable $queries := <properties> 
+declare variable $queries := <p:properties> 
 {for $bundle in $bundles
-	let $param := <property key="{$bundle}">
-	{request:get-parameter($bundle,request:get-parameter("default","2"))}</property>
+	let $param := <p:property key="{$bundle}">
+	{request:get-parameter($bundle,request:get-parameter("default","2"))}</p:property>
 	return $param
 }
-</properties>;
+</p:properties>;
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Kaleidakustikon</title>
 </head>
 <body>
+<h1>Kaleidakustikon</h1>
+<p>Choose card and layer</p>
+<form method="get" action="card_selector.xq">
+Get it as <input type="submit" name="getitas" value="xml"/>
 <table>
 {
 
@@ -42,29 +47,32 @@ declare variable $queries := <properties>
       for $lable in distinct-values($lables)
       return
       <td valign="top">
+      <select name="{$lable}">
       {
-	for $sect in collection("/db/kuhlau/kaleidakustikon")//m:section[substring-before(@xml:id/string(),".")=$lable]
-	order by $sect//m:section/@xml:id/string()
-	return
-	for $alt in $sect//m:section/@xml:id
-	let $layer:=substring-after($alt/string(),".")
-	return
-	<p>
-	  {
-	    if($queries//properties/@key/string()=$layer) then
-	      <strong>
-		{($lable,", ",$layer)}
-	      </strong>
-	    else
-	      ($lable,", ",$layer)
-	  }
-	</p>
+	for $sect 
+	  in collection("/db/kuhlau/kaleidakustikon")//m:section[substring-before(@xml:id/string(),".")=$lable]
+	  order by $sect//m:section/@xml:id/string()
+	  return
+	  for $alt 
+	    in $sect//m:section/@xml:id
+	    let $layer:=substring-after($alt/string(),".")
+	    return 
+	      element option {
+		(attribute value {$layer},
+		if($queries//p:property[@key/string()=$lable]/string()=$layer) then
+		  attribute selected {"selected"}
+		else "",
+		  $lable,".",$layer
+		)
+	      }
       } 
+      </select>
       </td>
     }
   </tr>
 }
 
 </table>
+</form>
 </body>
 </html>
