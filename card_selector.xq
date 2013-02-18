@@ -26,7 +26,7 @@ return $param
   <meihead>
     <filedesc>
       <titlestmt>
-	<title>Kaleidakustikon generated tune</title>
+	<title>Kaleidakustikon. Generated tune.</title>
       </titlestmt>
       <pubstmt>
       </pubstmt>
@@ -46,11 +46,12 @@ return $param
 
 	    for $q in $queries/*
 	    let $id:=concat($q/@key/string(),".",$q/string())
-	    let $node:=if(collection("/db/kuhlau/kaleidakustikon")//m:section/@xml:id/string()=$id) then
-	      collection("/db/kuhlau/kaleidakustikon")//m:section[@xml:id/string()=$id]
-	    else
-	      collection("/db/kuhlau/kaleidakustikon")//m:section[@type/string()="missing"]
-	      return (<id>{$id}</id>,$node)
+	    let $node:=
+	      if(collection("/db/kuhlau/kaleidakustikon")//m:section/@xml:id/string()=$id) then
+		collection("/db/kuhlau/kaleidakustikon")//m:section[@xml:id/string()=$id][1]
+	      else
+		collection("/db/kuhlau/kaleidakustikon")//m:section[@type/string()="missing"]
+	      return $node
 
 		(:
 	for $card in 

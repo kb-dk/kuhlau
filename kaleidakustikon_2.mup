@@ -125,7 +125,7 @@ music
   // m. 18
   1 1: [down]2c5e5c6; 
   2 1: [up]2c4g4; 
-  repeatend mnum=19
+  repeatboth mnum=19
 
 score
   time=3/4
@@ -161,7 +161,7 @@ music
 music
   // m. 23
   1 1: [down]8bn4 bm;[down]8c5 ebm;8r; [up]8f4 bm;[up]8f4;[up]8f4 ebm;
-  2 1: [up]4f2;[up]4f3a3e4; [up]4f3a3e4; 
+  2 1: [up]4f2;[down]4f3a3e4; [down]4f3a3e4; 
   bar mnum=24
 
 music
