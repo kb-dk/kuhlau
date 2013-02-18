@@ -53,11 +53,6 @@ return $param
 		collection("/db/kuhlau/kaleidakustikon")//m:section[@type/string()="missing"]
 	      return $node
 
-		(:
-	for $card in 
-	collection("/db/kuhlau/kaleidakustikon/")//m:section[@type="C"]
-	return $card
-	  :)
 	  }
 	</score>
       </mdiv>
