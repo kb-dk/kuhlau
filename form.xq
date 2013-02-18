@@ -31,7 +31,7 @@ declare variable $queries := <p:properties>
     <h1>Kaleidakustikon</h1>
     <p>Choose cards and layers</p>
     <form method="get" action="card_selector.xq">
-    Get it as <input type="submit" name="getitas" value="xml"/>
+
     <table>
       {
 
@@ -45,6 +45,7 @@ declare variable $queries := <p:properties>
 	    return substring-before($id,".")
 	      
 	    for $lable in distinct-values($lables)
+	    order by $lable
 	    return
 	    <td valign="top">
 	      <select name="{$lable}">
@@ -72,6 +73,7 @@ declare variable $queries := <p:properties>
       }
 
     </table>
+    Get it as <input type="submit" name="getitas" value="xml"/>
     </form>
   </body>
 </html>
