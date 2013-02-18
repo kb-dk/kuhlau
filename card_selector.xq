@@ -22,7 +22,7 @@ return $param
 </properties>;
 
 <mei xmlns="http://www.music-encoding.org/ns/mei"
-meiversion="2010-05">
+     meiversion="2010-05">
   <meihead>
     <filedesc>
       <titlestmt>

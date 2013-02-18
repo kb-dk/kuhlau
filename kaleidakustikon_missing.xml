@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mei xmlns="http://www.music-encoding.org/ns/mei"
+     meiversion="2010-05">
+  <meihead>
+    <filedesc>
+      <titlestmt>
+	<title>Kaleidakustikon Layer 6</title>
+      </titlestmt>
+      <pubstmt>
+      </pubstmt>
+    </filedesc>
+  </meihead>
+  <music>
+    <body>
+      <mdiv>
+	<score>
+	  <scoredef>
+	    <staffgrp symbol="brace">
+	      <staffdef n="1" clef.line="2" clef.shape="G"/>
+	      <staffdef n="2" clef.line="4" clef.shape="F"/>
+	    </staffgrp>
+	  </scoredef>
+	  <section type="missing">
+
+	  <!-- this section is fake. the card is missing and we won't use
+	       this -->
+
+	    <measure>
+	      <staff n="1">
+		<layer>
+		  <note pname="c" oct="5" dur="4" dots="1"/>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <note pname="c" oct="3" dur="4" dots="1"/>
+		</layer>
+	      </staff>
+	    </measure>
+	  </section>
+
+	</score>
+      </mdiv>
+    </body>
+  </music>
+</mei>

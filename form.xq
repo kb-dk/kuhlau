@@ -24,55 +24,54 @@ declare variable $queries := <p:properties>
 </p:properties>;
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>Kaleidakustikon</title>
-</head>
-<body>
-<h1>Kaleidakustikon</h1>
-<p>Choose cards and layers</p>
-<form method="get" action="card_selector.xq">
-Get it as <input type="submit" name="getitas" value="xml"/>
-<table>
-{
-
-  for $row in ("A","B","C")
-  return
-  <tr> 
-    <th valign="top">{$row}</th>
-    {
-      let $lables:=
-	for $id in collection("/db/kuhlau/kaleidakustikon")//m:section[@type/string()=$row]/@xml:id/string()
-	return substring-before($id,".")
-	
-      for $lable in distinct-values($lables)
-      return
-      <td valign="top">
-      <select name="{$lable}">
+  <head>
+    <title>Kaleidakustikon</title>
+  </head>
+  <body>
+    <h1>Kaleidakustikon</h1>
+    <p>Choose cards and layers</p>
+    <form method="get" action="card_selector.xq">
+    Get it as <input type="submit" name="getitas" value="xml"/>
+    <table>
       {
-	for $sect 
-	  in collection("/db/kuhlau/kaleidakustikon")//m:section[substring-before(@xml:id/string(),".")=$lable]
-	  order by $sect//m:section/@xml:id/string()
-	  return
-	  for $alt 
-	    in $sect//m:section/@xml:id
-	    let $layer:=substring-after($alt/string(),".")
-	    return 
-	      element option {
-		(attribute value {$layer},
-		if($queries//p:property[@key/string()=$lable]/string()=$layer) then
-		  attribute selected {"selected"}
-		else "",
-		  $lable,".",$layer
-		)
-	      }
-      } 
-      </select>
-      </td>
-    }
-  </tr>
-}
 
-</table>
-</form>
-</body>
+	for $row in ("A","B","C")
+	return
+	<tr> 
+	  <th valign="top">{$row}</th>
+	  {
+	    let $lables:=
+	    for $id in collection("/db/kuhlau/kaleidakustikon")//m:section[@type/string()=$row]/@xml:id/string()
+	    return substring-before($id,".")
+	      
+	    for $lable in distinct-values($lables)
+	    return
+	    <td valign="top">
+	      <select name="{$lable}">
+		{
+		  for $sect 
+		    in collection("/db/kuhlau/kaleidakustikon")//m:section[substring-before(@xml:id/string(),".")=$lable]
+		    order by $sect//m:section/@xml:id/string()
+		    return
+		    for $alt in $sect//m:section/@xml:id
+		    let $layer:=substring-after($alt/string(),".")
+		    return 
+		      element option {
+			(attribute value {$layer},
+			if($queries//p:property[@key/string()=$lable]/string()=$layer) then
+			  attribute selected {"selected"}
+			else "",
+			  $lable,".",$layer
+			)
+		      }
+		} 
+	      </select>
+	    </td>
+	  }
+	</tr>
+      }
+
+    </table>
+    </form>
+  </body>
 </html>
