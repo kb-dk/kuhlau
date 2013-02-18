@@ -48,7 +48,7 @@ return $param
 	    let $id:=concat($q/@key/string(),".",$q/string())
 	    let $node:=
 	      if(collection("/db/kuhlau/kaleidakustikon")//m:section/@xml:id/string()=$id) then
-		collection("/db/kuhlau/kaleidakustikon")//m:section[@xml:id/string()=$id][1]
+		collection("/db/kuhlau/kaleidakustikon")//m:section[@xml:id/string()=$id]
 	      else
 		collection("/db/kuhlau/kaleidakustikon")//m:section[@type/string()="missing"]
 	      return $node
