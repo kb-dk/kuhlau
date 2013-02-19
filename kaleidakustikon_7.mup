@@ -1,0 +1,125 @@
+// Kaleidakustikon Layer 7
+
+header
+  title "Kaleidakustikon Layer 7"
+  title ""
+
+score
+  vscheme=3f
+  packfact=.5
+  scale=.75 // turned on for testing
+  measnum=y // turned on for testing
+  staffs=2
+  brace=1-2
+
+staff 1
+  clef=treble
+
+staff 2
+  clef=bass
+
+score
+  time=3/4
+  key=1&
+
+music
+  // m. 1
+  1 1: [up]8a4 bm;[up]8b4 ebm;
+  2 1: 4r; 
+  bar mnum=2
+
+  // m. 2
+  1 1: [down]8c5 bm;[down]8d5;[down]8e5;[down]8f5;[down]8g5;[down]8g#5 ebm;
+  2 1: [up]4f2;[down]4f3a3c4; [down]4f3a3c4; 
+  bar mnum=3
+
+music
+  // m. 3
+  1 1: [down]8a5 bm;[down]8f5;[down]8c5;[down]8c6;[down]8a5;[down]8f5 ebm;
+  2 1: [up]4f2;[down]4f3a3c4; [down]4f3a3c4; 
+  bar mnum=4
+
+music
+  // m. 4
+  1 1: [down]8d#5 bm;[down]8e5;[down]8g5;[down]8f#5;[down]8a5;[down]8g5 ebm;
+  2 1: [up]4c3;[down]4g3b3c4; [down]4g3b3c4; 
+  bar mnum=5
+
+music
+  // m. 5
+  1 1: [up]4b4;4.c4g4b4; [up]8b4;
+  2 1: [up]8c2 bm;[up]8e2;[up]8g2;[up]8c3;[up]8e3;[up]8c3 ebm;
+  bar mnum=6
+
+music
+  // m. 6
+  1 1: [up]8a4 bm;[up]8e5;[up]8f5;[up]8c5;[up]8b4;[up]8a4 ebm;
+  2 1: [up]4f2;[down]4f3c4; [down]4f3c4; 
+  bar mnum=7
+
+music
+  // m. 7
+  1 1: [down]8c#5 bm;[down]8d5;[down]8a4;[down]8cn5;[down]8b4;[down]8g4 ebm;
+  2 1: [up]4b2;[down]4b3d4; [down]4b3d4; 
+  bar mnum=8
+
+music
+  // m. 8
+  1 1: [up]8e4 bm;[up]8c5;[up]8bn4;[up]8c5;[up]8d5;[up]8c5 ebm;
+  1 2: 4s; [down]4e4;[down]4e4;
+  2 1: 4s; [up]4g3b3; [up]4g3b3; 
+  2 2: [down]2.c3;
+  bar mnum=9
+
+  // m. 9
+  1 1: [up]4f4;4r; 
+  2 1: [down]4f3a3; [up]4f2;
+  repeatboth mnum=10
+
+music
+  // m. 10
+  1 1: 2.c5;
+  2 1: 2.c3;
+  bar
+
+music
+  // m. 12
+  1 1: [down]4.b5;[down]8g5 bm;[down]8c6;[down]8e5 ebm;
+  2 1: [down]8c3 bm;[down]8c4 ebm;[down]8g3b3 bm; [down]8c4 ebm;[down]8g3b3 bm; [down]8c4 ebm;
+  bar mnum=13
+
+music
+  // m. 13
+  1 1: [down]4f5;[grace]8g5;[grace]8f5;[down]8e5 bm;[down]8f5;[down]8a5;[down]8f5 ebm;
+  2 1: 8c3 bm;8c4 ebm;[down]8f3a3 bm; 8c4;[down]8f3a3; 8c4 ebm;
+  bar mnum=14
+
+music
+  // m. 14
+  1 1: [up]4c5;[up]8bn4 bm;[up]8c5;[up]8a4;[up]8f4 ebm;
+  2 1: 8c3 bm;8c4 ebm;[down]8f3a3 bm; 8c4;[down]8f3a3; 8c4 ebm;
+  bar mnum=15
+
+music
+  // m. 15
+  1 1: [up]8e4 bm;[up]8c5 ebm;[up]8c5 bm;[up]8e4 ebm;[up]8c5 bm;[up]8e4 ebm;
+  2 1: 8c3 bm;8c4 ebm;[down]8f3a3 bm; 8c4;[down]8f3a3; 8c4 ebm;
+  bar mnum=16
+
+music
+  // m. 15
+  1 1: [down]8f4 bm;[down]8f5;[down]8e5;[down]8f5;[down]8a5;[down]8g5 ebm;
+  2 1: 8c3 bm;8c4 ebm;[down]8f3a3 bm; 8c4;[down]8f3a3; 8c4 ebm;
+  bar mnum=16
+
+music
+  // m. 16
+  1 1: [down]4f5;[down]4b4c5g5; [down]4a4c5g5; 
+  2 1: [down]8c3 bm;[down]8c4;[down]8g3b3; [down]8c4;[down]8f3a3; [down]8c4 ebm;
+  bar mnum=17
+
+  // m. 17
+  1 1: [down]4g4c5e5; [down]4g4c5e5c6; 
+  2 1: [up]4c3;[down]4c4;
+  repeatboth
+
