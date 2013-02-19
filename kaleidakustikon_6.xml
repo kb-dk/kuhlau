@@ -294,7 +294,7 @@
 
 	  <!-- this section is fake. the cards are missing and we won't use
 	       this -->
-	  <section xml:id="h.6">
+	  <section >
 	    <measure n="10">
 	      <staff n="1">
 		<layer>
