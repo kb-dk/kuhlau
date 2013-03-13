@@ -30,6 +30,12 @@ music
 
   // m. 2
   1 1: [down]8c5 bm;[down]8a4;[down]8f4;[down]8a4;[down]8c5;[down]8f5 ebm;
-  2 1: [up]4f2;[down]4f3a3c4; 
+  2 1: [up]4f2;[down]4f3a3c4; [down]4f3a3c4; 
+  bar mnum=3
+
+music
+  // m. 1
+  1 1: [down]8a5 bm;[down]8f5 ebm;[down]4.c6c5; [down]8f5;
+  2 1: [up]4f2;<<staff clef=treble>> [up]8a3f4 bm; [up]8c4g4 ebm; [up]4f4a4; 
   bar
 

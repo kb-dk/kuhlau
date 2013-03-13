@@ -71,6 +71,44 @@
 	      </staff>
 	    </measure>
 	  </section>
+	  <section xml:id="b.9" type="A">
+	    <measure n="1">
+	      <staff n="1">
+		<layer>
+		  <beam>
+		    <note pname="a" oct="5" dur="8" stem.dir="down" />
+		    <note pname="f" oct="5" dur="8" stem.dir="down" />
+		  </beam>
+		  <chord dur="4" dots="1" stem.dir="down" >
+		    <note pname="c" oct="6" />
+		    <note pname="c" oct="5" />
+		  </chord>
+		  <note pname="f" oct="5" dur="8" stem.dir="down" />
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <note pname="f" oct="2" dur="4" stem.dir="up" />
+		  <clefchange shape="G" line="2" />
+		  <beam>
+		    <chord dur="8" stem.dir="up">
+		      <note pname="a" oct="3" />
+		      <note pname="f" oct="4" />
+		    </chord>
+		    <chord dur="8" stem.dir="up">
+		      <note pname="c" oct="4" />
+		      <note pname="g" oct="4" />
+		    </chord>
+		  </beam>
+		  <chord dur="4" stem.dir="up">
+		    <note pname="f" oct="4" />
+		    <note pname="a" oct="4" />
+		  </chord>
+		  <clefchange shape="F" line="4"/>
+		</layer>
+	      </staff>
+	    </measure>
+	  </section>
 	</score>
       </mdiv>
     </body>
