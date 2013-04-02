@@ -1,0 +1,30 @@
+// Kaleidakustikon Layer 10
+
+header
+  title "Kaleidakustikon Layer 10"
+  title ""
+
+score
+  vscheme=3f
+  packfact=.5
+  scale=.75 // turned on for testing
+  measnum=y // turned on for testing
+  staffs=2
+  brace=1-2
+
+staff 1
+  clef=treble
+
+staff 2
+  clef=bass
+
+score
+  time=3/4
+  key=1&
+
+music
+  // m. 1
+  1 1: [up]8.c4f4a4c5 bm; [up]16c4f4a4c5 ebm; 
+  2 1: 8.f2 bm;16f2 ebm;
+  bar
+
