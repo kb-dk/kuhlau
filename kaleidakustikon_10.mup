@@ -26,5 +26,28 @@ music
   // m. 1
   1 1: [up]8.c4f4a4c5 bm; [up]16c4f4a4c5 ebm; 
   2 1: 8.f2 bm;16f2 ebm;
+  bar mnum=2
+
+  // m. 2
+  1 1: [up]4c4f4a4c5; [up]4c4f4a4c5; 8.c5 bm;16f5 ebm;
+  2 1: [up]8f2 bm;[up]8f3;[up]8a3;[up]8f3;[up]8c3;[up]8a2 ebm;
+  bar mnum=3
+
+music
+  // m. 3
+  1 1: [down]4.a5;[down]8f5 bm;[down]8a5;[down]8f5 ebm;
+  2 1: [up]4f2;[up]4f3a3c4; [up]4f3a3c4; 
+  bar mnum=4
+
+music
+  // m. 4
+  1 1: [down]8b5 bm;[down]8g5;[down]8e5;[down]8g5;[down]8e5;[down]8c5 ebm;
+  2 1: [up]4c3;[down]4g3b3c4; [down]4g3b3c4; 
+  bar mnum=5
+
+music
+  // m. 5
+  1 1: [down]4.c5;[down]8d5 bm;[down]8b4;[down]8c5 ebm;
+  2 1: [up]4c3;[down]4e3g3c4; [down]4e3g3c4; 
   bar
 
