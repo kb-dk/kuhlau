@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+
+This presentation was made for #melbjs, 8th June 2011
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Waltzing forever</title>
+    <link rel="stylesheet" type="text/css" href="media/presentation.css" />
+    <link rel="stylesheet" type="text/css" href="media/prettify.css" />
+    <link  href="http://fonts.googleapis.com/css?family=Ubuntu:300,300italic,regular,italic,500,500italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
+    <script src="media/jquery-1.6.1.min.js" type="text/javascript"></script>
+    <script src="media/fathom.js" type="text/javascript"></script>
+    <script src="media/prettify.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+      $('pre').addClass('prettyprint').attr('tabIndex', 0);
+      prettyPrint();
+      
+      var fathom = $('#presentation').fathom({
+      onActivateSlide: function() {
+      var $slide = $(this);
+      $slide.find('pre:first').focus();
+      }
+      });
+      });
+    </script>
+  </head>
+  <body>
+
+    <div id="presentation">
+
+      <div class="slide">
+	<h1>Waltzing forever. Encoding Friedrich Kuhlau's
+	Kaleidakustikon </h1>
+	<br clear="all"/>
+	<h1><img src="kaleidakustikon_kort.jpg" alt="" /></h1>
+      </div>
+
+      <div class="slide">
+	<h1>Kaleidakustikon</h1>
+	<ul>
+	  <li>Written by Friedrich Kuhlau around 1820</li>
+	  <li>An aleatoric composition for piano</li>
+	  <li>Consists of 21 piles of cards (names a to v excluding j)</li>
+	  <li>Each pile contains 11 cards (except h which contains 3)</li>
+	  <li>Each card contains one or two measures</li>
+	  <li>Simple three-part structure, in F, F or F minor, and E flat
+	  respectively</li>
+	  <li>Modern edition exists in Gorm Busk &amp; Jan Maegaard (1996)
+	  <em>Kuhlay Kanons</em></li>
+	</ul>
+      </div>
+
+    </div>
+
+
+  </body>
+</html>
