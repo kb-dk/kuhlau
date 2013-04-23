@@ -157,10 +157,10 @@
 			$document.keydown(function(event) {
 				var key = event.which;
 				
-				if (key === 39 || key === 32) {
+				if (key === 39 || key === 32 || key === 34) {
 					event.preventDefault();
 					self.nextSlide();
-				} else if ( key === 37) {
+				} else if ( key === 37 || key === 33) {
 					event.preventDefault();
 					self.prevSlide();
 				}

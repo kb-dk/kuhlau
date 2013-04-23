@@ -32,24 +32,59 @@ This presentation was made for #melbjs, 8th June 2011
     <div id="presentation">
 
       <div class="slide">
-	<h1>Waltzing forever. Encoding Friedrich Kuhlau's
-	Kaleidakustikon </h1>
+	<h1>Waltzing forever. Friedrich Kuhlau's Kaleidakustikon</h1>
 	<br clear="all"/>
 	<h1><img src="kaleidakustikon_kort.jpg" alt="" /></h1>
+	<div class="footer">
+	  <a href="http://sigfrid-lundberg.se">Sigfrid Lundberg</a> slu at kb
+	  period dk
+	</div>
       </div>
 
       <div class="slide">
-	<h1>Kaleidakustikon</h1>
+	<h1>Kaleidakustikon (i)</h1>
 	<ul>
 	  <li>Written by Friedrich Kuhlau around 1820</li>
 	  <li>An aleatoric composition for piano</li>
-	  <li>Consists of 21 piles of cards (names a to v excluding j)</li>
-	  <li>Each pile contains 11 cards (except h which contains 3)</li>
-	  <li>Each card contains one or two measures</li>
-	  <li>Simple three-part structure, in F, F or F minor, and E flat
-	  respectively</li>
 	  <li>Modern edition exists in Gorm Busk &amp; Jan Maegaard (1996)
-	  <em>Kuhlay Kanons</em></li>
+	  <em>Kuhlau kanons</em></li>
+	</ul>
+      </div>
+
+      <div class="slide">
+	<h1>Kaleidakustikon (ii)</h1>
+	<ul>
+	  <li>Simple three-part structure (denoted capital A, B &amp; C), in F, F or F
+	  minor, and E flat respectively</li>
+	  <li>Consists of 21 piles of cards (named lower-case a to v, excluding j)</li>
+	  <li>Each pile contains 11 cards numbered 2 to 12 (except h which only contains 3)</li>
+	  <li>Each card contains one or two measures</li>
+	</ul>
+      </div>
+
+      <div class="slide">
+	<h1>Why writing an application for it?</h1>
+	<ul>
+	  <li>Show the music as one-armed bandit</li>
+	  <li>Users could listen to the generated tunes in midi</li>
+	  <li>Let users down-load waltzes as PDF</li>
+	  <li>Cool proof of concept...</li>
+	</ul>
+      </div>
+
+
+      <div class="slide">
+	<h1>Yeah, cool, but what's the concept?</h1>
+	<ul>
+	  <li>We wanted a project where we could use MEI music.</li>
+	  <li>If we can present aleatoric music, we should be able use the 
+	  technologies for philological purposes.</li>
+	  <li>Need a technology stack for storage, retrieval and
+	  transformation of the cards.</li>
+	  <li>There will be a need for annotation. Almost written one
+	  footnote already</li>
+	  <li>Turns out that we even need to transpose the music
+	  algorithmically, and annotate the music when we've done that.</li>
 	</ul>
       </div>
 
