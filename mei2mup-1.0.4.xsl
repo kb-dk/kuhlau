@@ -2366,9 +2366,9 @@
       <xsl:value-of
         select="//mei:note[@xml:id=$thisend]/ancestor::mei:layer[1]/@n"/>
     </xsl:variable>
-    <xsl:if test="($startstaff != $endstaff) or ($startlayer != $endlayer)">
+    <!--xsl:if test="($startstaff != $endstaff) or ($startlayer != $endlayer)"-->
       <xsl:call-template name="drawtie"/>
-    </xsl:if>
+    <!--/xsl:if-->
   </xsl:template>
 
   <xsl:template name="drawtie">
@@ -2880,11 +2880,12 @@
       <xsl:choose>
         <xsl:when
           test="mei:note[@staff != ancestor::mei:staff/@n][1] &gt; ancestor::mei:staff/@n">
-          <xsl:text> above</xsl:text>
+          <xsl:text> below</xsl:text> <!-- changed by SL. Was above -->
         </xsl:when>
         <xsl:when
-          test="mei:note[@staff != ancestor::mei:staff/@n][1] &lt; ancestor::mei:staff/@n">
-          <xsl:text> below</xsl:text>
+          test="mei:note[@staff != ancestor::mei:staff/@n][1] &lt;
+		ancestor::mei:staff/@n">
+          <xsl:text> above</xsl:text> <!-- changed by SL. Was below -->
         </xsl:when>
       </xsl:choose>
     </xsl:if>
