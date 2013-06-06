@@ -311,7 +311,6 @@
 	       this -->
 
 	    <measure>
-
 	      <staff n="1">
 		<layer>
 		  <note pname="c" oct="5" dur="2" dots="1"/>
@@ -623,12 +622,12 @@
 		<layer>
 		  <note pname="b" oct="2" dur="4" stem.dir="up" />
 		  <chord dur="4" stem.dir="down">
-		    <note pname="d" oct="3" />
+		    <note pname="d" oct="4" />
 		    <note pname="b" oct="3" />
 		    <note pname="f" oct="3" />
 		  </chord>
 		  <chord dur="4" stem.dir="down">
-		    <note pname="d" oct="3" />
+		    <note pname="d" oct="4" />
 		    <note pname="b" oct="3" />
 		    <note pname="f" oct="3" />
 		  </chord>
@@ -637,6 +636,262 @@
 	    </measure>
 	  </section>
 
+	  <section xml:id="q.10" type="C">
+	    <measure n="20">
+	      <staff n="1">
+		<layer>
+		  <note pname="f" oct="5" dur="4" dots="1"  stem.dir="down" />
+		  <beam>
+		    <note pname="e" oct="5" accid="n" dur="8" stem.dir="down" />
+		    <note pname="f" oct="5" dur="8"  stem.dir="down" />
+		    <note pname="e" oct="5" dur="8"  stem.dir="down" />
+		  </beam>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <note pname="b" oct="2" dur="4" stem.dir="up"/>
+		  <chord dur="4" stem.dir="down">
+		    <note pname="d" oct="4" />
+		    <note pname="b" oct="3" />
+		    <note pname="f" oct="3" />
+		  </chord>
+		  <chord dur="4" stem.dir="down">
+		    <note pname="d" oct="4" />
+		    <note pname="b" oct="3" />
+		    <note pname="f" oct="3" />
+		  </chord>
+		</layer>
+	      </staff>
+	    </measure>
+	  </section>
+	  <section xml:id="r.10" type="C">
+	    <measure n="21">
+	      <staff n="1">
+		<layer>
+		  <beam>
+		    <note pname="f" oct="5" dur="8" stem.dir="down" />
+		    <note pname="b" oct="5" dur="8" stem.dir="down" />
+		    <note pname="d" oct="5" dur="8" stem.dir="down" />
+		    <note pname="f" oct="5" dur="8" stem.dir="down" />
+		    <note pname="b" oct="4" dur="8" stem.dir="down" />
+		    <note pname="d" oct="5" dur="8" stem.dir="down" />
+		  </beam>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <note pname="b" oct="2" dur="4" stem.dir="up" />
+		  <chord dur="4" stem.dir="down">
+		    <note pname="d" oct="4" />
+		    <note pname="b" oct="3" />
+		    <note pname="f" oct="3" />
+		  </chord>
+		  <chord dur="4" stem.dir="down">
+		    <note pname="d" oct="4" />
+		    <note pname="b" oct="3" />
+		    <note pname="f" oct="3" />
+		  </chord>
+		</layer>
+	      </staff>
+	    </measure>
+	  </section>
+
+	  <section xml:id="s.10" type="C">
+	    <measure n="22">
+	      <staff n="1">
+		<layer>
+		  <note pname="f" oct="5" dur="4" xml:id="slur_s10_start" />
+		  <note pname="e" oct="5" dur="4" xml:id="slur_s10_end" />
+		  <beam>
+		    <note pname="f" oct="4" dur="8" dots="1" stem.dir="up" />
+		    <note pname="f" oct="4" dur="16" stem.dir="up" />
+		  </beam>
+		</layer>
+		<layer>
+		  <note pname="a" oct="4" dur="2" stem.dir="down" />
+		  <space dur="4" />
+		</layer>
+	      </staff>
+	      <!-- This tie is a slur. It is just that the curves are drawn
+	      works better with ties and slurs, and I haven't had the time to
+	      fix it in the style sheet. I don't think it is an issue in mup,
+	      and I think this is just drawing although it should really sound
+	      different in a midi. -->
+	      <tie startid="slur_s10_start"
+		    endid="slur_s10_end" staff="1" 
+		    curvedir="below"/>
+	      <staff n="2">
+		<layer>
+		  <chord dur="2" stem.dir="down">
+		    <note pname="e" oct="4" />
+		    <note pname="c" oct="4" />
+		    <note pname="f" oct="3" />
+		  </chord>
+		  <rest dur="4" />
+		</layer>
+	      </staff>
+	    </measure>
+	  </section>
+
+
+	  <section xml:id="t.10" type="C">
+	    <measure n="23">
+	      <staff n="1">
+		<layer>
+		  <note pname="f" oct="4" dur="4" stem.dir="up" />
+		  <beam>
+		    <note pname="g" oct="4" dur="8" stem.dir="up" grace="unacc" />
+		    <note pname="f" oct="4" dur="8" stem.dir="up" grace="unacc" />
+		    <note pname="e" oct="4" dur="8" stem.dir="up" grace="unacc" />
+		  </beam>
+		  <beam>
+		    <note pname="f" oct="4" dur="8" stem.dir="up" />
+		    <note pname="a" oct="4" dur="8" stem.dir="up" />
+		    <note pname="c" oct="5" dur="8" stem.dir="up" />
+		    <note pname="d" oct="5" dur="8" stem.dir="up" />
+		  </beam>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <note pname="f" oct="2" dur="4" stem.dir="up" />
+		  <chord dur="4" stem.dir="down">
+		    <note pname="e" oct="4" />
+		    <note pname="c" oct="4" />
+		    <note pname="f" oct="3" />
+		  </chord>
+		  <chord dur="4" stem.dir="down">
+		    <note pname="e" oct="4" />
+		    <note pname="c" oct="4" />
+		    <note pname="f" oct="3" />
+		  </chord>
+		</layer>
+	      </staff>
+	    </measure>
+	  </section>
+
+	  <section xml:id="u.10" type="C">
+	    <measure n="24">
+	      <staff n="1">
+		<layer>
+		  <beam>
+		    <tuplet dur="4" 
+			    num.place="above" 
+			    num.format="count"
+			    num="3">
+		      <note pname="e" oct="5" dur="8" stem.dir="down" />
+		      <note pname="d" oct="6" dur="8" stem.dir="down" />
+		      <note pname="c" oct="6" dur="8" stem.dir="down" />
+		    </tuplet>
+		  </beam>
+		  <beam>
+		    <tuplet dur="4" 
+			    num.place="above" 
+			    num.format="count"
+			    num="3">
+		      <note pname="b" oct="5" dur="8" stem.dir="down"/>
+		      <note pname="a" oct="5" dur="8" stem.dir="down"/>
+		      <note pname="g" oct="5" dur="8" stem.dir="down"/>
+		    </tuplet>
+		  </beam>
+		  <beam>
+		    <tuplet dur="4" 
+			    num.place="above" 
+			    num.format="count"
+			    num="3">
+		      <note pname="f" oct="5" dur="8" stem.dir="down" />
+		      <note pname="e" accid="n" oct="5" dur="8" stem.dir="down"/>
+		      <note pname="e" accid="f" oct="5" dur="8" stem.dir="down"/>
+		    </tuplet>
+		  </beam>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <note pname="f" oct="2" dur="4" stem.dir="up" />
+		  <chord dur="4" stem.dir="down">
+		    <note pname="c" oct="4" />
+		    <note pname="a" oct="3" />
+		    <note pname="f" oct="3" />
+		  </chord>
+		  <chord dur="4" stem.dir="down">
+		    <note pname="c" oct="4" />
+		    <note pname="a" oct="3" />
+		    <note pname="f" oct="3" />
+		  </chord>
+		</layer>
+	      </staff>
+	    </measure>
+	  </section>
+	  <section xml:id="v.10" type="C">
+	    <measure n="25">
+	      <staff n="1">
+		<layer>
+		  <beam>
+		    <tuplet dur="4" 
+			    num.place="above" 
+			    num.format="count"
+			    num="3">
+		      <note pname="d" oct="5" dur="8" stem.dir="down" />
+		      <note pname="f" oct="5" dur="8" stem.dir="down" />
+		      <note pname="b" oct="5" dur="8" stem.dir="down" />
+		    </tuplet>
+		  </beam>
+		  <beam>
+		    <tuplet dur="4" 
+			    num.place="above" 
+			    num.format="count"
+			    num="3">
+		      <note pname="f" oct="5" dur="8" stem.dir="down" />
+		      <note pname="d" oct="5" dur="8" stem.dir="down" />
+		      <note pname="b" oct="4" dur="8" stem.dir="down" />
+		    </tuplet>
+		  </beam>
+		  <beam>
+		    <tuplet dur="4" 
+			    num.place="above" 
+			    num.format="count"
+			    num="3">
+		      <note pname="e" oct="5" dur="8" stem.dir="down" />
+		      <note pname="c" oct="5" dur="8" stem.dir="down" />
+		      <note pname="a" oct="4" dur="8" stem.dir="down" />
+		    </tuplet>
+		  </beam>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <note pname="b" oct="2" dur="4" stem.dir="up" />
+		  <chord dur="4" stem.dir="down">
+		    <note pname="b" oct="3" />
+		    <note pname="d" oct="4" />
+		  </chord>
+		  <chord>
+		    <note pname="c" oct="4" />
+		    <note pname="f" oct="3" />
+		  </chord>
+		</layer>
+	      </staff>
+	    </measure>
+	    <measure n="26" right="rptend">
+	      <staff n="1">
+		<layer>
+		  <note pname="b" oct="4" dur="4" stem.dir="down" />
+		  <rest dur="4" />
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <chord dur="4" stem.dir="down">
+		    <note pname="b" oct="3" />
+		    <note pname="d" oct="4" />
+		  </chord>
+		  <note pname="b" oct="2" dur="4" stem.dir="up" />
+		</layer>
+	      </staff>
+	    </measure>
+	  </section>
 	</score>
       </mdiv>
     </body>

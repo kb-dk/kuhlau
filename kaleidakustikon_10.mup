@@ -135,9 +135,52 @@ music
 
   // m. 20
   1 1: [down]8f6 =_p10tieend  bm;[down]8c#6;[down]8d6;[down]8a5;[down]8b5;[down]8g5 ebm;
-  2 1: [up]4b2;[down]4d3b3f3; [down]4d3b3f3; 
+  2 1: [up]4b2;[down]4d4b3f3; [down]4d4b3f3; 
+  bar mnum=21
+
+music
+  // m. 20
+  1 1: [down]4.f5;[down]8en5 bm;[down]8f5;[down]8e5 ebm;
+  2 1: [up]4b2;[down]4d4b3f3; [down]4d4b3f3; 
+  bar mnum=21
+
+music
+  // m. 21
+  1 1: [down]8f5 bm;[down]8b5;[down]8d5;[down]8f5;[down]8b4;[down]8d5 ebm;
+  2 1: [up]4b2;[down]4d4b3f3; [down]4d4b3f3; 
+  bar mnum=22
+
+music
+  // m. 22
+  1 1: 4f5 =_slur_s10_start ;4e5 =_slur_s10_end ;[up]8.f4 bm;[up]16f4 ebm;
+  1 2: [down]2a4;4s; 
+  2 1: [down]2e4c4f3; 4r; 
+  bar mnum=23
+
+music
+  // m. 23
+  1 1: [up]4f4;[grace]8g4;[grace]8f4;[grace]8e4;[up]8f4 bm;[up]8a4;[up]8c5;[up]8d5 ebm;
+  2 1: [up]4f2;[down]4e4c4f3; [down]4e4c4f3; 
+  bar mnum=24
+
+music
+  // m. 24
+  1 1: {[down]8e5 bm;[down]8d6;[down]8c6 ebm;} above 3,4;{[down]8b5 bm;[down]8a5;[down]8g5 ebm;} above 3,4;{[down]8f5 bm;[down]8en5;[down]8e&5 ebm;} above 3,4;
+  2 1: [up]4f2;[down]4c4a3f3; [down]4c4a3f3; 
+  bar mnum=25
+
+music
+  // m. 25
+  1 1: {[down]8d5 bm;[down]8f5;[down]8b5 ebm;} above 3,4;{[down]8f5 bm;[down]8d5;[down]8b4 ebm;} above 3,4;{[down]8e5 bm;[down]8c5;[down]8a4 ebm;} above 3,4;
+  2 1: [up]4b2;[down]4b3d4; c4f3; 
+  bar mnum=26
+
+  // m. 26
+  1 1: [down]4b4;4r; 
+  2 1: [down]4b3d4; [up]4b2;
   medium curve (_slurstartn10.x, _slurstartn10.y+3) to (_slurendn10.x, _slurendn10.y+3) bulge 8 // slur m.16
   medium curve (_slurstartn10a.x, _slurstartn10a.y+1.75) to (_slurendn10a.x, _slurendn10a.y+1.75) bulge 1 // tie m.16
   medium curve (_p10tiestart.x, _p10tiestart.y+1.75) to (_p10tieend.x, _p10tieend.y+1.75) bulge 1 // tie m.19
-  bar
+  medium curve (_slur_s10_start.x, _slur_s10_start.y-1.75) to (_slur_s10_end.x, _slur_s10_end.y-1.75) bulge -1 // tie m.22
+  repeatend
 
