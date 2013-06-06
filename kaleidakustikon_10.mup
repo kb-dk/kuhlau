@@ -49,5 +49,95 @@ music
   // m. 5
   1 1: [down]4.c5;[down]8d5 bm;[down]8b4;[down]8c5 ebm;
   2 1: [up]4c3;[down]4e3g3c4; [down]4e3g3c4; 
+  bar mnum=6
+
+music
+  // m. 6
+  1 1: [down]8a4 bm;[down]8g#5;[down]8a5;[down]8e5;[down]8gn5;[down]8f5 ebm;
+  2 1: [up]4f2;[down]4f3a3c4; [down]4f3a3c4; 
+  bar mnum=7
+
+music
+  // m. 7
+  1 1: [up]4g4;[up]4.d5f5a&5d6; [up]8f4;
+  2 1: [down]4b3d4; [down]4.bn3d4 with f4a&4 above; 8r; 
+  bar mnum=8
+
+music
+  // m. 8
+  1 1: [up]4e4;[grace]8f4;[grace]8e4;[grace]8c#4;[up]8e4 bm;[up]8g4;[up]8b4;[up]8e4 ebm;
+  2 1: 4c3;[up]4g3b3; [up]4g3b3; 
+  2 2: [down]2.c3;
+  bar mnum=9
+
+  // m. 9
+  1 1: [up]4f4;4r; 
+  2 1: [down]4f3a3; [up]4f2;
+  repeatboth mnum=10
+
+music
+  // m. 10
+  1 1: 2.c5;
+  2 1: 2.c3;
+  bar
+
+music
+  // m. 12
+  1 1: [down]4.c6;[down]8b5 bm;[down]8g5;[down]8e5 ebm;
+  2 1: [down]8c3 bm;[down]8c4 ebm;[down]8g3b3 bm; [down]8c4 ebm;[down]8g3b3 bm; [down]8c4 ebm;
+  bar mnum=13
+
+music
+  // m. 13
+  1 1: [down]8g5 bm;[down]8f5;[down]8e5;[down]8f5;[down]8a5;[down]8f5 ebm;
+  2 1: 8c3 bm;8c4 ebm;[down]8f3a3 bm; 8c4;[down]8f3a3; 8c4 ebm;
+  bar mnum=14
+
+music
+  // m. 14
+  1 1: 4.c5;8c5 bm;8a4;8f4 ebm;
+  2 1: [down]8c3 bm;[down]8c4 ebm;[down]8f3a3 bm; 8c4 ebm;[down]8f3a3 bm; 8c4 ebm;
+  bar mnum=15
+
+music
+  // m. 15
+  1 1: [up]8e4 bm;[up]8g4;[up]8c5;[up]8b4;[up]8g4;[up]8e4 ebm;
+  2 1: [down]8c3 bm;[down]8c4 ebm;[down]8g3b3 bm; 8c4;[down]8g3b3; 8c4 ebm;
+  bar mnum=16
+
+music
+  // m. 16
+  1 1: [down]8f4 =_slurstartn10  bm;[down]8a4;[down]8c5;[down]8a5 =_slurstartn10a ;[down]8a5 =_slurendn10a ;[down]8g5 =_slurendn10  ebm;
+  2 1: 8c3 bm;8c4 ebm;[down]8f3a3 bm; 8c4;[down]8f3a3; 8c4 ebm;
+  // slur encoded in last measure
+  bar mnum=17
+
+music
+  // m. 17
+  1 1: [down]4f5;[up]4c5f4; [up]4a4f4; 
+  2 1: [down]8c3 bm;[down]8c4;[down]8a3;[down]8c4;[down]8f3;[down]8c4 ebm;
+  bar mnum=18
+
+  // m. 18
+  1 1: [up]4e4g4; [up]4c6e5c5; 
+  2 1: [up]4c3;[down]4c4 with g4 above; 
+  repeatboth mnum=19
+
+score
+  time=3/4
+  key=2&
+
+music
+  // m. 19
+  1 1: [down]4f6 =_p10tiestart ;
+  2 1: 4r; 
+  bar mnum=20
+
+  // m. 20
+  1 1: [down]8f6 =_p10tieend  bm;[down]8c#6;[down]8d6;[down]8a5;[down]8b5;[down]8g5 ebm;
+  2 1: [up]4b2;[down]4d3b3f3; [down]4d3b3f3; 
+  medium curve (_slurstartn10.x, _slurstartn10.y+3) to (_slurendn10.x, _slurendn10.y+3) bulge 8 // slur m.16
+  medium curve (_slurstartn10a.x, _slurstartn10a.y+1.75) to (_slurendn10a.x, _slurendn10a.y+1.75) bulge 1 // tie m.16
+  medium curve (_p10tiestart.x, _p10tiestart.y+1.75) to (_p10tieend.x, _p10tieend.y+1.75) bulge 1 // tie m.19
   bar
 
