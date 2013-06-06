@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mei xmlns="http://www.music-encoding.org/ns/mei"
+     meiversion="2010-05">
+  <meihead>
+    <filedesc>
+      <titlestmt>
+	<title>Kaleidakustikon Layer 11</title>
+      </titlestmt>
+      <pubstmt>
+      </pubstmt>
+    </filedesc>
+  </meihead>
+  <music>
+    <body>
+      <mdiv>
+	<score>
+	  <scoredef>
+	    <staffgrp symbol="brace">
+	      <staffdef n="1" clef.line="2" clef.shape="G"/>
+	      <staffdef n="2" clef.line="4" clef.shape="F"/>
+	    </staffgrp>
+	  </scoredef>
+	  <!-- A bundle seventh card -->
+	  <section xml:id="a.11" type="A">
+	    <scoredef key.sig="1f" 
+		      key.pname="f" 
+		      meter.count="3" 
+		      meter.unit="4" />
+	    <measure n="1">
+	      <staff n="1">
+		<layer>
+		</layer>
+	      </staff>
+	    </measure>
+	  </section>
+	</score>
+      </mdiv>
+    </body>
+  </music>
+</mei>
