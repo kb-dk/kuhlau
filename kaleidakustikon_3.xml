@@ -268,54 +268,22 @@
 
 	  </section>
 
-	  <!-- this is really section h.11, since eight cards
-	       were lost -->
+	  <!-- the following card were lost -->
 
-	  <section xml:id="h.11"  type="B">
-	    <scoredef 
-		key.pname="f"
-		key.mode="minor"
-		meter.count="3" 
-		meter.unit="4" />
-	    <measure n="10" >
+	  <section type="missing">
+
+	  <!-- this section is fake. the card is missing and we won't use
+	       this -->
+
+	    <measure>
 	      <staff n="1">
 		<layer>
-		  <rest dur="4" />
+		  <note pname="c" oct="5" dur="4" dots="1"/>
 		</layer>
 	      </staff>
 	      <staff n="2">
 		<layer>
-		  <beam>
-		    <note pname="c" dur="8" dots="1" oct="4" />
-		    <note pname="c" dur="16" oct="4" />
-		  </beam>
-		</layer>
-	      </staff>
-	    </measure>
-	    <measure n="11" >
-	      <staff n="1">
-		<layer>
-		  <beam>
-		    <note pname="c" dur="8" oct="5" artic="stacc" />
-		    <note pname="g" dur="8" oct="4" artic="stacc" />
-		    <note pname="e" dur="8" oct="4" artic="stacc" />
-		  </beam>
-		  <rest dur="8"/>
-		  <beam>
-		    <note pname="c" dur="8" dots="1" oct="5" />
-		    <note pname="c" dur="16" oct="5" />
-		  </beam>
-		</layer>
-	      </staff>
-	      <staff n="2">
-		<layer>
-		  <rest dur="4"/>
-		  <rest dur="8"/>
-		  <beam>
-		    <note pname="c" dur="8" oct="4" artic="stacc" />
-		    <note pname="g" dur="8" oct="3" artic="stacc" />
-		    <note pname="e" dur="8" oct="3" artic="stacc" />
-		  </beam>
+		  <note pname="c" oct="3" dur="4" dots="1"/>
 		</layer>
 	      </staff>
 	    </measure>

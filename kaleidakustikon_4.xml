@@ -270,61 +270,9 @@
 	  </section>
 	  <!-- this is really section h.12, since eight cards
 	       were lost -->
-	  <section xml:id="h.12" type="B">
-	    <scoredef 
-		key.sig="4f"
-		key.pname="f"
-		key.mode="minor"
-		meter.count="3" 
-		meter.unit="4" />
 
-	    <measure n="10">
-	      <staff n="1">
-		<layer>
-		  <beam>
-		    <note pname="c" dur="8" dots="1" oct="5" />
-		    <note pname="c" dur="16" oct="5" />
-		  </beam>
-		</layer>
-	      </staff>
-	      <staff n="2">
-		<layer>
-		  <rest dur="4"/>
-		</layer>
-	      </staff>
-	    </measure>
 
-	    <measure n="11">
-	      <staff n="1">
-		<layer>
-		  <note pname="c" dur="4" dots="1" oct="6" />
-		  <beam>
-		    <note pname="b" dur="8" oct="5" />
-		    <note pname="d" dur="8" oct="6" />
-		    <note pname="c" dur="8" oct="6" />
-		  </beam>
-		</layer>
-	      </staff>
-	      <staff n="2">
-		<layer>
-		  <beam>
-		    <note pname="c" dur="8" oct="3" stem.dir="down" />
-		    <note pname="c" dur="8" oct="4" stem.dir="down" />
-		    <chord stem.dir="down" dur="8">
-		      <note pname="g" oct="3"  />
-		      <note pname="b" oct="3"  />
-		    </chord>
-		    <note pname="c" dur="8" oct="4" stem.dir="down" />
-		    <chord stem.dir="down" dur="8">
-		      <note pname="g" oct="3" />
-		      <note pname="b" oct="3" />
-		    </chord>
-		    <note pname="c" dur="8" oct="4" stem.dir="down" />
-		  </beam>
-		</layer>
-	      </staff>
-	    </measure>
-	  </section>
+
 	  <section xml:id="i.4" type="B">
 	    <measure n="12">
 	      <staff n="1">
