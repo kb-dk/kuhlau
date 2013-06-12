@@ -36,7 +36,11 @@ return $param
     <body>
       <mdiv>
 	<score>
-	  <scoredef>
+	  <scoredef key.mode="major" 
+		    key.pname="f" 
+		    key.sig="1f" 
+		    meter.count="3" 
+		    meter.unit="4" >
 	    <staffgrp symbol="brace">
 	      <staffdef n="1" clef.line="2" clef.shape="G"/>
 	      <staffdef n="2" clef.line="4" clef.shape="F"/>

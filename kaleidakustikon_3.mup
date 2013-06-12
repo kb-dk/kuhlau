@@ -10,6 +10,8 @@ score
   scale=.75 // turned on for testing
   measnum=y // turned on for testing
   staffs=2
+  time=3/4
+  key=1&
   brace=1-2
 
 staff 1
@@ -17,10 +19,6 @@ staff 1
 
 staff 2
   clef=bass
-
-score
-  time=3/4
-  key=1&
 
 music
   // m. 1
@@ -72,23 +70,14 @@ music
 
   // m. 9
   1 1: 4f4;4r; 
-  2 1: [down]4c4a3f3; 4f2;
+  2 1: [down]4a3f3; 4f2;
   repeatboth mnum=10
-
-score
-  time=3/4
-  key=4&
 
 music
   // m. 10
-  1 1: 4r; 
-  2 1: 8.c4 bm;16c4 ebm;
-  bar mnum=11
-
-  // m. 11
-  1 1: [with .]8c5 bm;[with .]8g4;[with .]8e4 ebm;8r; 8.c5 bm;16c5 ebm;
-  2 1: 4r; 8r; [with .]8c4 bm;[with .]8g3;[with .]8e3 ebm;
-  bar mnum=12
+  1 1: 4.c5;
+  2 1: 4.c3;
+  bar
 
 music
   // m. 12
@@ -144,7 +133,7 @@ music
 
   // m. 20
   1 2: 8f4 =_p3tieend  bm;8d5;8a4;8b4;8g5;8f5 ebm;
-  2 1: [up]4b2;[up]4f3b3d4; [up]4f3b3d4; 
+  2 1: [up]4b2;[down]4f3b3d4; [down]4f3b3d4; 
   bar mnum=21
 
 music
