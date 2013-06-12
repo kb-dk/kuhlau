@@ -66,7 +66,14 @@ music
 music
   // m. 8
   1 1: [up]4e4;[grace;slash 1]8f4;[up]8.e4 bm;[up]16d4;[up]8.e4;[up]16c4 ebm;
+  2 1: [up]8c3 bm;[up]8g3;[up]8b3;[up]8g3;[up]8b3;[up]8g3 ebm;
+  2 2: [down]2.c3;
   bar mnum=9
+
+  // m. 9
+  1 1: [up]4f4;4r; 
+  2 1: [down]4a3f3; [up]4f2;
+  repeatboth mnum=10
 
 score
   time=3/4

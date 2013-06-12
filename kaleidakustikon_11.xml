@@ -235,11 +235,44 @@
 		  </beam>
 		</layer>
 	      </staff>
+	      <staff n="2">
+		<layer>
+		  <beam>
+		    <note pname="c"  oct="3" dur="8" stem.dir="up"/>
+		    <note pname="g"  oct="3" dur="8" stem.dir="up"/>
+		    <note pname="b"  oct="3" dur="8" stem.dir="up"/>
+		    <note pname="g"  oct="3" dur="8" stem.dir="up"/>
+		    <note pname="b"  oct="3" dur="8" stem.dir="up"/>
+		    <note pname="g"  oct="3" dur="8" stem.dir="up"/>
+		  </beam>
+		</layer>
+		<layer>
+		  <note pname="c"  oct="3" dur="2" dots="1" stem.dir="down"/>
+		</layer>
+	      </staff>
+	    </measure>
+	    <measure n="9" right="rptboth">
+	      <staff n="1">
+		<layer>
+		  <note pname="f" oct="4" dur="4" stem.dir="up" />
+		  <rest dur="4" />
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <chord dur="4" stem.dir="down">
+		    <note pname="a" oct="3" />
+		    <note pname="f" oct="3" />
+		  </chord>
+		  <note pname="f" oct="2" dur="4" stem.dir="up" />
+		</layer>
+	      </staff>
 	    </measure>
 	  </section>
 
 	  <section xml:id="h.11"  type="B">
 	    <scoredef 
+		key.sig="4f"
 		key.pname="f"
 		key.mode="minor"
 		meter.count="3" 
@@ -261,12 +294,11 @@
 	    </measure>
 	    <measure n="11" >
 	      <staff n="1">
+		<!--layer>
+		  <rest dur="4"/>
+		  <rest dur="4"/>
+		</layer-->
 		<layer>
-		  <!--beam>
-		    <note pname="c" dur="8" oct="5" artic="stacc" />
-		    <note pname="g" dur="8" oct="4" artic="stacc" />
-		    <note pname="e" dur="8" oct="4" artic="stacc" />
-		  </beam-->
 		  <space dur="2"/>
 		  <beam>
 		    <note pname="c" dur="8" dots="1" oct="5" />
