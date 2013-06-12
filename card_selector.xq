@@ -42,9 +42,6 @@ return $param
 	      <staffdef n="2" clef.line="4" clef.shape="F"/>
 	    </staffgrp>
 	  </scoredef>
-
-{$queries}
-
 	  {
 
 	    for $q in $queries/*
