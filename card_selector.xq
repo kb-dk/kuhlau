@@ -21,7 +21,7 @@ return $param
 }
 </properties>;
 
-<mei xmlns="http://www.music-encoding.org/ns/mei"
+let $music:=<mei xmlns="http://www.music-encoding.org/ns/mei"
      meiversion="2010-05">
   <meihead>
     <filedesc>
@@ -55,7 +55,7 @@ return $param
 		collection("/db/kuhlau/kaleidakustikon")//m:section[@xml:id/string()=$id]
 	      else
 		collection("/db/kuhlau/kaleidakustikon")//m:section[@type/string()="missing"]
-	      return $node
+   	    return $node
 
 	  }
 	</score>
@@ -63,3 +63,4 @@ return $param
     </body>
   </music>
 </mei>
+return $music

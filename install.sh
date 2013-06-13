@@ -33,3 +33,12 @@ HOSTPORT="labs.kb.dk:8080"
     --load ./ \
     --context /exist/rest/db/ \
     --target kuhlau/
+
+./load_exist.pl \
+    --user admin \
+    --password flormelis \
+    --host-port $HOSTPORT  \
+    --suffix xsl \
+    --load ./ \
+    --context /exist/rest/db/ \
+    --target kuhlau/
