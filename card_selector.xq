@@ -8,6 +8,7 @@ declare namespace util="http://exist-db.org/xquery/util";
 declare namespace app="http://kb.dk/this/app";
 declare namespace m="http://www.music-encoding.org/ns/mei";
 declare namespace ft="http://exist-db.org/xquery/lucene";
+declare namespace transform="http://exist-db.org/xquery/transform";
 
 declare option exist:serialize "method=xml media-type=text/xml"; 
 
@@ -55,8 +56,14 @@ let $music:=<mei xmlns="http://www.music-encoding.org/ns/mei"
 		collection("/db/kuhlau/kaleidakustikon")//m:section[@xml:id/string()=$id]
 	      else
 		collection("/db/kuhlau/kaleidakustikon")//m:section[@type/string()="missing"]
-   	    return $node
-
+            return
+	      if($queries/properties/property[@key='h']="2") then
+   		$node
+	      else
+		if($node/@type="B") then
+		  transform:transform($node,doc("/db/kuhlau/transpose.xsl"),())		  
+		else
+		  $node
 	  }
 	</score>
       </mdiv>
