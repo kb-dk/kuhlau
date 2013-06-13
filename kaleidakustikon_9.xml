@@ -576,6 +576,11 @@
 
 
 	  <section xml:id="p.9" type="C">
+	    <scoredef key.sig="2f" 
+		      key.pname="b" 
+		      key.mode="major"
+		      meter.count="3" 
+		      meter.unit="4" />
 	    <measure n="18">
 	      <staff n="1">
 		<layer>

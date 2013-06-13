@@ -129,5 +129,66 @@ music
   // m. 18
   1 1: [up]2c5e4; 
   2 1: [down]4c4g3c3; [up]4c2;
-  repeatboth
+  repeatboth mnum=19
+
+score
+  time=3/4
+  key=2&
+
+music
+  // m. 18
+  1 1: [down]8.f5 bm;[down]16f5 ebm;
+  2 1: 4r; 
+  bar mnum=19
+
+  // m. 19
+  1 1: [down]8f5 bm;[down]8d5;[down]8b5;[down]8f5;[down]8d6;[down]8b5 ebm;
+  2 1: [up]4b2;[down]4d4b3f3; [down]4d4b3f3; 
+  bar mnum=20
+
+music
+  // m. 19
+  1 1: [down]4.f5;[down]8en5 bm;[down]8f5;[down]8e5 ebm;
+  2 1: [up]4b2;[down]4d4b3f3; [down]4d4b3f3; 
+  bar mnum=20
+
+music
+  // m. 20
+  1 1: [down]8g5 bm;[down]8f5 ebm;8r; [down]8f5 bm;[down]8d5;[down]8b4 ebm;
+  2 1: [up]4b2;[down]4d4b3f3; [down]4d4b3f3; 
+  bar mnum=21
+
+music
+  // m. 21
+  1 1: [down]8bn4 bm;[down]8c5;[down]8f5;[down]8e5;[down]8c5;[down]8a4 ebm;
+  2 1: [down]2.e4a3f3; 
+  bar mnum=22
+
+music
+  // m. 22
+  1 1: [down]8f4 bm;16r; [down]16d5;[down]8e5;16r; [down]16d5;[down]8e5;16r; [down]16d5 ebm;
+  2 1: [up]4f2;[down]4c4a3f3; [down]4c4a3f3; 
+  bar mnum=23
+
+music
+  // m. 23
+  1 1: [down]8e5;[down]8e5 bm;[down]8e6;[down]8e5;[down]8e6;[down]8e5 ebm;
+  2 1: [down]4c4a3f3; <<staff clef=treble>> [up]2c5a4f4; 
+  bar mnum=24
+
+staff 2
+  clef=bass
+
+music
+music
+  // m. 24
+  1 1: [down]8d5 bm;[down]8f5;[down]8b5;[down]8b4 ebm;[up]8.d5 bm;[up]16c5 ebm;
+  1 2: 2s; [down]4a4;
+  2 1: [up]4b2;[down]4d4b3; [down]4e4f3; 
+  bar mnum=25
+
+  // m. 25
+  1 1: [down]4b4;4r; 
+  2 1: [down]4d4b3; [up]4b2;
+  repeatend
 

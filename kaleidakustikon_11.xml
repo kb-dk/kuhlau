@@ -559,6 +559,271 @@
 	    </measure>
 	  </section>
 
+	  <section xml:id="p.11" type="C">
+	    <scoredef key.sig="2f" 
+		      key.pname="b" 
+		      key.mode="major"
+		      meter.count="3" 
+		      meter.unit="4" />
+	    <measure n="18">
+	      <staff n="1">
+		<layer>
+		  <beam>
+		    <note pname="f" oct="5" dur="8" dots="1" stem.dir="down"/>
+		    <note pname="f" oct="5" dur="16" stem.dir="down"/>
+		  </beam>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <rest dur="4"/>
+		</layer>
+	      </staff>
+	    </measure>
+	    <measure n="19">
+	      <staff n="1">
+		<layer>
+		  <beam>
+		    <note pname="f" oct="5" dur="8" stem.dir="down"/>
+		    <note pname="d" oct="5" dur="8" stem.dir="down"/>
+		    <note pname="b" oct="5" dur="8" stem.dir="down"/>
+		    <note pname="f" oct="5" dur="8" stem.dir="down"/>
+		    <note pname="d" oct="6" dur="8" stem.dir="down"/>
+		    <note pname="b" oct="5" dur="8" stem.dir="down"/>
+		  </beam>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <note pname="b" oct="2" dur="4" stem.dir="up" />
+		  <chord dur="4" stem.dir="down">
+		    <note pname="d" oct="4" />
+		    <note pname="b" oct="3" />
+		    <note pname="f" oct="3" />
+		  </chord>
+		  <chord dur="4" stem.dir="down">
+		    <note pname="d" oct="4" />
+		    <note pname="b" oct="3" />
+		    <note pname="f" oct="3" />
+		  </chord>
+		</layer>
+	      </staff>
+	    </measure>
+	  </section>
+
+	  <section xml:id="q.11" type="C">
+	    <measure n="19">
+	      <staff n="1">
+		<layer>
+		  <note pname="f" oct="5" dur="4" dots="1" stem.dir="down" />
+		  <beam>
+		    <note pname="e" oct="5" accid="n" dur="8" stem.dir="down"/>
+		    <note pname="f" oct="5" dur="8" stem.dir="down"/>
+		    <note pname="e" oct="5" dur="8" stem.dir="down"/>
+		  </beam>
+		</layer>
+	      </staff>
+
+	      <staff n="2">
+		<layer>
+		  <note pname="b" oct="2" dur="4" stem.dir="up" />
+		  <chord dur="4" stem.dir="down">
+		    <note pname="d" oct="4" />
+		    <note pname="b" oct="3" />
+		    <note pname="f" oct="3" />
+		  </chord>
+		  <chord dur="4" stem.dir="down">
+		    <note pname="d" oct="4" />
+		    <note pname="b" oct="3" />
+		    <note pname="f" oct="3" />
+		  </chord>
+		</layer>
+	      </staff>
+	      
+	    </measure>
+	  </section>
+
+	  <section xml:id="r.11" type="C">
+	    <measure n="20">
+	      <staff n="1">
+		<layer>
+		  <beam>
+		    <note pname="g" oct="5" dur="8" stem.dir="down"/>
+		    <note pname="f" oct="5" dur="8" stem.dir="down"/>
+		  </beam>
+		  <rest dur="8" />
+		  <beam>
+		    <note pname="f" oct="5" dur="8" stem.dir="down"/>
+		    <note pname="d" oct="5" dur="8" stem.dir="down"/>
+		    <note pname="b" oct="4" dur="8" stem.dir="down"/>
+		  </beam>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <note pname="b" oct="2" dur="4" stem.dir="up" />
+		  <chord dur="4" stem.dir="down">
+		    <note pname="d" oct="4" />
+		    <note pname="b" oct="3" />
+		    <note pname="f" oct="3" />
+		  </chord>
+		  <chord dur="4" stem.dir="down">
+		    <note pname="d" oct="4" />
+		    <note pname="b" oct="3" />
+		    <note pname="f" oct="3" />
+		  </chord>
+		</layer>
+	      </staff>
+	    </measure>
+	  </section>
+
+	  <section xml:id="s.11" type="C">
+	    <measure n="21">
+	      <staff n="1">
+		<layer>
+		  <beam>
+		    <note pname="b" oct="4" accid="n" dur="8" stem.dir="down"/>
+		    <note pname="c" oct="5" dur="8" stem.dir="down"/>
+		    <note pname="f" oct="5" dur="8" stem.dir="down"/>
+		    <note pname="e" oct="5" dur="8" stem.dir="down"/>
+		    <note pname="c" oct="5" dur="8" stem.dir="down"/>
+		    <note pname="a" oct="4" dur="8" stem.dir="down"/>
+		  </beam>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <chord dur="2" dots="1" stem.dir="down">
+		    <note pname="e" oct="4"/>
+		    <note pname="a" oct="3"/>
+		    <note pname="f" oct="3"/>
+		  </chord>
+		</layer>
+	      </staff>
+	    </measure>
+	  </section>
+
+	  <section xml:id="t.11" type="C">
+	    <measure n="22">
+	      <staff n="1">
+		<layer>
+		  <beam>
+		    <note pname="f" oct="4" dur="8" stem.dir="down" />
+		    <rest dur="16" />
+		    <note pname="d" oct="5" dur="16" stem.dir="down" />
+		    <note pname="e" oct="5" dur="8" stem.dir="down" />
+		    <rest dur="16" />
+		    <note pname="d" oct="5" dur="16" stem.dir="down" />
+		    <note pname="e" oct="5" dur="8" stem.dir="down" />
+		    <rest dur="16" />
+		    <note pname="d" oct="5" dur="16" stem.dir="down" />
+		  </beam>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <note pname="f" oct="2" dur="4" stem.dir="up" />
+		  <chord dur="4" stem.dir="down">
+		    <note pname="c" oct="4" />
+		    <note pname="a" oct="3" />
+		    <note pname="f" oct="3" />
+		  </chord>
+		  <chord dur="4" stem.dir="down">
+		    <note pname="c" oct="4" />
+		    <note pname="a" oct="3" />
+		    <note pname="f" oct="3" />
+		  </chord>
+		</layer>
+	      </staff>
+	    </measure>
+	  </section>
+	  <section xml:id="u.11" type="C">
+	    <measure n="23">
+	      <staff n="1">
+		<layer>
+		  <note pname="e" oct="5" dur="8" stem.dir="down"/>
+		  <beam>
+		    <note pname="e" oct="5" dur="8" stem.dir="down"/>
+		    <note pname="e" oct="6" dur="8" stem.dir="down"/>
+		    <note pname="e" oct="5" dur="8" stem.dir="down"/>
+		    <note pname="e" oct="6" dur="8" stem.dir="down"/>
+		    <note pname="e" oct="5" dur="8" stem.dir="down"/>
+		  </beam>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <chord dur="4" stem.dir="down">
+		    <note pname="c" oct="4" />
+		    <note pname="a" oct="3" />
+		    <note pname="f" oct="3" />
+		  </chord>
+		  <clefchange shape="G" line="2" />
+		  <chord dur="2" stem.dir="up">
+		    <note pname="c" oct="5" />
+		    <note pname="a" oct="4" />
+		    <note pname="f" oct="4" />
+		  </chord>
+		  <clefchange shape="F" line="4"/>
+		</layer>
+	      </staff>
+	    </measure>
+	  </section>
+
+	  <section xml:id="v.11" type="C">
+	    <measure n="24">
+	      <staff n="1">
+		<layer>
+		  <beam>
+		    <note pname="d" oct="5" dur="8" stem.dir="down" />
+		    <note pname="f" oct="5" dur="8" stem.dir="down" />
+		    <note pname="b" oct="5" dur="8" stem.dir="down" />
+		    <note pname="b" oct="4" dur="8" stem.dir="down" />
+		  </beam>
+		  <beam>
+		    <note pname="d" oct="5" dur="8" dots="1" stem.dir="up"/>
+		    <note pname="c" oct="5" dur="16" stem.dir="up" />
+		  </beam>
+		</layer>
+		<layer>
+		  <space dur="2"/>
+		  <note pname="a" oct="4" dur="4" stem.dir="down"/>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <note pname="b" oct="2" dur="4" stem.dir="up"/>
+		  <chord dur="4" stem.dir="down">
+		    <note pname="d" oct="4" />
+		    <note pname="b" oct="3" />
+		  </chord>
+		  <chord dur="4" stem.dir="down">
+		    <note pname="e" oct="4" />
+		    <note pname="f" oct="3" />
+		  </chord>
+		</layer>
+	      </staff>
+	    </measure>
+	    <measure n="25" right="rptend">
+	      <staff n="1">
+		<layer>
+		  <note pname="b" oct="4" dur="4" stem.dir="down"/>
+		  <rest dur="4"/>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <chord dur="4" stem.dir="down">
+		    <note pname="d" oct="4"/>
+		    <note pname="b" oct="3"/>
+		  </chord>
+		  <note pname="b" oct="2" dur="4" stem.dir="up"/>
+		</layer>
+	      </staff>
+	    </measure>
+	  </section>
+
+
 	</score>
       </mdiv>
     </body>

@@ -125,6 +125,10 @@ music
   2 1: 8c3 bm;8c4;8bn3;8c4 ebm;
   repeatboth mnum=19
 
+score
+  time=3/4
+  key=2&
+
 music
   // m. 18
   1 1: 4r; 
