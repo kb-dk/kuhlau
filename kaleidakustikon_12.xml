@@ -20,7 +20,7 @@
 	      <staffdef n="2" clef.line="4" clef.shape="F"/>
 	    </staffgrp>
 	  </scoredef>
-	  <!-- A bundle seventh card -->
+
 	  <section xml:id="a.12" type="A">
 	    <scoredef key.sig="1f" 
 		      key.pname="f" 
