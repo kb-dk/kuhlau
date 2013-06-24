@@ -832,6 +832,32 @@
 	      <staff n="2">
 		<layer>
 		  <note pname="b" oct="2" dur="4" stem.dir="up" />
+		  <chord dur="4" stem.dir="down">
+		    <note pname="b" oct="3" />
+		    <note pname="d" oct="4" />
+		  </chord>
+		  <chord dur="4" stem.dir="down">
+		    <note pname="f" oct="3" />
+		    <note pname="a" oct="3" />
+		    <note pname="e" oct="4" />
+		  </chord>
+		</layer>
+	      </staff>
+	    </measure>
+	    <measure n="25" right="rptend">
+	      <staff n="1">
+		<layer>
+		  <note pname="b" oct="5" dur="4" stem.dir="down"/>
+		  <rest dur="4"/>
+		</layer>
+	      </staff>
+	      <staff n="2">
+		<layer>
+		  <chord dur="4" stem.dir="down">
+		    <note pname="b" oct="3" />
+		    <note pname="d" oct="4" />
+		  </chord>
+		  <note pname="b" oct="2" dur="4" stem.dir="up" />
 		</layer>
 	      </staff>
 	    </measure>

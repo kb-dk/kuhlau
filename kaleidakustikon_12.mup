@@ -118,5 +118,73 @@ music
   // m. 15
   1 1: [up]8f4 bm;[up]8a4;[up]8d5;[up]8c5;[up]8bn4;[up]8c5 ebm;
   2 1: [down]8c3 bm;[down]8c4;[down]8f3a3; [down]8c4;[down]8f3a3; [down]8c4 ebm;
-  bar
+  bar mnum=16
+
+music
+  // m. 16
+  1 1: [down]4f5;[down]4c5g5b5; [down]4c5f5a5; 
+  2 1: [down]8c3 bm;[down]8c4;[down]8e4;[down]8c4;[down]8f4;[down]8f3 ebm;
+  bar mnum=17
+
+  // m. 17
+  1 1: [down]2c5e5g5; 
+  2 1: [down]4c4;[up]4c3;
+  repeatboth mnum=18
+
+score
+  time=3/4
+  key=2&
+
+music
+  // m. 17
+  1 1: [down]4e6 =_p12tiestart ;
+  2 1: 4r; 
+  bar mnum=18
+
+  // m. 18
+  1 1: [down]8e6 =_p12tieend  bm;[down]8a6;[down]8d6;[down]8e6;[down]8b5;[down]8d6 ebm;
+  2 1: [up]4b2;[down]4f3b3d4; [down]4f3b3d4; 
+  bar mnum=19
+
+music
+  // m. 19
+  1 1: [down]4.f5;[down]8d5 bm;[down]8e5;[down]8en5 ebm;
+  2 1: [up]4b2;[down]4f3b3d4; [down]4f3b3d4; 
+  bar mnum=20
+
+music
+  // m. 20
+  1 1: [down]8f5 bm;[down]8b5;[down]8d5;[down]8g5;[down]8f5;[down]8b4 ebm;
+  2 1: [up]4b2;[down]4f3b3d4; [down]4f3b3d4; 
+  bar mnum=21
+
+music
+  // m. 21
+  1 1: [down]8bn4 bm;[down]8c5;[down]8d5;[down]8c5 ebm;[up]8.f4 bm;[up]16f4 ebm;
+  2 1: [down]2.f3a3e4; 
+  bar mnum=22
+
+music
+  // m. 22
+  1 1: [up]8f4 bm;[up]8a4;[up]8c5;[up]8g#4;[up]8a4;[up]8c5 ebm;
+  2 1: [up]4f2;[down]4f3c4e4; [down]4f3c4e4; 
+  bar mnum=23
+
+music
+  // m. 23
+  1 1: [down]8e5 bm;[down]16g6;[down]16f6 ebm;[down]16e6 bm;[down]16d6;[down]16c6;[down]16b5 ebm;[down]16a5 bm;[down]16g5;[down]16f5;[down]16e5 ebm;
+  2 1: [up]4f2;[down]4f3a3c4; [down]4f3a3c4; 
+  bar mnum=24
+
+music
+  // m. 24
+  1 1: {[up]8d5 bm;[up]8d4;[up]8f4 ebm;} below 3,4;{[down]8b4 bm;[down]8d5;[down]8f5 ebm;} above 3,4;[down]8.d6 bm;[down]16c6 ebm;
+  2 1: [up]4b2;[down]4b3d4; [down]4f3a3e4; 
+  bar mnum=25
+
+  // m. 25
+  1 1: [down]4b5;4r; 
+  2 1: [down]4b3d4; [up]4b2;
+  medium curve (_p12tiestart.x, _p12tiestart.y+1.75) to (_p12tieend.x, _p12tieend.y+1.75) bulge 1 // tie m.17
+  repeatend
 
