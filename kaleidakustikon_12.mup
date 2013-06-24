@@ -33,6 +33,48 @@ music
   2 1: [up]4f2;[down]4f3a3c4; [down]4f3a3c4; 
   bar mnum=3
 
+music
+  // m. 3
+  1 1: [down]4.a5;[down]8a5 bm;[down]8g5;[down]8f5 ebm;
+  2 1: [up]4f2;[down]4f3a3c4; [down]4f3a3c4; 
+  bar mnum=4
+
+music
+  // m. 4
+  1 1: [down]8d#5 bm;[down]8e5;[down]8b5;[down]8g5;[down]8e5;[down]8c5 ebm;
+  2 1: [up]4c3;[down]4g3b3c4; [down]4g3b3c4; 
+  bar mnum=5
+
+music
+  // m. 5
+  1 1: [down]8bn4 bm;[down]8c5;[down]8d5;[down]8c5;[down]8b&4;[down]8c5 ebm;
+  2 1: [up]4c3;[down]4e3g3c4; [down]4e3g3c4; 
+  bar mnum=6
+
+music
+  // m. 6
+  1 1: [down]8a4 bm;[down]8g#5;[down]8a5;[down]8f5;[down]8c5;[down]8a4 ebm;
+  2 1: [up]4f2;[down]4f3a3c4; [down]4f3a3c4; 
+  bar mnum=7
+
+music
+  // m. 7
+  1 1: [down]8g4 bm;[down]8g5;[down]8a4;[down]8a5;[down]8b4;[down]8b5 ebm;
+  2 1: [down]4b3d4; [down]4f#3c4e&4; [down]4g3b3d4; 
+  bar mnum=8
+
+music
+  // m. 8
+  1 1: [up]8e4;[down]4c5;[down]8bn4 bm;[down]8d5;[down]8c5 ebm;
+  2 1: [up]4c3;[up]4g3b3; [up]4g3b3; 
+  2 2: [down]2.c3;
+  bar mnum=9
+
+  // m. 9
+  1 1: [up]4f4;4r; 
+  2 1: [down]4f3a3; [up]4f2;
+  repeatboth mnum=10
+
 score
   time=3/4
   key=4&
@@ -46,5 +88,35 @@ music
   // m. 11
   1 1: 4.c6;8b5 bm;8d6;8c6 ebm;
   2 1: [down]8c3 bm;[down]8c4;[down]8g3b3; [down]8c4;[down]8g3b3; [down]8c4 ebm;
+  bar mnum=12
+
+music
+  // m. 11
+  1 1: [down]8c6 bm;[down]8bn5;[down]8b&5;[down]8g5;[down]8b5;[down]8e5 ebm;
+  2 1: [down]8c3 bm;[down]8c4;[down]8g3b3; [down]8c4;[down]8g3b3; [down]8c4 ebm;
+  bar mnum=12
+
+music
+  // m. 12
+  1 1: [down]8e5 bm;[down]8f5;[down]8g5;[down]8f5;[down]8a5;[down]8f5 ebm;
+  2 1: [down]8c3 bm;[down]8c4;[down]8f3a3; [down]8c4;[down]8f3a3; [down]8c4 ebm;
+  bar mnum=13
+
+music
+  // m. 13
+  1 1: {[down]8c5 bm;[down]8f5;[down]8a5 ebm;} above 3,4;{[down]8c6 bm;[down]8e6;[down]8g6 ebm;} above 3,4;[down]8b6 bm;[up]8f4 ebm;
+  2 1: [down]8c3 bm;[down]8c4;[down]8f3a3; [down]8c4;[down]8f3a3; [down]8c4 ebm;
+  bar mnum=14
+
+music
+  // m. 14
+  1 1: [up]8e4;[down]4b4;[up]8g4 bm;[up]8b4;[up]8e4 ebm;
+  2 1: [down]8c3 bm;[down]8c4;[down]8g3b3; [down]8c4;[down]8g3b3; [down]8c4 ebm;
+  bar mnum=15
+
+music
+  // m. 15
+  1 1: [up]8f4 bm;[up]8a4;[up]8d5;[up]8c5;[up]8bn4;[up]8c5 ebm;
+  2 1: [down]8c3 bm;[down]8c4;[down]8f3a3; [down]8c4;[down]8f3a3; [down]8c4 ebm;
   bar
 
