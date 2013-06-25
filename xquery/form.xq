@@ -31,8 +31,8 @@ declare variable $queries := <p:properties>
 <h1>Kaleidakustikon</h1>
 <p><a href="randomize.xq">Select cards randomly</a> | Select cards manually</p>
 
-<form method="get" action="card_selector.xq">
 
+<form method="get" action="/cgi-bin/build">
 <table>
 {
 
@@ -74,7 +74,7 @@ declare variable $queries := <p:properties>
 }
 
 </table>
-Get it as <input type="submit" name="getitas" value="xml"/>
+Get it as <input type="submit" name="getitas" value=".xml"/> | <input type="submit" name="getitas" value=".pdf"/> | <input type="submit" name="getitas" value=".mid"/>
 </form>
 </body>
 </html>

@@ -23,7 +23,7 @@ declare variable $bundles := ("a","b","c","d","e","f","g","h","i","k","l","m","n
   <body>
     <h1>Kaleidakustikon</h1>
     <p>Select cards randomly | <a href="form.xq">Select cards manually</a> | <a href="" onclick="location.reload(true)">reshuffle cards</a></p>
-    <form method="get" action="card_selector.xq">
+    <form method="get" action="/cgi-bin/build">
       <table>
 	{
 	  for $row in ("A","B","C")
@@ -68,7 +68,7 @@ declare variable $bundles := ("a","b","c","d","e","f","g","h","i","k","l","m","n
 	}
 
       </table>
-      Get it as <input type="submit" name="getitas" value="xml"/>
+      Get it as <input type="submit" name="getitas" value=".xml"/> | <input type="submit" name="getitas" value=".pdf"/> | <input type="submit" name="getitas" value=".mid"/>
     </form>
   </body>
 </html>

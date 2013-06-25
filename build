@@ -1,11 +1,6 @@
 #!/usr/bin/perl -w
 
 use strict;
-
-#
-# this is the setup we have on disdev-01.kb.dk
-# 
-
 my $java    = 'export JAVA_HOME=/usr/java/jdk1.6.0_24/; /usr/java/jdk1.6.0_24/bin/java';
 my $HOME    = '/home/kaleidakustikon/cache/';
 my $SAXON   = "/home/kaleidakustikon/saxon/saxon9.jar"; #"$HOME/data/saxon/saxon9.jar";
@@ -47,7 +42,7 @@ if($query =~ m/ps$/) {
     system("ps2pdf $ps_file" );
     print `cat $pdf_file`;
 } elsif($query =~ m/mid$/) {
-    print "Content-Type: audio/sp-midi\n\n";
+    print "Content-Type: audio/midi\n\n";
     system("$MUP $mup_file -m $mid_file 2>/dev/null");
     print `cat $mid_file`;
 } else {
