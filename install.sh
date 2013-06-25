@@ -2,8 +2,8 @@
 
 # We deploy the documents by sending them to the eXist database
 
-HOSTPORT="labs.kb.dk:8080"
-#HOSTPORT="disdev-01.kb.dk:8080"
+#HOSTPORT="labs.kb.dk:8080"
+HOSTPORT="disdev-01.kb.dk:8080"
 #HOSTPORT="localhost:8080"
 
 ./load_exist.pl \
