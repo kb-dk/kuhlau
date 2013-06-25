@@ -1,0 +1,49 @@
+#!/usr/bin/perl -w
+
+use strict;
+my $HOME    = '/home/sigge/projects/kuhlau/trunk';
+my $SAXON   = "$HOME/data/saxon/saxon9.jar";
+my $MUP     = "/home/sigge/sources/mup-6.1/bin/mup";
+my $MEI2MUP = "$HOME/data/mei2mup-1.0.4.xsl2";
+############
+
+my $query=$ENV{'QUERY_STRING'};
+my $basename=$query;
+$basename =~ s/[=\&]//g;
+$basename =~ s/^.*\?(.*?)getit.*$/$1/;
+$query    =~ s/^.*\?//;
+
+my $xml_file = $basename . '.xml';
+my $mup_file = $basename . '.mup';
+my $mid_file = $basename . '.mid';
+my $pdf_file = $basename . '.pdf';
+my $ps_file  = $basename . '.ps';
+my $source   = 'http://disdev-01.kb.dk/storage/kuhlau/card_selector.xq';
+
+my $mime = "";
+
+chdir($HOME);
+if(!-f $xml_file ) {
+    system("GET \'$source\?$query\' > $xml_file");
+    system("java -jar $SAXON $xml_file  $MEI2MUP > $mup_file");
+}
+
+if($query =~ m/ps$/) {
+    print "Content-Type: application/postscript\n\n";
+    system("$MUP $mup_file > $ps_file");
+    print `cat $ps_file`;
+} elsif($query =~ m/pdf$/) {
+    print "Content-Type: application/pdf\n\n";
+    system("$MUP $mup_file > $ps_file");
+    system("ps2pdf $ps_file" );
+    print `cat $pdf_file`;
+} elsif($query =~ m/mid$/) {
+    print "Content-Type: audio/sp-midi\n\n";
+    system("$MUP $mup_file -m $mid_file");
+    print `cat $mid_file`;
+} else {
+    print "Content-Type: text/xml\n\n";
+    print `cat $xml_file`;
+}
+
+
