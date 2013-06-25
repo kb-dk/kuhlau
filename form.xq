@@ -29,7 +29,8 @@ declare variable $queries := <p:properties>
 </head>
 <body>
 <h1>Kaleidakustikon</h1>
-<p>Choose cards and layers</p>
+<p><a href="randomize.xq">Select cards randomly</a> | Select cards manually</p>
+
 <form method="get" action="card_selector.xq">
 
 <table>

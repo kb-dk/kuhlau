@@ -22,8 +22,8 @@ declare variable $bundles := ("a","b","c","d","e","f","g","h","i","k","l","m","n
   </head>
   <body>
     <h1>Kaleidakustikon</h1>
-    <p>Generate random form</p>
-    <form method="get" action="form.xq">
+    <p>Select cards randomly | <a href="form.xq">Select cards manually</a> | <a href="" onclick="location.reload(true)">reshuffle cards</a></p>
+    <form method="get" action="card_selector.xq">
       <table>
 	{
 	  for $row in ("A","B","C")
@@ -37,27 +37,27 @@ declare variable $bundles := ("a","b","c","d","e","f","g","h","i","k","l","m","n
 		
 	      for $lable in distinct-values($lables)
 	      let $number:=count(collection("/db/kuhlau/kaleidakustikon")//m:section[substring-before(@xml:id/string(),".")=$lable])
-	      let $rand:=util:random($number)+1
+	      let $rand:=util:random($number) + 1
 	      order by $lable
 	      return
 	      <td valign="top">
 		<select name="{$lable}">
 		  {
-		    for $sect 
+		    for $sect at $pos
 		      in collection("/db/kuhlau/kaleidakustikon")//m:section[substring-before(@xml:id/string(),".")=$lable]
 		      
 		      order by substring-after($sect//m:section/@xml:id/string(),".") cast as xs:integer
 		      return
-		      for $alt in $sect//m:section/@xml:id
-		      let $layer:=substring-after($alt/string(),".")
+		      for $alt in $sect//m:section
+		      let $layer:=substring-after($alt/@xml:id/string(),".")
 		      return 
 			element option {
 			  (
 			    attribute value {$layer},
-			    if($alt/position()=$rand) then
+			    if($pos=$rand) then
 			      attribute selected {"selected"}
 			    else "",
-  			    $rand,": ",$lable,".",$layer
+  			      $lable,".",$layer
 			  )
 			}
 		  } 
@@ -68,7 +68,7 @@ declare variable $bundles := ("a","b","c","d","e","f","g","h","i","k","l","m","n
 	}
 
       </table>
-      <input type="submit" name="getitas" value="Get form"/>
+      Get it as <input type="submit" name="getitas" value="xml"/>
     </form>
   </body>
 </html>
