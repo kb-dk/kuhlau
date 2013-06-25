@@ -11,7 +11,7 @@ HOSTPORT="disdev-01.kb.dk:8080"
     --password flormelis \
     --host-port $HOSTPORT  \
     --suffix xml \
-    --delete ./ \
+    --delete ./data/ \
     --context /exist/rest/db/ \
     --target kuhlau/kaleidakustikon/
 
@@ -20,7 +20,7 @@ HOSTPORT="disdev-01.kb.dk:8080"
     --password flormelis \
     --host-port $HOSTPORT  \
     --suffix xml \
-    --load ./ \
+    --load ./data/ \
     --context /exist/rest/db/ \
     --target kuhlau/kaleidakustikon/
 
@@ -30,7 +30,7 @@ HOSTPORT="disdev-01.kb.dk:8080"
     --password flormelis \
     --host-port $HOSTPORT  \
     --suffix xq \
-    --load ./ \
+    --load ./xquery/ \
     --context /exist/rest/db/ \
     --target kuhlau/
 
@@ -39,6 +39,6 @@ HOSTPORT="disdev-01.kb.dk:8080"
     --password flormelis \
     --host-port $HOSTPORT  \
     --suffix xsl \
-    --load ./ \
+    --load ./xquery \
     --context /exist/rest/db/ \
     --target kuhlau/
