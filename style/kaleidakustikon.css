@@ -1,0 +1,72 @@
+body { 
+    font-family:"Verdana",sans-serif;
+    background-color: #555;
+    color: white;
+}
+
+.ui-select-menu { float: left; margin: 0px; }
+
+/* width of standard HTML select */
+select { width: 155px;}
+
+/* select with card images */
+a.card { height: 165px; }
+.card .ui-selectmenu-item-icon { height: 161px; width: 150px; }
+.ui-selectmenu-menu li.card a, a.card span.ui-selectmenu-status { height: 155px; }
+.ui-selectmenu-menu li a, .ui-selectmenu-status { padding: 0.3em 2em; }
+.card .ui-selectmenu-item-icon { background-position: 0 0; }
+
+
+/* Skin */
+
+
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: url("images/card_bg.png") repeat-x scroll 50% 50% #777;
+    border: 1px solid #D3D3D3;
+    color: #555555;
+    font-weight: normal;
+}
+
+/* select box style */
+a.card { 
+    background: url("images/card_bg.png") repeat-x scroll 50% 50% #777;
+    border: 1px solid #888;
+}
+
+/* options style */
+
+.ui-widget-content li {
+    background: url("images/card_bg.png") repeat-x scroll 50% 50% #777;
+    border: 1px solid #888;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+    background: url("images/card_bg.png") repeat-x scroll 50% 50% #777;
+    border: 1px solid #888;
+}
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover {
+    background: url("images/card_bg_hover.png") repeat-x scroll 50% 50% #eee;
+    border: 1px solid #AAAAAA;
+}
+
+
+/* position of select arrows */
+.ui-selectmenu-icon {
+    right: 6px;
+    top: 10%;
+}
+
+/* arrow icon */
+.ui-state-hover .ui-icon {
+    background-image: url("images/ui-icons_2e83ff_256x240.png");
+}
+
+/*  select control's padding/margin */
+.ui-selectmenu-menu li .ui-icon, .ui-selectmenu-status .ui-icon {
+    left: 0;
+    margin: 0;
+    position: absolute;
+    top: 2px;
+}
