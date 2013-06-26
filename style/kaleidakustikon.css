@@ -1,13 +1,8 @@
-body { 
-    font-family:"Verdana",sans-serif;
-    background-color: #555;
-    color: white;
-}
-
+/* some styles necessary for image select menus */
 .ui-select-menu { float: left; margin: 0px; }
 
 /* width of standard HTML select */
-select { width: 155px;}
+select { width: 156px;}
 
 /* select with card images */
 a.card { height: 165px; }
@@ -19,7 +14,29 @@ a.card { height: 165px; }
 
 /* Skin */
 
+body { 
+    font-family:"Verdana",sans-serif;
+    background-color: #555;
+    color: white;
+}
 
+a, a:link, a:visited, a:active, a:hover {
+    color: #ddf;
+    text-decoration: none;
+}
+
+.button {
+  padding: 3px 5px;
+  border: 1px solid #666;
+  color:#fff;
+  background: #666 url(images/button.png) repeat-x scroll 5px center;
+  height: 24px;
+}
+
+.button:hover {
+  background: #888 url(images/button_hover.png) repeat-x scroll 5px center;
+  border: 1px solid #3E6CE0;
+}
 
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
     background: url("images/card_bg.png") repeat-x scroll 50% 50% #777;

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    	<title>Kaleidakustikon</title>
+    
+    	<link type="text/css" href="jquery-ui-selectmenu/themes/base/jquery.ui.core.css" rel="stylesheet" />
+    	<link type="text/css" href="jquery-ui-selectmenu/themes/base/jquery.ui.theme.css" rel="stylesheet" />
+    	<link type="text/css" href="jquery-ui-selectmenu/themes/base/jquery.ui.selectmenu.css" rel="stylesheet" />
+	    <link type="text/css" href="style/kaleidakustikon.css" rel="stylesheet" />
+	    <script type="text/javascript" src="jquery-ui-selectmenu/jquery-1.8.3.js"></script>
+    	<script type="text/javascript" src="jquery-ui-selectmenu/ui/jquery.ui.core.js"></script>
+    	<script type="text/javascript" src="jquery-ui-selectmenu/ui/jquery.ui.widget.js"></script>
+    	<script type="text/javascript" src="jquery-ui-selectmenu/ui/jquery.ui.position.js"></script>
+    
+    	<script type="text/javascript" src="jquery-ui-selectmenu/ui/jquery.ui.selectmenu.js"></script>
+    
+    		
+    	<script type="text/javascript">
+    		$(function(){
+    	
+                var list='abcdefghijklmnopqrstuv';
+                for (var i=0;i<list.length;i++) {
+                    // loop through select elements
+                    var el='select#'+list[i];
+        			$(el).selectmenu({style:'popup', maxHeight: 400, width: 160 });
+        			$(el).selectmenu("widget").addClass("wrap");
+        			$(el).selectmenu({
+        				icons: [{find: '.card'}],
+        				bgImage: function() {
+        					return 'url(' + $(this).attr("title") + ')';
+        				}, menuWidth: "180px"});
+                }
+    
+    		});
+    
+    		//a custom format option callback
+    		var addressFormatting = function(text, opt){
+    			var newText = text;
+    			//array of find replaces
+    			var findreps = [
+    				{find:/^([^\-]+) \- /g, rep: '<span class="ui-selectmenu-item-header">$1</span>'},
+    				{find:/([^\|><]+) \| /g, rep: '<span class="ui-selectmenu-item-content">$1</span>'},
+    				{find:/([^\|><\(\)]+) (\()/g, rep: '<span class="ui-selectmenu-item-content">$1</span>$2'},
+    				{find:/([^\|><\(\)]+)$/g, rep: '<span class="ui-selectmenu-item-content">$1</span>'},
+    				{find:/(\([^\|><]+\))$/g, rep: '<span class="ui-selectmenu-item-footer">$1</span>'}
+    			];
+    
+    			for(var i in findreps){
+    				newText = newText.replace(findreps[i].find, findreps[i].rep);
+    			}
+    			return newText;
+    		}
+    		
+    	</script>
+    </head>
+    <body>
+
+        <h1>Kaleidakustikon</h1>
+        <p>Select cards randomly | <a href="form.xq">Select cards manually</a> | <a href="" onclick="location.reload(true)">reshuffle cards</a></p>
+    		
+       	<form method="get" action="/cgi-bin/build">
+            	<div>
+                        <select name="a" id="a">
+                        	<option value="2" class="card" title="cards/a_02.jpg"></option>
+                        	<option value="3" class="card" title="cards/a_03.jpg"></option>
+                        	<option value="4" class="card" title="cards/a_04.jpg"></option>
+                        	<option value="5" class="card" title="cards/a_05.jpg"></option>
+                        	<option value="6" class="card" title="cards/a_06.jpg"></option>
+                        	<option value="7" class="card" title="cards/a_07.jpg"></option>
+                        	<option value="8" class="card" title="cards/a_08.jpg"></option>
+                        	<option value="9" class="card" title="cards/a_09.jpg"></option>
+                        	<option value="10" class="card" title="cards/a_10.jpg"></option>
+                        	<option value="11" class="card" title="cards/a_11.jpg"></option>
+                        	<option value="12" class="card" title="cards/a_12.jpg"></option>
+                        </select><select name="b" id="b">
+                        	<option value="2" class="card" title="cards/b_02.jpg"></option>
+                        	<option value="3" class="card" title="cards/b_03.jpg"></option>
+                        	<option value="4" class="card" title="cards/b_04.jpg"></option>
+                        	<option value="5" class="card" title="cards/b_05.jpg"></option>
+                        	<option value="6" class="card" title="cards/b_06.jpg"></option>
+                        	<option value="7" class="card" title="cards/b_07.jpg"></option>
+                        	<option value="8" class="card" title="cards/b_08.jpg"></option>
+                        	<option value="9" class="card" title="cards/b_09.jpg"></option>
+                        	<option value="10" class="card" title="cards/b_10.jpg"></option>
+                        	<option value="11" class="card" title="cards/b_11.jpg"></option>
+                        	<option value="12" class="card" title="cards/b_12.jpg"></option>
+                        </select><select name="c" id="c">
+                        	<option value="2" class="card" title="cards/c_02.jpg"></option>
+                        	<option value="3" class="card" title="cards/c_03.jpg"></option>
+                        	<option value="4" class="card" title="cards/c_04.jpg"></option>
+                        	<option value="5" class="card" title="cards/c_05.jpg"></option>
+                        	<option value="6" class="card" title="cards/c_06.jpg"></option>
+                        	<option value="7" class="card" title="cards/c_07.jpg"></option>
+                        	<option value="8" class="card" title="cards/c_08.jpg"></option>
+                        	<option value="9" class="card" title="cards/c_09.jpg"></option>
+                        	<option value="10" class="card" title="cards/c_10.jpg"></option>
+                        	<option value="11" class="card" title="cards/c_11.jpg"></option>
+                        	<option value="12" class="card" title="cards/c_12.jpg"></option>
+                        </select><select name="d" id="d">
+                        	<option value="2" class="card" title="cards/d_02.jpg"></option>
+                        	<option value="3" class="card" title="cards/d_03.jpg"></option>
+                        	<option value="4" class="card" title="cards/d_04.jpg"></option>
+                        	<option value="5" class="card" title="cards/d_05.jpg"></option>
+                        	<option value="6" class="card" title="cards/d_06.jpg"></option>
+                        	<option value="7" class="card" title="cards/d_07.jpg"></option>
+                        	<option value="8" class="card" title="cards/d_08.jpg"></option>
+                        	<option value="9" class="card" title="cards/d_09.jpg"></option>
+                        	<option value="10" class="card" title="cards/d_10.jpg"></option>
+                        	<option value="11" class="card" title="cards/d_11.jpg"></option>
+                        	<option value="12" class="card" title="cards/d_12.jpg"></option>
+                        </select><select name="e" id="e">
+                        	<option value="2" class="card" title="cards/e_02.jpg"></option>
+                        	<option value="3" class="card" title="cards/e_03.jpg"></option>
+                        	<option value="4" class="card" title="cards/e_04.jpg"></option>
+                        	<option value="5" class="card" title="cards/e_05.jpg"></option>
+                        	<option value="6" class="card" title="cards/e_06.jpg"></option>
+                        	<option value="7" class="card" title="cards/e_07.jpg"></option>
+                        	<option value="8" class="card" title="cards/e_08.jpg"></option>
+                        	<option value="9" class="card" title="cards/e_09.jpg"></option>
+                        	<option value="10" class="card" title="cards/e_10.jpg"></option>
+                        	<option value="11" class="card" title="cards/e_11.jpg"></option>
+                        	<option value="12" class="card" title="cards/e_12.jpg"></option>
+                        </select><select name="f" id="f">
+                        	<option value="2" class="card" title="cards/f_02.jpg"></option>
+                        	<option value="3" class="card" title="cards/f_03.jpg"></option>
+                        	<option value="4" class="card" title="cards/f_04.jpg"></option>
+                        	<option value="5" class="card" title="cards/f_05.jpg"></option>
+                        	<option value="6" class="card" title="cards/f_06.jpg"></option>
+                        	<option value="7" class="card" title="cards/f_07.jpg"></option>
+                        	<option value="8" class="card" title="cards/f_08.jpg"></option>
+                        	<option value="9" class="card" title="cards/f_09.jpg"></option>
+                        	<option value="10" class="card" title="cards/f_10.jpg"></option>
+                        	<option value="11" class="card" title="cards/f_11.jpg"></option>
+                        	<option value="12" class="card" title="cards/f_12.jpg"></option>
+                        </select><select name="g" id="g">
+                        	<option value="2" class="card" title="cards/g_02.jpg"></option>
+                        	<option value="3" class="card" title="cards/g_03.jpg"></option>
+                        	<option value="4" class="card" title="cards/g_04.jpg"></option>
+                        	<option value="5" class="card" title="cards/g_05.jpg"></option>
+                        	<option value="6" class="card" title="cards/g_06.jpg"></option>
+                        	<option value="7" class="card" title="cards/g_07.jpg"></option>
+                        	<option value="8" class="card" title="cards/g_08.jpg"></option>
+                        	<option value="9" class="card" title="cards/g_09.jpg"></option>
+                        	<option value="10" class="card" title="cards/g_10.jpg"></option>
+                        	<option value="11" class="card" title="cards/g_11.jpg"></option>
+                        	<option value="12" class="card" title="cards/g_12.jpg"></option>
+                        </select>
+        		</div>
+                <div>
+                        <!-- these are not changed yet... -->
+                        <select name="h">
+                            <option value="2">h . 2</option>
+                            <option value="11">h . 11</option>
+                            <option value="12" selected="selected">h . 12</option>
+                        </select>
+                        <select name="i">
+                            <option value="2">i . 2</option>
+                            <option value="3">i . 3</option>
+                            <option value="4">i . 4</option>
+                            <option value="5">i . 5</option>
+                            <option value="6">i . 6</option>
+                            <option value="7">i . 7</option>
+                            <option value="8">i . 8</option>
+                            <option value="9">i . 9</option>
+                            <option value="10">i . 10</option>
+                            <option value="11">i . 11</option>
+                            <option value="12" selected="selected">i . 12</option>
+                        </select>
+                        <select name="k">
+                            <option value="2" selected="selected">k . 2</option>
+                            <option value="3">k . 3</option>
+                            <option value="4">k . 4</option>
+                            <option value="5">k . 5</option>
+                            <option value="6">k . 6</option>
+                            <option value="7">k . 7</option>
+                            <option value="8">k . 8</option>
+                            <option value="9">k . 9</option>
+                            <option value="10">k . 10</option>
+                            <option value="11">k . 11</option>
+                            <option value="12">k . 12</option>
+                        </select>
+                        <select name="l">
+                            <option value="2">l . 2</option>
+                            <option value="3" selected="selected">l . 3</option>
+                            <option value="4">l . 4</option>
+                            <option value="5">l . 5</option>
+                            <option value="6">l . 6</option>
+                            <option value="7">l . 7</option>
+                            <option value="8">l . 8</option>
+                            <option value="9">l . 9</option>
+                            <option value="10">l . 10</option>
+                            <option value="11">l . 11</option>
+                            <option value="12">l . 12</option>
+                        </select>
+                        <select name="m">
+                            <option value="2">m . 2</option>
+                            <option value="3">m . 3</option>
+                            <option value="4">m . 4</option>
+                            <option value="5">m . 5</option>
+                            <option value="6">m . 6</option>
+                            <option value="7">m . 7</option>
+                            <option value="8">m . 8</option>
+                            <option value="9">m . 9</option>
+                            <option value="10" selected="selected">m . 10</option>
+                            <option value="11">m . 11</option>
+                            <option value="12">m . 12</option>
+                        </select>
+                        <select name="n">
+                            <option value="2">n . 2</option>
+                            <option value="3">n . 3</option>
+                            <option value="4">n . 4</option>
+                            <option value="5">n . 5</option>
+                            <option value="6">n . 6</option>
+                            <option value="7">n . 7</option>
+                            <option value="8">n . 8</option>
+                            <option value="9">n . 9</option>
+                            <option value="10">n . 10</option>
+                            <option value="11">n . 11</option>
+                            <option value="12" selected="selected">n . 12</option>
+                        </select>
+                        <select name="o">
+                            <option value="2">o . 2</option>
+                            <option value="3">o . 3</option>
+                            <option value="4">o . 4</option>
+                            <option value="5" selected="selected">o . 5</option>
+                            <option value="6">o . 6</option>
+                            <option value="7">o . 7</option>
+                            <option value="8">o . 8</option>
+                            <option value="9">o . 9</option>
+                            <option value="10">o . 10</option>
+                            <option value="11">o . 11</option>
+                            <option value="12">o . 12</option>
+                        </select>
+                </div>
+                <div>
+                        <select name="p">
+                            <option value="2">p . 2</option>
+                            <option value="3">p . 3</option>
+                            <option value="4">p . 4</option>
+                            <option value="5">p . 5</option>
+                            <option value="6">p . 6</option>
+                            <option value="7">p . 7</option>
+                            <option value="8">p . 8</option>
+                            <option value="9">p . 9</option>
+                            <option value="10">p . 10</option>
+                            <option value="11" selected="selected">p . 11</option>
+                            <option value="12">p . 12</option>
+                        </select>
+                        <select name="q">
+                            <option value="2">q . 2</option>
+                            <option value="3">q . 3</option>
+                            <option value="4" selected="selected">q . 4</option>
+                            <option value="5">q . 5</option>
+                            <option value="6">q . 6</option>
+                            <option value="7">q . 7</option>
+                            <option value="8">q . 8</option>
+                            <option value="9">q . 9</option>
+                            <option value="10">q . 10</option>
+                            <option value="11">q . 11</option>
+                            <option value="12">q . 12</option>
+                        </select>
+                        <select name="r">
+                            <option value="2">r . 2</option>
+                            <option value="3" selected="selected">r . 3</option>
+                            <option value="4">r . 4</option>
+                            <option value="5">r . 5</option>
+                            <option value="6">r . 6</option>
+                            <option value="7">r . 7</option>
+                            <option value="8">r . 8</option>
+                            <option value="9">r . 9</option>
+                            <option value="10">r . 10</option>
+                            <option value="11">r . 11</option>
+                            <option value="12">r . 12</option>
+                        </select>
+                        <select name="s">
+                            <option value="2">s . 2</option>
+                            <option value="3">s . 3</option>
+                            <option value="4" selected="selected">s . 4</option>
+                            <option value="5">s . 5</option>
+                            <option value="6">s . 6</option>
+                            <option value="7">s . 7</option>
+                            <option value="8">s . 8</option>
+                            <option value="9">s . 9</option>
+                            <option value="10">s . 10</option>
+                            <option value="11">s . 11</option>
+                            <option value="12">s . 12</option>
+                        </select>
+                        <select name="t">
+                            <option value="2">t . 2</option>
+                            <option value="3">t . 3</option>
+                            <option value="4">t . 4</option>
+                            <option value="5" selected="selected">t . 5</option>
+                            <option value="6">t . 6</option>
+                            <option value="7">t . 7</option>
+                            <option value="8">t . 8</option>
+                            <option value="9">t . 9</option>
+                            <option value="10">t . 10</option>
+                            <option value="11">t . 11</option>
+                            <option value="12">t . 12</option>
+                        </select>
+                        <select name="u">
+                            <option value="2">u . 2</option>
+                            <option value="3">u . 3</option>
+                            <option value="4" selected="selected">u . 4</option>
+                            <option value="5">u . 5</option>
+                            <option value="6">u . 6</option>
+                            <option value="7">u . 7</option>
+                            <option value="8">u . 8</option>
+                            <option value="9">u . 9</option>
+                            <option value="10">u . 10</option>
+                            <option value="11">u . 11</option>
+                            <option value="12">u . 12</option>
+                        </select>
+                        <select name="v">
+                            <option value="2" selected="selected">v . 2</option>
+                            <option value="3">v . 3</option>
+                            <option value="4">v . 4</option>
+                            <option value="5">v . 5</option>
+                            <option value="6">v . 6</option>
+                            <option value="7">v . 7</option>
+                            <option value="8">v . 8</option>
+                            <option value="9">v . 9</option>
+                            <option value="10">v . 10</option>
+                            <option value="11">v . 11</option>
+                            <option value="12">v . 12</option>
+                        </select>
+                </div>
+       	    <p>
+       	        Get it as 
+       	        <input type="hidden" name="getitas" value=""/>
+       	        <input type="submit" class="button" onclick="this.form.elements['getitas'].value='.xml';return false;" value="XML"></input>
+       	        <input type="submit" class="button" onclick="this.form.elements['getitas'].value='.pdf';return false;" value="PDF"></input> 
+       	        <input type="submit" class="button" onclick="this.form.elements['getitas'].value='.mid';return false;" value="MIDI"></input>
+       	    </p>
+        </form>
+
+</body>
+</html>
