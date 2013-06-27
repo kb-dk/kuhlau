@@ -45,3 +45,35 @@ function randomize() {
         $(el).selectmenu("value",rand);
     }
 }
+
+function setCards(preset) {
+    // set selects to preset
+    var list='abcdefghiklmnopqrstuv';
+    for (var i=0;i<list.length;i++) {
+        if (i<preset.length) {
+            var val=preset[i];
+            if(val=='a') { val=10; }
+            if(val=='b') { val=11; }
+            if(val=='c') { val=12; }
+            var el='select#'+list[i];
+            $(el).selectmenu("value",val);
+//alert(val);            
+        }
+    }
+}
+
+var params = {};
+
+if (location.search) {
+    var parts = location.search.substring(1).split('&');
+    for (var i = 0; i < parts.length; i++) {
+        var nv = parts[i].split('=');
+        if (!nv[0]) continue;
+        params[nv[0]] = nv[1] || true;
+    }
+    var preset = params.id;
+    if(preset) {
+        setCards(preset);
+    }
+}
+
