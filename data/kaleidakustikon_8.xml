@@ -700,6 +700,7 @@
 	      <staff n="1">
 		<layer>
 		  <note pname="b" 
+			oct="4" 
 			accid="n" 
 			dur="4" 
 			stem.dir="down" 

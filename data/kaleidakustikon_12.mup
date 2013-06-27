@@ -4,6 +4,9 @@ header
   title "Kaleidakustikon Layer 12"
   title ""
 
+
+score
+  pagesize=a4 landscape
 score
   vscheme=3f
   packfact=.5
