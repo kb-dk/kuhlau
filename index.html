@@ -12,19 +12,16 @@
     <script type="text/javascript" src="jquery-ui-selectmenu/ui/jquery.ui.core.js"></script>
     <script type="text/javascript" src="jquery-ui-selectmenu/ui/jquery.ui.widget.js"></script>
     <script type="text/javascript" src="jquery-ui-selectmenu/ui/jquery.ui.position.js"></script>
-    
     <script type="text/javascript" src="jquery-ui-selectmenu/ui/jquery.ui.selectmenu.js"></script>
-    
-    
-    <script type="text/javascript" src="jquery-ui-selectmenu/main-script.js">
-    </script>
+    <script type="text/javascript" src="jquery-ui-selectmenu/main-script.js"></script>
   </head>
   <body>
-
+    <h2>Fr. Kuhlau</h2>
     <h1>Kaleidakustikon</h1>
-    <p>Select cards randomly | <a href="form.xq">Select cards manually</a> | <a href="" onclick="location.reload(true)">reshuffle cards</a></p>
-    
+    <p><input type="button" class="button" onclick="randomize();" value="Shuffle"></input></p>
+
     <form method="get" action="/cgi-bin/build">
+      
       <div>
         <select name="a" id="a">
           <option value="2" class="card" title="cards/a_02.jpg"></option>
@@ -113,7 +110,6 @@
         </select>
       </div>
       <div>
-        <!-- these are not changed yet... -->
         <select name="h" id="h">
           <option value="2" class="card" title="cards/h_02.jpg"></option>
           <option value="11" class="card" title="cards/h_11.jpg"></option>
@@ -281,9 +277,9 @@
       <p>
        	Get it as 
        	<input type="hidden" name="getitas" value=""/>
-       	<input type="submit" class="button" onclick="this.form.elements['getitas'].value='.xml';return false;" value="XML"></input>
-       	<input type="submit" class="button" onclick="this.form.elements['getitas'].value='.pdf';return false;" value="PDF"></input> 
-       	<input type="submit" class="button" onclick="this.form.elements['getitas'].value='.mid';return false;" value="MIDI"></input>
+       	<input type="submit" class="button" onclick="this.form.elements['getitas'].value='.xml';" value="XML"></input>
+       	<input type="submit" class="button" onclick="this.form.elements['getitas'].value='.pdf';" value="PDF"></input> 
+       	<input type="submit" class="button" onclick="this.form.elements['getitas'].value='.mid';" value="MIDI"></input>
       </p>
     </form>
 
