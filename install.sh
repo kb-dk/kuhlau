@@ -38,6 +38,16 @@ HOSTPORT="disdev-01.kb.dk:8080"
     --user admin \
     --password flormelis \
     --host-port $HOSTPORT  \
+    --suffix xqm \
+    --load ./xquery/ \
+    --context /exist/rest/db/ \
+    --target kuhlau/
+
+
+./load_exist.pl \
+    --user admin \
+    --password flormelis \
+    --host-port $HOSTPORT  \
     --suffix xsl \
     --load ./xquery \
     --context /exist/rest/db/ \

@@ -31,13 +31,10 @@ return $param
 
 
     <form method="get" action="/cgi-bin/build">
-      <table>
-	{
-
-	  for $row in ("A","B","C")
-	  return
-	  <tr> 
-	    <th valign="top">{$row}</th>
+      {
+	for $row in ("A","B","C")
+	return
+	  <div> 
 	    {
 	      let $lables:=
 	      for $id in collection("/db/kuhlau/kaleidakustikon")//m:section[@type/string()=$row]/@xml:id/string()
@@ -46,33 +43,42 @@ return $param
 	      for $lable in distinct-values($lables)
 	      order by $lable
 	      return
-	      <td valign="top">
-		<select name="{$lable}">
-		  {
-		    for $sect 
-		      in collection("/db/kuhlau/kaleidakustikon")//m:section[substring-before(@xml:id/string(),".")=$lable]
-		      order by substring-after($sect//m:section/@xml:id/string(),".") cast as xs:integer
-		      return
-		      for $alt in $sect//m:section/@xml:id
-		      let $layer:=substring-after($alt/string(),".")
-		      return 
-			element option {
-			  (attribute value {$layer},
-			  if($queries//p:property[@key/string()=$lable]/string()=$layer) then
-			    attribute selected {"selected"}
-			  else "",
-			    $lable,".",$layer
-			  )
-			}
-		  } 
-		</select>
-	      </td>
+	      <select name="{$lable}" id="{$lable}">
+		{
+		  for $sect 
+		    in collection("/db/kuhlau/kaleidakustikon")//m:section[substring-before(@xml:id/string(),".")=$lable]
+		    order by substring-after($sect//m:section/@xml:id/string(),".") cast as xs:integer
+		    return
+		    for $alt in $sect//m:section/@xml:id
+		    let $layer:=substring-after($alt/string(),".")
+		    let $card:=
+		      if(string-length($layer)=1) then
+			concat("/kaleidakustikon/cards/",$lable,"_0",$layer,".jpg")
+		      else
+			concat("/kaleidakustikon/cards/",$lable,"_",$layer,".jpg")
+     		    return 
+		      element option {
+			(attribute class {"card"},
+			attribute title {$card},
+ 			attribute value {$layer},
+			if($queries//p:property[@key/string()=$lable]/string()=$layer) then
+			  attribute selected {"selected"}
+			else "",
+			  $lable,".",$layer
+			)
+		      }
+		} 
+	      </select>
 	    }
-	  </tr>
+	  </div>
 	}
-
-      </table>
-      Get it as <input type="submit" name="getitas" value=".xml"/> | <input type="submit" name="getitas" value=".pdf"/> | <input type="submit" name="getitas" value=".mid"/>
+	<p>
+	Get it as
+       	<input type="hidden" name="getitas" value=""/>
+       	<input type="submit" class="button" onclick="this.form.elements['getitas'].value='.xml';return false;" value="XML"></input>
+       	<input type="submit" class="button" onclick="this.form.elements['getitas'].value='.pdf';return false;" value="PDF"></input> 
+       	<input type="submit" class="button" onclick="this.form.elements['getitas'].value='.mid';return false;" value="MIDI"></input>
+	</p>
     </form>
   </body>
 </html>
