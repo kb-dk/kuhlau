@@ -1,6 +1,9 @@
 #!/usr/bin/perl -w
 
 use strict;
+
+$| = 1;  # don't buffer output
+
 my $java    = 'export JAVA_HOME=/usr/java/jdk1.6.0_24/; /usr/java/jdk1.6.0_24/bin/java';
 my $HOME    = '/home/kaleidakustikon/cache/';
 my $SAXON   = "/home/kaleidakustikon/saxon/saxon9.jar"; #"$HOME/data/saxon/saxon9.jar";
@@ -27,9 +30,8 @@ my $mime = "";
 chdir($HOME);
 if(!-f $mup_file ) {
     system("GET \'$source\?$query\' > $xml_file");
-    my $cmd = "$java -jar $SAXON $xml_file  $MEI2MUP > $mup_file";
-    print STDERR "$cmd\n";
-    system("$java -jar $SAXON $xml_file  $MEI2MUP > $mup_file");
+    my $cmd = "$java -jar $SAXON $xml_file  $MEI2MUP > $mup_file 2> /dev/null";
+    system($cmd);
 }
 
 if($query =~ m/ps$/) {
@@ -37,7 +39,7 @@ if($query =~ m/ps$/) {
     print `$MUP $mup_file 2> /dev/null`;
 } elsif($query =~ m/pdf$/) {
     print "Content-Type: application/pdf\n\n";
-    print `$MUP $mup_file | ps2pdf - - 2> /dev/null`;
+    print `$MUP $mup_file | ps2pdf -sPAPERSIZE=a4 - - 2> /dev/null`;
 } elsif($query =~ m/mid$/) {
     print "Content-Type: audio/midi\n\n";
     system("$MUP $mup_file -m $mid_file 2>/dev/null");

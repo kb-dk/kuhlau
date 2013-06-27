@@ -5,9 +5,15 @@
 	       extension-element-prefixes="mei xsl"
 	       version="1.0">
 
+  <xsl:key name="index" 
+	   match="mei:staff" 
+	   use="generate-id(descendant::mei:note[@pname='e'])" />
+
   <xsl:template match="mei:note[@pname='e']">
     <xsl:element name="note">
-      <xsl:attribute name="accid">n</xsl:attribute>
+      <xsl:if test="key('index',generate-id(.))">
+	<xsl:attribute name="accid">n</xsl:attribute>
+      </xsl:if>
       <xsl:apply-templates select="@*" />
     </xsl:element>
   </xsl:template>
