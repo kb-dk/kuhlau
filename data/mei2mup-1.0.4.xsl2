@@ -377,7 +377,7 @@
   <xsl:template match="mei:score">
     <xsl:value-of select="$nl"/><xsl:text>score</xsl:text><xsl:value-of select="$nl"/>
     <xsl:value-of select="$indent"/><xsl:text>pagesize=a4 landscape</xsl:text>
-    <xsl:value-of select="$nl"/>
+    <xsl:value-of select="$nl"/>o
     <xsl:apply-templates/>
   </xsl:template>
 

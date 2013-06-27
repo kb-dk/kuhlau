@@ -11,25 +11,23 @@ declare namespace m="http://www.music-encoding.org/ns/mei";
 declare namespace ft="http://exist-db.org/xquery/lucene";
 declare namespace p="http://kb.dk/p/";
 
+import module namespace head="http://kb.dk/this/head" at "./header-stuff.xqm";
+
 declare option exist:serialize "method=xml media-type=text/html"; 
 
 
 declare variable $bundles := ("a","b","c","d","e","f","g","h","i","k","l","m","n","o","p","q","r","s","t","u","v");
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <title>Kaleidakustikon</title>
-  </head>
+  {head:print-head("Kaleidakustikon")}
   <body>
     <h1>Kaleidakustikon</h1>
     <p>Select cards randomly | <a href="form.xq">Select cards manually</a> | <a href="" onclick="location.reload(true)">reshuffle cards</a></p>
     <form method="get" action="/cgi-bin/build">
-      <table>
-	{
-	  for $row in ("A","B","C")
-	  return
-	  <tr> 
-	    <th valign="top">{$row}</th>
+      {
+	for $row in ("A","B","C")
+	return
+	  <div> 
 	    {
 	      let $lables:=
 	      for $id in collection("/db/kuhlau/kaleidakustikon")//m:section[@type/string()=$row]/@xml:id/string()
@@ -40,35 +38,45 @@ declare variable $bundles := ("a","b","c","d","e","f","g","h","i","k","l","m","n
 	      let $rand:=util:random($number) + 1
 	      order by $lable
 	      return
-	      <td valign="top">
-		<select name="{$lable}">
-		  {
-		    for $sect at $pos
-		      in collection("/db/kuhlau/kaleidakustikon")//m:section[substring-before(@xml:id/string(),".")=$lable]
-		      
-		      order by substring-after($sect//m:section/@xml:id/string(),".") cast as xs:integer
-		      return
-		      for $alt in $sect//m:section
-		      let $layer:=substring-after($alt/@xml:id/string(),".")
-		      return 
-			element option {
-			  (
-			    attribute value {$layer},
-			    if($pos=$rand) then
-			      attribute selected {"selected"}
-			    else "",
-  			      $lable,".",$layer
-			  )
-			}
+	      <select name="{$lable}" id="{$lable}">
+		{
+		  for $sect at $pos
+		    in collection("/db/kuhlau/kaleidakustikon")//m:section[substring-before(@xml:id/string(),".")=$lable]
+		    order by substring-after($sect//m:section/@xml:id/string(),".") cast as xs:integer
+		    return
+		    for $alt in $sect//m:section
+		    let $layer:=substring-after($alt/@xml:id/string(),".")
+		    let $card:=
+		      if(string-length($layer)=1) then
+			concat("/kaleidakustikon/cards/",$lable,"_0",$layer,".jpg")
+		      else
+			concat("/kaleidakustikon/cards/",$lable,"_",$layer,".jpg")
+     			return 
+		      element option {
+			(attribute class {"card"},
+			attribute title {$card},
+			attribute value {$layer},
+			if($pos=$rand) then
+			  attribute selected {"selected"}
+			else "",
+  			  $lable,".",$layer
+			)
+		      }
 		  } 
 		</select>
-	      </td>
 	    }
-	  </tr>
+	  </div>
 	}
 
-      </table>
-      Get it as <input type="submit" name="getitas" value=".xml"/> | <input type="submit" name="getitas" value=".pdf"/> | <input type="submit" name="getitas" value=".mid"/>
+	<p>
+	Get it as
+       	<input type="hidden" name="getitas" value=""/>
+       	<input type="submit" class="button" onclick="this.form.elements['getitas'].value='.xml';this.form.submit();return false;" value="XML"></input>
+       	<input type="submit" class="button" onclick="this.form.elements['getitas'].value='.pdf';this.form.submit();return false;" value="PDF"></input> 
+       	<input type="submit" class="button" onclick="this.form.elements['getitas'].value='.mid';this.form.submit();return false;" value="MIDI"></input>
+	</p>
+
+
     </form>
   </body>
 </html>

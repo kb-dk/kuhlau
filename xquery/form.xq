@@ -75,9 +75,9 @@ return $param
 	<p>
 	Get it as
        	<input type="hidden" name="getitas" value=""/>
-       	<input type="submit" class="button" onclick="this.form.elements['getitas'].value='.xml';return false;" value="XML"></input>
-       	<input type="submit" class="button" onclick="this.form.elements['getitas'].value='.pdf';return false;" value="PDF"></input> 
-       	<input type="submit" class="button" onclick="this.form.elements['getitas'].value='.mid';return false;" value="MIDI"></input>
+       	<input type="submit" class="button" onclick="this.form.elements['getitas'].value='.xml';this.form.submit(); return false;" value="XML"></input>
+       	<input type="submit" class="button" onclick="this.form.elements['getitas'].value='.pdf';this.form.submit(); return false;" value="PDF"></input> 
+       	<input type="submit" class="button" onclick="this.form.elements['getitas'].value='.mid';this.form.submit();return false;" value="MIDI"></input>
 	</p>
     </form>
   </body>
