@@ -263,7 +263,7 @@
 		</layer>
 	      </staff>
 	    </measure>
-	    <measure n="9" right="rptboth">
+	    <measure n="9" right="rptend">
 	      <staff n="1">
 		<layer>
 		  <chord dur="2" stem.dir="down" >
@@ -284,11 +284,12 @@
 		</layer>
 	      </staff>
 	    </measure>
+	    <sb/>
 	  </section>
 	  <!-- this section is fake. the cards are missing and we won't use
 	       this -->
 	  <section>
-	    <measure n="10">
+	    <measure n="10" left="rptstart">
 	      <staff n="1">
 		<layer>
 		  <note pname="c" oct="5" dur="4"/>
@@ -559,7 +560,7 @@
 		</layer>
 	      </staff>
 	    </measure>
-	    <measure n="18" right="rptboth">
+	    <measure n="18" right="rptend">
 	      <staff n="1">
 		<layer>
 		  <chord dur="2" stem.dir="down">
@@ -579,14 +580,17 @@
 		</layer>
 	      </staff>
 	    </measure>
+	    <sb/>
 	  </section>
 
 	  <section xml:id="p.5" type="C">
+
 	    <scoredef key.sig="2f" 
 		      key.pname="b" 
 		      meter.count="3" 
 		      meter.unit="4" />
-	    <measure n="19">
+
+	    <measure n="19" left="rptstart">
 	      <staff n="1">
 		<layer>
 		  <beam>

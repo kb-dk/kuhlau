@@ -250,7 +250,7 @@
 		</layer>
 	      </staff>
 	    </measure>
-	    <measure n="9" right="rptboth">
+	    <measure n="9" right="rptend">
 	      <staff n="1">
 		<layer>
 		  <note pname="f" oct="4" dur="4" stem.dir="up" />
@@ -267,16 +267,17 @@
 		</layer>
 	      </staff>
 	    </measure>
+	    <sb/>
 	  </section>
 
 	  <section xml:id="h.11"  type="B">
 	    <scoredef 
-		key.sig="4f"
-		key.pname="f"
-		key.mode="minor"
-		meter.count="3" 
-		meter.unit="4" />
-	    <measure n="10" >
+		  key.sig="4f"
+		  key.pname="f"
+		  key.mode="minor"
+		  meter.count="3" 
+		  meter.unit="4" />
+	    <measure n="10" left="rptstart">
 	      <staff n="1">
 		<layer>
 		  <rest dur="4" />
@@ -537,7 +538,7 @@
 		</layer>
 	      </staff>
 	    </measure>
-	    <measure n="18" right="rptboth">
+	    <measure n="18" right="rptend">
 	      <staff n="1">
 		<layer>
 		  <chord dur="2" stem.dir="up">
@@ -557,15 +558,17 @@
 		</layer>
 	      </staff>
 	    </measure>
+	    <sb/>
 	  </section>
 
 	  <section xml:id="p.11" type="C">
+
 	    <scoredef key.sig="2f" 
-		      key.pname="b" 
-		      key.mode="major"
-		      meter.count="3" 
-		      meter.unit="4" />
-	    <measure n="18">
+			key.pname="b" 
+			key.mode="major"
+			meter.count="3" 
+			meter.unit="4" />
+	    <measure n="18" left="rptstart">
 	      <staff n="1">
 		<layer>
 		  <beam>
