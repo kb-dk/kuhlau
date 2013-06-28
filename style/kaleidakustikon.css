@@ -5,7 +5,7 @@
 select { width: 150px;}
 
 /* select with card images */
-a.card { height: 165px; }
+a.card { height: 163px; }
 .card .ui-selectmenu-item-icon { height: 161px; width: 150px; }
 .ui-selectmenu-menu li.card a, a.card span.ui-selectmenu-status { 
     height: 155px;
@@ -23,8 +23,19 @@ a.card { height: 165px; }
 body { 
     font-family:"Verdana",sans-serif;
     font-size: .8em;
-    background-color: #555;
+    background-color: #222;
     color: white;
+    padding: 20px;
+    margin: 0;
+}
+
+#all {
+    background-color: #555;
+    width: auto;    
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
 }
 
 #id_bar {
@@ -44,7 +55,8 @@ input {
   border: 1px solid #666;
   color:#fff;
   background: #333;
-  height: 24px;
+  height: 20px;
+  padding: 1px;
 }
 
 #link {
@@ -56,10 +68,16 @@ input {
 /*    color: #71abff; */
 }
 
+.card_row {
+    padding: 0;
+    margin:0;
+}
+
 .button {
   padding: 3px 5px;
   border: 1px solid #666;
   color:#fff;
+  font-size: .8em;
   background: #333 url(images/button.png) repeat-x scroll 5px center;
   height: 24px;
 }
@@ -88,7 +106,7 @@ input {
 }
 
 .ui-widget-content {
-    border: 3px solid #2E83FF;
+    border: 3px solid #44aaFF;
 }
 
 /* select box style */
