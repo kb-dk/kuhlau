@@ -4,7 +4,7 @@ $(function(){
     for (var i=0;i<list.length;i++) {
         // loop through select elements
         var el='select#'+list[i];
-        $(el).selectmenu({style:'popup', maxHeight: 400, width: 160 });
+        $(el).selectmenu({style:'popup', maxHeight: 400, width: 152 });
         $(el).selectmenu("widget").addClass("wrap");
         $(el).selectmenu({
             icons: [{find: '.card'}],
@@ -62,6 +62,10 @@ function setCards(preset) {
              if(val=='a') { val=10; }
              if(val=='b') { val=11; }
              if(val=='c') { val=12; }
+             if((val<1 && val>12)||(list[i]=='h' && val!=2 && val!=11 && val!=12)) {
+                 // default to 2 if invalid
+                 val = 2;
+             }
              var el='select#'+list[i];
              $(el).selectmenu("value",val);
          }
@@ -76,9 +80,18 @@ function setLayer(preset) {
     if(val=='a') { val=10; }
     if(val=='b') { val=11; }
     if(val=='c') { val=12; }
+    if(val<1 && val>12) {
+        // default to 2 if invalid
+        val = 2;
+    }
     for (var i=0;i<list.length;i++) {
         var el='select#'+list[i];
-        $(el).selectmenu("value",val);
+         if(list[i]=='h' && val!=2 && val!=11 && val!=12) {
+            // special treatment for pile h
+            $(el).selectmenu("value",2);
+        } else {
+            $(el).selectmenu("value",val);
+        }
     }
     showId();
 }

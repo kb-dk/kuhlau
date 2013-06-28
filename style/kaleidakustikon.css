@@ -2,12 +2,15 @@
 .ui-select-menu { float: left; margin: 0px; }
 
 /* width of standard HTML select */
-select { width: 156px;}
+select { width: 150px;}
 
 /* select with card images */
 a.card { height: 165px; }
 .card .ui-selectmenu-item-icon { height: 161px; width: 150px; }
-.ui-selectmenu-menu li.card a, a.card span.ui-selectmenu-status { height: 155px; }
+.ui-selectmenu-menu li.card a, a.card span.ui-selectmenu-status { 
+    height: 155px;
+    margin: 1px;
+}
 .ui-selectmenu-menu li a, .ui-selectmenu-status { padding: 0.3em 2em; }
 .card .ui-selectmenu-item-icon { background-position: 0 0; }
 
@@ -66,12 +69,15 @@ input {
   border: 1px solid #3E6CE0;
 }
 
+[disabled],
 .button:disabled, 
 .button[disabled],
-.button[disabled=disabled] {
+.button[disabled="disabled"],
+[disabled]:hover,
+.button:disabled:hover {
   border: 1px solid #666;
   background: #333 url(images/button_disabled.png) repeat-x scroll 5px center !important;
-  color:#ccc;
+  color:#ccc !important;
 }
 
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
@@ -96,6 +102,7 @@ a.card {
 .ui-widget-content li {
     background: url("images/card_bg.png") repeat-x scroll 50% 50% #777;
     border: 1px solid #888;
+    padding: 5px;
 }
 
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
@@ -125,5 +132,5 @@ a.card {
     left: 0;
     margin: 0;
     position: absolute;
-    top: 2px;
+    top: 0px;
 }
