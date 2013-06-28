@@ -33,8 +33,12 @@ var addressFormatting = function(text, opt){
     return newText;
 }
 
+// global variables
+var params = {};
+var list='abcdefghiklmnopqrstuv';
+
+
 function randomize() {
-    var list='abcdefghiklmnopqrstuv';
     for (var i=0;i<list.length;i++) {
         var rand=Math.floor(Math.random()*11)+2;
         // pile h needs special treatment
@@ -44,11 +48,11 @@ function randomize() {
         var el='select#'+list[i];
         $(el).selectmenu("value",rand);
     }
+    showId();
 }
 
 function setCards(preset) {
-    // set selects to preset
-    var list='abcdefghiklmnopqrstuv';
+    // set selects to preset combination
     for (var i=0;i<list.length;i++) {
         if (i<preset.length) {
             var val=preset[i];
@@ -57,23 +61,63 @@ function setCards(preset) {
             if(val=='c') { val=12; }
             var el='select#'+list[i];
             $(el).selectmenu("value",val);
-//alert(val);            
         }
     }
+    showId();
 }
 
-var params = {};
-
-if (location.search) {
-    var parts = location.search.substring(1).split('&');
-    for (var i = 0; i < parts.length; i++) {
-        var nv = parts[i].split('=');
-        if (!nv[0]) continue;
-        params[nv[0]] = nv[1] || true;
+function setLayer(preset) {
+    // set all selects to same number
+    var val=preset;
+    if(val=='a') { val=10; }
+    if(val=='b') { val=11; }
+    if(val=='c') { val=12; }
+    for (var i=0;i<list.length;i++) {
+        var el='select#'+list[i];
+        $(el).selectmenu("value",val);
     }
-    var preset = params.id;
-    if(preset) {
-        setCards(preset);
-    }
+    showId();
 }
 
+function showId() {
+    var id='';
+    for (var i=0;i<list.length;i++) {
+        var el='select#'+list[i];
+        var val=$(el).selectmenu("value");
+        if(val=='10') { val='a'; }
+        if(val=='11') { val='b'; }
+        if(val=='12') { val='c'; }
+        id=id+val;
+    }
+    document.getElementById('preset').value=id;
+    document.getElementById('set').disabled=true;
+    var url = [location.protocol, '//', location.host, location.pathname].join('');
+    document.getElementById('link').value=url+'?preset='+id;
+}
+
+function getParams() {
+   if (location.search) {
+       var parts = location.search.substring(1).split('&');
+       for (var i = 0; i < parts.length; i++) {
+           var nv = parts[i].split('=');
+           if (!nv[0]) continue;
+           params[nv[0]] = nv[1] || true;
+       }
+       var preset = params.preset;
+       if(preset) {
+           if (preset.length==1) {
+               setLayer(preset);
+           } else {
+               setCards(preset);
+           }
+       }
+   }
+}
+
+function init() {
+    randomize();
+    getParams();
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('main').style.display = 'block';
+    showId();
+}

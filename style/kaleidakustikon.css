@@ -11,6 +11,9 @@ a.card { height: 165px; }
 .ui-selectmenu-menu li a, .ui-selectmenu-status { padding: 0.3em 2em; }
 .card .ui-selectmenu-item-icon { background-position: 0 0; }
 
+#main {
+    display: none;
+}
 
 /* Skin */
 
@@ -19,6 +22,10 @@ body {
     font-size: .8em;
     background-color: #555;
     color: white;
+}
+
+#id_bar {
+    padding: 10px 0;    
 }
 
 a, a:link, a:visited, a:active, a:hover {
@@ -30,17 +37,41 @@ a:hover {
     color: #71abff;
 }
 
+input {
+  border: 1px solid #666;
+  color:#fff;
+  background: #333;
+  height: 24px;
+}
+
+#link {
+  border:none;
+  background: transparent;
+}
+
+#link:hover {
+/*    color: #71abff; */
+}
+
 .button {
   padding: 3px 5px;
   border: 1px solid #666;
   color:#fff;
-  background: #666 url(images/button.png) repeat-x scroll 5px center;
+  background: #333 url(images/button.png) repeat-x scroll 5px center;
   height: 24px;
 }
 
 .button:hover {
   background: #888 url(images/button_hover.png) repeat-x scroll 5px center;
   border: 1px solid #3E6CE0;
+}
+
+.button:disabled, 
+.button[disabled],
+.button[disabled=disabled] {
+  border: 1px solid #666;
+  background: #333 url(images/button_disabled.png) repeat-x scroll 5px center !important;
+  color:#ccc;
 }
 
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {

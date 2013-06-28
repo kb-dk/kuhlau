@@ -15,15 +15,33 @@
     <script type="text/javascript" src="jquery-ui-selectmenu/ui/jquery.ui.selectmenu.js"></script>
     <script type="text/javascript" src="jquery-ui-selectmenu/main-script.js"></script>
   </head>
-  <body>
+  <body onload="init();">
     <h2>Fr. Kuhlau</h2>
     <h1>Kaleidakustikon</h1>
-    <p><input type="button" class="button" onclick="randomize();" value="SHUFFLE"></input></p>
-
+    
+    <div id="loading">
+      <p>LOADING...</p>
+    </div>
+    <div id="main">
+    <div id="id_bar">
+      <form method="get">
+        <div>
+          Composition ID <input type="text" size="22" maxlength="21" id="preset" 
+            onchange="document.getElementById('set').disabled=false;"></input>
+          <input type="button" class="button" value="SET" id="set" 
+            onclick="setCards(document.getElementById('preset').value);"/>
+          <input type="button" class="button" onclick="randomize();" value="SHUFFLE"></input>
+        </div>
+        <div>
+          URL to this composition: <input type="text" size="120" id="link"/>
+        </div>
+                
+      </form>
+    </div>
     <form method="get" action="/cgi-bin/build" target="_blank">
       
       <div>
-        <select name="a" id="a">
+        <select name="a" id="a" onchange="showId();">
           <option value="2" class="card" title="cards/a_02.jpg"></option>
           <option value="3" class="card" title="cards/a_03.jpg"></option>
           <option value="4" class="card" title="cards/a_04.jpg"></option>
@@ -35,7 +53,7 @@
           <option value="10" class="card" title="cards/a_10.jpg"></option>
           <option value="11" class="card" title="cards/a_11.jpg"></option>
           <option value="12" class="card" title="cards/a_12.jpg"></option>
-          </select><select name="b" id="b">
+        </select><select name="b" id="b" onchange="showId();">
           <option value="2" class="card" title="cards/b_02.jpg"></option>
           <option value="3" class="card" title="cards/b_03.jpg"></option>
           <option value="4" class="card" title="cards/b_04.jpg"></option>
@@ -47,7 +65,7 @@
           <option value="10" class="card" title="cards/b_10.jpg"></option>
           <option value="11" class="card" title="cards/b_11.jpg"></option>
           <option value="12" class="card" title="cards/b_12.jpg"></option>
-          </select><select name="c" id="c">
+        </select><select name="c" id="c" onchange="showId();">
           <option value="2" class="card" title="cards/c_02.jpg"></option>
           <option value="3" class="card" title="cards/c_03.jpg"></option>
           <option value="4" class="card" title="cards/c_04.jpg"></option>
@@ -59,7 +77,7 @@
           <option value="10" class="card" title="cards/c_10.jpg"></option>
           <option value="11" class="card" title="cards/c_11.jpg"></option>
           <option value="12" class="card" title="cards/c_12.jpg"></option>
-          </select><select name="d" id="d">
+        </select><select name="d" id="d" onchange="showId();">
           <option value="2" class="card" title="cards/d_02.jpg"></option>
           <option value="3" class="card" title="cards/d_03.jpg"></option>
           <option value="4" class="card" title="cards/d_04.jpg"></option>
@@ -71,7 +89,7 @@
           <option value="10" class="card" title="cards/d_10.jpg"></option>
           <option value="11" class="card" title="cards/d_11.jpg"></option>
           <option value="12" class="card" title="cards/d_12.jpg"></option>
-          </select><select name="e" id="e">
+        </select><select name="e" id="e" onchange="showId();">
           <option value="2" class="card" title="cards/e_02.jpg"></option>
           <option value="3" class="card" title="cards/e_03.jpg"></option>
           <option value="4" class="card" title="cards/e_04.jpg"></option>
@@ -83,7 +101,7 @@
           <option value="10" class="card" title="cards/e_10.jpg"></option>
           <option value="11" class="card" title="cards/e_11.jpg"></option>
           <option value="12" class="card" title="cards/e_12.jpg"></option>
-          </select><select name="f" id="f">
+        </select><select name="f" id="f" onchange="showId();">
           <option value="2" class="card" title="cards/f_02.jpg"></option>
           <option value="3" class="card" title="cards/f_03.jpg"></option>
           <option value="4" class="card" title="cards/f_04.jpg"></option>
@@ -95,7 +113,7 @@
           <option value="10" class="card" title="cards/f_10.jpg"></option>
           <option value="11" class="card" title="cards/f_11.jpg"></option>
           <option value="12" class="card" title="cards/f_12.jpg"></option>
-          </select><select name="g" id="g">
+        </select><select name="g" id="g" onchange="showId();">
           <option value="2" class="card" title="cards/g_02.jpg"></option>
           <option value="3" class="card" title="cards/g_03.jpg"></option>
           <option value="4" class="card" title="cards/g_04.jpg"></option>
@@ -110,11 +128,11 @@
         </select>
       </div>
       <div>
-        <select name="h" id="h">
+        <select name="h" id="h" onchange="showId();">
           <option value="2" class="card" title="cards/h_02.jpg"></option>
           <option value="11" class="card" title="cards/h_11.jpg"></option>
           <option value="12" class="card" title="cards/h_12.jpg"></option>
-          </select><select name="i" id="i">
+        </select><select name="i" id="i" onchange="showId();">
           <option value="2" class="card" title="cards/i_02.jpg"></option>
           <option value="3" class="card" title="cards/i_03.jpg"></option>
           <option value="4" class="card" title="cards/i_04.jpg"></option>
@@ -126,7 +144,7 @@
           <option value="10" class="card" title="cards/i_10.jpg"></option>
           <option value="11" class="card" title="cards/i_11.jpg"></option>
             <option value="12" class="card" title="cards/i_12.jpg"></option>
-          </select><select name="k" id="k">
+        </select><select name="k" id="k" onchange="showId();">
           <option value="2" class="card" title="cards/k_02.jpg"></option>
           <option value="3" class="card" title="cards/k_03.jpg"></option>
           <option value="4" class="card" title="cards/k_04.jpg"></option>
@@ -138,7 +156,7 @@
           <option value="10" class="card" title="cards/k_10.jpg"></option>
           <option value="11" class="card" title="cards/k_11.jpg"></option>
           <option value="12" class="card" title="cards/k_12.jpg"></option>
-          </select><select name="l" id="l">
+        </select><select name="l" id="l" onchange="showId();">
           <option value="2" class="card" title="cards/l_02.jpg"></option>
           <option value="3" class="card" title="cards/l_03.jpg"></option>
           <option value="4" class="card" title="cards/l_04.jpg"></option>
@@ -150,7 +168,7 @@
           <option value="10" class="card" title="cards/l_10.jpg"></option>
           <option value="11" class="card" title="cards/l_11.jpg"></option>
           <option value="12" class="card" title="cards/l_12.jpg"></option>
-          </select><select name="m" id="m">
+        </select><select name="m" id="m" onchange="showId();">
           <option value="2" class="card" title="cards/m_02.jpg"></option>
           <option value="3" class="card" title="cards/m_03.jpg"></option>
           <option value="4" class="card" title="cards/m_04.jpg"></option>
@@ -162,7 +180,7 @@
           <option value="10" class="card" title="cards/m_10.jpg"></option>
           <option value="11" class="card" title="cards/m_11.jpg"></option>
           <option value="12" class="card" title="cards/m_12.jpg"></option>
-          </select><select name="n" id="n">
+        </select><select name="n" id="n" onchange="showId();">
           <option value="2" class="card" title="cards/n_02.jpg"></option>
           <option value="3" class="card" title="cards/n_03.jpg"></option>
           <option value="4" class="card" title="cards/n_04.jpg"></option>
@@ -174,7 +192,7 @@
           <option value="10" class="card" title="cards/n_10.jpg"></option>
           <option value="11" class="card" title="cards/n_11.jpg"></option>
           <option value="12" class="card" title="cards/n_12.jpg"></option>
-          </select><select name="o" id="o">
+        </select><select name="o" id="o" onchange="showId();">
           <option value="2" class="card" title="cards/o_02.jpg"></option>
           <option value="3" class="card" title="cards/o_03.jpg"></option>
           <option value="4" class="card" title="cards/o_04.jpg"></option>
@@ -189,7 +207,7 @@
         </select>
       </div>
       <div>
-        <select name="p" id="p">
+        <select name="p" id="p" onchange="showId();">
           <option value="2" class="card" title="cards/p_02.jpg"></option>
           <option value="3" class="card" title="cards/p_03.jpg"></option>
           <option value="4" class="card" title="cards/p_04.jpg"></option>
@@ -201,7 +219,7 @@
           <option value="10" class="card" title="cards/p_10.jpg"></option>
           <option value="11" class="card" title="cards/p_11.jpg"></option>
           <option value="12" class="card" title="cards/p_12.jpg"></option>
-          </select><select name="q" id="q">
+        </select><select name="q" id="q" onchange="showId();">
           <option value="2" class="card" title="cards/q_02.jpg"></option>
           <option value="3" class="card" title="cards/q_03.jpg"></option>
           <option value="4" class="card" title="cards/q_04.jpg"></option>
@@ -213,7 +231,7 @@
           <option value="10" class="card" title="cards/q_10.jpg"></option>
           <option value="11" class="card" title="cards/q_11.jpg"></option>
           <option value="12" class="card" title="cards/q_12.jpg"></option>
-          </select><select name="r" id="r">
+        </select><select name="r" id="r" onchange="showId();">
           <option value="2" class="card" title="cards/r_02.jpg"></option>
           <option value="3" class="card" title="cards/r_03.jpg"></option>
           <option value="4" class="card" title="cards/r_04.jpg"></option>
@@ -225,7 +243,7 @@
           <option value="10" class="card" title="cards/r_10.jpg"></option>
           <option value="11" class="card" title="cards/r_11.jpg"></option>
           <option value="12" class="card" title="cards/r_12.jpg"></option>
-          </select><select name="s" id="s">
+        </select><select name="s" id="s" onchange="showId();">
           <option value="2" class="card" title="cards/s_02.jpg"></option>
           <option value="3" class="card" title="cards/s_03.jpg"></option>
           <option value="4" class="card" title="cards/s_04.jpg"></option>
@@ -237,7 +255,7 @@
           <option value="10" class="card" title="cards/s_10.jpg"></option>
           <option value="11" class="card" title="cards/s_11.jpg"></option>
           <option value="12" class="card" title="cards/s_12.jpg"></option>
-          </select><select name="t" id="t">
+        </select><select name="t" id="t" onchange="showId();">
           <option value="2" class="card" title="cards/t_02.jpg"></option>
           <option value="3" class="card" title="cards/t_03.jpg"></option>
           <option value="4" class="card" title="cards/t_04.jpg"></option>
@@ -249,7 +267,7 @@
           <option value="10" class="card" title="cards/t_10.jpg"></option>
           <option value="11" class="card" title="cards/t_11.jpg"></option>
           <option value="12" class="card" title="cards/t_12.jpg"></option>
-          </select><select name="u" id="u">
+        </select><select name="u" id="u" onchange="showId();">
           <option value="2" class="card" title="cards/u_02.jpg"></option>
           <option value="3" class="card" title="cards/u_03.jpg"></option>
           <option value="4" class="card" title="cards/u_04.jpg"></option>
@@ -261,7 +279,7 @@
           <option value="10" class="card" title="cards/u_10.jpg"></option>
           <option value="11" class="card" title="cards/u_11.jpg"></option>
           <option value="12" class="card" title="cards/u_12.jpg"></option>
-          </select><select name="v" id="v">
+        </select><select name="v" id="v" onchange="showId();">
           <option value="2" class="card" title="cards/v_02.jpg"></option>
           <option value="3" class="card" title="cards/v_03.jpg"></option>
           <option value="4" class="card" title="cards/v_04.jpg"></option>
@@ -283,6 +301,7 @@
        	<input type="submit" class="button" onclick="this.form.elements['getitas'].value='.mid';" value="MIDI"></input>
       </p>
     </form>
-
+    </div>
+    
   </body>
 </html>
