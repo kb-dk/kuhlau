@@ -53,17 +53,21 @@ function randomize() {
 
 function setCards(preset) {
     // set selects to preset combination
-    for (var i=0;i<list.length;i++) {
-        if (i<preset.length) {
-            var val=preset[i];
-            if(val=='a') { val=10; }
-            if(val=='b') { val=11; }
-            if(val=='c') { val=12; }
-            var el='select#'+list[i];
-            $(el).selectmenu("value",val);
-        }
-    }
-    showId();
+    if (preset.length==1) {
+        setLayer(preset);
+    } else {
+      for (var i=0;i<list.length;i++) {
+         if (i<preset.length) {
+             var val=preset[i];
+             if(val=='a') { val=10; }
+             if(val=='b') { val=11; }
+             if(val=='c') { val=12; }
+             var el='select#'+list[i];
+             $(el).selectmenu("value",val);
+         }
+      }
+   }
+   showId();
 }
 
 function setLayer(preset) {
@@ -105,11 +109,7 @@ function getParams() {
        }
        var preset = params.preset;
        if(preset) {
-           if (preset.length==1) {
-               setLayer(preset);
-           } else {
-               setCards(preset);
-           }
+           setCards(preset);
        }
    }
 }
