@@ -22,11 +22,19 @@ a.card { height: 163px; }
 
 body { 
     font-family:"Verdana",sans-serif;
-    font-size: .8em;
+    font-size: 10pt;
     background-color: #222;
     color: white;
-    padding: 20px;
+    padding: 10px 20px;
     margin: 0;
+}
+
+h1 {
+    font-size: 18pt;
+}
+
+h2 {
+    font-size: 12pt;
 }
 
 h1, h2, p {
@@ -35,16 +43,12 @@ h1, h2, p {
 }
 
 #all {
-    background-color: #555;
+    background-color: #666;
     width: auto;    
     max-width: 1090px;
     margin: auto;
     padding: 25px;
     border-radius: 8px;
-}
-
-#id_bar {
-    padding: 10px 0;    
 }
 
 #loading {
@@ -67,6 +71,14 @@ a:hover {
     color: #ff552b;
 }
 
+#id_bar {
+    padding: 10px 0;   
+}
+
+#id_bar, #id_bar input[type=text] {
+    font-size: 8.5pt;
+}
+
 input {
   border: 1px solid #666;
   color:#fff;
@@ -75,14 +87,14 @@ input {
   padding: 1px;
 }
 
-#link {
-  border:none;
-  background: transparent;
+input[type=text] {
+    padding: 1px 8px;
 }
 
-#link:hover {
-/*    color: #71abff; */
-/*    color: #ff552b; */
+#link {
+  border:none;
+  background: #777;
+  width: 450px;
 }
 
 .card_row {
@@ -97,6 +109,11 @@ input {
 }
 
 #card_box {
+  /*  If MSIE would be working as expected, we could use: 
+      border: 8px solid #33443a;
+      border-image: url("images/box_border.png") 8 8 8 8 repeat;
+      border-radius: 5px; */
+
   background: url(images/card_box_black_bg.png) no-repeat;
   padding: 10px;
   position: absolute;
@@ -106,30 +123,40 @@ input {
 #box_shadow {
     position: absolute;
     z-index:0; 
-    box-shadow:  20px 20px 15px 0px rgba(0, 0, 0, 0.6);
+    box-shadow:  25px 25px 15px 0px rgba(0, 0, 0, 0.6);
     width: 1070px;
     height: 550px;
 }
 
-
 .row_separator {
   height: 25px;
+  width: 1070px;
   background: url(images/row_separator.jpg) -2px -3px no-repeat;
+}
+
+.row_shadow {
+    position: absolute;
+    z-index:3; 
+    box-shadow: inset 0 5px 5px 0 rgba(0, 0, 0, 0.5);
+    width: 1067px;
+    height: 10px;
+}
+
+.alt_lang {
+    color: #ccc;
 }
 
 .button {
   padding: 3px 5px;
   border: 1px solid #666;
-  border-radius: 3px;
   color:#fff;
-  font-size: .8em;
+  font-size: 8.5pt;
   background: #333 url(images/button.png) repeat-x scroll 5px center;
   height: 24px;
 }
 
 .button:hover {
   background: #888 url(images/button_hover.png) repeat-x scroll 5px center;
-  /*border: 1px solid #3E6CE0;*/
   border: 1px solid #C1472C;
 }
 
@@ -144,21 +171,26 @@ input {
   color:#ccc !important;
 }
 
+.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-bottom, .ui-corner-left,
+.ui-corner-tl, .ui-corner-tr, .ui-corner-br, .ui-corner-bl {
+    border-radius: 0;
+}
+
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
     background: url("images/card_bg.png") repeat-x scroll 50% 50% #777;
-    border: 1px solid #D3D3D3;
-    color: #555555;
-    font-weight: normal;
+    border: 0;
 }
 
 .ui-widget-content {
-    border: 8px solid #33443a;
-    border-image: url("images/box_border.png") 8 8 8 8 repeat;
+    border: 8px solid #9a9a9a;
     border-radius: 5px;
     box-shadow: 10px 10px 20px #333;
     /* For non-CSS3 FireFox */
     -moz-box-shadow: 10px 10px 20px #333;
     -moz-border-radius: 5px;    
+
+    /* to put the select in a box, use: 
+       border-image: url("images/box_border.png") 8 8 8 8 repeat;*/
 }
 
 /* select box style */
@@ -174,16 +206,21 @@ a.card {
     padding: 5px 5px 10px 5px;
 }
 
+.ui-selectmenu-menu li {
+    border: 0;
+}
+
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
-    background: url("images/card_bg_highlight.png") repeat-x scroll #eee;
-    border: 1px solid #888;
+    /* selected option */
+    background: url("images/card_bg.png") repeat-x scroll #eee;
+    border: 0;
 }
 
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover {
-    background: url("images/card_bg_highlight.png") repeat-x scroll #B78664; 
-    border: 1px solid #AAAAAA; 
+    /* option hover */
+    background: url("images/card_bg.png") repeat-x scroll #B78664; 
+    border: 0; 
 }
-
 
 /* position of select arrows */
 .ui-selectmenu-icon {
@@ -193,7 +230,7 @@ a.card {
 
 /* arrow icon */
 .ui-state-hover .ui-icon {
-    background-image: url("images/ui-icons_2e83ff_256x240.png");
+    background-image: url("images/ui-icons_256x240.png");
 }
 
 /*  select control's padding/margin */

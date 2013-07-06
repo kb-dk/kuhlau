@@ -10,7 +10,7 @@ $(function(){
             icons: [{find: '.card'}],
             bgImage: function() {
         	return 'url(' + $(this).attr("title") + ')';
-            }, menuWidth: "180px"});
+            }, menuWidth: "185px"});
     }
     
 });
