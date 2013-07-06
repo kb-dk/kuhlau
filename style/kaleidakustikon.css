@@ -37,9 +37,9 @@ h1, h2, p {
 #all {
     background-color: #555;
     width: auto;    
-    max-width: 1100px;
+    max-width: 1090px;
     margin: auto;
-    padding: 20px;
+    padding: 25px;
     border-radius: 8px;
 }
 
@@ -51,13 +51,20 @@ h1, h2, p {
     padding: 100px 0;
 }
 
+#shuffle {
+    float: right;
+    padding: 0 10px 10px 0;
+}
+
 a, a:link, a:visited, a:active, a:hover {
-    color: #ddf;
+    /*color: #ddf;*/
+    color: #ff552b;
     text-decoration: none;
 }
 
 a:hover {
-    color: #71abff;
+    /*color: #71abff;*/
+    color: #ff552b;
 }
 
 input {
@@ -75,18 +82,35 @@ input {
 
 #link:hover {
 /*    color: #71abff; */
+/*    color: #ff552b; */
 }
 
 .card_row {
-    padding: 2px 0;
+    padding: 1px 0;
     margin:0;
     white-space: nowrap;
 }
 
-.card_box {
+#box_spacer      {
+    width: 1080px;
+    height: 580px;
+}
+
+#card_box {
   background: url(images/card_box_black_bg.png) no-repeat;
   padding: 10px;
+  position: absolute;
+  z-index: 1;
 }
+
+#box_shadow {
+    position: absolute;
+    z-index:0; 
+    box-shadow:  20px 20px 15px 0px rgba(0, 0, 0, 0.6);
+    width: 1070px;
+    height: 550px;
+}
+
 
 .row_separator {
   height: 25px;
@@ -96,6 +120,7 @@ input {
 .button {
   padding: 3px 5px;
   border: 1px solid #666;
+  border-radius: 3px;
   color:#fff;
   font-size: .8em;
   background: #333 url(images/button.png) repeat-x scroll 5px center;
@@ -104,7 +129,8 @@ input {
 
 .button:hover {
   background: #888 url(images/button_hover.png) repeat-x scroll 5px center;
-  border: 1px solid #3E6CE0;
+  /*border: 1px solid #3E6CE0;*/
+  border: 1px solid #C1472C;
 }
 
 [disabled],
@@ -126,31 +152,35 @@ input {
 }
 
 .ui-widget-content {
-    /*border: 3px solid #44aaFF;*/
-    border: 5px solid #0E350E;
+    border: 8px solid #33443a;
+    border-image: url("images/box_border.png") 8 8 8 8 repeat;
+    border-radius: 5px;
+    box-shadow: 10px 10px 20px #333;
+    /* For non-CSS3 FireFox */
+    -moz-box-shadow: 10px 10px 20px #333;
+    -moz-border-radius: 5px;    
 }
 
 /* select box style */
 a.card { 
-    background: url("images/card_bg.png") repeat-x scroll 50% 50% #777;
-    border: 1px solid #888;
+    background: #444;
+    border: 0;
 }
 
 /* options style */
 
 .ui-widget-content li {
-    background: url("images/card_bg.png") repeat-x scroll 50% 50% #FF470F;
-    border: 1px solid #888;
-    padding: 5px;
+    background: url("images/card_bg.png") repeat-x scroll #9a9a9a;
+    padding: 5px 5px 10px 5px;
 }
 
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
-    background: url("images/card_bg.png") repeat-x scroll 50% 50% #777;
+    background: url("images/card_bg_highlight.png") repeat-x scroll #eee;
     border: 1px solid #888;
 }
 
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover {
-    background: url("images/card_bg_hover.png") repeat-x scroll 50% 50% #eee; 
+    background: url("images/card_bg_highlight.png") repeat-x scroll #B78664; 
     border: 1px solid #AAAAAA; 
 }
 

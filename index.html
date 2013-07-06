@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" ></meta>
     <title>Kaleidakustikon</title>
     
     <link type="text/css" href="jquery-ui-selectmenu/themes/base/jquery.ui.core.css" rel="stylesheet" />
@@ -24,8 +24,13 @@
         <p>LOADING...</p>
       </div>
       <div id="main">
+        <div id="shuffle">
+          <input type="button" class="button" onclick="randomize();" value="SHUFFLE"></input>
+        </div>
+        <br style="clear: both;"/>
         <form method="get" action="/cgi-bin/build" target="_blank">
-          <div class="card_box">
+          <div id="box_shadow"><!-- creates a shadow in functional browsers --></div>
+          <div id="card_box">
             <div class="card_row">
               <select name="a" id="a" onchange="showId();">
                 <option value="2" class="card" title="cards/a_02.jpg"></option>
@@ -282,6 +287,7 @@
               </select>
             </div>
           </div>
+          <div id="box_spacer"><!-- makes room for the box --></div>
           <p>
             Get it as 
             <input type="hidden" name="getitas" value=""/>
@@ -297,7 +303,6 @@
                 onchange="document.getElementById('set').disabled=false;"></input>
               <input type="button" class="button" value="SET" id="set" 
                 onclick="setCards(document.getElementById('preset').value);"/>
-              <input type="button" class="button" onclick="randomize();" value="SHUFFLE"></input>
             </div>
             <div>
               URL to this composition: <input type="text" size="120" id="link"/>
