@@ -29,6 +29,11 @@ body {
     margin: 0;
 }
 
+h1, h2, p {
+    line-height: 1.4em;
+    margin: 0;
+}
+
 #all {
     background-color: #555;
     width: auto;    
@@ -40,6 +45,10 @@ body {
 
 #id_bar {
     padding: 10px 0;    
+}
+
+#loading {
+    padding: 100px 0;
 }
 
 a, a:link, a:visited, a:active, a:hover {
@@ -69,8 +78,19 @@ input {
 }
 
 .card_row {
-    padding: 0;
+    padding: 2px 0;
     margin:0;
+    white-space: nowrap;
+}
+
+.card_box {
+  background: url(images/card_box_black_bg.png) no-repeat;
+  padding: 10px;
+}
+
+.row_separator {
+  height: 25px;
+  background: url(images/row_separator.jpg) -2px -3px no-repeat;
 }
 
 .button {
@@ -106,7 +126,8 @@ input {
 }
 
 .ui-widget-content {
-    border: 3px solid #44aaFF;
+    /*border: 3px solid #44aaFF;*/
+    border: 5px solid #0E350E;
 }
 
 /* select box style */
@@ -118,7 +139,7 @@ a.card {
 /* options style */
 
 .ui-widget-content li {
-    background: url("images/card_bg.png") repeat-x scroll 50% 50% #777;
+    background: url("images/card_bg.png") repeat-x scroll 50% 50% #FF470F;
     border: 1px solid #888;
     padding: 5px;
 }
@@ -129,8 +150,8 @@ a.card {
 }
 
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover {
-    background: url("images/card_bg_hover.png") repeat-x scroll 50% 50% #eee;
-    border: 1px solid #AAAAAA;
+    background: url("images/card_bg_hover.png") repeat-x scroll 50% 50% #eee; 
+    border: 1px solid #AAAAAA; 
 }
 
 
