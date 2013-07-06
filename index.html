@@ -13,18 +13,19 @@
     <script type="text/javascript" src="jquery-ui-selectmenu/ui/jquery.ui.widget.js"></script>
     <script type="text/javascript" src="jquery-ui-selectmenu/ui/jquery.ui.position.js"></script>
     <script type="text/javascript" src="jquery-ui-selectmenu/ui/jquery.ui.selectmenu.js"></script>
-    <script type="text/javascript" src="jquery-ui-selectmenu/main-script.js"></script>
+    <script type="text/javascript" src="js/main-script.js"></script>
   </head>
   <body onload="init();">
-      <div id="all">
-        <h2>Fr. Kuhlau</h2>
-        <h1>Kaleidakustikon</h1>
-        
-        <div id="loading">
-          <p>LOADING...</p>
-        </div>
-        <div id="main">
-          <form method="get" action="/cgi-bin/build" target="_blank">
+    <div id="all">
+      <p>Friedrich Kuhlau</p>
+      <h1>Kaleidakustikon</h1>
+      <h2>En musikalsk Underholdning for Claveerspillere</h2>
+      <div id="loading">
+        <p>LOADING...</p>
+      </div>
+      <div id="main">
+        <form method="get" action="/cgi-bin/build" target="_blank">
+          <div class="card_box">
             <div class="card_row">
               <select name="a" id="a" onchange="showId();">
                 <option value="2" class="card" title="cards/a_02.jpg"></option>
@@ -112,6 +113,7 @@
                 <option value="12" class="card" title="cards/g_12.jpg"></option>
               </select>
             </div>
+            <div class="row_separator"></div>
             <div class="card_row">
               <select name="h" id="h" onchange="showId();">
                 <option value="2" class="card" title="cards/h_02.jpg"></option>
@@ -191,6 +193,7 @@
                 <option value="12" class="card" title="cards/o_12.jpg"></option>
               </select>
             </div>
+            <div class="row_separator"></div>
             <div class="card_row">
               <select name="p" id="p" onchange="showId();">
                 <option value="2" class="card" title="cards/p_02.jpg"></option>
@@ -278,28 +281,28 @@
                 <option value="12" class="card" title="cards/v_12.jpg"></option>
               </select>
             </div>
-            <p>
-              Get it as 
-              <input type="hidden" name="getitas" value=""/>
-              <input type="submit" class="button" onclick="this.form.elements['getitas'].value='.xml';" value="XML"></input>
-              <input type="submit" class="button" onclick="this.form.elements['getitas'].value='.pdf';" value="PDF"></input> 
-              <input type="submit" class="button" onclick="this.form.elements['getitas'].value='.mid';" value="MIDI"></input>
-            </p>
-          </form>
-          <div id="id_bar">
-            <form method="get">
-              <div>
-                Composition ID <input type="text" size="22" maxlength="21" id="preset" 
-                  onchange="document.getElementById('set').disabled=false;"></input>
-                <input type="button" class="button" value="SET" id="set" 
-                  onclick="setCards(document.getElementById('preset').value);"/>
-                <input type="button" class="button" onclick="randomize();" value="SHUFFLE"></input>
-              </div>
-              <div>
-                URL to this composition: <input type="text" size="120" id="link"/>
-              </div>
-            </form>
           </div>
+          <p>
+            Get it as 
+            <input type="hidden" name="getitas" value=""/>
+            <input type="submit" class="button" onclick="this.form.elements['getitas'].value='.xml';" value="XML"></input>
+            <input type="submit" class="button" onclick="this.form.elements['getitas'].value='.pdf';" value="PDF"></input> 
+            <input type="submit" class="button" onclick="this.form.elements['getitas'].value='.mid';" value="MIDI"></input>
+          </p>
+        </form>
+        <div id="id_bar">
+          <form method="get">
+            <div>
+              Composition ID <input type="text" size="22" maxlength="21" id="preset" 
+                onchange="document.getElementById('set').disabled=false;"></input>
+              <input type="button" class="button" value="SET" id="set" 
+                onclick="setCards(document.getElementById('preset').value);"/>
+              <input type="button" class="button" onclick="randomize();" value="SHUFFLE"></input>
+            </div>
+            <div>
+              URL to this composition: <input type="text" size="120" id="link"/>
+            </div>
+          </form>
         </div>
       </div>
     </div>

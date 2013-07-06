@@ -38,8 +38,10 @@ var params = {};
 var list='abcdefghiklmnopqrstuv';
 
 
-function randomize() {
-    for (var i=0;i<list.length;i++) {
+function randomize(startAt) {
+    // start at pile no. ...
+    startAt = startAt || 0;
+    for (var i=startAt;i<list.length;i++) {
         var rand=Math.floor(Math.random()*11)+2;
         // pile h needs special treatment
         while(list[i]=='h' && rand>2 && rand<11) {
@@ -50,6 +52,7 @@ function randomize() {
     }
     showId();
 }
+
 
 function setCards(preset) {
     // set selects to preset combination
