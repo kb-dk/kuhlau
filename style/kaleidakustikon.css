@@ -142,6 +142,14 @@ input[type=text] {
     height: 10px;
 }
 
+.row_shadow_left {
+    position: absolute;
+    z-index:4; 
+    box-shadow: inset 5px 0 5px 0 rgba(0, 0, 0, 0.5);
+    width: 10px;
+    height: 163px;
+}
+
 .alt_lang {
     color: #ccc;
 }
