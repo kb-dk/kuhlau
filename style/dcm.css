@@ -1,0 +1,164 @@
+body { 
+    font-family: arial, helvetica, verdana, sans-serif;
+    font-size: 10pt;
+    background-color: #333;
+    padding: 20px 50px;
+    margin: 0;
+}
+
+h1, h2, h3, h4 {
+    font-family:"Verdana",sans-serif;
+    line-height: 1.4em;
+    margin: 0;
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 18pt;
+}
+
+h2 {
+    font-size: 14pt;
+    padding-bottom: 10px;
+}
+
+h3 {
+    font-size: 12pt;
+    padding-bottom: 10px;
+}
+
+p {
+    line-height: 1.4em;
+    margin: 0;
+    padding-bottom: 8px;
+}
+
+#all {
+    width: auto;
+    min-width: 600px;
+    max-width: 1120px;
+    padding: 0;
+    background-color: #637F57;
+    color: #fff;
+    margin: auto;
+    border-radius: 8px;
+}
+
+#header {
+    color: #fff;
+    padding: 20px 20px 5px 20px;
+    border-bottom: 1px solid #fff;
+}
+
+#main {
+    padding: 25px 20px 15px 20px;
+    min-height: 300px; 
+    background-color: #fff;
+    color: #000;
+}
+
+#footer {
+    color: #fff;
+    padding: 10px 20px 0 20px;
+    border-top: 1px solid #fff;
+    height: 48px;
+}
+
+.left_col {
+    float: left;
+    width: 48%;
+}
+
+.right_col {
+    float: right;
+    width: 48%;
+}
+
+.kb_logo {
+    float: right;
+    width:auto;
+}
+
+a, a:link, a:visited, a:active, a:hover {
+    color: #eec;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #fff;
+}
+
+.dcm_logo a {
+    text-decoration: none;
+}
+
+input {
+  border: 1px solid #666;
+  color:#fff;
+  background: #333;
+  height: 16px;
+  padding: 1px;
+}
+
+input[type=text] {
+    padding: 1px 8px;
+}
+
+
+.button {
+  padding: 3px 5px;
+  border: 1px solid #666;
+  border-radius: 2px;
+  color:#fff;
+  font-size: 8.5pt;
+  background: #333 url(images/button.png) repeat-x scroll 5px center;
+  height: 24px;
+}
+
+.button:hover {
+  background: #888 url(images/button_hover.png) repeat-x scroll 5px center;
+  border: 1px solid #5D6F43;
+}
+
+[disabled],
+.button:disabled, 
+.button[disabled],
+.button[disabled="disabled"],
+[disabled]:hover,
+.button:disabled:hover {
+  border: 1px solid #666;
+  background: #333 url(images/button_disabled.png) repeat-x scroll 5px center !important;
+  color:#ccc !important;
+}
+
+ol {
+    margin: 0;
+    padding: 0 0 0 20px;
+}
+
+/* Top menu */
+
+#menu {
+    height: 24px;
+    padding: 0 10px 0 10px;
+    border-bottom: 1px solid #fff;
+}
+
+#menu a {
+    display: block;
+    float:left;
+    width: auto;
+    height: 21px;
+    padding: 3px 10px 0 10px;
+    text-decoration: none;
+    color: #fff;
+}
+
+#menu a:hover {
+    color: #fff;
+    background-color: #799158;
+}
+
+#menu .change_language {
+    float: right;
+}

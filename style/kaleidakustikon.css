@@ -21,54 +21,29 @@ a.card { height: 163px; }
 /* Skin */
 
 body { 
-    font-family:"Verdana",sans-serif;
-    font-size: 10pt;
-    background-color: #222;
     color: white;
-    padding: 10px 20px;
-    margin: 0;
-}
-
-h1 {
-    font-size: 18pt;
-}
-
-h2 {
-    font-size: 12pt;
-}
-
-h1, h2, p {
-    line-height: 1.4em;
-    margin: 0;
 }
 
 #all {
+    width: 1120px;    
+    min-width: 1120px;
+}
+
+#main {
     background-color: #666;
-    width: auto;    
-    max-width: 1090px;
-    margin: auto;
-    padding: 25px;
-    border-radius: 8px;
+    color: #fff;
+    padding-bottom: 5px;
 }
 
 #loading {
-    padding: 100px 0;
+    background-color: #666;
+    color: #fff;
+    padding: 50px 20px 100px 20px;
 }
 
 #shuffle {
     float: right;
     padding: 0 10px 10px 0;
-}
-
-a, a:link, a:visited, a:active, a:hover {
-    /*color: #ddf;*/
-    color: #ff552b;
-    text-decoration: none;
-}
-
-a:hover {
-    /*color: #71abff;*/
-    color: #ff552b;
 }
 
 #id_bar {
@@ -97,15 +72,23 @@ input[type=text] {
   width: 450px;
 }
 
+#link_div {
+    margin-top: 12px;
+}
+
+#preset {
+    width: 155px;
+}
+
 .card_row {
     padding: 1px 0;
     margin:0;
     white-space: nowrap;
 }
 
-#box_spacer      {
-    width: 1080px;
-    height: 580px;
+#box_spacer {
+    width: 1120px;
+    height: 600px;
 }
 
 #card_box {
@@ -115,15 +98,16 @@ input[type=text] {
       border-radius: 5px; */
 
   background: url(images/card_box_black_bg.png) no-repeat;
-  padding: 10px;
+  padding: 10px 11px;
   position: absolute;
+  margin: 10px 0 0 -5px;
   z-index: 1;
 }
 
 #box_shadow {
     position: absolute;
     z-index:0; 
-    box-shadow:  25px 25px 15px 0px rgba(0, 0, 0, 0.6);
+    box-shadow:  20px 35px 15px 0px rgba(0, 0, 0, 0.6);
     width: 1070px;
     height: 550px;
 }
@@ -148,35 +132,6 @@ input[type=text] {
     box-shadow: inset 5px 0 5px 0 rgba(0, 0, 0, 0.5);
     width: 10px;
     height: 163px;
-}
-
-.alt_lang {
-    color: #ccc;
-}
-
-.button {
-  padding: 3px 5px;
-  border: 1px solid #666;
-  color:#fff;
-  font-size: 8.5pt;
-  background: #333 url(images/button.png) repeat-x scroll 5px center;
-  height: 24px;
-}
-
-.button:hover {
-  background: #888 url(images/button_hover.png) repeat-x scroll 5px center;
-  border: 1px solid #C1472C;
-}
-
-[disabled],
-.button:disabled, 
-.button[disabled],
-.button[disabled="disabled"],
-[disabled]:hover,
-.button:disabled:hover {
-  border: 1px solid #666;
-  background: #333 url(images/button_disabled.png) repeat-x scroll 5px center !important;
-  color:#ccc !important;
 }
 
 .ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-bottom, .ui-corner-left,
