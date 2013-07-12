@@ -11,6 +11,7 @@ h1, h2, h3, h4 {
     line-height: 1.4em;
     margin: 0;
     font-weight: normal;
+    clear: both;
 }
 
 h1 {
@@ -116,7 +117,7 @@ input[type=text] {
 }
 
 .button:hover {
-  background: #888 url(images/button_hover.png) repeat-x scroll 5px center;
+  background: #799158 url(images/button_hover.png) repeat-x scroll 5px center;
   border: 1px solid #5D6F43;
 }
 
@@ -154,11 +155,33 @@ ol {
     color: #fff;
 }
 
-#menu a:hover {
+#menu a:hover, #menu .selected {
     color: #fff;
     background-color: #799158;
 }
 
 #menu .change_language {
     float: right;
+}
+
+/* Illustrations */
+
+img.illustration, p.illustration_text {
+    display: block;
+    width: 400px;
+    float: right;
+    clear: right;
+    margin: 0 0 0 15px;
+}
+
+p.illustration_text {
+    font-style:italic;
+    margin-bottom: 15px;
+}
+/* List of readings */
+
+.readings th, .readings td {
+    padding: 2px 15px 2px 0;
+    text-align: left;
+    vertical-align: top;
 }

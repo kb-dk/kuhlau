@@ -110,7 +110,7 @@ function showId() {
         id=id+val;
     }
     document.getElementById('preset').value=id;
-    document.getElementById('set').disabled=true;
+    //document.getElementById('set').disabled=true;
     var url = [location.protocol, '//', location.host, location.pathname].join('');
     document.getElementById('link').value=url+'?preset='+id;
 }

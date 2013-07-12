@@ -5,6 +5,12 @@
 
 .toc {
     margin: 25px 0 25px 0;
+    font-weight: bold;
+}
+
+.toc a {
+    display: block;
+    padding: 3px 0;
 }
 
 .editor {
