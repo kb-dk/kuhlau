@@ -43,7 +43,7 @@ body {
 
 #shuffle {
     float: right;
-    padding: 0 10px 10px 0;
+    width: auto;
 }
 
 #id_bar {
