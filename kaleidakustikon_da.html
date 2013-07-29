@@ -304,7 +304,7 @@
             </div>
           </div>
           <div id="box_spacer"><!-- makes room for the box --></div>
-          <input type="button" class="button" onclick="randomize();" value="TRÆK TILFÆLDIGE KORT"  id="shuffle"></input>
+          <input type="button" class="button" onclick="randomize();" value="BLAND KORT"  id="shuffle"></input>
           <p>
             Hent som 
             <input type="hidden" name="getitas" value=""/>
@@ -317,8 +317,10 @@
           <ol>
             <li>Klik på et kort for at vælge blandt kortene i den pågældende bunke</li>
             <li>Klik på knappen "Træk tilfældige kort" for at generere en tilfældig kombination</li>
-            <li>Indtast nummeret på den ønskede kombination nedenfor og klik på knappen "Opdater" eller tryk "Enter". Hvert ciffer i nummeret svarer til en kortbunke. Der kan indtastes tal mellem 2 og 9 samt bogstaverne 
-            a, b og c for tallene 10, 11 og 12. Hvis der kun indtastes et enkelt ciffer, vælges det pågældende nummer i alle bunker (eksempel: nummeret "2" tolkes som "222222222222222222222").
+            <li>Indtast nummeret på den ønskede kombination nedenfor og klik på knappen "Opdater" eller tryk "Enter". 
+              Hvert ciffer i nummeret svarer til en kortbunke. Der kan indtastes tal mellem 2 og 9 samt bogstaverne 
+            a, b og c for tallene 10, 11 og 12. Hvis der kun indtastes et enkelt ciffer, vælges det pågældende nummer i alle bunker 
+            (eksempel: nummeret "2" tolkes som "222222222222222222222"; bemærk dog at manglende kort i bunke H ikke kan vælges).
               <form method="get" action="#" onsubmit="setCards(document.getElementById('preset').value); return false;">
                 <div>
                   Kombination nr. <input type="text" size="22" maxlength="21" id="preset"></input>

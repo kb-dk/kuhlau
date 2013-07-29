@@ -69,7 +69,7 @@ input[type=text] {
 #link {
   border:none;
   background: #777;
-  width: 450px;
+  width: 500px;
 }
 
 #link_div {
@@ -187,10 +187,14 @@ a.card {
 
 /* position of select arrows */
 .ui-selectmenu-icon {
-    right: 6px;
+    right: 2px;
     top: 10%;
 }
 
+/* select arrow icon */
+.ui-icon-triangle-2-n-s {
+    background-position: -128px 0;
+}
 /* arrow icon */
 .ui-state-hover .ui-icon {
     background-image: url("images/ui-icons_256x240.png");
