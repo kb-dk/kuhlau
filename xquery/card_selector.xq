@@ -42,7 +42,7 @@ let $music:=<mei xmlns="http://www.music-encoding.org/ns/mei"
 		    key.sig="1f" 
 		    meter.count="3" 
 		    meter.unit="4" >
-	    <staffgrp symbol="brace">
+	    <staffgrp symbol="brace" barthru="true">
 	      <staffdef n="1" clef.line="2" clef.shape="G"/>
 	      <staffdef n="2" clef.line="4" clef.shape="F"/>
 	    </staffgrp>
