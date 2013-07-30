@@ -27,7 +27,7 @@ let $music:=<mei xmlns="http://www.music-encoding.org/ns/mei"
   <meihead>
     <filedesc>
       <titlestmt>
-	<title>Kaleidakustikon. Generated tune.</title>
+	<title>Kaleidakustikon</title>
       </titlestmt>
       <pubstmt>
       </pubstmt>
@@ -57,13 +57,13 @@ let $music:=<mei xmlns="http://www.music-encoding.org/ns/mei"
 	      else
 		collection("/db/kuhlau/kaleidakustikon")//m:section[@type/string()="missing"]
             return
-	      if($queries/properties/property[@key='h']="2") then
-   		$node
-	      else
-		if($node/@type="B") then
-		  transform:transform($node,doc("/db/kuhlau/transpose.xsl"),())		  
+	      if($node/@type="B") then
+		if(request:get-parameter("h",request:get-parameter("default","2")) eq "2") then
+   		  $node
 		else
-		  $node
+		  transform:transform($node,doc("/db/kuhlau/transpose.xsl"),())		  
+	      else
+		$node
 	  }
 	</score>
       </mdiv>
