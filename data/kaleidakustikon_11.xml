@@ -250,7 +250,7 @@
 		</layer>
 	      </staff>
 	    </measure>
-	    <measure n="9" right="rptend">
+	    <measure n="9" right="rptboth">
 	      <staff n="1">
 		<layer>
 		  <note pname="f" oct="4" dur="4" stem.dir="up" />
@@ -277,7 +277,7 @@
 		  key.mode="minor"
 		  meter.count="3" 
 		  meter.unit="4" />
-	    <measure n="10" left="rptstart">
+	    <measure n="10" >
 	      <staff n="1">
 		<layer>
 		  <rest dur="4" />
@@ -538,7 +538,7 @@
 		</layer>
 	      </staff>
 	    </measure>
-	    <measure n="18" right="rptend">
+	    <measure n="18" right="rptboth">
 	      <staff n="1">
 		<layer>
 		  <chord dur="2" stem.dir="up">
@@ -568,7 +568,7 @@
 			key.mode="major"
 			meter.count="3" 
 			meter.unit="4" />
-	    <measure n="18" left="rptstart">
+	    <measure n="19" >
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -583,7 +583,7 @@
 		</layer>
 	      </staff>
 	    </measure>
-	    <measure n="19">
+	    <measure n="20">
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -615,7 +615,7 @@
 	  </section>
 
 	  <section xml:id="q.11" type="C">
-	    <measure n="19">
+	    <measure n="21">
 	      <staff n="1">
 		<layer>
 		  <note pname="f" oct="5" dur="4" dots="1" stem.dir="down" />
@@ -647,7 +647,7 @@
 	  </section>
 
 	  <section xml:id="r.11" type="C">
-	    <measure n="20">
+	    <measure n="22">
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -681,7 +681,7 @@
 	  </section>
 
 	  <section xml:id="s.11" type="C">
-	    <measure n="21">
+	    <measure n="23">
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -707,7 +707,7 @@
 	  </section>
 
 	  <section xml:id="t.11" type="C">
-	    <measure n="22">
+	    <measure n="24">
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -741,7 +741,7 @@
 	    </measure>
 	  </section>
 	  <section xml:id="u.11" type="C">
-	    <measure n="23">
+	    <measure n="25">
 	      <staff n="1">
 		<layer>
 		  <note pname="e" oct="5" dur="8" stem.dir="down"/>
@@ -774,7 +774,7 @@
 	  </section>
 
 	  <section xml:id="v.11" type="C">
-	    <measure n="24">
+	    <measure n="26">
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -807,7 +807,7 @@
 		</layer>
 	      </staff>
 	    </measure>
-	    <measure n="25" right="rptend">
+	    <measure n="27" right="rptend">
 	      <staff n="1">
 		<layer>
 		  <note pname="b" oct="4" dur="4" stem.dir="down"/>
@@ -823,6 +823,7 @@
 		  <note pname="b" oct="2" dur="4" stem.dir="up"/>
 		</layer>
 	      </staff>
+	      <fermata staff="1"/>
 	    </measure>
 	  </section>
 

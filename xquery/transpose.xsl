@@ -35,7 +35,7 @@
 
   <xsl:key name="oct7" 
 	   match="mei:staff" 
-	   use="generate-id(descendant::mei:note[@pname='e' and @oct='8'])" />
+	   use="generate-id(descendant::mei:note[@pname='e' and @oct='7'])" />
 
   <xsl:template match="mei:note[@pname='e']">
     <xsl:element name="note">

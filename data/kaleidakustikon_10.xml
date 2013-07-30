@@ -286,7 +286,7 @@
 	      </layer>
 	    </staff>
 	    </measure>
-	    <measure n="9" right="rptend">
+	    <measure n="9" right="rptboth">
 	      <staff n="1">
 		<layer>
 		  <note pname="f" oct="4" dur="4" stem.dir="up" />
@@ -311,7 +311,7 @@
 	  <!-- this section is fake. the card is missing and we won't use
 	       this -->
 
-	    <measure left="rptstart">
+	    <measure >
 	      <staff n="1">
 		<layer>
 		  <note pname="c" oct="5" dur="2" dots="1"/>
@@ -556,7 +556,7 @@
 		</layer>
 	      </staff>
 	    </measure>
-	    <measure n="18" right="rptend">
+	    <measure n="18" right="rptboth">
 	      <staff n="1">
 		<layer>
 		  <chord dur="4" stem.dir="up">
@@ -590,7 +590,7 @@
 		      meter.count="3" 
 		      meter.unit="4" />
 
-	    <measure n="19" left="rptstart">
+	    <measure n="19" >
 	      <staff n="1">
 		<layer>
 		  <note xml:id="p10tiestart" pname="f" oct="6" dur="4" stem.dir="down" />
@@ -892,6 +892,7 @@
 		  <note pname="b" oct="2" dur="4" stem.dir="up" />
 		</layer>
 	      </staff>
+	      <fermata staff="1"/>
 	    </measure>
 	  </section>
 	</score>

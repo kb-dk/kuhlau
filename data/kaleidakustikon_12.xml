@@ -265,7 +265,7 @@
 		</layer>
 	      </staff>
 	    </measure>
-	    <measure n="9" right="rptend">
+	    <measure n="9" right="rptboth">
 	      <staff n="1">
 		<layer>
 		  <note pname="f" oct="4" dur="4" stem.dir="up"/>
@@ -292,7 +292,7 @@
 		key.mode="minor"
 		meter.count="3" 
 		meter.unit="4" />
-	    <measure n="10" left="rptstart">
+	    <measure n="10" >
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -341,7 +341,7 @@
 	  </section>
 
 	  <section xml:id="i.12" type="B">
-	    <measure n="11">
+	    <measure n="12">
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -378,7 +378,7 @@
 	  </section>
 
 	  <section xml:id="k.12" type="B">
-	    <measure n="12">
+	    <measure n="13">
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -413,7 +413,7 @@
 	  </section>
 
 	  <section xml:id="l.12" type="B">
-	    <measure n="13">
+	    <measure n="14">
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -464,7 +464,7 @@
 	  </section>
 
 	  <section xml:id="m.12" type="B">
-	    <measure n="14">
+	    <measure n="15">
 	      <staff n="1">
 		<layer>
 		  <note pname="e" oct="4" dur="8" stem.dir="up"/>
@@ -498,7 +498,7 @@
 	  </section>
 
 	  <section xml:id="n.12" type="B">
-	    <measure n="15">
+	    <measure n="16">
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -533,7 +533,7 @@
 	  </section>
 
 	  <section xml:id="o.12" type="B">
-	    <measure n="16">
+	    <measure n="17">
 	      <staff n="1">
 		<layer>
 		  <note pname="f" oct="5" dur="4" stem.dir="down" />
@@ -562,7 +562,7 @@
 		</layer>
 	      </staff>
 	    </measure>
-	    <measure n="17" right="rptend">
+	    <measure n="18" right="rptboth">
 	      <staff n="1">
 		<layer>
 		  <chord dur="2" stem.dir="down">
@@ -587,7 +587,7 @@
 		      key.pname="b" 
 		      meter.count="3" 
 		      meter.unit="4" />
-	    <measure n="17" left="rptstart">
+	    <measure n="19" >
 	      <staff n="1">
 		<layer>
 		  <note pname="e" oct="6" dur="4" stem.dir="down"
@@ -600,7 +600,7 @@
 		</layer>
 	      </staff>
 	    </measure>
-	    <measure n="18">
+	    <measure n="20">
 	      <tie startid="p12tiestart"
 		   endid="p12tieend" staff="1" 
 		   curvedir="above"/>
@@ -636,7 +636,7 @@
 	  </section>
 
 	  <section xml:id="q.12" type="C">
-	    <measure n="19">
+	    <measure n="21">
 	      <staff n="1">
 		<layer>
 		  <note pname="f" oct="5" dur="4" dots="1" stem.dir="down"/>
@@ -666,7 +666,7 @@
 	  </section>
 
 	  <section xml:id="r.12" type="C">
-	    <measure n="20">
+	    <measure n="22">
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -698,7 +698,7 @@
 	  </section>
 
 	  <section xml:id="s.12" type="C">
-	    <measure n="21">
+	    <measure n="23">
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -727,7 +727,7 @@
 	  </section>
 
 	  <section xml:id="t.12" type="C">
-	    <measure n="22">
+	    <measure n="24">
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -759,7 +759,7 @@
 	  </section>
 
 	  <section xml:id="u.12" type="C">
-	    <measure n="23">
+	    <measure n="25">
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -800,7 +800,7 @@
 	  </section>
 
 	  <section xml:id="v.12" type="C">
-	    <measure n="24">
+	    <measure n="26">
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -844,7 +844,7 @@
 		</layer>
 	      </staff>
 	    </measure>
-	    <measure n="25" right="rptend">
+	    <measure n="27" right="rptend">
 	      <staff n="1">
 		<layer>
 		  <note pname="b" oct="5" dur="4" stem.dir="down"/>
@@ -860,6 +860,7 @@
 		  <note pname="b" oct="2" dur="4" stem.dir="up" />
 		</layer>
 	      </staff>
+	      <fermata staff="1"/>
 	    </measure>
 	  </section>
 

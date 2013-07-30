@@ -270,7 +270,7 @@
 		</layer>
 	      </staff>
 	    </measure>
-	    <measure n="9" right="rptend">
+	    <measure n="9" right="rptboth">
 	      <staff n="1">
 		<layer>
 		  <chord dur="2" stem.dir="down">
@@ -298,7 +298,7 @@
 	    <!-- this section is fake. the card is missing and we won't use
 		 this -->
 
-	    <measure left="rptstart">
+	    <measure >
 
 	      <staff n="1">
 		<layer>
@@ -556,7 +556,7 @@
 		</layer>
 	      </staff>
 	    </measure>
-	    <measure n="18" right="rptend">
+	    <measure n="18" right="rptboth">
 	      <staff n="1">
 		<layer>
 		  <chord dur="2" stem.dir="down">
@@ -585,7 +585,7 @@
 		      key.pname="b" 
 		      meter.count="3" 
 		      meter.unit="4" />
-	    <measure n="19" left="rptstart">
+	    <measure n="19" >
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -857,6 +857,7 @@
 		  </chord>
 		</layer>
 	      </staff>
+	      <fermata staff="1"/>
 	    </measure>
 	  </section>
 
