@@ -144,7 +144,7 @@
 		  <beam>
 		    <note pname="b" oct="4" accid="n" dur="8" stem.dir="down" />  
 		    <note pname="c" oct="5" stem.dir="down" dur="8" />  
-		    <note pname="e" oct="5" stem.dir="down" dur="8" />  
+		    <note pname="d" oct="5" stem.dir="down" dur="8" />  
 		    <note pname="c" oct="5" stem.dir="down" dur="8" />  
 		    <note pname="g" oct="4" stem.dir="down" dur="8" />  
 		    <note pname="g" oct="4" accid="s" stem.dir="down" dur="8" />  
@@ -350,8 +350,6 @@
 		      <note pname="b" oct="3" />
 		    </chord>
 		    <note pname="c" oct="4" dur="8" stem.dir="down" />
-		  </beam>
-		  <beam>
 		    <chord dur="8" stem.dir="down">
 		      <note pname="g" oct="3" />
 		      <note pname="b" oct="3" />
@@ -794,6 +792,10 @@
 			  dur="8"
 			  stem.dir="up"
 			  xml:id="t5slur2dest"/>
+		    <note pname="d"
+			  oct="5"
+			  dur="8"
+			  stem.dir="up"/>
 		  </beam>
 		  <tie startid="t5slur1"
 			endid="t5slur1dest" staff="1" 
