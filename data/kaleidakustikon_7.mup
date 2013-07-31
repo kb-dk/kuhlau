@@ -4,6 +4,9 @@ header
   title "Kaleidakustikon Layer 7"
   title ""
 
+
+score
+  pagesize=a4 landscape
 score
   vscheme=3f
   packfact=.5
@@ -76,6 +79,8 @@ music
   2 1: [down]4f3a3; [up]4f2;
   repeatboth mnum=10
 
+newscore
+
 music
   // m. 10
   1 1: 2.c5;
@@ -122,6 +127,8 @@ music
   1 1: [down]4g4c5e5; [down]4g4c5e5c6; 
   2 1: [up]4c3;[down]4c4;
   repeatboth mnum=19
+
+newscore
 
 score
   time=3/4
@@ -177,5 +184,6 @@ music
   // m. 27
   1 1: 4b4;4r; 
   2 1: [down]4b3d3; 4f2;
+  mussym  1: 1 "\(ferm)";
   repeatend
 

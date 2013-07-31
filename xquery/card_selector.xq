@@ -28,6 +28,9 @@ let $music:=<mei xmlns="http://www.music-encoding.org/ns/mei"
     <filedesc>
       <titlestmt>
 	<title>Kaleidakustikon</title>
+	<respstmt>
+	  <persname>F. Kuhlau</persname>
+	</respstmt>
       </titlestmt>
       <pubstmt>
       </pubstmt>

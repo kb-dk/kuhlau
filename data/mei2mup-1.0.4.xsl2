@@ -377,7 +377,7 @@
   <xsl:template match="mei:score">
     <xsl:value-of select="$nl"/><xsl:text>score</xsl:text><xsl:value-of select="$nl"/>
     <xsl:value-of select="$indent"/><xsl:text>pagesize=a4 landscape</xsl:text>
-    <xsl:value-of select="$nl"/>o
+    <xsl:value-of select="$nl"/>
     <xsl:apply-templates/>
   </xsl:template>
 
@@ -1899,7 +1899,10 @@
     </xsl:choose>
     <xsl:if test="number(@n) and following::mei:measure">
       <xsl:text> mnum=</xsl:text>
-      <xsl:value-of select="@n + 1"/>
+      <xsl:value-of select="@n"/>
+      <!--xsl:value-of select="@n + 1"/-->
+      <!-- This doesn't seem to hurt.
+           I have no idea what's best practice, but I suppose ATGE knows/SLU -->
     </xsl:if>
     <!-- Ending designation -->
     <xsl:variable name="ending">
