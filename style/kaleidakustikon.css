@@ -55,15 +55,7 @@ body {
 }
 
 input {
-  border: 1px solid #666;
-  color:#fff;
-  background: #333;
   height: 20px;
-  padding: 1px;
-}
-
-input[type=text] {
-    padding: 1px 8px;
 }
 
 #link {

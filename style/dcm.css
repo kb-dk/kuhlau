@@ -11,7 +11,7 @@ h1, h2, h3, h4 {
     line-height: 1.4em;
     margin: 0;
     font-weight: normal;
-    clear: both;
+    /*clear: both;*/
 }
 
 h1 {
@@ -68,16 +68,6 @@ p {
     padding: 10px 20px 0 20px;
     border-top: 1px solid #fff;
     height: 48px;
-}
-
-.left_col {
-    float: left;
-    width: 48%;
-}
-
-.right_col {
-    float: right;
-    width: 48%;
 }
 
 .kb_logo {
@@ -165,8 +155,14 @@ ol {
     background-color: #799158;
 }
 
-#menu .change_language {
+.change_language {
     float: right;
+}
+
+/* Quotations */
+
+.quote {
+    font-style: italic;
 }
 
 /* Illustrations */
@@ -189,4 +185,31 @@ p.illustration_text {
     padding: 2px 15px 2px 0;
     text-align: left;
     vertical-align: top;
+}
+
+/* Footnotes */
+
+.footnote_reference, .footnote_number {
+    position: relative;
+    top: -.5em;
+    font-size: .83em;
+    font-style: normal;
+}
+
+.footnote_number {
+    display: block;
+    width: 2em;
+    margin-bottom: -1.7em;
+    margin-left: -1.3em;
+}
+
+.footnotes {
+    border-top: 1px solid #000;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.footnote {
+    margin-left: 1.3em;
+    margin-bottom: .3em;
 }

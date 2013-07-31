@@ -3,6 +3,10 @@
     color: #fff;
 }
 
+#menu {
+    border: 0;
+}
+
 .toc {
     margin: 25px 0 25px 0;
     font-weight: bold;
