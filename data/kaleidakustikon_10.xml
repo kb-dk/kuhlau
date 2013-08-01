@@ -26,7 +26,8 @@
 		      key.pname="f" 
 		      meter.count="3" 
 		      meter.unit="4" />
-	    <measure n="1">
+	    <measure n="0">
+	      <dir staff="1" tstamp="1" place="above">a.10</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -54,7 +55,7 @@
 		</layer>
 	      </staff>
 	    </measure>
-	    <measure n="2">
+	    <measure n="1">
 	      <staff n="1">
 		<layer>
 		  <chord dur="4" stem.dir="up">
@@ -90,7 +91,8 @@
 	    </measure>
 	  </section>
 	  <section xml:id="b.10" type="A">
-	    <measure n="3">
+	    <measure n="2">
+	      <dir staff="1" tstamp="1" place="above">b.10</dir>
 	      <staff n="1">
 		<layer>
 		  <note pname="a" oct="5" dur="4" dots="1" stem.dir="down" />
@@ -104,12 +106,12 @@
 	      <staff n="2">
 		<layer>
 		  <note pname="f" oct="2" dur="4" stem.dir="up" />
-		  <chord dur="4" stem.dir="up" >
+		  <chord dur="4" stem.dir="down" >
 		    <note pname="f" oct="3" />
 		    <note pname="a" oct="3" />
 		    <note pname="c" oct="4" />
 		  </chord>
-		  <chord dur="4" stem.dir="up" >
+		  <chord dur="4" stem.dir="down" >
 		    <note pname="f" oct="3" />
 		    <note pname="a" oct="3" />
 		    <note pname="c" oct="4" />
@@ -120,7 +122,8 @@
 	  </section>
 
 	  <section xml:id="c.10" type="A">
-	    <measure n="4">
+	    <measure n="3">
+	      <dir staff="1" tstamp="1" place="above">c.10</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -152,7 +155,8 @@
 	  </section>
 
 	  <section xml:id="d.10" type="A">
-	    <measure n="5">
+	    <measure n="4">
+	      <dir staff="1" tstamp="1" place="above">d.10</dir>
 	      <staff n="1">
 		<layer>
 		  <note pname="c" oct="5" dur="4" dots="1" stem.dir="down" />
@@ -184,7 +188,8 @@
 	  </section>
 
 	  <section xml:id="e.10" type="A">
-	    <measure n="6">
+	    <measure n="5">
+	      <dir staff="1" tstamp="1" place="above">e.10</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -218,7 +223,8 @@
 	    </measure>
 	  </section>
 	  <section xml:id="f.10" type="A">
-	    <measure n="7">
+	    <measure n="6">
+	      <dir staff="1" tstamp="1" place="above">f.10</dir>
 	      <staff n="1">
 	      <layer>
 		<note pname="g" dur="4" oct="4" stem.dir="up" />
@@ -252,7 +258,8 @@
 	  </section>
 
 	  <section xml:id="g.10" type="A">
-	    <measure n="8">
+	    <measure n="7">
+	      <dir staff="1" tstamp="1" place="above">g.10</dir>
 	    <staff n="1">
 	      <layer>
 		<note pname="e" oct="4" dur="4" stem.dir="up" />
@@ -286,7 +293,7 @@
 	      </layer>
 	    </staff>
 	    </measure>
-	    <measure n="9" right="rptboth">
+	    <measure n="8" right="rptboth">
 	      <staff n="1">
 		<layer>
 		  <note pname="f" oct="4" dur="4" stem.dir="up" />
@@ -327,7 +334,8 @@
 	  </section>
 
 	  <section xml:id="i.10" type="B">
-	    <measure n="12">
+	    <measure n="10">
+	      <dir staff="1" tstamp="1" place="above">i.10</dir>
 	    <staff n="1">
 	      <layer>
 		<note pname="c" oct="6" dur="4" dots="1"  stem.dir="down" />
@@ -350,8 +358,6 @@
 		      <note pname="b" oct="3" />
 		    </chord>
 		    <note pname="c" oct="4" dur="8" stem.dir="down" />
-		  </beam>
-		  <beam>
 		    <chord dur="8" stem.dir="down">
 		      <note pname="g" oct="3" />
 		      <note pname="b" oct="3" />
@@ -366,7 +372,8 @@
 	  
 
 	  <section xml:id="k.10" type="B">
-	    <measure n="13">
+	    <measure n="11">
+	      <dir staff="1" tstamp="1" place="above">k.10</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -406,7 +413,8 @@
 	  </section>
 
 	  <section xml:id="l.10" type="B">
-	    <measure n="14">
+	    <measure n="12">
+	      <dir staff="1" tstamp="1" place="above">l.10</dir>
 	      <staff n="1">
 		<layer>
 		  <note pname="c" oct="5" dur="4" dots="1" />
@@ -429,8 +437,6 @@
 		      <note pname="a" oct="3" />
 		    </chord>
 		    <note pname="c" oct="4" dur="8" />
-		  </beam>
-		  <beam>
 		    <chord dur="8" stem.dir="down">
 		      <note pname="f" oct="3" />
 		      <note pname="a" oct="3" />
@@ -443,7 +449,8 @@
 	  </section>
 
 	  <section xml:id="m.10" type="B">
-	    <measure n="15">
+	    <measure n="13">
+	      <dir staff="1" tstamp="1" place="above">m.10</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -481,7 +488,8 @@
 	  </section>
 
 	  <section xml:id="n.10" type="B">
-	    <measure n="16">
+	    <measure n="14">
+	      <dir staff="1" tstamp="1" place="above">n.10</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -529,7 +537,8 @@
 	  </section>
 
 	  <section xml:id="o.10" type="B">
-	    <measure n="17">
+	    <measure n="15">
+	      <dir staff="1" tstamp="1" place="above">o.10</dir>
 	      <staff n="1">
 		<layer>
 		  <note pname="f" oct="5" dur="4" stem.dir="down" />
@@ -556,7 +565,8 @@
 		</layer>
 	      </staff>
 	    </measure>
-	    <measure n="18" right="rptboth">
+	    <measure n="16" right="rptboth">
+	      <dir staff="1" tstamp="3" place="above">D.C.</dir>
 	      <staff n="1">
 		<layer>
 		  <chord dur="4" stem.dir="up">
@@ -590,7 +600,8 @@
 		      meter.count="3" 
 		      meter.unit="4" />
 
-	    <measure n="19" >
+	    <measure n="16" >
+	      <dir staff="1" tstamp="1" place="above">p.10</dir>
 	      <staff n="1">
 		<layer>
 		  <note xml:id="p10tiestart" pname="f" oct="6" dur="4" stem.dir="down" />
@@ -606,7 +617,7 @@
 		   curvedir="above"/>
 
 	    </measure>
-	    <measure n="20">
+	    <measure n="17">
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -639,14 +650,15 @@
 	  </section>
 
 	  <section xml:id="q.10" type="C">
-	    <measure n="20">
+	    <measure n="18">
+	      <dir staff="1" tstamp="1" place="above">q.10</dir>
 	      <staff n="1">
 		<layer>
 		  <note pname="f" oct="5" dur="4" dots="1"  stem.dir="down" />
 		  <beam>
-		    <note pname="e" oct="5" accid="n" dur="8" stem.dir="down" />
-		    <note pname="f" oct="5" dur="8"  stem.dir="down" />
-		    <note pname="e" oct="5" dur="8"  stem.dir="down" />
+		    <note pname="f" oct="5" dur="8" stem.dir="down" />
+		    <note pname="d" oct="6" dur="8" stem.dir="down" />
+		    <note pname="b" oct="5" dur="8" stem.dir="down" />
 		  </beam>
 		</layer>
 	      </staff>
@@ -668,7 +680,8 @@
 	    </measure>
 	  </section>
 	  <section xml:id="r.10" type="C">
-	    <measure n="21">
+	    <measure n="19">
+	      <dir staff="1" tstamp="1" place="above">r.10</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -700,7 +713,8 @@
 	  </section>
 
 	  <section xml:id="s.10" type="C">
-	    <measure n="22">
+	    <measure n="20">
+	      <dir staff="1" tstamp="1" place="above">s.10</dir>
 	      <staff n="1">
 		<layer>
 		  <note pname="f" oct="5" dur="4" xml:id="slur_s10_start" />
@@ -722,7 +736,7 @@
 	      different in a midi. -->
 	      <tie startid="slur_s10_start"
 		    endid="slur_s10_end" staff="1" 
-		    curvedir="below"/>
+		    curvedir="above"/>
 	      <staff n="2">
 		<layer>
 		  <chord dur="2" stem.dir="down">
@@ -738,7 +752,8 @@
 
 
 	  <section xml:id="t.10" type="C">
-	    <measure n="23">
+	    <measure n="21">
+	      <dir staff="1" tstamp="1" place="above">t.10</dir>
 	      <staff n="1">
 		<layer>
 		  <note pname="f" oct="4" dur="4" stem.dir="up" 
@@ -746,7 +761,7 @@
 		  <beam>
 		    <note pname="g" oct="4" dur="8" stem.dir="up" grace="unacc" />
 		    <note pname="f" oct="4" dur="8" stem.dir="up" grace="unacc" />
-		    <note pname="e" oct="4" dur="8" stem.dir="up" grace="unacc" />
+		    <note pname="e" accid="n" oct="4" dur="8" stem.dir="up" grace="unacc" />
 		  </beam>
 		  <beam>
 		    <note pname="f" oct="4" dur="8" stem.dir="up" />
@@ -775,7 +790,8 @@
 	  </section>
 
 	  <section xml:id="u.10" type="C">
-	    <measure n="24">
+	    <measure n="22">
+	      <dir staff="1" tstamp="1" place="above">u.10</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -828,7 +844,8 @@
 	    </measure>
 	  </section>
 	  <section xml:id="v.10" type="C">
-	    <measure n="25">
+	    <measure n="23">
+	      <dir staff="1" tstamp="1" place="above">v.10</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -877,7 +894,7 @@
 		</layer>
 	      </staff>
 	    </measure>
-	    <measure n="26" right="rptend">
+	    <measure n="24" right="rptend">
 	      <staff n="1">
 		<layer>
 		  <note pname="b" oct="4" dur="4" stem.dir="down" />
@@ -893,7 +910,7 @@
 		  <note pname="b" oct="2" dur="4" stem.dir="up" />
 		</layer>
 	      </staff>
-	      <fermata staff="1"/>
+	      <fermata staff="1" tstamp="3"/>
 	    </measure>
 	  </section>
 	</score>
