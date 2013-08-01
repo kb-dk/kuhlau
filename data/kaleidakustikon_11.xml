@@ -711,7 +711,8 @@
 	      <staff n="1">
 		<layer>
 		  <beam>
-		    <note pname="f" oct="4" dur="8" stem.dir="down" />
+		    <note pname="f" oct="4" dur="8" stem.dir="down" 
+			  xml:id="globalCardTTieTargetXmlId"/>
 		    <rest dur="16" />
 		    <note pname="d" oct="5" dur="16" stem.dir="down" />
 		    <note pname="e" oct="5" dur="8" stem.dir="down" />

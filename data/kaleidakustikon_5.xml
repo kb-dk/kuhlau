@@ -770,7 +770,8 @@
 		  <beam>
 		    <!-- @@check:
 			 to use slur here looks crazy, and a tie just disappears -->
-		    <note pname="f" oct="4" dur="8" stem.dir="up" />
+		    <note pname="f" oct="4" dur="8" stem.dir="up" 
+			  xml:id="globalCardTTieTargetXmlId"/>
 		    <note pname="g"
 			  accid="s" 
 			  oct="4" 

@@ -720,7 +720,8 @@
 	      <dir staff="1" tstamp="1" place="above">t.3</dir>
 	      <staff n="1">
 		<layer>
-		  <note pname="f" dur="4" oct="4" />
+		  <note pname="f" dur="4" oct="4"
+ 			xml:id="globalCardTTieTargetXmlId"/>
 		  <beam>
 		      <note pname="g" dur="8" stem.dir="up" grace="unacc" />
 		      <note pname="f" dur="8" stem.dir="up" grace="unacc" />
