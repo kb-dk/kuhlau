@@ -27,6 +27,7 @@
 		      meter.count="3" 
 		      meter.unit="4" />
 	    <measure n="1">
+	      <dir staff="1" tstamp="1" place="above">a.8</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -73,6 +74,7 @@
 	  </section>
 	  <section xml:id="b.8" type="A">
 	    <measure n="3">
+	      <dir staff="1" tstamp="1" place="above">b.8</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -104,6 +106,7 @@
 	  </section>
 	  <section xml:id="c.8" type="A">
 	    <measure n="4">
+	      <dir staff="1" tstamp="1" place="above">c.8</dir>
 	      <staff n="1">
 		<layer>
 		  <note pname="e" oct="5" dur="4" stem.dir="down" />
@@ -140,6 +143,7 @@
 	  </section>
 	  <section xml:id="d.8" type="A">
 	    <measure n="5">
+	      <dir staff="1" tstamp="1" place="above">d.8</dir>
 	      <staff n="1">
 		<layer>
 		  <note pname="b" oct="4" dur="4" dots="1" stem.dir="down"/>
@@ -169,6 +173,7 @@
 	  </section>
 	  <section xml:id="e.8" type="A">
 	    <measure n="6">
+	      <dir staff="1" tstamp="1" place="above">e.8</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -200,6 +205,7 @@
 	  </section>
 	  <section xml:id="f.8" type="A">
 	    <measure n="7">
+	      <dir staff="1" tstamp="1" place="above">f.8</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -231,6 +237,7 @@
 	  </section>
 	  <section xml:id="g.8" type="A">
 	    <measure n="8">
+	      <dir staff="1" tstamp="1" place="above">g.8</dir>
 	      <staff n="1">
 		<layer>
 		  <note pname="e" oct="4" dur="4" stem.dir="up" />
@@ -317,6 +324,7 @@
 	  <section xml:id="i.8" type="B">
 
 	    <measure n="12">
+	      <dir staff="1" tstamp="1" place="above">i.8</dir>
 	      <staff n="1">
 		<layer>
 		  <note pname="b" oct="5" dur="2" stem.dir="down"/>
@@ -339,8 +347,6 @@
 		      <note pname="b" oct="3" />
 		    </chord>
 		    <note pname="c" oct="4" dur="8" stem.dir="down" />
-		  </beam>
-		  <beam>
 		    <chord dur="8" stem.dir="down">
 		      <note pname="g" oct="3" />
 		      <note pname="b" oct="3" />
@@ -354,6 +360,7 @@
 
 	  <section xml:id="k.8" type="B">
 	    <measure n="13">
+	      <dir staff="1" tstamp="1" place="above">k.8</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -400,6 +407,7 @@
 
 	  <section xml:id="l.8" type="B">
 	    <measure n="14">
+	      <dir staff="1" tstamp="1" place="above">l.8</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -424,8 +432,6 @@
 		      <note pname="a" oct="3" />
 		    </chord>
 		    <note pname="c" oct="4" dur="8" />
-		  </beam>
-		  <beam>
 		    <chord dur="8" stem.dir="down">
 		      <note pname="f" oct="3" />
 		      <note pname="a" oct="3" />
@@ -439,13 +445,18 @@
 
 	  <section xml:id="m.8" type="B">
 	    <measure n="15">
+	      <dir staff="1" tstamp="1" place="above">m.8</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
 		    <note pname="e" oct="4" dur="8" stem.dir="up" />
 		    <note pname="c" oct="5" dur="8" stem.dir="up" />
+		  </beam>
+		  <beam>
 		    <note pname="d" oct="5" dur="8" stem.dir="up" />
 		    <note pname="c" oct="5" dur="8" stem.dir="up" />
+		  </beam>
+		  <beam>
 		    <note pname="d" oct="5" dur="8" stem.dir="up" />
 		    <note pname="c" oct="5" dur="8" stem.dir="up" />
 		  </beam>
@@ -481,6 +492,7 @@
 
 	  <section xml:id="n.8" type="B">
 	    <measure n="16">
+	      <dir staff="1" tstamp="1" place="above">n.8</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -518,6 +530,7 @@
 
 	  <section xml:id="o.8" type="B">
 	    <measure n="17">
+	      <dir staff="1" tstamp="1" place="above">o.8</dir>
 	      <staff n="1">
 		<layer>
 		  <note pname="f" oct="5" dur="8" stem.dir="down" />
@@ -557,6 +570,7 @@
 	      </staff>
 	    </measure>
 	    <measure n="18" right="rptboth">
+	      <dir staff="1" tstamp="3" place="above">D.C.</dir>
 	      <staff n="1">
 		<layer>
 		  <chord dur="2" stem.dir="down">
@@ -586,6 +600,7 @@
 		      meter.count="3" 
 		      meter.unit="4" />
 	    <measure n="19" >
+	      <dir staff="1" tstamp="1" place="above">p.8</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -633,6 +648,7 @@
 
 	  <section xml:id="q.8" type="C">
 	    <measure n="21">
+	      <dir staff="1" tstamp="1" place="above">q.8</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -668,6 +684,7 @@
 
 	  <section xml:id="r.8" type="C">
 	    <measure n="22">
+	      <dir staff="1" tstamp="1" place="above">r.8</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -700,6 +717,7 @@
 
 	  <section xml:id="s.8" type="C">
 	    <measure n="23">
+	      <dir staff="1" tstamp="1" place="above">s.8</dir>
 	      <staff n="1">
 		<layer>
 		  <note pname="b" 
@@ -738,6 +756,7 @@
 
 	  <section xml:id="t.8" type="C">
 	    <measure n="24">
+	      <dir staff="1" tstamp="1" place="above">t.8</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -775,6 +794,7 @@
 
 	  <section xml:id="u.8" type="C">
 	    <measure n="25">
+	      <dir staff="1" tstamp="1" place="above">u.8</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -808,6 +828,7 @@
 
 	  <section xml:id="v.8" type="C">
 	    <measure n="26">
+	      <dir staff="1" tstamp="1" place="above">v.8</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -858,7 +879,7 @@
 		  </chord>
 		</layer>
 	      </staff>
-	      <fermata staff="1"/>
+	      <fermata staff="1" tstamp="3" />
 	    </measure>
 	  </section>
 

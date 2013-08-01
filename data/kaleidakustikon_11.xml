@@ -799,7 +799,6 @@
 	  <section xml:id="v.11" type="C">
 	    <measure n="23">
 	      <dir staff="1" tstamp="1" place="above">v.11</dir>
-	      <dir staff="1" tstamp="3" place="below">&gt;</dir>
 	      <staff n="1">
 		<layer>
 		  <beam>
@@ -815,7 +814,7 @@
 		</layer>
 		<layer>
 		  <space dur="2"/>
-		  <note pname="a" oct="4" dur="4" stem.dir="down"/>
+		  <note pname="a" oct="4" dur="4" stem.dir="down" artic="acc"/>
 		</layer>
 	      </staff>
 	      <staff n="2">

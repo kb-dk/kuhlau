@@ -873,7 +873,7 @@
 		</layer>
 		<layer>
 		  <space dur="2"  />
-		  <note pname="a" oct="4" dur="4" stem.dir="down" />
+		  <note pname="a" oct="4" dur="4" stem.dir="down" artic="acc" />
 		</layer>
 	      </staff>
 	      <staff n="2">
