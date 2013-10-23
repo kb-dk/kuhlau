@@ -12,15 +12,12 @@ declare namespace transform="http://exist-db.org/xquery/transform";
 
 declare option exist:serialize "method=xml media-type=text/xml"; 
 
-declare variable $bundles := ("a","b","c","d","e","f","g","h","i","k","l","m","n","o","p","q","r","s","t","u","v");
-
-declare variable $queries := <properties> 
-{for $bundle in $bundles
-let $param := <property key="{$bundle}">
-{request:get-parameter($bundle,request:get-parameter("default","2"))}</property>
-return $param
-}
-</properties>;
+let $a := ("a","b","c","d","e","f","g")
+let $b := ("h","i","k","l","m","n","o")
+let $c := ("p","q","r","s","t","u","v")
+let $bundles  := ($a,$b,$c)
+(:let $sequence := ($a,$b,$a,$c,$a):)
+let $sequence := ($a,$b,$c)
 
 let $music:=<mei xmlns="http://www.music-encoding.org/ns/mei"
      meiversion="2010-05">
@@ -51,9 +48,8 @@ let $music:=<mei xmlns="http://www.music-encoding.org/ns/mei"
 	    </staffgrp>
 	  </scoredef>
 	  {
-
-	    for $q in $queries/*
-	    let $id:=concat($q/@key/string(),".",$q/string())
+	    for $q in $sequence
+	    let $id:=concat($q,".",request:get-parameter($q,request:get-parameter("default","2")))
 	    let $node:=
 	      if(collection("/db/kuhlau/kaleidakustikon")//m:section/@xml:id/string()=$id) then
 		collection("/db/kuhlau/kaleidakustikon")//m:section[@xml:id/string()=$id]
