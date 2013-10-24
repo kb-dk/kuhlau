@@ -23,6 +23,13 @@
             schema copyright (c) 2001-2006 Perry Roland and the Rector
             and Visitors of the University of Virginia; licensed under
             the Educational Community License version 1.0.
+
+    <xsl:value-of select="$nl"/>
+    <xsl:text>music</xsl:text>
+    <xsl:value-of select="$nl"/>
+    <xsl:value-of select="concat('midi all: 0 &quot;parameter=7,',$midivolume,'&quot;;')"/>
+    <xsl:value-of select="$nl"/>
+
   
   CONTACT:  contact@music-encoding.org 
 -->
@@ -1713,8 +1720,6 @@
       <xsl:value-of select="$nl"/>
       <xsl:text>music</xsl:text>
       <xsl:value-of select="$nl"/>
-      <xsl:value-of select="concat('midi all: 0 &quot;parameter=7,',$midivolume,'&quot;')"/>
-      <xsl:value-of select="$nl"/>
     </xsl:if>
     <xsl:if
       test="contains(name(preceding-sibling::*[not(comment())][1]), 'def') or count(preceding-sibling::mei:measure)=0">
@@ -1767,6 +1772,10 @@
         select="preceding::mei:scoredef[count(preceding::mei:scoredef)=0]"
         mode="MIDI"/>
     </xsl:if>
+
+    <xsl:value-of select="$nl"/>
+    <xsl:value-of select="concat('midi all: 0 &quot;parameter=7,',$midivolume,'&quot;;')"/>
+    <xsl:value-of select="$nl"/>
 
     <xsl:apply-templates select="mei:staff"/>
     <xsl:apply-templates
