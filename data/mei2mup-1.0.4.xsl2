@@ -36,6 +36,8 @@
   xmlns:mei="http://www.music-encoding.org/ns/mei"
   xmlns:saxon="http://saxon.sf.net/" exclude-result-prefixes="saxon">
 
+  <xsl:param name="midivolume" select="'127'"/>
+
   <xsl:strip-space elements="*"/>
   <xsl:variable name="progname">
     <xsl:text>mei2mup.xsl</xsl:text>
@@ -349,6 +351,7 @@
       <xsl:value-of select="$nl"/>
       <xsl:value-of select="$nl"/>
     </xsl:if>
+
   </xsl:template>
 
   <!-- MEI body element -->
@@ -1709,6 +1712,8 @@
       </xsl:for-each>
       <xsl:value-of select="$nl"/>
       <xsl:text>music</xsl:text>
+      <xsl:value-of select="$nl"/>
+      <xsl:value-of select="concat('midi all: 0 &quot;parameter=7,',$midivolume,'&quot;')"/>
       <xsl:value-of select="$nl"/>
     </xsl:if>
     <xsl:if
