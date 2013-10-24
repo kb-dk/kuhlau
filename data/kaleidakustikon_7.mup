@@ -26,107 +26,155 @@ score
   key=1&
 
 music
-  // m. 1
+  // m. 0
+
+midi all: 0 "parameter=7,50";
   1 1: [up]8a4 bm;[up]8b4 ebm;
   2 1: 4r; 
-  bar mnum=2
+  rom above 1: 1 "a.7";
+  bar
 
-  // m. 2
+  // m. 1
+
+midi all: 0 "parameter=7,50";
   1 1: [down]8c5 bm;[down]8d5;[down]8e5;[down]8f5;[down]8g5;[down]8g#5 ebm;
   2 1: [up]4f2;[down]4f3a3c4; [down]4f3a3c4; 
-  bar mnum=3
+  bar mnum=1
+
+music
+  // m. 2
+
+midi all: 0 "parameter=7,50";
+  1 1: [down]8a5 bm;[down]8f5;[down]8c5;[down]8c6;[down]8a5;[down]8f5 ebm;
+  2 1: [up]4f2;[down]4f3a3c4; [down]4f3a3c4; 
+  rom above 1: 1 "b.7";
+  bar mnum=2
 
 music
   // m. 3
-  1 1: [down]8a5 bm;[down]8f5;[down]8c5;[down]8c6;[down]8a5;[down]8f5 ebm;
-  2 1: [up]4f2;[down]4f3a3c4; [down]4f3a3c4; 
-  bar mnum=4
+
+midi all: 0 "parameter=7,50";
+  1 1: [down]8d#5 bm;[down]8e5;[down]8g5;[down]8f#5;[down]8a5;[down]8g5 ebm;
+  2 1: [up]4c3;[down]4g3b3c4; [down]4g3b3c4; 
+  rom above 1: 1 "c.7";
+  bar mnum=3
 
 music
   // m. 4
-  1 1: [down]8d#5 bm;[down]8e5;[down]8g5;[down]8f#5;[down]8a5;[down]8g5 ebm;
-  2 1: [up]4c3;[down]4g3b3c4; [down]4g3b3c4; 
-  bar mnum=5
+
+midi all: 0 "parameter=7,50";
+  1 1: [up]4b4;4.c4g4b4; [up]8b4;
+  2 1: [up]8c2 bm;[up]8e2;[up]8g2;[up]8c3;[up]8e3;[up]8c3 ebm;
+  rom above 1: 1 "d.7";
+  bar mnum=4
 
 music
   // m. 5
-  1 1: [up]4b4;4.c4g4b4; [up]8b4;
-  2 1: [up]8c2 bm;[up]8e2;[up]8g2;[up]8c3;[up]8e3;[up]8c3 ebm;
-  bar mnum=6
+
+midi all: 0 "parameter=7,50";
+  1 1: [up]8a4 bm;[up]8e5;[up]8f5;[up]8c5;[up]8b4;[up]8a4 ebm;
+  2 1: [up]4f2;[down]4f3c4; [down]4f3c4; 
+  rom above 1: 1 "e.7";
+  bar mnum=5
 
 music
   // m. 6
-  1 1: [up]8a4 bm;[up]8e5;[up]8f5;[up]8c5;[up]8b4;[up]8a4 ebm;
-  2 1: [up]4f2;[down]4f3c4; [down]4f3c4; 
-  bar mnum=7
+
+midi all: 0 "parameter=7,50";
+  1 1: [down]8c#5 bm;[down]8d5;[down]8a4;[down]8cn5;[down]8b4;[down]8g4 ebm;
+  2 1: [up]4b2;[down]4b3d4; [down]4b3d4; 
+  rom above 1: 1 "f.7";
+  bar mnum=6
 
 music
   // m. 7
-  1 1: [down]8c#5 bm;[down]8d5;[down]8a4;[down]8cn5;[down]8b4;[down]8g4 ebm;
-  2 1: [up]4b2;[down]4b3d4; [down]4b3d4; 
-  bar mnum=8
 
-music
-  // m. 8
+midi all: 0 "parameter=7,50";
   1 1: [up]8e4 bm;[up]8c5;[up]8bn4;[up]8c5;[up]8d5;[up]8c5 ebm;
   1 2: 4s; [down]4e4;[down]4e4;
-  2 1: 4s; [up]4g3b3; [up]4g3b3; 
+  2 1: [up]4c3;[up]4g3b3; [up]4g3b3; 
   2 2: [down]2.c3;
-  bar mnum=9
+  rom above 1: 1 "g.7";
+  bar mnum=7
 
-  // m. 9
+  // m. 8
+
+midi all: 0 "parameter=7,50";
   1 1: [up]4f4;4r; 
   2 1: [down]4f3a3; [up]4f2;
-  repeatboth mnum=10
+  repeatboth mnum=8
 
 newscore
 
 music
   // m. 10
+
+midi all: 0 "parameter=7,50";
   1 1: 2.c5;
   2 1: 2.c3;
   bar
 
 music
-  // m. 12
+  // m. 10
+
+midi all: 0 "parameter=7,50";
   1 1: [down]4.b5;[down]8g5 bm;[down]8c6;[down]8e5 ebm;
-  2 1: [down]8c3 bm;[down]8c4 ebm;[down]8g3b3 bm; [down]8c4 ebm;[down]8g3b3 bm; [down]8c4 ebm;
-  bar mnum=13
+  2 1: [down]8c3 bm;[down]8c4 ebm;[down]8g3b3 bm; [down]8c4;[down]8g3b3; [down]8c4 ebm;
+  rom above 1: 1 "i.7";
+  bar mnum=10
+
+music
+  // m. 11
+
+midi all: 0 "parameter=7,50";
+  1 1: [down]4f5;[grace]8g5;[grace]8f5;[down]8e5 bm;[down]8f5;[down]8a5;[down]8f5 ebm;
+  2 1: 8c3 bm;8c4 ebm;[down]8f3a3 bm; 8c4;[down]8f3a3; 8c4 ebm;
+  rom above 1: 1 "k.7";
+  bar mnum=11
+
+music
+  // m. 12
+
+midi all: 0 "parameter=7,50";
+  1 1: [down]4c5;[up]8bn4 bm;[up]8c5;[up]8a4;[up]8f4 ebm;
+  2 1: 8c3 bm;8c4 ebm;[down]8f3a3 bm; 8c4;[down]8f3a3; 8c4 ebm;
+  rom above 1: 1 "l.7";
+  bar mnum=12
 
 music
   // m. 13
-  1 1: [down]4f5;[grace]8g5;[grace]8f5;[down]8e5 bm;[down]8f5;[down]8a5;[down]8f5 ebm;
-  2 1: 8c3 bm;8c4 ebm;[down]8f3a3 bm; 8c4;[down]8f3a3; 8c4 ebm;
-  bar mnum=14
+
+midi all: 0 "parameter=7,50";
+  1 1: [up]8e4 bm;[up]8c5 ebm;[up]8c5 bm;[up]8e4 ebm;[up]8c5 bm;[up]8e4 ebm;
+  2 1: 8c3 bm;8c4 ebm;[down]8g3b3 bm; 8c4;[down]8g3b3; 8c4 ebm;
+  rom above 1: 1 "m.7";
+  bar mnum=13
 
 music
   // m. 14
-  1 1: [up]4c5;[up]8bn4 bm;[up]8c5;[up]8a4;[up]8f4 ebm;
+
+midi all: 0 "parameter=7,50";
+  1 1: [down]8f4 bm;[down]8f5;[down]8e5;[down]8f5;[down]8a5;[down]8g5 ebm;
   2 1: 8c3 bm;8c4 ebm;[down]8f3a3 bm; 8c4;[down]8f3a3; 8c4 ebm;
-  bar mnum=15
+  rom above 1: 1 "n.7";
+  bar mnum=14
 
 music
   // m. 15
-  1 1: [up]8e4 bm;[up]8c5 ebm;[up]8c5 bm;[up]8e4 ebm;[up]8c5 bm;[up]8e4 ebm;
-  2 1: 8c3 bm;8c4 ebm;[down]8f3a3 bm; 8c4;[down]8f3a3; 8c4 ebm;
-  bar mnum=16
 
-music
+midi all: 0 "parameter=7,50";
+  1 1: [down]4f5;[down]4b4c5g5; [down]4a4c5f5; 
+  2 1: [down]8c3 bm;[down]8c4;[down]8e3g3; [down]8c4;[down]8f3a3; [down]8c4 ebm;
+  rom above 1: 1 "o.7";
+  bar mnum=15
+
   // m. 16
-  1 1: [down]8f4 bm;[down]8f5;[down]8e5;[down]8f5;[down]8a5;[down]8g5 ebm;
-  2 1: 8c3 bm;8c4 ebm;[down]8f3a3 bm; 8c4;[down]8f3a3; 8c4 ebm;
-  bar mnum=17
 
-music
-  // m. 17
-  1 1: [down]4f5;[down]4b4c5g5; [down]4a4c5g5; 
-  2 1: [down]8c3 bm;[down]8c4;[down]8g3b3; [down]8c4;[down]8f3a3; [down]8c4 ebm;
-  bar mnum=18
-
-  // m. 18
-  1 1: [down]4g4c5e5; [down]4g4c5e5c6; 
-  2 1: [up]4c3;[down]4c4;
-  repeatboth mnum=19
+midi all: 0 "parameter=7,50";
+  1 1: [down]4g4c5e5; [up]4c5e5c6; 
+  2 1: [up]4c3;[down]4c4 with g4 above; 
+  rom above 1: 3 "D.C.";
+  repeatboth mnum=16
 
 newscore
 
@@ -135,55 +183,81 @@ score
   key=2&
 
 music
-  // m. 19
+  // m. 16
+
+midi all: 0 "parameter=7,50";
   1 1: [down]8f6 bm;[down]8en6 ebm;
   2 1: 4r; 
-  bar mnum=20
+  rom above 1: 1 "p.7";
+  bar mnum=16
 
-  // m. 20
+  // m. 17
+
+midi all: 0 "parameter=7,50";
   1 1: [down]8g6 bm;[down]8f6;[down]8c#6;[down]8d6;[down]8a5;[down]8b5 ebm;
   2 1: [up]4b2;[down]4f3b3d4; [down]4f3b3d4; 
-  bar mnum=21
+  bar mnum=17
+
+music
+  // m. 18
+
+midi all: 0 "parameter=7,50";
+  1 1: [down]8f5;8r; [down]4.f5;[down]8f5;
+  2 1: [up]4b2;[down]4f3b3d4; [down]4f3b3d4; 
+  rom above 1: 1 "q.7";
+  bar mnum=18
+
+music
+  // m. 19
+
+midi all: 0 "parameter=7,50";
+  1 1: [down]8g5 bm;[down]8f5;[down]8d5;[down]8b4;[down]8a4;[down]8b4 ebm;
+  2 1: [up]4b2;[down]4f3b3d4; [down]4f3b3d4; 
+  rom above 1: 1 "r.7";
+  bar mnum=19
+
+music
+  // m. 20
+
+midi all: 0 "parameter=7,50";
+  1 1: [down]8f5 bm;[down]8e5;[down]8c5;[down]8a4 ebm;[up]4f4~down =_s7tiestart ;
+  2 1: [down]2.f3a3e4; 
+  rom above 1: 1 "s.7";
+  bar mnum=20
 
 music
   // m. 21
-  1 1: [down]8f5;8r; [down]4.f5;[down]8f5;
-  2 1: [up]4b2;[down]4f3b3d4; [down]4f3b3d4; 
-  bar mnum=22
+
+midi all: 0 "parameter=7,50";
+  1 1: [up]4f4 =_globalCardTTieTargetXmlId ;[up]4f4;[up]4f4;
+  2 1: [up]8f2 bm;[up]8c4;[up]8a3;[up]8f3;[up]8c3;[up]8a2 ebm;
+  rom above 1: 1 "t.7";
+  bar mnum=21
 
 music
   // m. 22
-  1 1: [down]8g5 bm;[down]8f5;[down]8d5;[down]8b4;[down]8a4;[down]8b4 ebm;
-  2 1: [up]4b2;[down]4f3b3d4; [down]4f3b3d4; 
-  bar mnum=23
+
+midi all: 0 "parameter=7,50";
+  1 1: [down]4.e5;[down]8c5 bm;[down]8f5;[down]8e5 ebm;
+  2 1: [up]4f2;[down]4f3a3c4; [down]4f3a3c4; 
+  rom above 1: 1 "u.7";
+  bar mnum=22
 
 music
   // m. 23
-  1 1: [down]8f5 bm;[down]8e5;[down]8c5;[down]8a4 ebm;[up]4f4;
-  2 1: [down]2.f3a3e4; 
-  bar mnum=24
 
-music
-  // m. 24
-  1 1: [up]4f4;[up]4f4;[up]4f4;
-  2 1: [up]8f2 bm;[up]8c4;[up]8a3;[up]8f3;[up]8c3;[up]8a2 ebm;
-  bar mnum=25
-
-music
-  // m. 25
-  1 1: [down]4.e5;[down]8c5 bm;[down]8f5;[down]8e5 ebm;
-  2 1: [up]4f2;[down]4f3a3c4; [down]4f3a3c4; 
-  bar mnum=26
-
-music
-  // m. 26
-  1 1: [down]8d5 bm;[down]8b5;[down]8g5;[down]8e5;[down]8c5;[down]8a4 ebm;
+midi all: 0 "parameter=7,50";
+  1 1: [down]8d5 bm;[down]8b5;[down]8c5;[down]8g5;[down]8f5;[down]8a4 ebm;
   2 1: [down]4g3b3; [down]4e3c4; [down]4f3e4; 
-  bar mnum=27
+  rom above 1: 1 "v.7";
+  bar mnum=23
 
-  // m. 27
+  // m. 24
+
+midi all: 0 "parameter=7,50";
   1 1: 4b4;4r; 
-  2 1: [down]4b3d3; 4f2;
-  mussym  1: 1 "\(ferm)";
+  2 1: [down]4b3d4; 4b2;
+  mussym  1: 3 "\(ferm)";
+  medium curve (_s7tiestart.x, _s7tiestart.y-1.75) to (_globalCardTTieTargetXmlId.x, _globalCardTTieTargetXmlId.y-1.75) bulge -1 // tie m.20
   repeatend
 
