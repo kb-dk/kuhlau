@@ -14,4 +14,33 @@
 
   <xsl:template match="@right"/>
 
+  <xsl:template match="@xml:id">
+    <xsl:variable name="val" select="."/>
+    <xsl:variable name="count"
+		  select="count(parent::*/preceding-sibling::*[@xml:id=$val])"/>
+    <xsl:attribute name="xml:id">
+      <xsl:value-of select="concat(.,$count)"/>
+    </xsl:attribute>
+  </xsl:template>
+
+  <xsl:template match="@startid">
+    <xsl:variable name="val" select="."/>
+    <xsl:variable name="count"
+		  select="count(parent::*/preceding-sibling::*[@startid=$val])"/>
+    <xsl:attribute name="startid">
+      <xsl:value-of select="concat(.,$count)"/>
+    </xsl:attribute>
+  </xsl:template>
+
+
+  <xsl:template match="@endid">
+    <xsl:variable name="val" select="."/>
+    <xsl:variable name="count"
+		  select="count(parent::*/preceding-sibling::*[@endid=$val])"/>
+    <xsl:attribute name="endid">
+      <xsl:value-of select="concat(.,$count)"/>
+    </xsl:attribute>
+  </xsl:template>
+
+
 </xsl:transform>

@@ -15,9 +15,12 @@ declare option exist:serialize "method=xml media-type=text/xml";
 let $a := ("a","b","c","d","e","f","g")
 let $b := ("h","i","k","l","m","n","o")
 let $c := ("p","q","r","s","t","u","v")
-let $bundles  := ($a,$b,$c)
-(:let $sequence := ($a,$b,$a,$c,$a):)
-let $sequence := ($a,$b,$c)
+
+let $sequence :=
+  if(request:get-parameter("getitas","") = ".mid") then
+    ($a,$a,$b,$b,$a,$c,$c,$a)
+  else
+    ($a,$b,$c)
 
 let $music:=<mei xmlns="http://www.music-encoding.org/ns/mei"
      meiversion="2010-05">
@@ -69,4 +72,8 @@ let $music:=<mei xmlns="http://www.music-encoding.org/ns/mei"
     </body>
   </music>
 </mei>
-return $music
+return 
+  if(request:get-parameter("getitas","") = ".mid") then
+    transform:transform($music,doc("/db/kuhlau/strip-repeats.xsl"),())		  
+  else
+    $music

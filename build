@@ -18,6 +18,11 @@ $basename =~ s/^.*\?//;
 $basename =~ s/[=\&]//g;
 $query    =~ s/^.*\?//;
 
+my $midi_arg = '';
+if($query =~ m/mid$/) {
+    $midi_arg = '&make=midi';
+}
+
 my $xml_file = $basename . '.xml';
 my $mup_file = $basename . '.mup';
 my $mid_file = $basename . '.mid';
@@ -28,11 +33,11 @@ my $source   = 'http://disdev-01.kb.dk/storage/kuhlau/card_selector.xq';
 my $mime = "";
 
 chdir($HOME);
-if(!-f $mup_file ) {
+#if(!-f $mup_file ) {
     system("GET \'$source\?$query\' > $xml_file");
     my $cmd = "$java -jar $SAXON $xml_file  $MEI2MUP > $mup_file 2> /dev/null";
     system($cmd);
-}
+#}
 
 if($query =~ m/ps$/) {
     print "Content-Type: application/postscript\n\n";
@@ -49,4 +54,5 @@ if($query =~ m/ps$/) {
     print `cat $xml_file`;
 }
 
+system("rm $mid_file $xml_file $mup_file 2>/dev/null")
 
