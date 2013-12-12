@@ -48,10 +48,16 @@ a.card { height: 163px; }
     font-size: 8.5pt;
 }
 
+li {
+    margin-bottom: 5px;
+}
+
 input {
-  height: 20px;
-  background: #777;
-  border:none;
+  height: 18px;
+  background: #fff;
+  color: #000;
+  border: 3px solid #000;
+  border-radius: 4px;
 }
 
 #link {
@@ -120,6 +126,40 @@ input {
     height: 163px;
 }
 
+
+#presetform {
+    margin-top: 5px;
+}
+
+#play_menu div.play_button,
+#presetform div.play_button {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#play_menu div.play_button a,
+#presetform div.play_button a {
+    text-decoration: none;
+} 
+
+#play_menu div.play_button a:hover,
+#presetform div.play_button a:hover {
+    color: #637F57;
+}
+
+div.play_button img {
+    vertical-align: top;
+    margin-top: -4px; 
+}
+
+
+/* select box style */
+a.card { 
+    background: #444;
+    border: 0;
+}
 .ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-bottom, .ui-corner-left,
 .ui-corner-tl, .ui-corner-tr, .ui-corner-br, .ui-corner-bl {
     border-radius: 0;
@@ -142,11 +182,6 @@ input {
        border-image: url("images/box_border.png") 8 8 8 8 repeat;*/
 }
 
-/* select box style */
-a.card { 
-    background: #444;
-    border: 0;
-}
 
 /* options style */
 
