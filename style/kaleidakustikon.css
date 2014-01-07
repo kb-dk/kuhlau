@@ -35,17 +35,12 @@ a.card { height: 163px; }
     padding: 50px 20px 100px 20px;
 }
 
-#shuffle {
-    float: right;
-    width: auto;
-}
-
 #id_bar {
     padding: 10px 0;   
 }
 
 #id_bar, #id_bar input[type=text] {
-    font-size: 8.5pt;
+    font-size: 10pt;
 }
 
 li {
@@ -61,7 +56,8 @@ input {
 }
 
 #link {
-  width: 500px;
+  width: 600px;
+  border: 0;
 }
 
 #link_div {
@@ -129,6 +125,7 @@ input {
 
 #presetform {
     margin-top: 5px;
+    font-size: 10pt;
 }
 
 #play_menu div.play_button,
@@ -137,6 +134,7 @@ input {
     width: 100px;
     text-align: center;
     font-weight: bold;
+    font-size: 10pt;
 }
 
 #play_menu div.play_button a,
@@ -152,6 +150,11 @@ input {
 div.play_button img {
     vertical-align: top;
     margin-top: -4px; 
+}
+
+div.align_right {
+    float: right;
+    width: auto;
 }
 
 
