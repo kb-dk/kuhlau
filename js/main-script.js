@@ -150,10 +150,14 @@ function isInRange(n,min,max) {
   else return '120';
 }
 
+function documentReady() {
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('main').style.display = 'block';
+}
+
 function init() {
     randomize();
     getParams();
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('main').style.display = 'block';
+    documentReady();
     showId();
 }
