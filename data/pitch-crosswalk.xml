@@ -1,0 +1,216 @@
+<pitches>
+
+  <key signature="null">
+    <note pname="c">
+      <name accid="none">c</name>
+      <name accid="s">cis</name>
+      <name accid="f">ces</name>
+    </note>
+
+    <note pname="d">
+      <name accid="none">d</name>
+      <name accid="s">dis</name>
+      <name accid="f">des</name>
+    </note>
+
+    <note pname="e">
+      <name accid="none">e</name>
+      <name accid="s">eis</name>
+      <name accid="f">es</name>
+    </note>
+
+    <note pname="f">
+      <name accid="none">f</name>
+      <name accid="s">fis</name>
+      <name accid="f">fes</name>
+    </note>
+
+    <note pname="g">
+      <name accid="none">g</name>
+      <name accid="s">gis</name>
+      <name accid="f">ges</name>
+    </note>
+
+    <note pname="a">
+      <name accid="none">a</name>
+      <name accid="s">ais</name>
+      <name accid="f">aes</name>
+    </note>
+
+    <note pname="b">
+      <name accid="none">b</name>
+      <name accid="f">bes</name>
+      <name accid="s">bis</name>
+    </note>
+
+  </key>
+
+
+  <key signature="1f">
+    <note pname="c">
+      <name accid="none">c</name>
+      <name accid="s">cis</name>
+      <name accid="n">c</name>
+      <name accid="f">ces</name>
+    </note>
+
+    <note pname="d">
+      <name accid="none">d</name>
+      <name accid="s">dis</name>
+    </note>
+
+    <note pname="e">
+      <name accid="none">e</name>
+      <name accid="n">e</name>
+      <name accid="s">eis</name>
+      <name accid="f">ees</name>
+    </note>
+
+    <note pname="f">
+      <name accid="none">f</name>
+      <name accid="s">fis</name>
+      <name accid="n">f</name>
+    </note>
+
+    <note pname="g">
+      <name accid="none">g</name>
+      <name accid="s">gis</name>
+      <name accid="f">ges</name>
+      <name accid="n">g</name>
+    </note>
+
+    <note pname="a">
+      <name accid="none">a</name>
+      <name accid="n">a</name>
+      <name accid="f">aes</name>
+      <name accid="s">ais</name>
+    </note>
+
+    <note pname="b">
+      <name accid="none">bes</name>
+      <name accid="n">b</name>
+      <name accid="f">bes</name>
+      <name accid="s">bis</name>
+    </note>
+
+  </key>
+
+  <key signature="2f">
+    <note pname="c">
+      <name accid="none">c</name>
+      <name accid="s">cis</name>
+      <name accid="n">c</name>
+      <name accid="f">ces</name>
+    </note>
+
+    <note pname="d">
+      <name accid="none">d</name>
+    </note>
+
+    <note pname="e">
+      <name accid="none">es</name>
+      <name accid="n">e</name>
+      <name accid="f">es</name>
+    </note>
+
+    <note pname="f">
+      <name accid="none">f</name>
+      <name accid="s">fis</name>
+    </note>
+
+    <note pname="g">
+      <name accid="none">g</name>
+      <name accid="n">g</name>
+      <name accid="s">gis</name>
+      <name accid="f">ges</name>
+    </note>
+
+    <note pname="a">
+      <name accid="none">a</name>
+    </note>
+
+    <note pname="b">
+      <name accid="none">bes</name>
+      <name accid="f">bes</name>
+      <name accid="n">b</name>
+      <name accid="s">bis</name>
+    </note>
+
+  </key>
+
+  <key signature="3f">
+    <note pname="c">
+      <name accid="none">c</name>
+      <name accid="s">cis</name>
+    </note>
+
+    <note pname="d">
+      <name accid="none">d</name>
+    </note>
+
+    <note pname="e">
+      <name accid="none">es</name>
+      <name accid="n">e</name>
+    </note>
+
+    <note pname="f">
+      <name accid="none">f</name>
+      <name accid="s">fis</name>
+    </note>
+
+    <note pname="g">
+      <name accid="none">g</name>
+    </note>
+
+    <note pname="a">
+      <name accid="none">aes</name>
+      <name accid="n">a</name>
+    </note>
+    
+    <note pname="b">
+      <name accid="none">bes</name>
+      <name accid="n">b</name>
+    </note>
+
+  </key>
+
+  <key signature="4f">
+    <note pname="c">
+      <name accid="f">ces</name>
+      <name accid="none">c</name>
+      <name accid="s">cis</name>
+    </note>
+    <note pname="d">
+      <name accid="none">des</name>
+    </note>
+    <note pname="e">
+      <name accid="none">es</name>
+      <name accid="n">e</name>
+      <name accid="s">eis</name>
+      <name accid="f">es</name>
+    </note>
+
+    <note pname="f">
+      <name accid="f">fes</name>
+      <name accid="none">f</name>
+      <name accid="s">fis</name>
+    </note>
+
+    <note pname="g">
+      <name accid="none">g</name>
+    </note>
+    <note pname="a">
+      <name accid="none">aes</name>
+      <name accid="n">a</name>
+    </note>
+
+    <note pname="b">
+      <name accid="none">bes</name>
+      <name accid="n">b</name>
+      <name accid="s">bis</name>
+      <name accid="f">bes</name>
+    </note>
+  </key>
+
+
+</pitches>

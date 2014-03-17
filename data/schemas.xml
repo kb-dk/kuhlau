@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0">
+  <uri resource="kaleidakustikon_mermeid.xml" uri="mei-all.rnc"/>
+  <uri resource="kaleidakustikon_12.xml" uri="mei-all.rnc"/>
+  <uri resource="kaleidakustikon_11.xml" uri="mei-all.rnc"/>
+  <uri resource="kaleidakustikon_10.xml" uri="mei-all.rnc"/>
+  <uri resource="kaleidakustikon_9.xml" uri="mei-all.rnc"/>
+  <uri resource="kaleidakustikon_8.xml" uri="mei-all.rnc"/>
+  <uri resource="kaleidakustikon_7.xml" uri="mei-all.rnc"/>
+  <uri resource="kaleidakustikon_6.xml" uri="mei-all.rnc"/>
+  <uri resource="kaleidakustikon_5.xml" uri="mei-all.rnc"/>
+  <uri resource="kaleidakustikon_4.xml" uri="mei-all.rnc"/>
+  <uri resource="kaleidakustikon_3.xml" uri="mei-all.rnc"/>
+  <uri resource="kaleidakustikon_2.xml" uri="mei-all.rnc"/>
+  <uri resource="kaleidakustikon_missing.xml" uri="mei-all.rnc"/>
+</locatingRules>

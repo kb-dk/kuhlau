@@ -1,0 +1,68 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>The tie in measure 20</title>
+    <meta http-equiv="Content-Type"
+	  content="text/html;charset=UTF-8"/>
+  </head>
+<body>
+
+  <p>I have a database where there are some interesting idref/xml:id pairs. It
+  is also an example of a small but fairly complex problem that requires
+  mature set of tools to solve.</p>
+
+  <p>This is in the realm of critical edition of sheet music, i.e. I'm working
+  with Music Encoding Initiative (MEI, http://music-encoding.org/home) and the
+  music in question is Kaleidakustikon by Friedrich Kuhlau (1786 – 1832), an
+  early piece of aleatoric music.  It is meant as a piece of musical
+  recreation for piano players. The music consists of 21 piles (designated a
+  to v excluding j) of 11 cards numbered 2 to 12 such that you can select one
+  card from each pile by rolling a pair of dices. We, Royal Library, owns one
+  copy and the only other known extant copy was sold in an auction in Paris a
+  few years ago. Musikalisches Würfelspiel is a similar composition allegedly
+  by Mozart (http://sunsite.univie.ac.at/Mozart/dice/)</p>
+
+  <p>What we are up to is preparing a digital critical edition allowing users
+  to get random music in svg/pdf/midi/mp3. I.e., you should get music both for
+  your music stand and your ear.</p>
+
+  <p>In order to do this I have encoded all the layers as complete piano
+  tunes. The cards become MEI sections having xml:ids from a.2 to v.12. In
+  order to simplify proofreading (and proof listening), I encode each layer as
+  a complete tune. The tunes are stored in a native xml database and using
+  xquery I can create a new pieces of music representing 21 rolls, one for
+  each pile. Each selection of cards have an URI. There are (I presume) more
+  music in that database than there are stars in the universe. If you start
+  playing at big bang you'll not be ready at big crunch. The MEI generated can
+  then be transformed into lilypond using xslt, which in turn can deliver SVG,
+  MIDI or PDF (or PS) and using timidity (a sequencer) and an appropriate
+  sound fond I can then get MP3.</p>
+
+  <p>Sorry about the long prelude. And now we approaching the problem I wanted
+  to tell you about. In one combination of cards there is a tie between two
+  notes across a measure. Ties are "bows" connecting notes which the player
+  should hold for a certain time. In MEI</p>
+
+  <pre>
+ &lt;section xml:id="s.7" type="C">
+	    &lt;measure n="20">
+	      &lt;dir staff="1" tstamp="1" place="above">s.7&lt;/dir>
+	      &lt;staff n="1">
+		&lt;layer>
+		  &lt;beam>
+		    &lt;note pname="f" oct="5" dur="8" stem.dir="down" />
+		    &lt;note pname="e" oct="5" dur="8" stem.dir="down" />
+		    &lt;note pname="c" oct="5" dur="8" stem.dir="down" />
+		    &lt;note pname="a" oct="4" dur="8" stem.dir="down" />
+		  &lt;/beam>
+		  &lt;note pname="f" 
+			oct="4" 
+			dur="4" 
+			stem.dir="up" 
+			xml:id="s7tiestart" tie="m"  />
+		  &lt;tie startid="s7tiestart" 
+		       endid="globalCardTTieTargetXmlId" 
+		       staff="1" curvedir="below"  />
+		&lt;/layer>
+  </pre>
+</body>
+</html>

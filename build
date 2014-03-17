@@ -1,0 +1,74 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+$| = 1;  # don't buffer output
+
+my $HOME    = '/home/kaleidakustikon/cache/';
+my $MUP     = "/usr/local/bin/lilypond"; 
+
+############
+
+chdir $HOME;
+my $query=$ENV{'QUERY_STRING'};
+my $basename=$query;
+$basename =~ s/getit.*$//;
+$basename =~ s/^.*\?//;
+$basename =~ s/[=\&]//g;
+$query    =~ s/^.*\?//;
+
+my $midi_arg = '';
+if($query =~ m/mid$/) {
+    $midi_arg = '&make=midi';
+}
+
+my $xml_file = $basename . '.xml';
+my $mup_file = $basename . '.ly';
+my $mid_file = $basename . '.mid';
+my $pdf_file = $basename . '.pdf';
+my $ps_file  = $basename . '.ps';
+my $svg_file = $basename . '.svg';
+my $mp3_file = $basename . '.mp3';
+
+my $lsource   = 'http://disdev-01.kb.dk/storage/mei2013/get-cards-as-lily.xq';
+my $xsource   = 'http://disdev-01.kb.dk/storage/mei2013/get-cards-as-xml.xq';
+
+my $mime = "";
+
+if($query =~ m/ps$/) {
+    system("GET \'$lsource\?$query\' > $mup_file");
+    print "Content-Type: application/postscript\n\n";
+    system("$MUP -dpaper-size=" . '\"a4landscape\"' . " --ps $mup_file &> /dev/null");
+    system("cat $ps_file");
+} elsif($query =~ m/pdf$/) {
+    system("GET \'$lsource\?$query\' > $mup_file");
+    print "Content-Type: application/pdf\n\n";
+    system("$MUP -dpaper-size=" . '\"a4landscape\"' . " --pdf $mup_file  &> /dev/null");
+    system("cat $pdf_file");
+} elsif($query =~ m/svg$/) {
+    system("GET \'$lsource\?$query\' > $mup_file");
+    print "Content-Type: image/svg+xml\n\n";
+#    system("$MUP -dpaper-size=" . '\"a4landscape\"' . " -dbackend=svg $mup_file  &> /dev/null");
+    system("$MUP  -dbackend=svg $mup_file  &> /dev/null");
+    system("cat $svg_file");
+} elsif($query =~ m/mid$/) {
+    system("GET \'$lsource\?$query\' > $mup_file");
+    system("$MUP -dpaper-size=" . '\"a4landscape\"' . " --pdf $mup_file  &> /dev/null");
+    print "Content-Type: audio/midi\n\n";
+    system("cat " . $mid_file . "i");
+} elsif($query =~ m/mp3$/) {
+    $query =~ s/mp3/mid/;
+    system("GET \'$lsource\?$query\' > $mup_file");
+    system("$MUP -dpaper-size=" . '\"a4landscape\"' . " --pdf $mup_file  &> /dev/null");
+    print STDERR `export HOME=.; /usr/bin/timidity -idq -Or $mid_file\i -o - | /usr/local/bin/lame -V 7 -r - $mp3_file 2>&1`;
+    print "Content-Type: audio/mpeg\n\n";
+    system("cat " . $mp3_file );
+} else {
+    print "Content-Type: text/xml\n\n";
+    system("GET \'$xsource\?$query\' ");
+}
+
+
+
+system("rm $mp3_file $ps_file $mid_file* $xml_file $mup_file $svg_file 2>/dev/null")
+
