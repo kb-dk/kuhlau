@@ -1,8 +1,9 @@
 #!/bin/sh
 
-$KUHLAU=/home/kaleidakustikon
-if[ ! -d "$KUHLAU" ]; then
-    mkdir $KUHLAU
+KUHLAU="/home/kaleidakustikon/"
+
+if [ ! -d "$KUHLAU" ]; then
+    mkdir "$KUHLAU"
 fi
 
 
