@@ -30,8 +30,8 @@ my $ps_file  = $basename . '.ps';
 my $svg_file = $basename . '.svg';
 my $mp3_file = $basename . '.mp3';
 
-my $lsource   = 'http://disdev-01.kb.dk/storage/mei2013/get-cards-as-lily.xq';
-my $xsource   = 'http://disdev-01.kb.dk/storage/mei2013/get-cards-as-xml.xq';
+my $lsource   = 'http://localhost/storage/mei2013/get-cards-as-lily.xq';
+my $xsource   = 'http://localhost/storage/mei2013/get-cards-as-xml.xq';
 
 my $mime = "";
 
