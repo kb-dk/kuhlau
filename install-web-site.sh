@@ -1,6 +1,6 @@
 #!/bin/sh
 
-KUHLAU="/home/kaleidakustikon/"
+export KUHLAU="/home/kaleidakustikon/"
 
 if [ ! -d "$KUHLAU" ]; then
     mkdir "$KUHLAU"
