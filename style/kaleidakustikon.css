@@ -150,6 +150,13 @@ input {
 div.play_button img {
     vertical-align: top;
     margin-top: -4px; 
+    border: 0;
+}
+
+#presetform div.play_button {
+    vertical-align: middle;
+    margin-top: -4px; 
+    border: 0;
 }
 
 div.align_right {

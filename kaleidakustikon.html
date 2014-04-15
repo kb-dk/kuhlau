@@ -7,7 +7,8 @@
     <link type="text/css" href="jquery-ui-selectmenu/themes/base/jquery.ui.core.css" rel="stylesheet" />
     <link type="text/css" href="jquery-ui-selectmenu/themes/base/jquery.ui.theme.css" rel="stylesheet" />
     <link type="text/css" href="jquery-ui-selectmenu/themes/base/jquery.ui.selectmenu.css" rel="stylesheet" />
-    <link type="text/css" href="style/dcm.css" rel="stylesheet" />
+    <link type="text/css" href="/editor/style/dcm.css" rel="stylesheet"/>
+    <link type="text/css" href="/editor/style/cnw.css" rel="stylesheet"/>
     <link type="text/css" href="style/kaleidakustikon.css" rel="stylesheet" />
     <script type="text/javascript" src="jquery-ui-selectmenu/jquery-1.8.3.js"></script>
     <script type="text/javascript" src="jquery-ui-selectmenu/ui/jquery.ui.core.js"></script>
@@ -15,6 +16,7 @@
     <script type="text/javascript" src="jquery-ui-selectmenu/ui/jquery.ui.position.js"></script>
     <script type="text/javascript" src="jquery-ui-selectmenu/ui/jquery.ui.selectmenu.js"></script>
     <script type="text/javascript" src="js/main-script.js"></script>
+    <script type="text/javascript" src="js/kaleidakustikon.js"></script>
   </head>
   <body onload="init();">
     <div id="all">
@@ -31,7 +33,6 @@
         <a href="index.html">Home</a> 
         <a href="introduction.html">Introduction</a>
         <a href="instructions.html">Instructions</a> 
-        <a href="kaleidakustikon.html" class="selected">Kaleidakustikon</a> 
         <a href="commentary.html">Critical Commentary</a> 
         <a href="bibliography.html">Bibliography</a> 
       </div>
@@ -318,39 +319,39 @@
             </div>
             
             <div class="play_button"><a href="#" title="Select random cards"
-              onmouseover="document.shuffle_button.src='style/images/shuffle_button_hover.png'"
-              onmouseout="document.shuffle_button.src='style/images/shuffle_button.png'" 
+              onmouseover="document.getElementById('shuffle_button').src='style/images/shuffle_button_hover.png'"
+              onmouseout="document.getElementById('shuffle_button').src='style/images/shuffle_button.png'" 
               onclick="randomize(); return false;"><img 
                 src="style/images/shuffle_button.png" alt="Shuffle cards" id="shuffle_button"/><br/>SHUFFLE</a>
             </div>
             
             <div class="play_button"><a href="#" title="Play as MIDI"
-              onmouseover="document.midi_button.src='style/images/sound_button_hover.png'"
-              onmouseout="document.midi_button.src='style/images/sound_button.png'"
+              onmouseover="document.getElementById('midi_button').src='style/images/sound_button_hover.png'"
+              onmouseout="document.getElementById('midi_button').src='style/images/sound_button.png'"
               onclick="document.kaleidaform.elements['getitas'].value='.mid';document.kaleidaform.submit(); return false;"><img 
                 src="style/images/sound_button.png" alt="MIDI file" id="midi_button"/><br/>MIDI</a></div>
             
             <div class="play_button"><a href="#"  title="Play MP3 (takes about 25 seconds to generate)"
-              onmouseover="document.mp3_button.src='style/images/sound_button_hover.png'"
-              onmouseout="document.mp3_button.src='style/images/sound_button.png'"
+              onmouseover="document.getElementById('mp3_button').src='style/images/sound_button_hover.png'"
+              onmouseout="document.getElementById('mp3_button').src='style/images/sound_button.png'"
               onclick="document.kaleidaform.elements['getitas'].value='.mp3';document.kaleidaform.submit(); return false;"><img 
                 src="style/images/sound_button.png" alt="MP3 sound file" id="mp3_button"/><br/>MP3</a></div>
             
             <div class="play_button"><a href="#" title="Download score as PDF"
-              onmouseover="document.pdf_button.src='style/images/score_button_hover.png'"
-              onmouseout="document.pdf_button.src='style/images/score_button.png'" 
+              onmouseover="document.getElementById('pdf_button').src='style/images/score_button_hover.png'"
+              onmouseout="document.getElementById('pdf_button').src='style/images/score_button.png'" 
               onclick="document.kaleidaform.elements['getitas'].value='.pdf';document.kaleidaform.submit(); return false;"><img 
                 src="style/images/score_button.png" alt="PDF document" id="pdf_button"/><br/>PDF</a></div>
             
             <div class="play_button"><a href="#" title="Display score as SVG graphics"
-              onmouseover="document.svg_button.src='style/images/score_button_hover.png'"
-              onmouseout="document.svg_button.src='style/images/score_button.png'" 
+              onmouseover="document.getElementById('svg_button').src='style/images/score_button_hover.png'"
+              onmouseout="document.getElementById('svg_button').src='style/images/score_button.png'" 
               onclick="document.kaleidaform.elements['getitas'].value='.svg';document.kaleidaform.submit(); return false;"><img 
                 src="style/images/score_button.png" alt="SVG graphics" id="svg_button"/><br/>SVG</a></div>
             
             <div class="play_button"><a href="#" title="Download encoded score as MEI XML"
-              onmouseover="document.xml_button.src='style/images/xml_button_hover.png'"
-              onmouseout="document.xml_button.src='style/images/xml_button.png'" 
+              onmouseover="document.getElementById('xml_button').src='style/images/xml_button_hover.png'"
+              onmouseout="document.getElementById('xml_button').src='style/images/xml_button.png'" 
               onclick="document.kaleidaform.elements['getitas'].value='.xml';document.kaleidaform.submit(); return false;"><img 
                 src="style/images/xml_button.png" alt="MEI XML file" id="xml_button"/><br/>XML (MEI)</a></div>
             
@@ -362,8 +363,8 @@
           <div>
             Combination code <input type="text" size="24" maxlength="21" id="preset"></input>
             <div class="play_button"><a href="javascript:void();" title="Vælg den indtastede kombination"
-              onmouseover="document.preset_button.src='style/images/refresh_button_hover.png'"
-              onmouseout="document.preset_button.src='style/images/refresh_button.png'" 
+              onmouseover="document.getElementById('preset_button').src='style/images/refresh_button_hover.png'"
+              onmouseout="document.getElementById('preset_button').src='style/images/refresh_button.png'" 
               onclick="setCards(document.getElementById('preset').value); return false;"><img 
                 src="style/images/refresh_button.png" alt="Set combination" id="preset_button"/> UPDATE</a></div>
           </div>
