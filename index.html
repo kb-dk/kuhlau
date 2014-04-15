@@ -39,7 +39,11 @@
         <p>LOADING...</p>
       </div>
       <div id="main">
-        <form method="get" action="/cgi-bin/buildly" target="_blank" name="kaleidaform" id="kaleidaform">
+        <form method="get" 
+          action="/cgi-bin/buildly"
+          target="_blank" 
+          name="kaleidaform" 
+          id="kaleidaform">
           <div id="box_shadow"><!-- creates a shadow in decent browsers --></div>
           <div id="card_box">
             <div class="row_shadow"> </div>
@@ -311,7 +315,7 @@
               <div class="play_button" style="position: relative; top: 0px;">
                 <img src="style/images/mm.png" alt="Tempo" style="margin-top: -5px;"
                   title="Tempo (values between 60 and 240 accepted)"/> <input 
-                    name="tempo" value="120" style="width:32px;"
+                    name="tempo" value="140" style="width:32px;"
                     onchange="this.value=isInRange(this.value,60,240);return false;"
                   />
               </div>
@@ -327,31 +331,31 @@
             <div class="play_button"><a href="#" title="Play as MIDI"
               onmouseover="document.getElementById('midi_button').src='style/images/sound_button_hover.png'"
               onmouseout="document.getElementById('midi_button').src='style/images/sound_button.png'"
-              onclick="document.kaleidaform.elements['getitas'].value='.mid';document.kaleidaform.submit(); return false;"><img 
+              onclick="document.kaleidaform.elements['getitas'].value='.mid';changeAction(document.kaleidaform.getitas.value);document.kaleidaform.submit(); return false;"><img 
                 src="style/images/sound_button.png" alt="MIDI file" id="midi_button"/><br/>MIDI</a></div>
             
-            <div class="play_button"><a href="#"  title="Play MP3 (takes about 25 seconds to generate)"
+            <div class="play_button"><a href="#"  title="Play MP3 (takes about 30 seconds to generate)"
               onmouseover="document.getElementById('mp3_button').src='style/images/sound_button_hover.png'"
               onmouseout="document.getElementById('mp3_button').src='style/images/sound_button.png'"
-              onclick="document.kaleidaform.elements['getitas'].value='.mp3';document.kaleidaform.submit(); return false;"><img 
+              onclick="document.kaleidaform.elements['getitas'].value='.mp3';changeAction(document.kaleidaform.getitas.value);document.kaleidaform.submit(); return false;"><img 
                 src="style/images/sound_button.png" alt="MP3 sound file" id="mp3_button"/><br/>MP3</a></div>
             
             <div class="play_button"><a href="#" title="Download score as PDF"
               onmouseover="document.getElementById('pdf_button').src='style/images/score_button_hover.png'"
               onmouseout="document.getElementById('pdf_button').src='style/images/score_button.png'" 
-              onclick="document.kaleidaform.elements['getitas'].value='.pdf';document.kaleidaform.submit(); return false;"><img 
+              onclick="document.kaleidaform.elements['getitas'].value='.pdf';changeAction(document.kaleidaform.getitas.value);document.kaleidaform.submit(); return false;"><img 
                 src="style/images/score_button.png" alt="PDF document" id="pdf_button"/><br/>PDF</a></div>
             
-            <div class="play_button"><a href="#" title="Display score as SVG graphics"
+            <div class="play_button"><a href="#" title="Display score as HTML page using SVG graphics"
               onmouseover="document.getElementById('svg_button').src='style/images/score_button_hover.png'"
               onmouseout="document.getElementById('svg_button').src='style/images/score_button.png'" 
-              onclick="document.kaleidaform.elements['getitas'].value='.svg';document.kaleidaform.submit(); return false;"><img 
+              onclick="document.kaleidaform.elements['getitas'].value='.svg';changeAction(document.kaleidaform.getitas.value);document.kaleidaform.submit(); return false;"><img 
                 src="style/images/score_button.png" alt="SVG graphics" id="svg_button"/><br/>SVG</a></div>
             
             <div class="play_button"><a href="#" title="Download encoded score as MEI XML"
               onmouseover="document.getElementById('xml_button').src='style/images/xml_button_hover.png'"
               onmouseout="document.getElementById('xml_button').src='style/images/xml_button.png'" 
-              onclick="document.kaleidaform.elements['getitas'].value='.xml';document.kaleidaform.submit(); return false;"><img 
+              onclick="document.kaleidaform.elements['getitas'].value='.xml';changeAction(document.kaleidaform.getitas.value);document.kaleidaform.submit(); return false;"><img 
                 src="style/images/xml_button.png" alt="MEI XML file" id="xml_button"/><br/>XML (MEI)</a></div>
             
             <input type="hidden" name="getitas" value="midi"/>

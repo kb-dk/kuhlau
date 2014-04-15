@@ -67,15 +67,18 @@ return
   <head>
     <title>{$title}{" "}
     </title>
+    <link type="text/css" href="/kaleidakustikon/style/edition.css" rel="stylesheet"/>
   </head>
   <body>
+  
+    <div id="main">
     <h1>{$title}{" "}</h1>
     <br clear="both"/>
     <div>
       {$cards}
     </div>
     <div>
-      <h2>Applicable sources</h2>
+      <h2>Variant readings and editorial emendations</h2>
       <form action="/storage/mei2013/get-cards.xq" method="get">
 	{local:hidden-pars($parameters)}
 	<table>
@@ -118,8 +121,9 @@ return
 		 </tr>
 	  }
 	</table>
-	<input type="submit" value="View selected source(s)" />
+	<button type="submit">View selected readings</button>
       </form>
+    </div>
     </div>
   </body>
 </html>
