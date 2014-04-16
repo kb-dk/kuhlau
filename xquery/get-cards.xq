@@ -4,7 +4,7 @@ declare namespace local="http://kb.dk/this/is/me";
 declare namespace xdb="http://exist-db.org/xquery/xmldb";
 declare namespace request="http://exist-db.org/xquery/request";
 declare namespace response="http://exist-db.org/xquery/response";
-declare namespace fn="http://www.w3.org/2005/xpath-functions";
+(:declare namespace fn="http://www.w3.org/2005/xpath-functions";:)
 declare namespace transform="http://exist-db.org/xquery/transform";
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 declare namespace m="http://www.music-encoding.org/ns/mei";
@@ -15,8 +15,8 @@ declare option output:media-type "text/html; charset=UTF-8";
 declare function local:echo-parameters($pars as xs:string*,
 		                       $getitas as xs:string) as xs:string
 {
-  let $h := fn:head($pars)
-  let $t := fn:tail($pars) 
+  let $h := head($pars)
+  let $t := tail($pars) 
   return
     if(count($t)) then
       if($h eq "getitas") then
