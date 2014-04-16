@@ -9,7 +9,7 @@ if [ ! -d "$KUHLAU" ]; then
 fi
 
 if [ ! -d "$KUHLAU/cache" ]; then
-    mkdir "$KUHLAU"
+    mkdir "$KUHLAU/cache"
     chown "$USER:$USER" "$KUHLAU/cache"
 fi
 
