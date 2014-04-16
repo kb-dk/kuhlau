@@ -3,14 +3,15 @@
 # We deploy the documents by sending them to the eXist database
 
 #HOSTPORT="labs.kb.dk:8080"
-HOSTPORT="disdev-01.kb.dk:8081"
+#HOSTPORT="disdev-01.kb.dk:8081"
 TARGET="mei2013"
-# TARGET="kuhlau"
-#HOSTPORT="localhost:8080"
+#TARGET="kuhlau"
+HOSTPORT="localhost:8080"
+PASSWORD="flormelis"
 
 ./load_exist.pl \
     --user admin \
-    --password flormelis \
+    --password $PASSWORD \
     --host-port $HOSTPORT  \
     --suffix xml \
     --delete ./data/ \
@@ -19,7 +20,7 @@ TARGET="mei2013"
 
 ./load_exist.pl \
     --user admin \
-    --password flormelis \
+    --password $PASSWORD \
     --host-port $HOSTPORT  \
     --suffix xml \
     --load ./data/ \
@@ -29,7 +30,7 @@ TARGET="mei2013"
 
 ./load_exist.pl \
     --user admin \
-    --password flormelis \
+    --password $PASSWORD \
     --host-port $HOSTPORT  \
     --suffix xq \
     --load ./xquery/ \
@@ -38,7 +39,7 @@ TARGET="mei2013"
 
 ./load_exist.pl \
     --user admin \
-    --password flormelis \
+    --password $PASSWORD \
     --host-port $HOSTPORT  \
     --suffix xqm \
     --load ./xquery/ \
@@ -48,7 +49,7 @@ TARGET="mei2013"
 
 ./load_exist.pl \
     --user admin \
-    --password flormelis \
+    --password $PASSWORD \
     --host-port $HOSTPORT  \
     --suffix xsl \
     --load ./xquery \
@@ -57,7 +58,7 @@ TARGET="mei2013"
 
 ./load_exist.pl \
     --user admin \
-    --password flormelis \
+    --password $PASSWORD \
     --host-port $HOSTPORT  \
     --suffix xsl \
     --load ./data \
@@ -66,7 +67,7 @@ TARGET="mei2013"
 
 ./load_exist.pl \
     --user admin \
-    --password flormelis \
+    --password $PASSWORD \
     --host-port $HOSTPORT  \
     --suffix owalk.xml \
     --load ./data \
