@@ -15,8 +15,8 @@ declare option output:media-type "text/html; charset=UTF-8";
 declare function local:echo-parameters($pars as xs:string*,
 		                       $getitas as xs:string) as xs:string
 {
-  let $h := head($pars)
-  let $t := tail($pars) 
+  let $h := fn:head($pars)
+  let $t := fn:tail($pars) 
   return
     if(count($t)) then
       if($h eq "getitas") then
@@ -51,7 +51,7 @@ let $parameters :=  request:get-parameter-names()
 
 let $rawdoc :=
   doc(
-    concat("http://disdev-01.kb.dk/storage/mei2013/get-cards-as-xml.xq?apparatus=yes&amp;",
+    concat("http://localhost/storage/mei2013/get-cards-as-xml.xq?apparatus=yes&amp;",
            local:echo-parameters($parameters,".xml"))
   )
 
@@ -59,7 +59,7 @@ let $title :=
 for $tit in $rawdoc/m:mei/m:meiHead/m:fileDesc/m:titleStmt/m:title/string()
 return $tit
 
-let $cards:=doc(concat("http://disdev-01.kb.dk/cgi-bin/buildly?",
+let $cards:=doc(concat("http://localhost/cgi-bin/buildly?",
   local:echo-parameters($parameters,".svg")))
 
 return 
