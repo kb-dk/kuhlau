@@ -549,7 +549,7 @@
 	      </staff>
 	    </measure>
 	  </section>
-
+<!--
 	  <section xml:id="o.2" type="B">
             <measure n="15">
               <dir staff="1" tstamp="1" place="above">o.2</dir>
@@ -583,12 +583,13 @@
                 </layer>
               </staff>
             </measure>
+-->
 	    <!-- To do: implement handling of @left="rptstart" in mei2lilypond.xsl;
 		 then change the follwing to use @right="dbl"/"rptend" and in
 		 the P-section @left="rptstart" 
 		 (i.e. split up the "rptboth" into independent things
 		 happening in two
-		 adjecent bars) -->
+		 adjecent bars) 
             <app xml:id="apparatus-2-001">
               <lem source="#edition" xml:id="rdg-2-001-01">
 		<annot>The end of the second line (part B) the lazy way implemented by SLU</annot>
@@ -665,8 +666,8 @@
             </app>
             <sb/>
           </section>
-
-	  <!-- section xml:id="o.2"  type="B">
+-->
+	  <section xml:id="o.2"  type="B">
 	    <measure n="15">
 	      <dir staff="1" tstamp="1" place="above">o.2</dir>
 	      <staff n="1">
@@ -721,7 +722,7 @@
 	      </staff>
 	    </measure>
 	    <sb/>
-	  </section -->
+	  </section>
 	  <section xml:id="p.2" type="C" >
 	    <scoreDef key.sig="2f" 
 		      key.pname="b" 
