@@ -55,12 +55,20 @@ if($query =~ m/ps$/) {
     system("GET \'$lsource\?$query\' > $mup_file");
     system("$MUP -dpaper-size=" . '\"a4landscape\"' . " --pdf $mup_file  &> /dev/null");
     print "Content-Type: audio/midi\n\n";
-    system("cat " . $mid_file . "i");
+    my $mymidfile=$mid_file;
+    if(-f $mid_file . "i") {
+	$mymidfile=$mid_file . "i";
+    }
+    system("cat " . $mymidfile);
 } elsif($query =~ m/mp3$/) {
     $query =~ s/mp3/mid/;
     system("GET \'$lsource\?$query\' > $mup_file");
     system("$MUP -dpaper-size=" . '\"a4landscape\"' . " --pdf $mup_file  &> /dev/null");
-    print STDERR `export HOME=.; /usr/bin/timidity -idq -Or $mid_file\i -o - | /usr/local/bin/lame -V 7 -r - $mp3_file 2>&1`;
+    my $mymidfile=$mid_file;
+    if(-f $mid_file . "i") {
+	$mymidfile=$mid_file . "i";
+    }
+    system("export HOME=.; /usr/bin/timidity -idq -Or $mymidfile -o - | /usr/local/bin/lame -V 7 -r - $mp3_file 2>&1");
     print "Content-Type: audio/mpeg\n\n";
     system("cat " . $mp3_file );
 } else {
@@ -70,5 +78,5 @@ if($query =~ m/ps$/) {
 
 
 
-system("rm $mp3_file $ps_file $mid_file* $xml_file $mup_file $svg_file 2>/dev/null")
+system("rm $pdf_file $mp3_file $ps_file $mid_file* $xml_file $mup_file $svg_file 2>/dev/null")
 
