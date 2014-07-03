@@ -4,8 +4,10 @@ use strict;
 
 $| = 1;  # don't buffer output
 
-my $HOME    = '/home/kaleidakustikon/cache/';
-my $MUP     = "/usr/local/bin/lilypond"; 
+my $HOME     = '/home/kaleidakustikon/cache/';
+my $MUP      = "/usr/local/bin/lilypond"; 
+my $timidity = "/usr/local/bin/timidity";
+my $lamge    = "/usr/bin/lame";
 
 ############
 
@@ -68,7 +70,7 @@ if($query =~ m/ps$/) {
     if(-f $mid_file . "i") {
 	$mymidfile=$mid_file . "i";
     }
-    system("export HOME=.; /usr/bin/timidity -idq -Or $mymidfile -o - | /usr/local/bin/lame -V 7 -r - $mp3_file 2>&1");
+    system("export HOME=.; $timidity -idq -Or $mymidfile -o - | $lame  -V 7 -r - $mp3_file 2>&1");
     print "Content-Type: audio/mpeg\n\n";
     system("cat " . $mp3_file );
 } else {
