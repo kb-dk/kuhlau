@@ -19,9 +19,8 @@ $basename =~ s/^.*\?//;
 $basename =~ s/[=\&]//g;
 $query    =~ s/^.*\?//;
 
-my $midi_arg = '';
 if($query =~ m/mid$/) {
-    $midi_arg = '&make=midi';
+    $query =~ s/getitas=.mid$/getitas=.midi/;
 }
 
 my $xml_file = $basename . '.xml';
@@ -50,7 +49,6 @@ if($query =~ m/ps$/) {
 } elsif($query =~ m/svg$/) {
     system("GET \'$lsource\?$query\' > $mup_file");
     print "Content-Type: image/svg+xml\n\n";
-#    system("$MUP -dpaper-size=" . '\"a4landscape\"' . " -dbackend=svg $mup_file  &> /dev/null");
     system("$MUP  -dbackend=svg $mup_file  &> /dev/null");
     system("cat $svg_file");
 } elsif($query =~ m/mid$/) {
