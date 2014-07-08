@@ -78,4 +78,5 @@ if($query =~ m/ps$/) {
 
 
 system("rm $pdf_file $mp3_file $ps_file $mid_file* $xml_file $mup_file $svg_file 2>/dev/null")
+    unless $query =~ m/keepingcache/;
 
