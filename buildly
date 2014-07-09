@@ -7,7 +7,9 @@ $| = 1;  # don't buffer output
 my $HOME     = '/home/kaleidakustikon/cache/';
 my $MUP      = "/usr/local/bin/lilypond"; 
 my $timidity = "/usr/local/bin/timidity";
+$timidity = "/usr/bin/timidity";
 my $lame    = "/usr/bin/lame";
+$lame    = "/usr/local/bin/lame";
 
 ############
 
@@ -25,15 +27,19 @@ if($query =~ m/mid$/) {
 
 my $xml_file = $basename . '.xml';
 my $mup_file = $basename . '.ly';
-my $mid_file = $basename . '.mid';
+my $mid_file = $basename . '.midi';
 my $pdf_file = $basename . '.pdf';
 my $ps_file  = $basename . '.ps';
 my $svg_file = $basename . '.svg';
 my $mp3_file = $basename . '.mp3';
+my $log_file = $basename . '.log';
 
-my $lsource   = 'http://localhost/storage/mei2013/get-cards-as-lily.xq';
-my $xsource   = 'http://localhost/storage/mei2013/get-cards-as-xml.xq';
-my $dev_null  = '2>&1 > /dev/null';
+my $host      = 'localhost';
+$host      = 'dcm-frontend-01.kb.dk';
+my $lsource   = 'http://'.$host.'/storage/mei2013/get-cards-as-lily.xq';
+my $xsource   = 'http://'.$host.'/storage/mei2013/get-cards-as-xml.xq';
+my $dev_null  = '2> /dev/null';
+$dev_null  = '2>>'.$log_file;
 
 if($query =~ m/ps$/) {
     system("GET \'$lsource\?$query\' > $mup_file");
@@ -48,26 +54,18 @@ if($query =~ m/ps$/) {
 } elsif($query =~ m/svg$/) {
     system("GET \'$lsource\?$query\' > $mup_file");
     print "Content-Type: image/svg+xml\n\n";
-    system("$MUP  -dbackend=svg $mup_file  " . $dev_null );
+    system("$MUP  -dbackend=svg $mup_file  " . $dev_null);
     system("cat $svg_file");
 } elsif($query =~ m/mid$/) {
     system("GET \'$lsource\?$query\' > $mup_file");
     system("$MUP -dpaper-size=" . '\"a4landscape\"' . " --pdf $mup_file  " . $dev_null);
     print "Content-Type: audio/midi\n\n";
-    my $mymidfile=$mid_file;
-    if(-f $mid_file . "i") {
-	$mymidfile=$mid_file . "i";
-    }
-    system("cat " . $mymidfile);
+    system("cat " . $mid_file);
 } elsif($query =~ m/mp3$/) {
     $query =~ s/=.mp3/=mid/;
     system("GET \'$lsource\?$query\' > $mup_file");
     system("$MUP -dpaper-size=" . '\"a4landscape\"' . " --pdf $mup_file " . $dev_null);
-    my $mymidfile=$mid_file;
-    if(-f $mid_file . "i") {
-	$mymidfile=$mid_file . "i";
-    }
-    system("export HOME=.; $timidity -idq -Or $mymidfile -o - | $lame  -V 7 -r - $mp3_file " . $dev_null );
+    system("export HOME=.; $timidity -idq -Or $mid_file -o - | $lame  -V 7 -r - $mp3_file " . $dev_null );
     print "Content-Type: audio/mpeg\n\n";
     system("cat " . $mp3_file );
 } else {
@@ -77,6 +75,4 @@ if($query =~ m/ps$/) {
 
 
 
-system("rm $pdf_file $mp3_file $ps_file $mid_file* $xml_file $mup_file $svg_file 2>/dev/null")
-    unless $query =~ m/keepingcache/;
-
+system("rm $log_file $pdf_file $mp3_file $ps_file $mid_file $xml_file $mup_file $svg_file 2>/dev/null") unless $query =~ m/keepingcache/;
