@@ -7,9 +7,9 @@ $| = 1;  # don't buffer output
 my $HOME     = '/home/kaleidakustikon/cache/';
 my $MUP      = "/usr/local/bin/lilypond"; 
 my $timidity = "/usr/local/bin/timidity";
-$timidity = "/usr/bin/timidity";
+# $timidity = "/usr/bin/timidity";
 my $lame    = "/usr/bin/lame";
-$lame    = "/usr/local/bin/lame";
+# $lame    = "/usr/local/bin/lame";
 
 ############
 
@@ -35,7 +35,7 @@ my $mp3_file = $basename . '.mp3';
 my $log_file = $basename . '.log';
 
 my $host      = 'localhost';
-$host      = 'dcm-frontend-01.kb.dk';
+# $host      = 'dcm-frontend-01.kb.dk';
 my $lsource   = 'http://'.$host.'/storage/mei2013/get-cards-as-lily.xq';
 my $xsource   = 'http://'.$host.'/storage/mei2013/get-cards-as-xml.xq';
 my $dev_null  = '2> /dev/null';
