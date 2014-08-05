@@ -27,7 +27,7 @@
         <h4>Friedrich Kuhlau</h4>
         <h1>Kaleidakustikon</h1>
       </div>
-      <div id="menu">
+      <div id="menu" class="noprint">
         <!--<div class="change_language"> <a href="source_description_en.html">[English]</a> </div>-->
         <a href="./" class="selected">Home</a> 
         <a href="introduction.html">Introduction</a>
@@ -341,6 +341,13 @@
               onclick="document.kaleidaform.elements['getitas'].value='.mp3';changeAction(document.kaleidaform.getitas.value);document.kaleidaform.submit(); return false;"><img 
                 src="style/images/sound_button.png" alt="MP3 sound file" id="mp3_button"/><br/>MP3</a></div>
             
+            <div class="play_button"><a href="#" title="Print this selection of cards (facsimile)"
+              onmouseover="document.getElementById('facs_button').src='style/images/print_button_hover.png'"
+              onmouseout="document.getElementById('facs_button').src='style/images/print_button.png'" 
+              onclick="window.open('facsimile.html?preset='+document.getElementById('preset').value, 'facsimile'); return false;"
+              target="facsimile"><img 
+                src="style/images/print_button.png" alt="Print facsimile" id="facs_button"/><br/>PRINT</a></div>
+            
             <div class="play_button"><a href="#" title="Download score as PDF"
               onmouseover="document.getElementById('pdf_button').src='style/images/score_button_hover.png'"
               onmouseout="document.getElementById('pdf_button').src='style/images/score_button.png'" 
@@ -358,7 +365,7 @@
               onmouseout="document.getElementById('xml_button').src='style/images/xml_button.png'" 
               onclick="document.kaleidaform.elements['getitas'].value='.xml';changeAction(document.kaleidaform.getitas.value);document.kaleidaform.submit(); return false;"><img 
                 src="style/images/xml_button.png" alt="MEI XML file" id="xml_button"/><br/>XML (MEI)</a></div>
-            
+
             <input type="hidden" name="getitas" value="midi"/>
           </div>
         </form>

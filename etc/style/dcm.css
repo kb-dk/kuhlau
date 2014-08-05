@@ -268,3 +268,19 @@ p.illustration_text {
 	       url('fonts/BravuraText.woff') format('woff'), 
 	       url('fonts/BravuraText.svg#BravuraText') format('svg');
 } 
+
+
+/* CSS for printing */
+
+@media print {
+    
+    .noprint {
+        display: none;
+    }
+    
+    body, #all, #main, #header, #footer {
+        color: #000;
+        background-color: #fff;
+    } 
+    
+}

@@ -1,0 +1,54 @@
+body, #all, #main, #header, #footer {
+    color: #000;
+    background-color: #fff;
+} 
+
+body, #all, #header, #main, #footer {
+    margin: 0;
+    padding: 0;
+} 
+
+body, #all {
+    text-align: center;
+    text-align: -moz-center;
+}
+
+#all {
+    max-width: 73em;
+}
+
+#main, #header, #footer, #loading {
+    text-align: left;
+}
+
+#header {
+    margin: 0 0 1em 0;
+}
+
+#box img {
+    height: 10em;
+    width: 10em;
+}
+
+#link {
+  width: 50em;
+  border: 0;
+}
+
+#link_div {
+    margin-top: 0;
+}
+
+.kb_logo img {
+    width: 3.5em;
+    height: 3.5em;
+}
+
+.row {
+    white-space: nowrap;
+}
+
+.noprint {
+    display: none;
+}
+    
