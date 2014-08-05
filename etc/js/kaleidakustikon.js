@@ -111,7 +111,8 @@ function showId() {
     }
     document.getElementById('preset').value=id;
     //document.getElementById('set').disabled=true;
-    var url = [location.protocol, '//', location.host, location.pathname].join('');
+    var url = [location.protocol, '//', location.host, location.pathname.replace('index.html','')].join('');
+    //var url = [location.protocol, '//', location.host, location.pathname].join('');
     document.getElementById('link').value=url+'?preset='+id;
 }
 

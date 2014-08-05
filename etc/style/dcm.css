@@ -1,5 +1,5 @@
 body { 
-    font-family: arial, helvetica, verdana, sans-serif;
+    font-family: verdana, arial, helvetica, verdana, sans-serif;
     font-size: 10pt;
     background-color: #333;
     padding: 20px 50px;
@@ -19,13 +19,17 @@ h1 {
 }
 
 h2 {
-    font-size: 14pt;
+    font-size: 15pt;
     padding-bottom: 10px;
 }
 
 h3 {
-    font-size: 12pt;
+    font-size: 13pt;
     padding-bottom: 10px;
+}
+
+h4 {
+    font-size: 12pt;
 }
 
 p {
@@ -52,7 +56,13 @@ p {
 }
 
 #header h1, #header h2, #header h3, #header h4 {
-    clear: none;    
+    clear: none;
+    line-height: 1.1em;
+    padding: 0;
+}
+
+#header h1 {
+    padding: 4px 0;
 }
 
 #main {
@@ -61,7 +71,6 @@ p {
     background-color: #fff;
     color: #000;
     clear: both;
-    font-size: 12pt;
 }
 
 
@@ -78,9 +87,17 @@ p {
     height: 48px;
 }
 
+body.text #main p, body.text #main div, body.text #main h2, 
+body.text #main h3, body.text #main h4, body.text #main ul,
+body.text #main ol {
+    line-height: 1.5em;
+    max-width: 45em;
+}
+
 .kb_logo {
-    float: right;
-    width:auto;
+    float: left;
+    margin: 3px 10px 0 0;
+    width: auto;
 }
 
 a, a:link, a:visited, a:active, a:hover {
@@ -201,8 +218,12 @@ p.illustration_text {
 .footnote_reference, .footnote_number {
     position: relative;
     top: -.5em;
-    font-size: .83em;
+    font-size: .85em;
     font-style: normal;
+}
+
+.footnote_reference {
+    background-color: #eee;
 }
 
 .footnote_number {
@@ -222,3 +243,28 @@ p.illustration_text {
     margin-left: 1.3em;
     margin-bottom: .3em;
 }
+
+/* SPECIAL SYMBOLS */
+
+.musical_symbol {
+    font-family: 'Bravura Text';
+    position: relative;
+}
+
+.notes {
+    font-size: 1.5em;
+    line-height: .1em;
+    top: .4em;
+}
+
+/* Embedded fonts */
+/* Unicode music symbols font */
+@font-face {
+	font-family: 'Bravura Text';
+	src: url('fonts/BravuraText.eot');
+	src: local('Bravura Text'), 
+	       url('fonts/BravuraText.eot?#iefix') format('embedded-opentype'),
+	       url('fonts/BravuraText.ttf') format('truetype'), 
+	       url('fonts/BravuraText.woff') format('woff'), 
+	       url('fonts/BravuraText.svg#BravuraText') format('svg');
+} 
