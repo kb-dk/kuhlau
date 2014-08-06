@@ -147,9 +147,18 @@ function changeAction(action) {
     }
 }
 
+function showRevision() {
+    var form = document.getElementById('revision_form');
+    var rev = document.getElementById('rev');
+    var rev_date = document.getElementById('rev_date');
+    rev.value = 'Rev. ' + document.getElementById('rev_hidden').value.match('[0-9]+');
+    rev_date.value = document.getElementById('rev_date_hidden').value.match('[0-9]{4}-[0-9]{2}-[0-9]{2}');
+}
+
 function init() {
     randomize();
     getParams();
-    documentReady();
     showId();
+    showRevision();
+    documentReady();
 }

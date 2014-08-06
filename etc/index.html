@@ -372,7 +372,7 @@
         <p>&nbsp;</p>
         <form method="get" action="javascript:setCards(document.getElementById('preset').value);" name="presetform" id="presetform">
           <div>
-            Combination code <input type="text" size="24" maxlength="21" id="preset"></input>
+            Combination code <input type="text" size="24" maxlength="21" id="preset" readonly="readonly"/>
             <div class="play_button"><a href="javascript:void();" title="Vælg den indtastede kombination"
               onmouseover="document.getElementById('preset_button').src='style/images/refresh_button_hover.png'"
               onmouseout="document.getElementById('preset_button').src='style/images/refresh_button.png'" 
@@ -380,19 +380,26 @@
                 src="style/images/refresh_button.png" alt="Set combination" id="preset_button"/> UPDATE</a></div>
           </div>
         </form>
-        
+        <form action="" id="revision_form">
+          <fieldset>
+            <input type="text" name="rev" id="rev" value="" readonly="readonly"/><br/> 
+            <input type="text" name="rev_date" id="rev_date" value="" readonly="readonly"/>
+            <input type="hidden" name="rev_hidden" id="rev_hidden" value="$Revision: 326 $" />
+            <input type="hidden" name="rev_date_hidden" id="rev_date_hidden" value="$Date:: 2014-08-05 #$" /> 
+          </fieldset>
+        </form> 
         <div id="id_bar">
           <div id="link_div">
             URL to this combination: <input type="text" id="link"/>
           </div>
         </div>
-        
       </div>
       <div id="footer">
         <div class="dcm_logo">
-          <a href="http://www.kb.dk/dcm" title="Dansk Center for Musikudgivelse"><img 
-            style="border: 0px; vertical-align:middle;" alt="DCM Logo" src="style/images/dcm_logo_small_white.png"></img>
-            Dansk Center for Musikudgivelse / Det Kongelige Bibliotek 2014 </a>
+          <a href="http://www.kb.dk/dcm" title="Dansk Center for Musikudgivelse"><img
+              style="border: 0px; vertical-align:middle;" alt="DCM Logo"
+              src="style/images/dcm_logo_small_white.png" /> Dansk Center for Musikudgivelse / Det
+            Kongelige Bibliotek 2014 </a>
         </div>
       </div>
       

@@ -14,13 +14,13 @@ function setCards(preset) {
              if(val=='a') { val=10; }
              if(val=='b') { val=11; }
              if(val=='c') { val=12; }
-             if(val<10 && val>0) {
-                 // add a '0' before the number
-                 val = '0'+val;
-             }
              if((val<1 && val>12)||(list[i]=='h' && val!=2 && val!=11 && val!=12)) {
                  // default to 2 if invalid
                  val = 2;
+             }
+             if(val<10 && val>0) {
+                 // make it a 2-digit number
+                 val = '0'+val;
              }
              var el=document.getElementById(list[i]);
              el.src=('cards/'+list[i]+'_'+val+'.jpg');
@@ -39,13 +39,17 @@ function setLayer(preset) {
         // default to 2 if invalid
         val = 2;
     }
+    if(val<10 && val>0) {
+        // make it a 2-digit number
+        val = '0'+val;
+    }
     for (var i=0;i<list.length;i++) {
-        var el='select#'+list[i];
+         var el=document.getElementById(list[i]);
          if(list[i]=='h' && val!=2 && val!=11 && val!=12) {
             // special treatment for pile h
-            $(el).selectmenu("value",2);
+             el.src=('cards/h_02.jpg');
         } else {
-            $(el).selectmenu("value",val);
+             el.src=('cards/'+list[i]+'_'+val+'.jpg');
         }
     }
 }
