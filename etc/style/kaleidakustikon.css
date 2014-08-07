@@ -1,3 +1,7 @@
+#main {
+    display: none;
+}
+
 /* some styles necessary for image select menus */
 .ui-select-menu { float: left; margin: 0px; }
 
@@ -5,17 +9,22 @@
 select { width: 150px;}
 
 /* select with card images */
-a.card { height: 163px; }
-.card .ui-selectmenu-item-icon { height: 161px; width: 150px; }
+a.card { 
+   height: 163px; 
+}
+.card .ui-selectmenu-item-icon { 
+   height: 161px; width: 150px; 
+}
 .ui-selectmenu-menu li.card a, a.card span.ui-selectmenu-status { 
     height: 155px;
     margin: 1px;
 }
-.ui-selectmenu-menu li a, .ui-selectmenu-status { padding: 0.3em 2em; }
-.card .ui-selectmenu-item-icon { background-position: 0 0; }
+.ui-selectmenu-menu li a, .ui-selectmenu-status { 
+   padding: 0.3em 2em; 
+}
 
-#main {
-    display: none;
+.card .ui-selectmenu-item-icon { 
+   background-position: 0 0;  
 }
 
 /* Skin */
@@ -122,6 +131,10 @@ input {
     height: 163px;
 }
 
+#tempo {
+    width: 32px;
+    font-weight: bold;
+}
 
 #presetform {
     margin-top: 5px;
@@ -155,7 +168,6 @@ div.play_button img {
 
 #presetform div.play_button {
     vertical-align: middle;
-    margin-top: -4px; 
     border: 0;
 }
 
@@ -253,4 +265,27 @@ a.card {
     margin: 0;
     position: absolute;
     top: 0px;
+}
+
+
+/* tempo slider CSS */
+.ui-slider {
+   width:100px;
+   margin: 0 15px;
+   
+}
+#tempo_slider {
+    -moz-box-shadow: 0px 0px 0px #333;
+    box-shadow: 0px 0px 0px #333;
+   border: 3px solid #000;
+   border-radius: 4px;
+}
+
+#tempo_slider .ui-slider-handle {
+    background-image: url("images/button_black.png");
+    background-color: #fff;
+    background-color: transparent;
+    height: 24px;
+    width: 24px;
+    top: -.4em;
 }

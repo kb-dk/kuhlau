@@ -1,19 +1,31 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" ></meta>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Kaleidakustikon</title>
+
+    <!-- slider CSS -->
+    <link rel="stylesheet" href="jquery/jquery-ui-1.10.3/css/ui-lightness/jquery-ui-1.10.3.custom.css"/>  
     
-    <link type="text/css" href="jquery-ui-selectmenu/themes/base/jquery.ui.core.css" rel="stylesheet" />
-    <link type="text/css" href="jquery-ui-selectmenu/themes/base/jquery.ui.theme.css" rel="stylesheet" />
-    <link type="text/css" href="jquery-ui-selectmenu/themes/base/jquery.ui.selectmenu.css" rel="stylesheet" />
+    <!-- image select CSS -->
+    <link type="text/css" href="jquery/jquery-ui-selectmenu/themes/base/jquery.ui.core.css" rel="stylesheet" />
+    <link type="text/css" href="jquery/jquery-ui-selectmenu/themes/base/jquery.ui.theme.css" rel="stylesheet" />
+    <link type="text/css" href="jquery/jquery-ui-selectmenu/themes/base/jquery.ui.selectmenu.css" rel="stylesheet" />
+    
+    <!-- general jquery / jquery UI files -->
+    <!--<script type="text/javascript" src="jquery/jquery-ui-selectmenu/jquery-1.8.3.js"></script>-->
+    <script type="text/javascript" src="jquery/jquery-ui-1.10.3/js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="jquery/jquery-ui-1.10.3/js/jquery-ui-1.10.3.custom.js"></script>
+    
+    <!-- image select js -->    
+    <script type="text/javascript" src="jquery/jquery-ui-selectmenu/ui/jquery.ui.core.js"></script>
+    <script type="text/javascript" src="jquery/jquery-ui-selectmenu/ui/jquery.ui.widget.js"></script>
+    <script type="text/javascript" src="jquery/jquery-ui-selectmenu/ui/jquery.ui.position.js"></script>
+    <script type="text/javascript" src="jquery/jquery-ui-selectmenu/ui/jquery.ui.selectmenu.js"></script>
+    
+    <!-- general -->
     <link type="text/css" href="style/dcm.css" rel="stylesheet"/>
     <link type="text/css" href="style/kaleidakustikon.css" rel="stylesheet" />
-    <script type="text/javascript" src="jquery-ui-selectmenu/jquery-1.8.3.js"></script>
-    <script type="text/javascript" src="jquery-ui-selectmenu/ui/jquery.ui.core.js"></script>
-    <script type="text/javascript" src="jquery-ui-selectmenu/ui/jquery.ui.widget.js"></script>
-    <script type="text/javascript" src="jquery-ui-selectmenu/ui/jquery.ui.position.js"></script>
-    <script type="text/javascript" src="jquery-ui-selectmenu/ui/jquery.ui.selectmenu.js"></script>
     <script type="text/javascript" src="js/main-script.js"></script>
     <script type="text/javascript" src="js/kaleidakustikon.js"></script>
   </head>
@@ -23,7 +35,7 @@
         <div class="kb_logo">
           <a href="http://www.kb.dk" title="Det Kongelige Bibliotek"><img 
             style="border: 0px; vertical-align:middle;" title="Det Kongelige Bibliotek" 
-            alt="KB Logo" src="style/images/kb_white.png"></img></a></div>
+            alt="KB Logo" src="style/images/kb_white.png"/></a></div>
         <h4>Friedrich Kuhlau</h4>
         <h1>Kaleidakustikon</h1>
       </div>
@@ -313,12 +325,14 @@
           <div id="play_menu">
             
             <div class="align_right">
-              <div class="play_button" style="position: relative; top: 0px;">
-                <img src="style/images/mm.png" alt="Tempo" style="margin-top: -5px;"
-                  title="Tempo (values between 60 and 240 accepted)"/> <input 
-                    name="tempo" value="140" style="width:32px;"
-                    onchange="this.value=isInRange(this.value,60,240);return false;"
-                  />
+              <div style="position: relative; top: 0px;">
+                <img src="style/images/mm.png" alt="Tempo" style="position: relative; top: 5px;"
+                  title="Tempo (values between 60 and 240 accepted)"/> 
+                <input name="tempo" id="tempo" value="140" title="Tempo (values between 60 and 240 accepted)"
+                    onchange="this.value=isInRange(this.value,60,240); setTempoSlider(this.value); return false;"/><div 
+                      style="display:inline-block; float:right; padding: 10px 0 0 0;"
+                      title="Tempo (values between 60 and 240 accepted)"><div 
+                        class="slider" id="tempo_slider"> </div></div>
               </div>
             </div>
             
@@ -372,7 +386,7 @@
         <p>&nbsp;</p>
         <form method="get" action="javascript:setCards(document.getElementById('preset').value);" name="presetform" id="presetform">
           <div>
-            Combination code <input type="text" size="24" maxlength="21" id="preset" readonly="readonly"/>
+            Combination code <input type="text" size="24" maxlength="21" id="preset"/>
             <div class="play_button"><a href="javascript:void();" title="Vælg den indtastede kombination"
               onmouseover="document.getElementById('preset_button').src='style/images/refresh_button_hover.png'"
               onmouseout="document.getElementById('preset_button').src='style/images/refresh_button.png'" 
@@ -380,6 +394,7 @@
                 src="style/images/refresh_button.png" alt="Set combination" id="preset_button"/> UPDATE</a></div>
           </div>
         </form>
+        <!--
         <form action="" id="revision_form">
           <fieldset>
             <input type="text" name="rev" id="rev" value="" readonly="readonly"/><br/> 
@@ -387,10 +402,11 @@
             <input type="hidden" name="rev_hidden" id="rev_hidden" value="$Revision: 326 $" />
             <input type="hidden" name="rev_date_hidden" id="rev_date_hidden" value="$Date:: 2014-08-05 #$" /> 
           </fieldset>
-        </form> 
+        </form>
+        -->
         <div id="id_bar">
           <div id="link_div">
-            URL to this combination: <input type="text" id="link"/>
+            URL to this combination: <input type="text" id="link" readonly="readonly"/>
           </div>
         </div>
       </div>

@@ -1,3 +1,28 @@
+// slider
+
+$(function() {
+	$( "#tempo_slider" ).slider({
+		range: false,
+		min: 60, 
+		max: 240,
+		values: [ 140 ],
+		slide: function( event, ui ) {        
+		   $( "#tempo" ).val( ui.values[ 0 ] );
+		}
+	});
+	$( "#tempo" ).val( $( "#tempo_slider" ).slider( "values", 0 ) );
+});
+
+
+function setTempoSlider(tempo) {
+/* call without arguments to update slider according to the tempo input   */
+/* or call with a tempo value to set or change input and slider values    */
+    tempo = tempo || $("#tempo").val();
+    $("#tempo_slider").slider( "values", [ tempo ] );
+    $("#tempo").val(tempo);
+}
+
+// image select functions
 $(function(){
     
     var list='abcdefghiklmnopqrstuv';
@@ -15,7 +40,6 @@ $(function(){
     
 });
 
-//a custom format option callback
 var addressFormatting = function(text, opt){
     var newText = text;
     //array of find replaces
@@ -159,6 +183,6 @@ function init() {
     randomize();
     getParams();
     showId();
-    showRevision();
+//    showRevision();
     documentReady();
 }

@@ -15,6 +15,10 @@ body, #all {
 
 #all {
     max-width: 73em;
+    min-width: 73em;
+    width: 73em;
+    display: inline-table;
+    display: inline-block;
 }
 
 #main, #header, #footer, #loading {
@@ -36,7 +40,7 @@ body, #all {
 }
 
 #link_div {
-    margin-top: 0;
+    margin: 1em 0 .5em 0;
 }
 
 .kb_logo img {
