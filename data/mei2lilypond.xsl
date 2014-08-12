@@ -66,7 +66,7 @@ last-bottom-spacing #'basic-distance = #0
 \score {
 \new PianoStaff
     &lt;&lt;
-    \set PianoStaff.instrumentName = #"Piano  " 
+    \set PianoStaff.instrumentName = #"" 
     \righthand
     \lefthand
     >>
@@ -77,7 +77,7 @@ last-bottom-spacing #'basic-distance = #0
 \new PianoStaff
     \unfoldRepeats
     &lt;&lt;
-    \set PianoStaff.instrumentName = #"Piano  " 
+    \set PianoStaff.instrumentName = #"" 
     \righthand
     \lefthand
     >>
@@ -138,12 +138,20 @@ last-bottom-spacing #'basic-distance = #0
 
   <xsl:template match="m:tuplet">
     <!--tuplet dur="4" num.place="below" num.format="count" num="3"/-->
-    <!-- this seem to work for triols and pentiols -->
+    <!-- this seem to work for triols and pentols -->
     <xsl:value-of select="concat('\times ',m:note[1]/@dur div @dur,'/',@num)"/>
     <xsl:text> { </xsl:text> <xsl:call-template name="beam-like"/>  }
   </xsl:template>
 
-
+  <xsl:template match="m:dir">
+    <xsl:text>\mark \markup { \bold "</xsl:text><xsl:value-of select="."/><xsl:text>"} </xsl:text>
+  </xsl:template>
+  
+  <xsl:template match="m:fermata">
+    <!-- this template is not called anywhere yet ... -->
+    <xsl:text>\fermata </xsl:text>
+  </xsl:template>
+  
   <xsl:template match="m:note">
     <xsl:if test="not(ancestor::m:chord)">
       <xsl:choose>
@@ -299,59 +307,69 @@ From mei schema:
   </xsl:text>
   </xsl:template>
 
-<xsl:template name="get-voice">
-  <xsl:param name="voicename"   select="'voice'"/>
-  <xsl:param name="voicenumber" select="'1'"/>
-<xsl:value-of select="$voicename"/><xsl:text> = \new Staff =
-"</xsl:text><xsl:value-of select="$voicenumber"/><xsl:text>" {
-\time </xsl:text><xsl:value-of
-      select="concat(m:scoreDef/@meter.count,'/',m:scoreDef/@meter.unit)"/> 
-<xsl:if test="$voicenumber=1">
-<xsl:text>
+  <xsl:template name="get-voice">
+    <xsl:param name="voicename" select="'voice'"/>
+    <xsl:param name="voicenumber" select="'1'"/>
+    <xsl:value-of select="$voicename"/>
+    <xsl:text> = \new Staff =
+"</xsl:text>
+    <xsl:value-of select="$voicenumber"/>
+    <xsl:text>" {
+\time </xsl:text>
+    <xsl:value-of select="concat(m:scoreDef/@meter.count,'/',m:scoreDef/@meter.unit)"/>
+    <xsl:if test="$voicenumber=1">
+      <xsl:text>
 \set Score.tempoHideNote = ##t
-\tempo 4 = </xsl:text><xsl:value-of select="$tempo"/>
-</xsl:if>
-<xsl:call-template name="get-clef"><xsl:with-param
-name="voicenumber" select="$voicenumber"/></xsl:call-template>
-<xsl:call-template name="partial"/>
-<xsl:for-each select="m:section">
-<xsl:if test="m:scoreDef/@key.sig"><xsl:call-template name="get-key-sig"/></xsl:if>
-<xsl:if test="position()=1">
-<xsl:call-template name="start-repeat"/>
-s64
-</xsl:if>
+\tempo 4 = </xsl:text>
+      <xsl:value-of select="$tempo"/>
+    </xsl:if>
+    <xsl:call-template name="get-clef">
+      <xsl:with-param name="voicenumber" select="$voicenumber"/>
+    </xsl:call-template>
+    <xsl:call-template name="partial"/>
+    <xsl:for-each select="m:section">
+      <xsl:if test="m:scoreDef/@key.sig">
+        <xsl:call-template name="get-key-sig"/>
+      </xsl:if>
+      <xsl:if test="position()=1">
+        <xsl:call-template name="start-repeat"/> s64 </xsl:if>
 
-<xsl:for-each select="m:measure">
-<xsl:if test="position() = 1"> 
-<xsl:if test="$voicenumber=1">\mark \markup { \teeny { "<xsl:value-of
-select="../@xml:id"/>" } }</xsl:if>
-</xsl:if>
-<xsl:for-each select="m:staff[@n=$voicenumber]">
-<xsl:variable name="layer_test"><xsl:value-of select="count(m:layer)"/></xsl:variable>
-<xsl:if test="$layer_test&gt;1">&lt;&lt;</xsl:if>
-<xsl:for-each select="m:layer">
-<xsl:if test="position()&gt;1"> \\ </xsl:if>
-<xsl:if test="$layer_test&gt;1">{</xsl:if>
-<xsl:apply-templates select="."/>
-<xsl:if test="$layer_test&gt;1">}</xsl:if>
-</xsl:for-each>
-<xsl:if test="$layer_test&gt;1">&gt;&gt;</xsl:if>
-<xsl:text> |
+      <xsl:for-each select="m:measure">
+        <xsl:apply-templates select="m:dir[@staff=$voicenumber]"/>
+        <!-- was:
+  <xsl:if test="position() = 1"> 
+  <xsl:if test="$voicenumber=1">\mark \markup { \tiny { "<xsl:value-of
+  select="../@xml:id"/>" } }</xsl:if>
+  </xsl:if>-->
+
+        <xsl:for-each select="m:staff[@n=$voicenumber]">
+          <xsl:variable name="layer_test">
+            <xsl:value-of select="count(m:layer)"/>
+          </xsl:variable>
+          <xsl:if test="$layer_test&gt;1">&lt;&lt;</xsl:if>
+          <xsl:for-each select="m:layer">
+            <xsl:if test="position()&gt;1"> \\ </xsl:if>
+            <xsl:if test="$layer_test&gt;1">{</xsl:if>
+            <xsl:apply-templates select="."/>
+            <xsl:if test="$layer_test&gt;1">}</xsl:if>
+          </xsl:for-each>
+          <xsl:if test="$layer_test&gt;1">&gt;&gt;</xsl:if>
+          <xsl:text> |
 </xsl:text>
-</xsl:for-each>
-</xsl:for-each>
-<xsl:choose>
-<xsl:when test="m:measure/@right='rptend'">
-<xsl:call-template name="end-repeat"/>
-</xsl:when>
-<xsl:when test="m:measure/@right='rptboth'">
-<xsl:call-template name="restart-repeat"/>
-</xsl:when>
-</xsl:choose>
-</xsl:for-each>
-<xsl:text>}
+        </xsl:for-each>
+      </xsl:for-each>
+      <xsl:choose>
+        <xsl:when test="m:measure/@right='rptend'">
+          <xsl:call-template name="end-repeat"/>
+        </xsl:when>
+        <xsl:when test="m:measure/@right='rptboth'">
+          <xsl:call-template name="restart-repeat"/>
+        </xsl:when>
+      </xsl:choose>
+    </xsl:for-each>
+    <xsl:text>}
 </xsl:text>
-</xsl:template>
+  </xsl:template>
 
 <xsl:template name="get-key-sig">
   <xsl:text>\key </xsl:text><xsl:call-template name="get-lily-pitch">

@@ -1,0 +1,172 @@
+<?oxygen SCHSchema="file:/P:/MEI/schema/MEI2013_v2.1.0/schemata/mei-all.rng"?>
+<?oxygen RNGSchema="file:/P:/MEI/schema/MEI2013_v2.1.0/schemata/mei-all.rng" type="xml"?>
+<mei xmlns="http://www.music-encoding.org/ns/mei" xmlns:xl="http://www.w3.org/1999/xlink" meiversion="2013" xml:id="mei_107N20006">
+    <meiHead>
+        <fileDesc>
+            <titleStmt>
+                <title>Kaleidakustikon</title>
+            </titleStmt>
+            <pubStmt>
+                <respStmt xml:id="respStmt_cfa4f9b5">
+                    <resp>Publisher</resp>
+                    <corpName xml:id="corpName_8fbb53c1">
+                        <expan>Danish Centre for Music Publication</expan>
+                        <abbr>DCM</abbr>
+                        <address>
+                            <addrLine>The Royal Library</addrLine>
+                            <addrLine>Søren Kierkegaards Plads 1</addrLine>
+                            <addrLine>P.O. Box 2149</addrLine>
+                            <addrLine>DK - 1016 <geogName>Copenhagen</geogName> K</addrLine>
+                            <addrLine>
+                                <ptr label="WWW" target="http://www.kb.dk/dcm"/>
+                            </addrLine>
+                            <addrLine>
+                                <ptr label="E-mail" target="mailto://foa-dcm@kb.dk"/>
+                            </addrLine>
+                        </address>
+                    </corpName>
+                    <persName role="editor" xml:id="persName_80e56130">Axel Teich Geertinger</persName>
+                    <persName role="editor" xml:id="persName_638a39f9">Sigfrid Lundberg</persName>
+                </respStmt>
+                <date isodate="2014">2014</date>
+                <availability>
+                    <useRestrict>This work is licensed under a Creative Commons
+            Attribution-NonCommercial-NoDerivs 3.0 Unported License. <ptr label="CC BY-NC-ND 3.0 License" target="http://creativecommons.org/licenses/by-nc-nd/3.0/"/>
+                    </useRestrict>
+                </availability>
+            </pubStmt>
+            <seriesStmt>
+                <title xml:id="title_538e4c89">Dansk Center for Musikudgivelse</title>
+                <identifier type="file_collection" xml:id="identifier_eee2ad57">DCM</identifier>
+            </seriesStmt>
+            <sourceDesc>
+                <source analog="frbr:manifestation" label="Source A" xml:id="source_5143f5ba">
+                    <identifier/>
+                    <titleStmt>
+                        <title xml:id="title_f40eed1e">Kaleidakustikon</title>
+                    </titleStmt>
+                    <pubStmt>
+                        <publisher>C. C. Lose</publisher>
+                        <pubPlace xml:id="pubPlace_3a1e8034">Copenhagen</pubPlace>
+                        <date notafter="1820">c.1820</date>
+                    </pubStmt>
+                    <physDesc>
+                        <extent unit="cards">223</extent>
+                        <dimensions unit="cm">Box: 19.7 x 35.8 x 1.7</dimensions>
+                        <dimensions unit="cm">Cards: 5.4 x 4.8</dimensions>
+                        <physMedium>
+              Twenty-one piles of cards in sturdy cardboard arranged in three rows in a cardboard
+                box. The sides of the box are lined with green linen. An insertion of orange
+                cardboard keeps the piles of cards in place. The box may also be used for holding
+                the chosen card and may, for example, be placed on a music stand.<lb/>
+              Each pile of cards is provided with a band of orange cardboard imprinted with the
+                pile's letter (A...V); the band of pile H is not original and lacks the imprint.
+                Each pile contains eleven cards, marked with the pile's letter and the figures from
+                two to twelve (namely, all the scores possible when throwing two dices); that is,
+                for instance, a2 to a12 in pile A. The cards are lithographically produced.
+            </physMedium>
+                        <condition>Incomplete; cards h3 to h10 lacking. Lid and instructions are
+              lacking.</condition>
+                        <titlePage label="Title on label pasted on the wrapping" xml:id="titlePage_fde403ed">
+                            <p>KALEIDAKUSTIKON, / en musikalsk Underholdning for Claveerspillere, / af / F.
+                Kuhlau. / Kjöbenhavn. Hos C. C. Lose</p>
+                        </titlePage>
+                    </physDesc>
+                    <itemList>
+                        <item label="" xml:id="item_1519854d">
+                            <physLoc>
+                                <repository>
+                                    <corpName xml:id="corpName_6c914ceb">The Royal Library</corpName>
+                                    <geogName xml:id="geogName_5ab919c4">Copenhagen</geogName>
+                                    <identifier authURI="http://www.rism.info" authority="RISM" xml:id="identifier_ad64da0e">DK-Kk</identifier>
+                                </repository>
+                                <identifier xml:id="identifier_f28af663">Kuhlaus Samling (Fog nr. 215), mu6411.1250</identifier>
+                            </physLoc>
+                        </item>
+                    </itemList>
+                </source>
+                <source analog="frbr:manifestation" label="Source B" xml:id="source_111d82d1">
+                    <identifier/>
+                    <titleStmt>
+                        <title xml:id="title_ef171d25">Kaleidakustikon</title>
+                    </titleStmt>
+                    <pubStmt>
+                        <publisher>F. J. Weygand</publisher>
+                        <pubPlace xml:id="pubPlace_604d57a7">Amsterdam</pubPlace>
+                        <date notafter="1820">c.1820</date>
+                    </pubStmt>
+                    <physDesc>
+                        <extent unit="cards">230</extent>
+                        <physMedium>
+              The cards are placed in a box lined with orange linen. The lid and base are
+                apparently hinged together employing the same orange linen. Each pile of cards is
+                kept together by a white paper or cardboard strip without imprint. Contrary to
+                Source A, there is no division of the box in three rows. It cannot be used,
+                therefore, as a stand for the chosen cards; however, the box includes a board or a
+                piece of cardboard lined with blue paper or linen which seems to function as a stand
+                for the cards when they are stuck into the three long pockets on the board.
+            </physMedium>
+                        <condition>Incomplete; one card lacking.</condition>
+                        <provenance>
+                            <eventList>
+                                <event>
+                                    <p>Sold on <date isodate="2012-12-19">19 December 2012</date> at an auction of 
+                    <persName>Jean-Paul Morin</persName>'s collection of curiosa
+                    in <geogName>Paris</geogName> by the auction house 
+                    <corpName>Pierre Bergé &amp; Associés</corpName>.</p>
+                                </event>
+                            </eventList>
+                        </provenance>
+                    </physDesc>
+                    <notesStmt>
+                        <annot xml:id="annot_0149c0f4">The source has not been available to the editors. All information is thanks to
+              the auction house, Pierre Bergé &amp; Associés.</annot>
+                    </notesStmt>
+                    <itemList>
+                        <item label="" xml:id="item_25e000fa">
+                            <physLoc>
+                                <repository>Unknown (privately owned?)</repository>
+                            </physLoc>
+                        </item>
+                    </itemList>
+                </source>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <appInfo>
+                <application version="2013">
+                    <name>MerMEId</name>
+                </application>
+            </appInfo>
+        </encodingDesc>
+        <workDesc>
+            <work analog="frbr:work" xml:id="work_ddde06e3">
+                <titleStmt>
+                    <title xml:id="title_081fb92b" xml:lang="da">Kaleidakustikon</title>
+                    <title type="subordinate" xml:id="title_97ba7a33" xml:lang="da">En musikalsk Underholdning for Claveerspillere </title>
+                    <title type="subordinate" xml:id="title_d8527d8d" xml:lang="de">Musikalische Unterhaltung für Pianoforte-Spieler</title>
+                    <title type="subordinate" xml:id="title_a288718e" xml:lang="en">Amusement for Piano-Forte Players</title>
+                    <respStmt>
+                        <persName role="composer" xml:id="persName_c0b7dd3e">Friedrich Kuhlau</persName>
+                    </respStmt>
+                </titleStmt>
+                <history xml:id="history_idd59ad240">
+                    <creation xml:id="creation_idd05594d1">
+                        <date>c.1820</date>
+                    </creation>
+                </history>
+                <langUsage>
+                    <language xml:id="da">Danish</language>
+                    <language xml:id="en">English</language>
+                    <language xml:id="de">German</language>
+                </langUsage>
+            </work>
+        </workDesc>
+        <revisionDesc>
+                <change isodate="2014-08-12" resp="atge">
+                    <changeDesc><p/></changeDesc>
+                </change>
+            </revisionDesc>
+    </meiHead>
+    <music/>
+</mei>

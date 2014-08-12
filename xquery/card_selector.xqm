@@ -101,7 +101,7 @@ declare function crds:embed_selected_cards(
     let $mei :=
       <mei xmlns="http://www.music-encoding.org/ns/mei">
       {
-	for $d in doc("/db/dcm/22001519789793.xml")/m:mei/m:meiHead
+	for $d in doc("/db/dcm/kaleidakustikon_metadata.xml")/m:mei/m:meiHead
 	return $d
       }
       {
