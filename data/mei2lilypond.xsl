@@ -94,9 +94,25 @@ last-bottom-spacing #'basic-distance = #0
   </xsl:template>
 
   <xsl:template match="m:chord">
-    <xsl:text> &lt; </xsl:text><xsl:apply-templates
-    select="m:note"/><xsl:text> &gt;</xsl:text><xsl:value-of
+    <xsl:if test="@stem.dir='up' and not(@grace)">
+      <xsl:text> \once \stemUp </xsl:text>
+    </xsl:if>
+    <xsl:if test="@stem.dir='down' and not(@grace)">
+      <xsl:text> \once \stemDown </xsl:text>
+    </xsl:if>
+    <xsl:text> &lt; </xsl:text>
+    <xsl:apply-templates select="m:note"/><xsl:text> &gt;</xsl:text><xsl:value-of
     select="@dur"/><xsl:call-template name="dots"><xsl:with-param name="dots" select="@dots"/></xsl:call-template><xsl:text> </xsl:text>
+    <!-- get timestamp -->
+    <!--
+      <xsl:if test="@dur">
+      <xsl:variable name="timestamp">
+      <xsl:call-template name="get_timestamp"/>
+      </xsl:variable>
+      <xsl:text>^\markup {\tiny "</xsl:text><xsl:value-of select="$timestamp"/><xsl:text>"}</xsl:text>
+      </xsl:if>
+    -->
+    <!-- end get timestamp -->
   </xsl:template>
 
   <xsl:template match="m:beam[m:note|m:chord|m:rest|m:space|m:clef]">
@@ -144,12 +160,37 @@ last-bottom-spacing #'basic-distance = #0
   </xsl:template>
 
   <xsl:template match="m:dir">
-    <xsl:text>\mark \markup { \bold "</xsl:text><xsl:value-of select="."/><xsl:text>"} </xsl:text>
+    <!-- this would be better than using \mark - but requires the markup to be placed after a note... -->
+    <!--<xsl:choose>
+      <xsl:when test="@place='above'">
+        <xsl:text>^</xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:text>_</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>-->
+    <xsl:choose>
+      <xsl:when test="@type='card_no'">
+        <xsl:text>\mark \markup { \smaller \rounded-box "</xsl:text><xsl:value-of 
+          select="translate(.,'.','')"/><xsl:text>"} </xsl:text>
+      </xsl:when>
+      <xsl:when test="@type='repeat'">
+        <xsl:text>\once \override Score.RehearsalMark #'extra-offset = #'( 4 . -20 )
+\once \override Score.RehearsalMark #'font-size = #1         
+\mark \markup { "</xsl:text><xsl:value-of select="."/><xsl:text>"} </xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:text>\mark \markup {"</xsl:text><xsl:value-of select="."/><xsl:text>"} </xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
+    
   </xsl:template>
   
   <xsl:template match="m:fermata">
     <!-- this template is not called anywhere yet ... -->
-    <xsl:text>\fermata </xsl:text>
+    <xsl:text>\once \override Score.RehearsalMark #'padding = #0
+\once \override Score.RehearsalMark #'self-alignment-X = #CENTER
+\mark \markup { \musicglyph #"scripts.ufermata" } </xsl:text>
   </xsl:template>
   
   <xsl:template match="m:note">
@@ -169,11 +210,19 @@ last-bottom-spacing #'basic-distance = #0
     </xsl:if>
     <xsl:if test="@grace and not(ancestor::m:beam)">
       <xsl:choose>
-	<xsl:when test="@grace =
-			'unacc'"><xsl:text> \acciaccatura </xsl:text></xsl:when>
-	<xsl:when test="@grace =
-			'acc'"><xsl:text> \appoggiatura </xsl:text></xsl:when>
+        <xsl:when test="@grace = 'unacc'">
+          <xsl:text> \acciaccatura </xsl:text>
+        </xsl:when>
+        <xsl:when test="@grace = 'acc'">
+          <xsl:text> \appoggiatura </xsl:text>
+        </xsl:when>
       </xsl:choose>
+    </xsl:if>
+    <xsl:if test="@stem.dir='up' and not(@grace)">
+      <xsl:text> \once \stemUp </xsl:text>
+    </xsl:if>
+    <xsl:if test="@stem.dir='down' and not(@grace)">
+      <xsl:text> \once \stemDown </xsl:text>
     </xsl:if>
     <xsl:variable name="pname" select="@pname"/>
     <xsl:variable name="oct" select="@oct"/>
@@ -204,10 +253,26 @@ last-bottom-spacing #'basic-distance = #0
   <xsl:when test="@oct=2">,</xsl:when>
   <xsl:when test="@oct=4">'</xsl:when>
   <xsl:when test="@oct=5">''</xsl:when>
-  <xsl:when test="@oct=6">'''</xsl:when></xsl:choose><xsl:value-of
+  <xsl:when test="@oct=6">'''</xsl:when>
+  <xsl:when test="@oct=7">''''</xsl:when></xsl:choose><xsl:value-of
   select="normalize-space(@dur)"/><xsl:call-template
   name="dots"><xsl:with-param name="dots" select="@dots"/></xsl:call-template>
-  <xsl:choose><xsl:when test="@artic = 'stacc'">-.</xsl:when></xsl:choose>
+    <xsl:choose>
+      <xsl:when test="@artic = 'stacc'">-.</xsl:when>
+      <xsl:when test="@artic = 'acc'"> \accent </xsl:when>
+    </xsl:choose>
+    
+    <!-- get timestamp -->
+    <!--
+    <xsl:if test="@dur">
+      <xsl:variable name="timestamp">
+        <xsl:call-template name="get_timestamp"/>
+      </xsl:variable>
+      <xsl:text>^\markup {\tiny "</xsl:text><xsl:value-of select="$timestamp"/><xsl:text>"}</xsl:text>
+    </xsl:if>
+    -->
+    <!-- end get timestamp -->
+    
 <!-- other articulation stuff:
 has shorthand in lilypond:
 marcato,stopped, tenuto, staccatissimo, accent, staccato, and portato
@@ -254,6 +319,42 @@ From mei schema:
     <xsl:if test="//m:hairpin/@endid = $me_id"><xsl:text>\! </xsl:text></xsl:if>
   </xsl:if>
   <xsl:text> </xsl:text></xsl:template>
+
+  <xsl:template name="get_timestamp">
+    <xsl:param name="sum" select="0"/>
+    <xsl:choose>
+      <!-- to do: also look for element with a duration one level up or down 
+        (to include notes inside/outside beams) -->
+      <xsl:when test="preceding-sibling::*[not(@grace)]/@dur">
+        <xsl:for-each select="preceding-sibling::*[not(@grace)][@dur][position()=1]">
+          <xsl:choose>
+            <xsl:when test="@dots">
+              <xsl:call-template name="get_timestamp">
+                <!-- the following does not take into accout double dotting (in lack of power function) -->
+                <xsl:with-param name="sum" select="$sum + (4 div @dur)*(1+@dots*0.5)"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:call-template name="get_timestamp">
+                <xsl:with-param name="sum" select="$sum + (4 div @dur)"/>
+              </xsl:call-template>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:for-each>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:choose>
+          <xsl:when test="@dots">
+            <xsl:value-of select="$sum + (4 div @dur)*(1+@dots*0.5)"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="$sum + (4 div @dur)"/>
+          </xsl:otherwise>
+        </xsl:choose>        
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
 
   <xsl:template match="m:rest">
     <xsl:text> r</xsl:text><xsl:value-of
@@ -332,15 +433,15 @@ From mei schema:
         <xsl:call-template name="get-key-sig"/>
       </xsl:if>
       <xsl:if test="position()=1">
-        <xsl:call-template name="start-repeat"/> s64 </xsl:if>
+        <xsl:call-template name="start-repeat"/> s64 
+\override Score.RehearsalMark #'self-alignment-X = #LEFT
+\override Score.RehearsalMark #'font-size = #0.4
+\override Score.RehearsalMark #'padding = #3
+      </xsl:if>
 
       <xsl:for-each select="m:measure">
+        
         <xsl:apply-templates select="m:dir[@staff=$voicenumber]"/>
-        <!-- was:
-  <xsl:if test="position() = 1"> 
-  <xsl:if test="$voicenumber=1">\mark \markup { \tiny { "<xsl:value-of
-  select="../@xml:id"/>" } }</xsl:if>
-  </xsl:if>-->
 
         <xsl:for-each select="m:staff[@n=$voicenumber]">
           <xsl:variable name="layer_test">
@@ -357,6 +458,7 @@ From mei schema:
           <xsl:text> |
 </xsl:text>
         </xsl:for-each>
+        <xsl:apply-templates select="m:fermata"/>
       </xsl:for-each>
       <xsl:choose>
         <xsl:when test="m:measure/@right='rptend'">
