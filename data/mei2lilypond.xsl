@@ -174,8 +174,8 @@ last-bottom-spacing #'basic-distance = #0
         <xsl:text>\mark \markup { \smaller \rounded-box "</xsl:text><xsl:value-of 
           select="translate(.,'.','')"/><xsl:text>"} </xsl:text>
       </xsl:when>
-      <xsl:when test="@type='repeat'">
-        <xsl:text>\once \override Score.RehearsalMark #'extra-offset = #'( 4 . -20 )
+      <xsl:when test="@type='repeat'"><!-- used for the "D.C." directive -->
+        <xsl:text>\once \override Score.RehearsalMark #'direction = #down
 \once \override Score.RehearsalMark #'font-size = #1         
 \mark \markup { "</xsl:text><xsl:value-of select="."/><xsl:text>"} </xsl:text>
       </xsl:when>
