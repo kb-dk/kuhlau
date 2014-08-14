@@ -535,34 +535,63 @@
 								</layer>
 							</staff>
 						</measure>
-						<measure n="16" right="rptboth">
-							<dir staff="1" tstamp="3" place="below" type="repeat">D.C.</dir>
-							<staff n="1">
-								<layer>
-									<chord dur="2">
-										<note pname="c" oct="5"/>
-										<note pname="e" oct="4"/>
-									</chord>
-								</layer>
-							</staff>
-							<staff n="2">
-								<layer>
-									<chord dur="4">
-										<note pname="c" oct="4"/>
-										<note pname="g" oct="3"/>
-										<note pname="c" oct="3"/>
-									</chord>
-									<note pname="c" oct="2" dur="4"/>
-								</layer>
-							</staff>
-						</measure>
+						<app xml:id="apparatus-11-001">
+							<lem source="#edition" xml:id="rdg-11-001-01">
+								<annot>Double barline emended to end of repeat</annot>
+								<measure n="16" right="rptend">
+									<dir staff="2" tstamp="2" place="below" type="repeat">D.C.</dir>
+									<staff n="1">
+										<layer>
+											<chord dur="2">
+												<note pname="c" oct="5"/>
+												<note pname="e" oct="4"/>
+											</chord>
+										</layer>
+									</staff>
+									<staff n="2">
+										<layer>
+											<chord dur="4">
+												<note pname="c" oct="4"/>
+												<note pname="g" oct="3"/>
+												<note pname="c" oct="3"/>
+											</chord>
+											<note pname="c" oct="2" dur="4"/>
+										</layer>
+									</staff>
+								</measure>
+							</lem>
+							<rdg source="#source_A" xml:id="rdg-11-001-02">
+								<annot><rend fontweight="bold">A</rend>: double barline</annot>
+								<measure n="16" right="dbl">
+									<dir staff="2" tstamp="2" place="below" type="repeat">D.C.</dir>
+									<staff n="1">
+										<layer>
+											<chord dur="2">
+												<note pname="c" oct="5"/>
+												<note pname="e" oct="4"/>
+											</chord>
+										</layer>
+									</staff>
+									<staff n="2">
+										<layer>
+											<chord dur="4">
+												<note pname="c" oct="4"/>
+												<note pname="g" oct="3"/>
+												<note pname="c" oct="3"/>
+											</chord>
+											<note pname="c" oct="2" dur="4"/>
+										</layer>
+									</staff>
+								</measure>
+							</rdg>
+						</app>
 						<sb/>
 					</section>
 
 					<section xml:id="p.11" type="C">
 						<scoreDef key.sig="2f" key.pname="b" key.mode="major" meter.count="3"
 							meter.unit="4"/>
-						<measure n="16">
+						<measure n="16" left="rptstart">
 							<dir staff="1" tstamp="1" place="above" type="card_no">p.11</dir>
 							<staff n="1">
 								<layer>

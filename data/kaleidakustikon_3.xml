@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<?oxygen RNGSchema="../../../../../../MEI/schema/MEI2013_v2.1.0/schemata/mei-all.rng" type="xml"?>
 <mei meiversion="2013" xmlns="http://www.music-encoding.org/ns/mei">
 	<meiHead>
 		<fileDesc>
@@ -259,7 +258,7 @@
 								</layer>
 							</staff>
 						</measure>
-						<measure n="8" right="rptboth">
+						<measure n="8" right="rptend">
 							<staff n="1">
 								<layer>
 									<note pname="f" oct="4" dur="4"/>
@@ -279,21 +278,8 @@
 						<sb/>
 					</section>
 
-					<!-- the following card is lost -->
 					<section type="missing">
-						<!-- this section is fake. the card is missing and we won't use this -->
-						<measure>
-							<staff n="1">
-								<layer>
-									<note pname="c" oct="5" dur="4"/>
-								</layer>
-							</staff>
-							<staff n="2">
-								<layer>
-									<note pname="c" oct="3" dur="4"/>
-								</layer>
-							</staff>
-						</measure>
+						<!-- card is lost -->
 					</section>
 
 					<section xml:id="i.3" type="B">
@@ -514,28 +500,52 @@
 								</layer>
 							</staff>
 						</measure>
-						<measure n="16" right="rptboth">
-							<dir staff="2" tstamp="1" place="below" type="repeat">D.C.</dir>
-							<staff n="1">
-								<layer>
-									<chord dur="2">
-										<note pname="c" oct="5"/>
-										<note pname="c" oct="6"/>
-									</chord>
-								</layer>
-							</staff>
-							<staff n="2">
-								<layer>
-									<note pname="c" oct="2" dur="2"/>
-								</layer>
-							</staff>
-						</measure>
+						<app xml:id="apparatus-3-001">
+							<lem source="#edition" xml:id="rdg-3-001-01">
+								<annot>Double barline emended to end of repeat</annot>
+								<measure n="16" right="rptend">
+									<dir staff="2" tstamp="2" place="below" type="repeat">D.C.</dir>
+									<staff n="1">
+										<layer>
+											<chord dur="2">
+												<note pname="c" oct="5"/>
+												<note pname="c" oct="6"/>
+											</chord>
+										</layer>
+									</staff>
+									<staff n="2">
+										<layer>
+											<note pname="c" oct="2" dur="2"/>
+										</layer>
+									</staff>
+								</measure>
+							</lem>
+							<rdg source="#source_A" xml:id="rdg-3-001-02">
+								<annot><rend fontweight="bold">A</rend>: double barline</annot>
+								<measure n="16" right="dbl">
+									<dir staff="1" tstamp="2" place="below" type="repeat">D.C.</dir>
+									<staff n="1">
+										<layer>
+											<chord dur="2">
+												<note pname="c" oct="5"/>
+												<note pname="c" oct="6"/>
+											</chord>
+										</layer>
+									</staff>
+									<staff n="2">
+										<layer>
+											<note pname="c" oct="2" dur="2"/>
+										</layer>
+									</staff>
+								</measure>
+							</rdg>
+						</app>
 						<sb/>
 					</section>
 
 					<section xml:id="p.3" type="C">
 						<scoreDef key.sig="2f" key.pname="b" meter.count="3" meter.unit="4"/>
-						<measure n="16">
+						<measure n="16" left="rptstart">
 							<dir staff="1" tstamp="1" place="above" type="card_no">p.3</dir>
 							<staff n="1">
 								<layer>
@@ -778,7 +788,7 @@
 								</layer>
 							</staff>
 						</measure>
-						<measure n="24" right="rptend">
+						<measure n="24" right="rptboth">
 							<staff n="1">
 								<layer>
 									<note pname="b" oct="4" dur="4"/>

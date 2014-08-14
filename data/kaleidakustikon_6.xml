@@ -497,31 +497,57 @@
 								</layer>
 							</staff>
 						</measure>
-						<measure n="16" right="rptboth">
-							<dir staff="1" tstamp="3" place="below" type="repeat">D.C.</dir>
-							<staff n="1">
-								<layer>
-									<note pname="c" oct="5" dur="2"/>
-								</layer>
-							</staff>
-							<staff n="2">
-								<layer>
-									<beam>
-										<note pname="c" oct="3" dur="8"/>
-										<note pname="e" oct="3" dur="8"/>
-										<note pname="g" oct="3" dur="8"/>
-										<note pname="c" oct="4" dur="8"/>
-									</beam>
-								</layer>
-							</staff>
-						</measure>
+						<app xml:id="apparatus-6-001">
+							<lem source="#edition" xml:id="rdg-6-001-01">
+								<annot>Double barline emended to end of repeat</annot>
+								<measure n="16" right="rptend">
+									<dir staff="2" tstamp="3" place="below" type="repeat">D.C.</dir>
+									<staff n="1">
+										<layer>
+											<note pname="c" oct="5" dur="2"/>
+										</layer>
+									</staff>
+									<staff n="2">
+										<layer>
+											<beam>
+												<note pname="c" oct="3" dur="8"/>
+												<note pname="e" oct="3" dur="8"/>
+												<note pname="g" oct="3" dur="8"/>
+												<note pname="c" oct="4" dur="8"/>
+											</beam>
+										</layer>
+									</staff>
+								</measure>
+							</lem>
+							<rdg source="#source_A" xml:id="rdg-6-001-02">
+								<annot><rend fontweight="bold">A</rend>: double barline</annot>
+								<measure n="16" right="dbl">
+									<dir staff="1" tstamp="2" place="below" type="repeat">D.C.</dir>
+									<staff n="1">
+										<layer>
+											<note pname="c" oct="5" dur="2"/>
+										</layer>
+									</staff>
+									<staff n="2">
+										<layer>
+											<beam>
+												<note pname="c" oct="3" dur="8"/>
+												<note pname="e" oct="3" dur="8"/>
+												<note pname="g" oct="3" dur="8"/>
+												<note pname="c" oct="4" dur="8"/>
+											</beam>
+										</layer>
+									</staff>
+								</measure>
+							</rdg>
+						</app>
 						<sb/>
 					</section>
 
 					<section xml:id="p.6" type="C">
 						<scoreDef key.mode="major" key.sig="2f" key.pname="b" meter.count="3"
 							meter.unit="4"/>
-						<measure n="16">
+						<measure n="16" left="rptstart">
 							<dir staff="1" tstamp="1" place="above" type="card_no">p.6</dir>
 							<staff n="1">
 								<layer>

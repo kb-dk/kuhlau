@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?oxygen RNGSchema="../../../../../../MEI/schema/MEI2013_v2.1.0/schemata/mei-all.rng" type="xml"?>
 <mei xmlns="http://www.music-encoding.org/ns/mei" meiversion="2013">
 	<meiHead>
 		<fileDesc>
@@ -523,37 +522,70 @@
 								</layer>
 							</staff>
 						</measure>
-						<measure n="16" right="rptboth">
-							<dir staff="1" tstamp="3" place="below" type="repeat">D.C.</dir>
-							<staff n="1">
-								<layer>
-									<chord dur="4">
-										<note pname="e" oct="4"/>
-										<note pname="g" oct="4"/>
-									</chord>
-									<chord dur="4">
-										<note pname="c" oct="6"/>
-										<note pname="e" oct="5"/>
-										<note pname="c" oct="5"/>
-									</chord>
-								</layer>
-							</staff>
-							<staff n="2">
-								<layer>
-									<note pname="c" oct="3" dur="4"/>
-									<chord dur="4">
-										<note pname="g" oct="4" staff="1"/>
-										<note pname="c" oct="4"/>
-									</chord>
-								</layer>
-							</staff>
-						</measure>
+						<app xml:id="apparatus-10-001">
+							<lem source="#edition" xml:id="rdg-10-001-01">
+								<annot>Double barline emended to end of repeat</annot>
+								<measure n="16" right="rptend">
+									<dir staff="2" tstamp="2" place="below" type="repeat">D.C.</dir>
+									<staff n="1">
+										<layer>
+											<chord dur="4">
+												<note pname="e" oct="4"/>
+												<note pname="g" oct="4"/>
+											</chord>
+											<chord dur="4">
+												<note pname="c" oct="6"/>
+												<note pname="e" oct="5"/>
+												<note pname="c" oct="5"/>
+											</chord>
+										</layer>
+									</staff>
+									<staff n="2">
+										<layer>
+											<note pname="c" oct="3" dur="4"/>
+											<chord dur="4">
+												<note pname="g" oct="4" staff="1"/>
+												<note pname="c" oct="4"/>
+											</chord>
+										</layer>
+									</staff>
+								</measure>
+							</lem>
+							<rdg source="#source_A" xml:id="rdg-10-001-02">
+								<annot><rend fontweight="bold">A</rend>: double barline</annot>
+								<measure n="16" right="dbl">
+									<dir staff="1" tstamp="2" place="below" type="repeat">D.C.</dir>
+									<staff n="1">
+										<layer>
+											<chord dur="4">
+												<note pname="e" oct="4"/>
+												<note pname="g" oct="4"/>
+											</chord>
+											<chord dur="4">
+												<note pname="c" oct="6"/>
+												<note pname="e" oct="5"/>
+												<note pname="c" oct="5"/>
+											</chord>
+										</layer>
+									</staff>
+									<staff n="2">
+										<layer>
+											<note pname="c" oct="3" dur="4"/>
+											<chord dur="4">
+												<note pname="g" oct="4" staff="1"/>
+												<note pname="c" oct="4"/>
+											</chord>
+										</layer>
+									</staff>
+								</measure>
+							</rdg>
+						</app>
 						<sb/>
 					</section>
 
 					<section xml:id="p.10" type="C">
 						<scoreDef key.sig="2f" key.pname="b" meter.count="3" meter.unit="4"/>
-						<measure n="16">
+						<measure n="16" left="rptstart">
 							<dir staff="1" tstamp="1" place="above" type="card_no">p.10</dir>
 							<staff n="1">
 								<layer>

@@ -308,7 +308,7 @@
 					</section>
 					
 					<section xml:id="i.8" type="B">
-						<measure n="11">
+						<measure n="10">
 							<dir staff="1" tstamp="1" place="above" type="card_no">i.8</dir>
 							<staff n="1">
 								<layer>
@@ -341,7 +341,7 @@
 					</section>
 
 					<section xml:id="k.8" type="B">
-						<measure n="12">
+						<measure n="11">
 							<dir staff="1" tstamp="1" place="above" type="card_no">k.8</dir>
 							<staff n="1">
 								<layer>
@@ -377,7 +377,7 @@
 					</section>
 
 					<section xml:id="l.8" type="B">
-						<measure n="13">
+						<measure n="12">
 							<dir staff="1" tstamp="1" place="above" type="card_no">l.8</dir>
 							<staff n="1">
 								<layer>
@@ -413,7 +413,7 @@
 					</section>
 
 					<section xml:id="m.8" type="B">
-						<measure n="14">
+						<measure n="13">
 							<dir staff="1" tstamp="1" place="above" type="card_no">m.8</dir>
 							<staff n="1">
 								<layer>
@@ -458,7 +458,7 @@
 					</section>
 
 					<section xml:id="n.8" type="B">
-						<measure n="15">
+						<measure n="14">
 							<dir staff="1" tstamp="1" place="above" type="card_no">n.8</dir>
 							<staff n="1">
 								<layer>
@@ -494,7 +494,7 @@
 					</section>
 
 					<section xml:id="o.8" type="B">
-						<measure n="16">
+						<measure n="15">
 							<dir staff="1" tstamp="1" place="above" type="card_no">o.8</dir>
 							<staff n="1">
 								<layer>
@@ -534,33 +534,62 @@
 								</layer>
 							</staff>
 						</measure>
-						<measure n="17" right="rptboth">
-							<dir staff="1" tstamp="3" place="below" type="repeat">D.C.</dir>
-							<staff n="1">
-								<layer>
-									<chord dur="2">
-										<note pname="c" oct="5"/>
-										<note pname="e" oct="5"/>
-										<note pname="c" oct="6"/>
-									</chord>
-								</layer>
-							</staff>
-							<staff n="2">
-								<layer>
-									<chord dur="4">
-										<note pname="c" oct="4"/>
-										<note pname="g" oct="4"/>
-									</chord>
-									<note pname="c" oct="3" dur="4"/>
-								</layer>
-							</staff>
-							<sb/>
-						</measure>
+						<app xml:id="apparatus-8-001">
+							<lem source="#edition" xml:id="rdg-8-001-01">
+								<annot>Double barline emended to end of repeat</annot>
+								<measure n="16" right="rptend">
+									<dir staff="2" tstamp="2" place="below" type="repeat">D.C.</dir>
+									<staff n="1">
+										<layer>
+											<chord dur="2">
+												<note pname="c" oct="5"/>
+												<note pname="e" oct="5"/>
+												<note pname="c" oct="6"/>
+											</chord>
+										</layer>
+									</staff>
+									<staff n="2">
+										<layer>
+											<chord dur="4">
+												<note pname="c" oct="4"/>
+												<note pname="g" oct="4"/>
+											</chord>
+											<note pname="c" oct="3" dur="4"/>
+										</layer>
+									</staff>
+								</measure>
+							</lem>
+							<rdg source="#source_A" xml:id="rdg-8-001-02">
+								<annot><rend fontweight="bold">A</rend>: double barline</annot>
+								<measure n="16" right="dbl">
+									<dir staff="1" tstamp="2" place="below" type="repeat">D.C.</dir>
+									<staff n="1">
+										<layer>
+											<chord dur="2">
+												<note pname="c" oct="5"/>
+												<note pname="e" oct="5"/>
+												<note pname="c" oct="6"/>
+											</chord>
+										</layer>
+									</staff>
+									<staff n="2">
+										<layer>
+											<chord dur="4">
+												<note pname="c" oct="4"/>
+												<note pname="g" oct="4"/>
+											</chord>
+											<note pname="c" oct="3" dur="4"/>
+										</layer>
+									</staff>
+								</measure>
+							</rdg>
+						</app>
+						<sb/>
 					</section>
 
 					<section xml:id="p.8" type="C">
 						<scoreDef key.sig="2f" key.pname="b" meter.count="3" meter.unit="4"/>
-						<measure n="18">
+						<measure n="16" left="rptstart">
 							<dir staff="1" tstamp="1" place="above" type="card_no">p.8</dir>
 							<staff n="1">
 								<layer>
@@ -576,7 +605,7 @@
 								</layer>
 							</staff>
 						</measure>
-						<measure n="19">
+						<measure n="17">
 							<staff n="1">
 								<layer>
 									<beam>
@@ -608,7 +637,7 @@
 					</section>
 
 					<section xml:id="q.8" type="C">
-						<measure n="20">
+						<measure n="18">
 							<dir staff="1" tstamp="1" place="above" type="card_no">q.8</dir>
 							<staff n="1">
 								<layer>
@@ -644,7 +673,7 @@
 					</section>
 
 					<section xml:id="r.8" type="C">
-						<measure n="21">
+						<measure n="19">
 							<dir staff="1" tstamp="1" place="above" type="card_no">r.8</dir>
 							<staff n="1">
 								<layer>
@@ -677,7 +706,7 @@
 					</section>
 
 					<section xml:id="s.8" type="C">
-						<measure n="22">
+						<measure n="20">
 							<dir staff="1" tstamp="1" place="above" type="card_no">s.8</dir>
 							<staff n="1">
 								<layer>
@@ -707,7 +736,7 @@
 					</section>
 
 					<section xml:id="t.8" type="C">
-						<measure n="23">
+						<measure n="21">
 							<dir staff="1" tstamp="1" place="above" type="card_no">t.8</dir>
 							<staff n="1">
 								<layer>
@@ -741,7 +770,7 @@
 					</section>
 
 					<section xml:id="u.8" type="C">
-						<measure n="24">
+						<measure n="22">
 							<dir staff="1" tstamp="1" place="above" type="card_no">u.8</dir>
 							<staff n="1">
 								<layer>
@@ -774,7 +803,7 @@
 					</section>
 
 					<section xml:id="v.8" type="C">
-						<measure n="25">
+						<measure n="23">
 							<dir staff="1" tstamp="1" place="above" type="card_no">v.8</dir>
 							<staff n="1">
 								<layer>
@@ -806,7 +835,7 @@
 								</layer>
 							</staff>
 						</measure>
-						<measure n="26" right="rptend">
+						<measure n="24" right="rptend">
 							<staff n="1">
 								<layer>
 									<note pname="b" oct="5" dur="4" xml:id="slurstartv8"/>
