@@ -19,6 +19,7 @@ body, #all {
     width: 73em;
     display: inline-table;
     display: inline-block;
+    margin-top: 20px;
 }
 
 #main, #header, #footer, #loading {
@@ -27,6 +28,11 @@ body, #all {
 
 #header {
     margin: 0 0 1em 0;
+}
+
+#footer {
+    padding: 10px 0 0 0;
+    border-top: 1px solid #000;
 }
 
 #box img {

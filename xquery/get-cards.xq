@@ -72,8 +72,19 @@ return
   <body>
   
     <div id="main">
-    <h1>{$title}{" "}</h1>
-    <br clear="both"/>
+<!--    <h1>{$title}{" "}</h1>
+    <br clear="both"/>-->
+    
+    <div id="header">
+      <div class="kb_logo">
+        <a href="http://www.kb.dk" title="Det Kongelige Bibliotek"><img
+            style="border: 0px; vertical-align:middle;" title="Det Kongelige Bibliotek"
+            alt="KB Logo" src="/kaleidakustikon/style/images/kb.png"/></a></div>
+      <h4>Friedrich Kuhlau</h4>
+      <h1>Kaleidakustikon</h1>
+    </div>
+
+    
     <div>
       {$cards}
     </div>
@@ -125,8 +136,15 @@ return
       </form>
     </div>
     
-    
-    
+    <div id="footer">
+      <div class="dcm_logo">
+        <img style="border: 0px; vertical-align:middle;" alt="DCM Logo"
+            src="/kaleidakustikon/style/images/dcm_logo_small.png"/> Danish Centre for Music Publication, 
+            The Royal Library, Copenhagen 2014 |
+        <a href="http://www.kb.dk/dcm">www.kb.dk/dcm</a>
+      </div>
+    </div>
+
     
     </div>
   </body>
