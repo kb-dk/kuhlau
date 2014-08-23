@@ -9,12 +9,16 @@
     <body class="text">
         <div id="all">
             <div id="header">
-                <div class="kb_logo"> <a href="http://www.kb.dk" title="Det Kongelige Bibliotek"><img style="border: 0px none ; vertical-align: middle;" title="Det Kongelige Bibliotek" alt="KB Logo" src="style/images/kb_white.png"/></a></div>
+                <div class="kb_logo">
+                    <a href="http://www.kb.dk" title="Det Kongelige Bibliotek"><img id="KBLogo"
+                        title="Det Kongelige Bibliotek" alt="KB Logo" src="style/images/kb_white.png" /><img
+                            id="KBLogo_print" title="Det Kongelige Bibliotek" alt="KB Logo"
+                            src="style/images/kb.png" /></a></div>
                 <h4>Friedrich Kuhlau</h4>
                 <h1>Kaleidakustikon</h1>
                 <div class="line"> </div>
             </div>
-            <div id="menu">
+            <div id="menu" class="noprint">
                 <a href="./">Home</a> 
                 <a href="introduction.html">Introduction</a>
                 <a href="instructions.html" class="selected">Instructions</a> 
@@ -101,9 +105,15 @@
             </div>
             
             <div id="footer">
-                <div class="dcm_logo"> <a href="http://www.kb.dk/dcm" title="Dansk Center for Musikudgivelse"><img style="border: 0px none ; vertical-align: middle;" alt="DCM Logo" src="style/images/dcm_logo_small_white.png"/>Dansk
-                    Center for Musikudgivelse / Det Kongelige Bibliotek 2014 </a>
-                </div>
+                <a href="http://www.kb.dk/dcm" title="DCM" style="text-decoration:none;"><img alt="DCM Logo"
+                    src="/editor/images/dcm_logo_small_white.png" id="dcm_logo" /><img alt="DCM Logo"
+                        src="/editor/images/dcm_logo_small.png" id="dcm_logo_print" /></a> 2014 Danish Centre
+                for Music Publication | The Royal Library | P.O. Box 2149 | Copenhagen K, Denmark | <a
+                    name="www.kb.dk" id="www.kb.dk" href="http://www.kb.dk/dcm">www.kb.dk/dcm</a><br />
+                <span class="creativecommons"> This work is licensed under a <a rel="license"
+                    href="http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons
+                    Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>
+                </span>
             </div>
         </div>
     </body></html>

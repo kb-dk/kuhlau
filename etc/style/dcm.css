@@ -79,12 +79,12 @@ p {
     text-decoration: underline;
 }
 
-
 #footer {
     color: #fff;
-    padding: 10px 20px 0 20px;
+    padding: 10px 20px 10px 20px;
     border-top: 1px solid #fff;
-    height: 48px;
+    min-height: 48px;
+    text-align: center;
 }
 
 body.text #main p, body.text #main div, body.text #main h2, 
@@ -92,12 +92,6 @@ body.text #main h3, body.text #main h4, body.text #main ul,
 body.text #main ol {
     line-height: 1.5em;
     max-width: 45em;
-}
-
-.kb_logo {
-    float: left;
-    margin: 3px 10px 0 0;
-    width: auto;
 }
 
 a, a:link, a:visited, a:active, a:hover {
@@ -109,8 +103,35 @@ a:hover {
     color: #fff;
 }
 
+.kb_logo {
+    float: left;
+    margin: 3px 10px 0 0;
+    width: auto;
+}
+
 .dcm_logo a {
     text-decoration: none;
+}
+
+#dcm_logo, #dcm_logo_print {
+    vertical-align: middle;
+    border: 0;
+}
+
+.creativecommons {
+    font-size: 0.65em;
+}
+
+.creativecommons  {
+    font-size: 0.65em;
+}
+
+.creativecommons a {
+    text-decoration: none;
+}
+
+.creativecommons a:hover {
+    text-decoration: underline;
 }
 
 input {
@@ -270,7 +291,13 @@ p.illustration_text {
 } 
 
 
-/* CSS for printing */
+/* Print-related style rules */
+
+#dcm_logo_print,
+#KBLogo_print {
+    display: none;
+}
+
 
 @media print {
     
@@ -283,4 +310,25 @@ p.illustration_text {
         background-color: #fff;
     } 
     
+    #main  {
+        margin-top: 10pt;
+        padding-top: 5pt;
+        border-top: .1pt solid #000;    
+    }
+    
+    #footer {
+        margin-top: 10pt;
+        border-top: .1pt solid #000;    
+    }
+    
+    #dcm_logo,
+    #KBLogo {
+        display: none;
+    }
+    #dcm_logo_print,
+    #KBLogo_print {
+        display: inline;
+    }
+    
+
 }
