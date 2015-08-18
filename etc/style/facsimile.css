@@ -49,6 +49,10 @@ body, #all {
     margin: 1em 0 .5em 0;
 }
 
+a, a:link, a:visited, a:active, a:hover {
+    color: #000;
+}
+
 .kb_logo img {
     width: 3.5em;
     height: 3.5em;

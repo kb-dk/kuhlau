@@ -29,14 +29,19 @@ a.card {
 
 /* Skin */
 
+#all {
+    width: 1120px;    
+    min-width: 1120px;
+}
+
 #main {
     padding-bottom: 5px;
 }
 
 #loading {
+    background-color: #fff;
     color: #000;
     padding: 50px 20px 100px 20px;
-    height: auto;
 }
 
 #id_bar {
@@ -141,6 +146,7 @@ input {
     display: inline-block;
     width: 100px;
     text-align: center;
+/*    font-weight: bold; */
     font-size: 10pt;
 }
 
@@ -151,7 +157,7 @@ input {
 
 #play_menu div.play_button a:hover,
 #presetform div.play_button a:hover {
-    color: #fff;
+    color: #637F57;
 }
 
 div.play_button img {
@@ -283,5 +289,3 @@ a.card {
     width: 24px;
     top: -.4em;
 }
-
-
