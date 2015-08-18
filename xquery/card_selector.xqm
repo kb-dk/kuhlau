@@ -28,8 +28,7 @@ declare function crds:select_cards(
       else
 	($a,$b,$c)
 
-	let $rawmusic:=<mei xmlns="http://www.music-encoding.org/ns/mei"
-	  meiversion="2013">
+	let $rawmusic:=<mei xmlns="http://www.music-encoding.org/ns/mei" meiversion="2013">
 	<meiHead>
 	  <fileDesc>
 	    <titleStmt>
@@ -52,8 +51,8 @@ declare function crds:select_cards(
 		meter.count="3" 
 		meter.unit="4" >
 		  <staffGrp symbol="brace" barthru="true">
-		    <staffDef n="1" clef.line="2" clef.shape="G"/>
-		    <staffDef n="2" clef.line="4" clef.shape="F"/>
+		    <staffDef n="1" clef.line="2" clef.shape="G" lines="5"/>
+		    <staffDef n="2" clef.line="4" clef.shape="F" lines="5"/>
 		  </staffGrp>
 		</scoreDef>
 		{
