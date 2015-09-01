@@ -67,10 +67,6 @@ function randomize(startAt) {
     startAt = startAt || 0;
     for (var i=startAt;i<list.length;i++) {
         var rand=Math.floor(Math.random()*11)+2;
-        // pile h needs special treatment
-        while(list[i]=='h' && rand>2 && rand<11) {
-            rand=Math.floor(Math.random()*11)+2;
-        }
         var el='select#'+list[i];
         $(el).selectmenu("value",rand);
     }
@@ -89,7 +85,7 @@ function setCards(preset) {
              if(val=='a') { val=10; }
              if(val=='b') { val=11; }
              if(val=='c') { val=12; }
-             if((val<1 && val>12)||(list[i]=='h' && val!=2 && val!=11 && val!=12)) {
+             if(val<1 && val>12) {
                  // default to 2 if invalid
                  val = 2;
              }
@@ -113,12 +109,7 @@ function setLayer(preset) {
     }
     for (var i=0;i<list.length;i++) {
         var el='select#'+list[i];
-         if(list[i]=='h' && val!=2 && val!=11 && val!=12) {
-            // special treatment for pile h
-            $(el).selectmenu("value",2);
-        } else {
-            $(el).selectmenu("value",val);
-        }
+        $(el).selectmenu("value",val);
     }
     showId();
 }
