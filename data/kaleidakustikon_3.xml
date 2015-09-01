@@ -278,10 +278,59 @@
 						<sb/>
 					</section>
 
-					<section type="missing">
-						<!-- card is lost -->
+					<section xml:id="h.3" type="B">
+						<scoreDef key.sig="4f" key.pname="f" key.mode="minor" meter.count="3"
+							meter.unit="4"/>
+						<measure type="upbeat" left="rptstart">
+							<dir staff="1" tstamp="1" place="above" type="card_no">h.3</dir>
+							<staff n="1">
+								<layer>
+									<clef shape="F" line="4"/>
+									<beam>
+										<note pname="c" oct="2" dur="8" dots="1"/>
+										<note pname="c" oct="2" dur="16"/>
+									</beam>
+								</layer>
+							</staff>
+							<staff n="2">
+								<layer>
+									<rest dur="4"/>
+								</layer>
+							</staff>
+						</measure>
+						<measure n="9">
+							<staff n="1">
+								<layer>
+									<note pname="c" oct="2" dur="4"/>
+									<note pname="c" oct="2" dur="4"/>
+									<clef shape="G" line="2"/>
+									<beam>
+										<note pname="c" oct="5" dur="8" dots="1"/>
+										<note pname="c" oct="5" dur="16"/>
+									</beam>
+								</layer>
+							</staff>
+							<staff n="2">
+								<layer>
+									<beam>
+										<note pname="c" oct="3" dur="8"/>
+										<note pname="c" oct="4" dur="8"/>
+										<chord tstamp="1" dur="8">
+											<note pname="g" oct="3"/>
+											<note pname="b" oct="3"/>
+										</chord>
+										<note pname="c" oct="4" dur="8"/>
+										<chord tstamp="1" dur="8">
+											<note pname="g" oct="3"/>
+											<note pname="b" oct="3"/>
+										</chord>
+										<note pname="c" oct="4" dur="8"/>
+									</beam>
+								</layer>
+							</staff>
+						</measure>
 					</section>
-
+					
 					<section xml:id="i.3" type="B">
 						<measure n="10">
 							<dir staff="1" tstamp="1" place="above" type="card_no">i.3</dir>
