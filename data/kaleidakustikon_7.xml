@@ -284,8 +284,56 @@
 						<sb/>
 					</section>
 
-					<section type="missing">
-						<!-- this section is empty. card is missing  -->
+					<section xml:id="h.7" type="B">
+						<measure type="upbeat" left="rptstart">
+							<dir staff="1" tstamp="1" place="above" type="card_no">h.7</dir>
+							<staff n="1">
+								<layer>
+									<beam>
+										<note pname="c" oct="5" dur="4" xml:id="h7tiestart"/>
+										<tie startid="h7tiestart" endid="h7tieend" staff="1"
+											curvedir="above"/>
+									</beam>
+								</layer>
+							</staff>
+							<staff n="2">
+								<layer>
+									<rest dur="4"/>
+								</layer>
+							</staff>
+						</measure>
+						<measure n="9">
+							<staff n="1">
+								<layer>
+									<beam>
+										<note pname="c" oct="5" dur="8" xml:id="h7tieend"/>
+										<note pname="d" oct="5" dur="8"/>
+										<note pname="e" oct="5" dur="8"/>
+										<note pname="f" oct="5" dur="8"/>
+										<note pname="g" oct="5" dur="8"/>
+										<note pname="a" oct="5" dur="8"/>
+									</beam>
+								</layer>
+							</staff>
+							<staff n="2">
+								<layer>
+									<beam>
+										<note pname="c" oct="3" dur="8"/>
+										<note pname="c" oct="4" dur="8"/>
+										<chord tstamp="1" dur="8">
+											<note pname="g" oct="3"/>
+											<note pname="b" oct="3"/>
+										</chord>
+										<note pname="c" oct="4" dur="8"/>
+										<chord tstamp="1" dur="8">
+											<note pname="g" oct="3"/>
+											<note pname="b" oct="3"/>
+										</chord>
+										<note pname="c" oct="4" dur="8"/>
+									</beam>
+								</layer>
+							</staff>
+						</measure>
 					</section>
 					
 					<section xml:id="i.7" type="B">

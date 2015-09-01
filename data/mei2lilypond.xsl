@@ -74,6 +74,7 @@ tagline = ""  % removed
     <xsl:template match="m:layer">
         <xsl:apply-templates select="m:clef|m:chord|m:beam|m:note|m:rest|m:space"/>
     </xsl:template>
+    
     <xsl:template match="m:chord">
         <xsl:if test="@stem.dir='up' and not(@grace)">
             <xsl:text> \once \stemUp </xsl:text>
@@ -88,11 +89,18 @@ tagline = ""  % removed
         <xsl:call-template name="dots">
             <xsl:with-param name="dots" select="@dots"/>
         </xsl:call-template>
+        <xsl:if test="@xml:id">
+            <xsl:call-template name="spanned_element">
+                <xsl:with-param name="me_id" select="@xml:id"/>
+            </xsl:call-template>
+        </xsl:if>
         <xsl:text> </xsl:text>
     </xsl:template>
+    
     <xsl:template match="m:beam[m:note|m:chord|m:rest|m:space|m:clef]">
         <xsl:call-template name="beam-like"/>
     </xsl:template>
+    
     <xsl:template name="beam-like">
         <xsl:for-each select="m:note|m:chord|m:rest|m:space|m:clef">
             <xsl:if test="@grace and not(preceding-sibling::m:note[1]/@grace)">
@@ -117,6 +125,7 @@ tagline = ""  % removed
             <xsl:if test="@grace and position()=last()">} </xsl:if>
         </xsl:for-each>
     </xsl:template>
+    
     <xsl:template name="dots">
         <xsl:param name="dots" select="'1'"/>
         <xsl:choose>
@@ -125,15 +134,19 @@ tagline = ""  % removed
             <xsl:when test="$dots='3'">...</xsl:when>
         </xsl:choose>
     </xsl:template>
+    
     <xsl:template match="m:beam[m:tuplet]">
         <xsl:apply-templates/>
     </xsl:template>
+    
     <xsl:template match="m:tuplet">
         <!--tuplet dur="4" num.place="below" num.format="count" num="3"/-->
         <!-- this seem to work for triols and pentols -->
         <xsl:value-of select="concat('\times ',m:note[1]/@dur div @dur,'/',@num)"/>
         <xsl:text> { </xsl:text>
-        <xsl:call-template name="beam-like"/> } </xsl:template>
+        <xsl:call-template name="beam-like"/> } 
+    </xsl:template>
+    
     <xsl:template match="m:dir">
         <!-- this would be better than using \mark - but requires the markup to be placed after a note... -->
         <!--<xsl:choose>
@@ -165,11 +178,13 @@ tagline = ""  % removed
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
+    
     <xsl:template match="m:fermata">
         <xsl:text>\once \override Score.RehearsalMark #'padding = #0
 \once \override Score.RehearsalMark #'self-alignment-X = #CENTER
 \mark \markup { \musicglyph #"scripts.ufermata" } </xsl:text>
     </xsl:template>
+    
     <xsl:template match="m:note">
         <xsl:if test="not(ancestor::m:chord)">
             <xsl:choose>
@@ -279,25 +294,13 @@ From mei schema:
 "dot"
 "stroke" -->
         <xsl:if test="@xml:id">
-            <xsl:variable name="me_id" select="@xml:id"/>
-            <xsl:if test="//m:tie/@startid = $me_id">
-                <xsl:text>~</xsl:text>
-            </xsl:if>
-            <xsl:if test="//m:slur/@startid = $me_id">
-                <xsl:text>( </xsl:text>
-            </xsl:if>
-            <xsl:if test="//m:slur/@endid = $me_id">
-                <xsl:text>) </xsl:text>
-            </xsl:if>
-            <xsl:if test="//m:hairpin/@startid = $me_id">
-                <xsl:text>\&gt; </xsl:text>
-            </xsl:if>
-            <xsl:if test="//m:hairpin/@endid = $me_id">
-                <xsl:text>\! </xsl:text>
-            </xsl:if>
+            <xsl:call-template name="spanned_element">
+                <xsl:with-param name="me_id" select="@xml:id"/>
+            </xsl:call-template>
         </xsl:if>
         <xsl:text> </xsl:text>
     </xsl:template>
+    
     <xsl:template match="m:rest">
         <xsl:text> r</xsl:text>
         <xsl:value-of select="normalize-space(@dur)"/>
@@ -306,6 +309,7 @@ From mei schema:
         </xsl:call-template>
         <xsl:text> </xsl:text>
     </xsl:template>
+    
     <xsl:template match="m:space">
         <xsl:text> s</xsl:text>
         <xsl:value-of select="normalize-space(@dur)"/>
@@ -314,6 +318,7 @@ From mei schema:
         </xsl:call-template>
         <xsl:text> </xsl:text>
     </xsl:template>
+    
     <xsl:template match="m:clef">
         <xsl:choose>
             <xsl:when test="@shape='G'">
@@ -326,6 +331,26 @@ From mei schema:
             </xsl:when>
         </xsl:choose>
     </xsl:template>
+
+    <xsl:template name="spanned_element">
+        <xsl:param name="me_id"/>
+        <xsl:if test="//m:tie/@startid = $me_id">
+            <xsl:text>~</xsl:text>
+        </xsl:if>
+        <xsl:if test="//m:slur/@startid = $me_id">
+            <xsl:text>( </xsl:text>
+        </xsl:if>
+        <xsl:if test="//m:slur/@endid = $me_id">
+            <xsl:text>) </xsl:text>
+        </xsl:if>
+        <xsl:if test="//m:hairpin/@startid = $me_id">
+            <xsl:text>\&gt; </xsl:text>
+        </xsl:if>
+        <xsl:if test="//m:hairpin/@endid = $me_id">
+            <xsl:text>\! </xsl:text>
+        </xsl:if>
+    </xsl:template>
+
     <xsl:template name="partial">
         <xsl:variable name="notes">
             <notes>
@@ -356,6 +381,7 @@ From mei schema:
         <xsl:text> 
   </xsl:text>
     </xsl:template>
+    
     <xsl:template name="get-voice">
         <xsl:param name="voicename" select="'voice'"/>
         <xsl:param name="voicenumber" select="'1'"/>
@@ -495,9 +521,6 @@ From mei schema:
         </xsl:if>
     </xsl:template>
 
-
-
-
     <xsl:template name="get-key-sig">
         <xsl:text>\key </xsl:text>
         <xsl:call-template name="get-lily-pitch">
@@ -515,6 +538,7 @@ From mei schema:
             <xsl:otherwise> \major </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
+
     <xsl:template name="get-lily-pitch">
         <xsl:param name="sig" select="preceding::m:scoreDef[1]/@key.sig"/>
         <xsl:param name="accid" select="''"/>
@@ -532,6 +556,7 @@ From mei schema:
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
+
     <xsl:template name="get-clef">
         <xsl:param name="voicenumber" select="'1'"/>
         <xsl:choose>
@@ -545,16 +570,19 @@ From mei schema:
             </xsl:when>
         </xsl:choose>
     </xsl:template>
+
     <xsl:template name="start-repeat">
         <xsl:choose>
             <xsl:when test="contains($getitas,'mid')"> % s64 </xsl:when>
             <xsl:otherwise> % start repeat \repeat volta 2 { % s64 </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
+
     <xsl:template name="restart-repeat">
         <xsl:call-template name="end-repeat"/>
         <xsl:call-template name="start-repeat"/>
     </xsl:template>
+
     <xsl:template name="end-repeat">
         <xsl:choose>
             <xsl:when test="contains($getitas,'mid')"/>

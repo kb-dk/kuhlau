@@ -305,8 +305,66 @@
 						<sb/>
 					</section>
 
-					<section type="missing">
-						<!-- this section is empty. card is missing  -->
+					<section xml:id="h.10" type="B">
+						<scoreDef key.sig="4f" key.pname="f" key.mode="minor" meter.count="3"
+							meter.unit="4"/>
+						<measure type="upbeat" left="rptstart">
+							<dir staff="1" tstamp="1" place="above" type="card_no">h.10</dir>
+							<staff n="1">
+								<layer>
+									<beam>
+										<note pname="c" oct="4" dur="8" dots="1"/>
+										<note pname="c" oct="4" dur="16"/>
+									</beam>
+								</layer>
+							</staff>
+							<staff n="2">
+								<layer>
+									<beam>
+										<chord dur="8" dots="1">
+											<note pname="c" oct="2"/>
+											<note pname="c" oct="3"/>
+										</chord>
+										<chord dur="16">
+											<note pname="c" oct="2"/>
+											<note pname="c" oct="3"/>
+										</chord>
+									</beam>
+								</layer>
+							</staff>
+						</measure>
+						<measure n="9">
+							<staff n="1">
+								<layer>
+									<note pname="d" oct="4" dur="4" xml:id="h10slurstart1"/>
+									<note pname="c" oct="4" dur="4" xml:id="h10slurend1"/>
+									<slur startid="h10slurstart1" endid="h10slurend1" staff="1"
+										curvedir="below"/>
+									<beam>
+										<note pname="c" oct="5" dur="8" dots="1"/>
+										<note pname="c" oct="5" dur="16"/>
+									</beam>
+								</layer>
+							</staff>
+							<staff n="2">
+								<layer>
+									<chord dur="4" xml:id="h10slurstart2">
+										<note pname="d" oct="2"/>
+										<note pname="d" oct="3"/>
+									</chord>
+									<chord dur="4" xml:id="h10slurend2">
+										<note pname="c" oct="2"/>
+										<note pname="c" oct="3"/>
+									</chord>
+									<slur startid="h10slurstart2" endid="h10slurend2" staff="1"
+										curvedir="below"/>
+									<beam>
+										<note pname="c" oct="3" dur="8" dots="1"/>
+										<note pname="c" oct="3" dur="16"/>
+									</beam>
+								</layer>
+							</staff>
+						</measure>
 					</section>
 					
 					<section xml:id="i.10" type="B">
