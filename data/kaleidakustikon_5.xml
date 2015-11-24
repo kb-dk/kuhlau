@@ -384,9 +384,9 @@
 								<layer>
 									<note pname="f" oct="5" dur="4"/>
 									<app xml:id="apparatus-5-0001">
-										<lem source="#source_A" xml:id="rdg-5-0001-01">
+										<lem source="#source_A #source_B" xml:id="rdg-5-0001-01">
 											<annot>
-												<rend fontweight="bold">A</rend>: grace notes before
+												<rend fontweight="bold">A</rend>, <rend fontweight="bold">B</rend>: grace notes before
 												note 2: 8th notes </annot>
 											<beam>
 												<note pname="g" oct="5" dur="8" grace="unacc"
@@ -399,8 +399,8 @@
 												stem.dir="up"/>
 											</beam>
 										</lem>
-										<rdg source="#source_B" xml:id="rdg-5-0001-02">
-											<annot><rend fontweight="bold">B</rend>: grace notes
+										<rdg source="#source_C" xml:id="rdg-5-0001-02">
+											<annot><rend fontweight="bold">C</rend>: grace notes
 												before note 2: 32nd notes</annot>
 											<beam>
 												<note pname="g" oct="5" dur="32" grace="unacc"

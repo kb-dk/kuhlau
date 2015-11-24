@@ -1,6 +1,4 @@
-<?oxygen SCHSchema="file:/P:/MEI/schema/MEI2013_v2.1.0/schemata/mei-all.rng"?>
-<?oxygen RNGSchema="file:/P:/MEI/schema/MEI2013_v2.1.0/schemata/mei-all.rng" type="xml"?>
-<mei xmlns="http://www.music-encoding.org/ns/mei" xmlns:xl="http://www.w3.org/1999/xlink" meiversion="2013" xml:id="mei_107N20006">
+<mei xmlns="http://www.music-encoding.org/ns/mei" xmlns:xl="http://www.w3.org/1999/xlink" meiversion="2013" xml:id="mei_idm139834872170448">
     <meiHead>
         <fileDesc>
             <titleStmt>
@@ -28,7 +26,7 @@
                     <persName role="editor" xml:id="persName_80e56130">Axel Teich Geertinger</persName>
                     <persName role="editor" xml:id="persName_638a39f9">Sigfrid Lundberg</persName>
                 </respStmt>
-                <date isodate="2014">2014</date>
+                <date isodate="2015">2015</date>
                 <availability>
                     <useRestrict>This work is licensed under a Creative Commons
             Attribution-NonCommercial-NoDerivs 3.0 Unported License. <ptr label="CC BY-NC-ND 3.0 License" target="http://creativecommons.org/licenses/by-nc-nd/3.0/"/>
@@ -40,10 +38,9 @@
                 <identifier type="file_collection" xml:id="identifier_eee2ad57">DCM</identifier>
             </seriesStmt>
             <sourceDesc>
-                <source analog="frbr:manifestation" label="Source A" xml:id="source_5143f5ba">
-                    <identifier/>
+                <source analog="frbr:manifestation" label="Source A" xml:id="source_A">
                     <titleStmt>
-                        <title xml:id="title_f40eed1e">Kaleidakustikon</title>
+                        <title xml:id="title_f40eed1e">Source A</title>
                     </titleStmt>
                     <pubStmt>
                         <publisher>C. C. Lose</publisher>
@@ -51,22 +48,8 @@
                         <date notafter="1820">c.1820</date>
                     </pubStmt>
                     <physDesc>
-                        <extent unit="cards">223</extent>
                         <dimensions unit="cm">Box: 19.7 x 35.8 x 1.7</dimensions>
-                        <dimensions unit="cm">Cards: 5.4 x 4.8</dimensions>
-                        <physMedium>
-              Twenty-one piles of cards in sturdy cardboard arranged in three rows in a cardboard
-                box. The sides of the box are lined with green linen. An insertion of orange
-                cardboard keeps the piles of cards in place. The box may also be used for holding
-                the chosen card and may, for example, be placed on a music stand.<lb/>
-              Each pile of cards is provided with a band of orange cardboard imprinted with the
-                pile's letter (A...V); the band of pile H is not original and lacks the imprint.
-                Each pile contains eleven cards, marked with the pile's letter and the figures from
-                two to twelve (namely, all the scores possible when throwing two dices); that is,
-                for instance, a2 to a12 in pile A. The cards are lithographically produced.
-            </physMedium>
-                        <condition>Incomplete; cards h3 to h10 lacking. Lid and instructions are
-              lacking.</condition>
+                        <dimensions unit="cm">Cards: c. 5.4 x 4.8</dimensions>
                         <titlePage label="Title on label pasted on the wrapping" xml:id="titlePage_fde403ed">
                             <p>KALEIDAKUSTIKON, / en musikalsk Underholdning for Claveerspillere, / af / F.
                 Kuhlau. / Kjöbenhavn. Hos C. C. Lose</p>
@@ -74,9 +57,37 @@
                     </physDesc>
                     <itemList>
                         <item label="" xml:id="item_1519854d">
+                            <physDesc>
+                                <condition xml:id="condition_228N20072">Incomplete; cards h3 to h10 lacking. Lid and instructions are
+                                    lacking.</condition>
+                                <extent unit="cards">223</extent>
+                                <physMedium>Wrapped in sturdy, 
+                    dark-brown packing paper. An orange label with the 
+title is pasted on the centre of the front of the parcel. 
+                    At the top to the left on the label, the signature <rend fontstyle="italic">B.I.22.</rend> has been added in pencil; 
+                    below the label on the packing paper <rend fontstyle="italic">Vide C. Thrane: Danske Komponister, pag. 137-138 / 
+                        S.A.E. Hagen.</rend> has been added in black ink.<rend fontstyle="italic"/>The<rend fontstyle="italic"> Kaleidakustikon</rend>
+ consists of twenty-one piles of cards in sturdy cardboard arranged in 
+three rows 
+                    in a cardboard box. The sides of the box are lined 
+with green 
+                    linen. An insertion of orange cardboard keeps the 
+piles of cards in place. 
+                    The box may also be used for holding the chosen card
+ and may, for example, be placed on a music stand.	Each pile of cards is
+ provided with a band of orange cardboard imprinted with the pile's 
+letter (A...V); 
+                    the band of pile H is not original and lacks the 
+imprint. 
+                    Each pile contains eleven cards, marked with the 
+pile's letter and the figures from two to twelve 
+                    (namely, all the scores possible when throwing two 
+dices); that is, for instance, a2 to a12 in pile A. The cards are lithographically produced.</physMedium>
+                                <plateNum/>
+                            </physDesc>
                             <physLoc>
                                 <repository>
-                                    <corpName xml:id="corpName_6c914ceb">The Royal Library</corpName>
+                                    <corpName xml:id="corpName_6c914ceb"/>
                                     <geogName xml:id="geogName_5ab919c4">Copenhagen</geogName>
                                     <identifier authURI="http://www.rism.info" authority="RISM" xml:id="identifier_ad64da0e">DK-Kk</identifier>
                                 </repository>
@@ -85,10 +96,46 @@
                         </item>
                     </itemList>
                 </source>
-                <source analog="frbr:manifestation" label="Source B" xml:id="source_111d82d1">
-                    <identifier/>
+                <source analog="frbr:manifestation" label="Source B" xml:id="source_B">
                     <titleStmt>
-                        <title xml:id="title_ef171d25">Kaleidakustikon</title>
+                        <title xml:id="title_fc85eaec">Source B</title>
+                    </titleStmt>
+                    <pubStmt>
+                        <publisher>C. C. Lose</publisher>
+                        <pubPlace xml:id="pubPlace_d0e05d12">Copenhagen</pubPlace>
+                        <date notafter="1820">c.1820</date>
+                    </pubStmt>
+                    <physDesc>
+                        <titlePage label="Title on label pasted on the wrapping" xml:id="titlePage_43554790">
+                            <p>KALEIDAKUSTIKON, / en musikalsk Underholdning for Claveerspillere, / af / F.
+                Kuhlau. / Kjöbenhavn. Hos C. C. Lose</p>
+                        </titlePage>
+                    </physDesc>
+                    <notesStmt>
+                        <annot type="source_description" xml:id="annot_687cac2f">The wrapping and the label are identical to those of Source <rend fontweight="bold">A</rend>. The engraving, however, differs from both Source <rend fontweight="bold">A</rend> and <rend fontweight="bold">C</rend>.</annot>
+                    </notesStmt>
+                    <itemList>
+                        <item label="" xml:id="item_aa76fc22">
+                            <physDesc>
+                                <condition xml:id="condition_246N200C2">Lid and instructions missing.</condition>
+                                <provenance/>
+                                <extent unit="cards">231</extent>
+                                <plateNum/>
+                            </physDesc>
+                            <physLoc>
+                                <repository>
+                                    <corpName xml:id="corpName_69a58610"/>
+                                    <geogName xml:id="geogName_4386d3be">Copenhagen</geogName>
+                                    <identifier authURI="http://www.rism.info" authority="RISM" xml:id="identifier_87181e82">S-Skma</identifier>
+                                </repository>
+                                <identifier xml:id="identifier_77b9cee3">Noter rar 710</identifier>
+                            </physLoc>
+                        </item>
+                    </itemList>
+                </source>
+                <source analog="frbr:manifestation" label="Source C" xml:id="source_C">
+                    <titleStmt>
+                        <title xml:id="title_ef171d25">Source C</title>
                     </titleStmt>
                     <pubStmt>
                         <publisher>F. J. Weygand</publisher>
@@ -96,27 +143,33 @@
                         <date notafter="1820">c.1820</date>
                     </pubStmt>
                     <physDesc>
-                        <extent unit="cards">230</extent>
-                        <physMedium>
-              The cards are placed in a box lined with orange linen. The lid and base are
-                apparently hinged together employing the same orange linen. Each pile of cards is
-                kept together by a white paper or cardboard strip without imprint. Contrary to
-                Source A, there is no division of the box in three rows. It cannot be used,
-                therefore, as a stand for the chosen cards; however, the box includes a board or a
-                piece of cardboard lined with blue paper or linen which seems to function as a stand
-                for the cards when they are stuck into the three long pockets on the board.
-            </physMedium>
-                        <condition>Incomplete; one card lacking.</condition>
-                        <provenance>
-                            <eventList>
-                                <event>
-                                    <p>Sold on <date isodate="2012-12-19">19 December 2012</date> at an auction of 
-                    <persName>Jean-Paul Morin</persName>'s collection of curiosa
-                    in <geogName>Paris</geogName> by the auction house 
-                    <corpName>Pierre Bergé &amp; Associés</corpName>.</p>
-                                </event>
-                            </eventList>
-                        </provenance>
+                        <physMedium>An exemplar of the <rend fontstyle="italic">Kaleidakustikon</rend> was sold at an auction of 
+Jean-Paul Morin's collection 
+                    of curiosa on 19 December 2012 in Paris. 
+Unfortunately it has not been possible to establish contact 
+                    with the present owner of this exemplar [<rend/>Thanks are due to the auction house, 
+                                Pierre Bergé &amp; Associés, for making the illustration from the auction catalogue available 
+                                for further studies and for forwarding DCM's request to the owner 
+                                concerning the exchange of information]. However, 
+                    the auction house's illustration of the Dutch 
+exemplar makes it possible to provide a crude source description of the item: The 
+cards are placed in a box lined with orange linen. 
+                    The lid and base are apparently hinged together 
+employing the same orange linen. 
+                    Each pile of cards is kept together by a white paper
+ or cardboard strip without imprint. 
+                    Contrary to Source <rend fontweight="bold">A</rend> and <rend fontweight="bold">B</rend>, there is no division of the 
+box in three rows. 
+                    It cannot be used, therefore, as a stand for the 
+chosen cards; instead, the box includes a plate or a piece 
+                    of cardboard lined with blue paper or linen which 
+seems to function as a stand for the cards when they are 
+                    stuck into the three long pockets on the plate.	The 
+illustration shows the entire cards k2–k3 and k5–k12 as well as the 
+first page of the manual. 
+                    See 'Instructions' for a complete transcription of 
+the text of the manual. 
+                    According to the auction house's description, the exemplar is lacking a card.</physMedium>
                     </physDesc>
                     <notesStmt>
                         <annot xml:id="annot_0149c0f4">The source has not been available to the editors. All information is thanks to
@@ -124,8 +177,32 @@
                     </notesStmt>
                     <itemList>
                         <item label="" xml:id="item_25e000fa">
+                            <physDesc>
+                                <condition xml:id="_1">Incomplete; one card lacking.</condition>
+                                <extent unit="cards">230</extent>
+                                <provenance>
+                                    <eventList xml:id="eventList_149N200E4">
+                                        <event xml:id="event_149N200E7">
+                                            <p xml:id="p_149N200E9">In Jean-Paul Morin's collection of curiosa</p>
+                                            <date notafter="2012-12-19">until 2012</date>
+                                            <geogName role="" xml:id="_1_1"/>
+                                            <corpName role="" xml:id="_2"/>
+                                            <persName role="" xml:id="_3"/>
+                                        </event>
+                                        <event xml:id="_5">
+                                            <p xml:id="_5">Sold at an auction of  Jean-Paul Morin's collection of curiosa in Paris by the auction house Pierre Bergé &amp; Associés</p>
+                                            <date isodate="2012-12-19">2012-12-19</date>
+                                            <geogName role="" xml:id="_6"/>
+                                            <corpName role="" xml:id="_7"/>
+                                            <persName role="" xml:id="_8"/>
+                                        </event>
+                                    </eventList>
+                                </provenance>
+                                <plateNum/>
+                            </physDesc>
                             <physLoc>
-                                <repository>Unknown (privately owned?)</repository>
+                                <repository>
+                                    <corpName xml:id="_11">Privately owned (?)</corpName>Unknown (privately owned?)</repository>
                             </physLoc>
                         </item>
                     </itemList>
@@ -143,6 +220,8 @@
             <work analog="frbr:work" xml:id="work_ddde06e3">
                 <titleStmt>
                     <title xml:id="title_081fb92b" xml:lang="da">Kaleidakustikon</title>
+                    <title xml:id="title_feabffc1" xml:lang="en">Kaleidakustikon</title>
+                    <title xml:id="title_1c6fc4eb" xml:lang="de">Kaleidakustikon</title>
                     <title type="subordinate" xml:id="title_97ba7a33" xml:lang="da">En musikalsk Underholdning for Claveerspillere </title>
                     <title type="subordinate" xml:id="title_d8527d8d" xml:lang="de">Musikalische Unterhaltung für Pianoforte-Spieler</title>
                     <title type="subordinate" xml:id="title_a288718e" xml:lang="en">Amusement for Piano-Forte Players</title>
@@ -160,13 +239,120 @@
                     <language xml:id="en">English</language>
                     <language xml:id="de">German</language>
                 </langUsage>
+                <biblList>
+                    <head>Bibliography</head>
+                    <bibl label="" xml:id="bibl_ce7013cf">
+                        <genre>book</genre>
+                        <author>Carl Thrane</author>
+                        <title level="m">Danske Komponister</title>
+                        <title level="s"/>
+                        <biblScope unit="page">137–138</biblScope>
+                        <imprint>
+                            <date isodate="1875">1875</date>
+                            <pubPlace>Copenhagen</pubPlace>
+                            <publisher/>
+                        </imprint>
+                    </bibl>
+                    <bibl label="" xml:id="bibl_84dcf23f">
+                        <genre>book</genre>
+                        <author>Dan Fog</author>
+                        <title level="m">Kompositionen von Fridr. Kuhlau. Thematisch-bibliographischer Katalog</title>
+                        <title level="s"/>
+                        <biblScope unit="page">174</biblScope>
+                        <imprint>
+                            <date isodate="1977">1977</date>
+                            <pubPlace>Copenhagen</pubPlace>
+                            <publisher/>
+                        </imprint>
+                    </bibl>
+                    <bibl label="" xml:id="bibl_a8b03a91">
+                        <genre>book</genre>
+                        <author>Gorm Busk</author>
+                        <author>Jan Maegaard</author>
+                        <title level="m">Kuhlau Kanons</title>
+                        <title level="s"/>
+                        <biblScope unit="page">147–165</biblScope>
+                        <imprint>
+                            <date isodate="1996">1996</date>
+                            <pubPlace>Copenhagen</pubPlace>
+                            <publisher/>
+                        </imprint>
+                    </bibl>
+                    <bibl label="" xml:id="bibl_4d0f9e9c">
+                        <genre>book</genre>
+                        <author>Jørgen Erichsen</author>
+                        <title level="m">Friedrich Kuhlau. Ein deutscher Musiker in Kopenhagen</title>
+                        <title level="s"/>
+                        <biblScope unit="page">175–176</biblScope>
+                        <imprint>
+                            <date isodate="2011">2011</date>
+                            <pubPlace>Hildesheim/Zürich/New York</pubPlace>
+                            <publisher/>
+                        </imprint>
+                    </bibl>
+                </biblList>
+                <notesStmt>
+                    <annot type="links" xml:id="annot_ab6d94b3">
+                        <ptr label="Digital online edition" mimetype="" target="www.kb.dk/dcm/kaleidakustikon/" xml:id="ptr_07b5a61a"/>
+                    </annot>
+                    <annot type="general_description" xml:id="annot_ce44c529">Friedrich Kuhlau's (1786-1832) <rend fontstyle="italic">Kaleidakustikon</rend>
+                    is part of a tradition of musical games which enjoyed some popularity, 
+                    especially during the second half of the eighteenth century. 
+                    The games have in common that they contain a series of musical fragments 
+                    which may be combined into small compositions according to certain rules. 
+                    It is left to the players of the game to select, more or less randomly, 
+                    a combination by throwing dice, for example.<lb/>
+                        <rend fontstyle="italic">Kaleidakustikon</rend> consists of 21 piles (labeled A to V) of cards; each pile contains eleven cards numbered 2 to 12. With one card selected from each pile, the cards form a tripartite waltz, 24 bars in length, to be played in a rondo-like form.</annot>
+                </notesStmt>
             </work>
         </workDesc>
         <revisionDesc>
-                <change isodate="2014-08-12" resp="atge">
-                    <changeDesc><p/></changeDesc>
-                </change>
-            </revisionDesc>
+            <change isodate="2013-09-29" resp="atge" xml:id="change_46156e9c">
+                <changeDesc>
+                    <p/>
+                </changeDesc>
+            </change>
+            <change isodate="2014-08-12" resp="atge" xml:id="change_4a9e310f">
+                <changeDesc>
+                    <p/>
+                </changeDesc>
+            </change>
+            <change isodate="2014-11-20" resp="MerMEId" xml:id="change_110d1e162">
+                <changeDesc>
+                    <p>Batch transformation moving identifier/@type data to @label</p>
+                </changeDesc>
+            </change>
+            <change isodate="2014-11-20" resp="MerMEId" xml:id="change_113d1e162">
+                <changeDesc>
+                    <p>Batch transformation ensuring correct order of elements in source, work and biblList</p>
+                </changeDesc>
+            </change>
+            <change isodate="2014-11-20" resp="MerMEId" xml:id="change_116d1e162">
+                <changeDesc>
+                    <p>Batch transformation removing duplicate IDs and fixing other issues</p>
+                </changeDesc>
+            </change>
+            <change isodate="2014-11-21" resp="atge" xml:id="change_127N20136">
+                <changeDesc>
+                    <p>Updated source descriptions and added bibliography</p>
+                </changeDesc>
+            </change>
+            <change isodate="2014-11-21" resp="atge" xml:id="change_159N20194">
+                <changeDesc>
+                    <p/>
+                </changeDesc>
+            </change>
+            <change isodate="2015-09-02" resp="atge" xml:id="change_205N201F7">
+                <changeDesc>
+                    <p/>
+                </changeDesc>
+            </change>
+            <change isodate="2015-11-24" resp="atge" xml:id="change_11_1">
+                <changeDesc>
+                    <p/>
+                </changeDesc>
+            </change>
+        </revisionDesc>
     </meiHead>
     <music/>
 </mei>
