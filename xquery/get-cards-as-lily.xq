@@ -10,8 +10,8 @@ declare option output:media-type "text/plain;charset=UTF-8";
 let $app := "/db/mei2013"
 let $col := "/kaleidakustikon"
 let $pars:= <parameters>
-<param name="tempo"   value="{request:get-parameter("tempo","120")}"/>
-<param name="getitas" value="{request:get-parameter("getitas","")}"/>
+<param name="tempo"   value='{request:get-parameter("tempo","120")}'/>
+<param name="getitas" value='{request:get-parameter("getitas","")}'/>
 </parameters>
 
 return 
