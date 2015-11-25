@@ -40,12 +40,12 @@
             <sourceDesc>
                 <source analog="frbr:manifestation" label="Source A" xml:id="source_A">
                     <titleStmt>
-                        <title xml:id="title_f40eed1e">Source A</title>
+                        <title xml:id="title_f40eed1e">Source A: Edition by C.C. Lose</title>
                     </titleStmt>
                     <pubStmt>
-                        <publisher>C. C. Lose</publisher>
+                        <publisher>C.C. Lose</publisher>
                         <pubPlace xml:id="pubPlace_3a1e8034">Copenhagen</pubPlace>
-                        <date notafter="1820">c.1820</date>
+                        <date notafter="1821" notbefore="1820">1820/1821 (?)</date>
                     </pubStmt>
                     <physDesc>
                         <dimensions unit="cm">Box: 19.7 x 35.8 x 1.7</dimensions>
@@ -66,10 +66,7 @@
 title is pasted on the centre of the front of the parcel. 
                     At the top to the left on the label, the signature <rend fontstyle="italic">B.I.22.</rend> has been added in pencil; 
                     below the label on the packing paper <rend fontstyle="italic">Vide C. Thrane: Danske Komponister, pag. 137-138 / 
-                        S.A.E. Hagen.</rend> has been added in black ink.<rend fontstyle="italic"/>The<rend fontstyle="italic"> Kaleidakustikon</rend>
- consists of twenty-one piles of cards in sturdy cardboard arranged in 
-three rows 
-                    in a cardboard box. The sides of the box are lined 
+                        S.A.E. Hagen.</rend> has been added in black ink. The piles of cards are arranged in three rows in a cardboard box. The sides of the box are lined 
 with green 
                     linen. An insertion of orange cardboard keeps the 
 piles of cards in place. 
@@ -79,10 +76,7 @@ piles of cards in place.
 letter (A...V); 
                     the band of pile H is not original and lacks the 
 imprint. 
-                    Each pile contains eleven cards, marked with the 
-pile's letter and the figures from two to twelve 
-                    (namely, all the scores possible when throwing two 
-dices); that is, for instance, a2 to a12 in pile A. The cards are lithographically produced.</physMedium>
+                    The cards are lithographically produced on cardboard.</physMedium>
                                 <plateNum/>
                             </physDesc>
                             <physLoc>
@@ -90,6 +84,7 @@ dices); that is, for instance, a2 to a12 in pile A. The cards are lithographical
                                     <corpName xml:id="corpName_6c914ceb"/>
                                     <geogName xml:id="geogName_5ab919c4">Copenhagen</geogName>
                                     <identifier authURI="http://www.rism.info" authority="RISM" xml:id="identifier_ad64da0e">DK-Kk</identifier>
+                                    <ptr label="Library record" mimetype="" target="http://rex.kb.dk/KGL:MUS01000056473" xml:id="ptr_231N20092"/>
                                 </repository>
                                 <identifier xml:id="identifier_f28af663">Kuhlaus Samling (Fog nr. 215), mu6411.1250</identifier>
                             </physLoc>
@@ -98,26 +93,29 @@ dices); that is, for instance, a2 to a12 in pile A. The cards are lithographical
                 </source>
                 <source analog="frbr:manifestation" label="Source B" xml:id="source_B">
                     <titleStmt>
-                        <title xml:id="title_fc85eaec">Source B</title>
+                        <title xml:id="title_fc85eaec">Source B: Alternative edition by C.C. Lose</title>
                     </titleStmt>
                     <pubStmt>
-                        <publisher>C. C. Lose</publisher>
+                        <publisher>C.C. Lose</publisher>
                         <pubPlace xml:id="pubPlace_d0e05d12">Copenhagen</pubPlace>
-                        <date notafter="1820">c.1820</date>
+                        <date notafter="1821" notbefore="1820">1820/1821 (?)</date>
                     </pubStmt>
                     <physDesc>
+                        <dimensions unit="cm">Stand: c. 23 x 36</dimensions>
+                        <dimensions unit="cm">Cards: c. 5 x 5</dimensions>
                         <titlePage label="Title on label pasted on the wrapping" xml:id="titlePage_43554790">
                             <p>KALEIDAKUSTIKON, / en musikalsk Underholdning for Claveerspillere, / af / F.
                 Kuhlau. / Kjöbenhavn. Hos C. C. Lose</p>
                         </titlePage>
                     </physDesc>
                     <notesStmt>
-                        <annot type="source_description" xml:id="annot_687cac2f">The wrapping and the label are identical to those of Source <rend fontweight="bold">A</rend>. The engraving, however, differs from both Source <rend fontweight="bold">A</rend> and <rend fontweight="bold">C</rend>.</annot>
+                        <annot type="source_description" xml:id="annot_687cac2f">The wrapping and the label are identical to those of Source <rend fontweight="bold">A</rend>. The engraving, however, differs from both Source <rend fontweight="bold">A</rend> and <rend fontweight="bold">C</rend>. Instead of the box serving as a stand for the selected cards, this edition includes a plate or a piece 
+                    of cardboard lined with blue and orange paper or linen with three long pockets into which the cards are stuck.</annot>
                     </notesStmt>
                     <itemList>
                         <item label="" xml:id="item_aa76fc22">
                             <physDesc>
-                                <condition xml:id="condition_246N200C2">Lid and instructions missing.</condition>
+                                <condition xml:id="condition_246N200C2">Instructions and box lacking.</condition>
                                 <provenance/>
                                 <extent unit="cards">231</extent>
                                 <plateNum/>
@@ -127,6 +125,7 @@ dices); that is, for instance, a2 to a12 in pile A. The cards are lithographical
                                     <corpName xml:id="corpName_69a58610"/>
                                     <geogName xml:id="geogName_4386d3be">Copenhagen</geogName>
                                     <identifier authURI="http://www.rism.info" authority="RISM" xml:id="identifier_87181e82">S-Skma</identifier>
+                                    <ptr label="Library record and digitization" mimetype="" target="http://discover.musikverket.se/iii/encore/record/C__Rb1132583__Skuhlau%20kaleidakustikon%20elektronisk%20resurs__Orightresult__U?lang=swe&amp;suite=gold" xml:id="ptr_233N200E9"/>
                                 </repository>
                                 <identifier xml:id="identifier_77b9cee3">Noter rar 710</identifier>
                             </physLoc>
@@ -135,19 +134,19 @@ dices); that is, for instance, a2 to a12 in pile A. The cards are lithographical
                 </source>
                 <source analog="frbr:manifestation" label="Source C" xml:id="source_C">
                     <titleStmt>
-                        <title xml:id="title_ef171d25">Source C</title>
+                        <title xml:id="title_ef171d25">Source C: Edition by F.J. Weygand</title>
                     </titleStmt>
                     <pubStmt>
                         <publisher>F. J. Weygand</publisher>
                         <pubPlace xml:id="pubPlace_604d57a7">Amsterdam</pubPlace>
-                        <date notafter="1820">c.1820</date>
+                        <date notbefore="1820">c. 1821</date>
                     </pubStmt>
                     <physDesc>
                         <physMedium>An exemplar of the <rend fontstyle="italic">Kaleidakustikon</rend> was sold at an auction of 
 Jean-Paul Morin's collection 
                     of curiosa on 19 December 2012 in Paris. 
 Unfortunately it has not been possible to establish contact 
-                    with the present owner of this exemplar [<rend/>Thanks are due to the auction house, 
+                    with the present owner of this exemplar [Thanks are due to the auction house, 
                                 Pierre Bergé &amp; Associés, for making the illustration from the auction catalogue available 
                                 for further studies and for forwarding DCM's request to the owner 
                                 concerning the exchange of information]. However, 
@@ -158,18 +157,12 @@ cards are placed in a box lined with orange linen.
 employing the same orange linen. 
                     Each pile of cards is kept together by a white paper
  or cardboard strip without imprint. 
-                    Contrary to Source <rend fontweight="bold">A</rend> and <rend fontweight="bold">B</rend>, there is no division of the 
-box in three rows. 
-                    It cannot be used, therefore, as a stand for the 
-chosen cards; instead, the box includes a plate or a piece 
-                    of cardboard lined with blue paper or linen which 
-seems to function as a stand for the cards when they are 
-                    stuck into the three long pockets on the plate.	The 
+                    Contrary to Source <rend fontweight="bold">A</rend>, there is no division of the 
+box in three rows. This edition includes a blue plate similar to that of Source <rend fontweight="bold">C</rend> serving as a stand for the cards.	The 
 illustration shows the entire cards k2–k3 and k5–k12 as well as the 
 first page of the manual. 
                     See 'Instructions' for a complete transcription of 
-the text of the manual. 
-                    According to the auction house's description, the exemplar is lacking a card.</physMedium>
+the text of the manual. </physMedium>
                     </physDesc>
                     <notesStmt>
                         <annot xml:id="annot_0149c0f4">The source has not been available to the editors. All information is thanks to
@@ -178,23 +171,23 @@ the text of the manual.
                     <itemList>
                         <item label="" xml:id="item_25e000fa">
                             <physDesc>
-                                <condition xml:id="_1">Incomplete; one card lacking.</condition>
+                                <condition xml:id="condition_1">Incomplete; one card lacking.</condition>
                                 <extent unit="cards">230</extent>
                                 <provenance>
                                     <eventList xml:id="eventList_149N200E4">
                                         <event xml:id="event_149N200E7">
                                             <p xml:id="p_149N200E9">In Jean-Paul Morin's collection of curiosa</p>
                                             <date notafter="2012-12-19">until 2012</date>
-                                            <geogName role="" xml:id="_1_1"/>
-                                            <corpName role="" xml:id="_2"/>
-                                            <persName role="" xml:id="_3"/>
+                                            <geogName role="" xml:id="geogName_1_1"/>
+                                            <corpName role="" xml:id="corpName_2"/>
+                                            <persName role="" xml:id="persName_3"/>
                                         </event>
-                                        <event xml:id="_5">
-                                            <p xml:id="_5">Sold at an auction of  Jean-Paul Morin's collection of curiosa in Paris by the auction house Pierre Bergé &amp; Associés</p>
+                                        <event xml:id="event_5">
+                                            <p xml:id="p_5">Sold at an auction of  Jean-Paul Morin's collection of curiosa in Paris by the auction house Pierre Bergé &amp; Associés</p>
                                             <date isodate="2012-12-19">2012-12-19</date>
-                                            <geogName role="" xml:id="_6"/>
-                                            <corpName role="" xml:id="_7"/>
-                                            <persName role="" xml:id="_8"/>
+                                            <geogName role="" xml:id="geogName_6"/>
+                                            <corpName role="" xml:id="corpName_7"/>
+                                            <persName role="" xml:id="persName_8"/>
                                         </event>
                                     </eventList>
                                 </provenance>
@@ -302,7 +295,8 @@ the text of the manual.
                     which may be combined into small compositions according to certain rules. 
                     It is left to the players of the game to select, more or less randomly, 
                     a combination by throwing dice, for example.<lb/>
-                        <rend fontstyle="italic">Kaleidakustikon</rend> consists of 21 piles (labeled A to V) of cards; each pile contains eleven cards numbered 2 to 12. With one card selected from each pile, the cards form a tripartite waltz, 24 bars in length, to be played in a rondo-like form.</annot>
+                        <rend fontstyle="italic">Kaleidakustikon</rend> consists of 21 piles of cards; each of the piles (labeled A to V) contains eleven cards numbered 2 to 12 (namely, all the scores possible when throwing two 
+dices). With one card selected from each pile, the cards form a tripartite waltz, 24 bars in length, to be played in a rondo-like form.</annot>
                 </notesStmt>
             </work>
         </workDesc>
@@ -348,6 +342,11 @@ the text of the manual.
                 </changeDesc>
             </change>
             <change isodate="2015-11-24" resp="atge" xml:id="change_11_1">
+                <changeDesc>
+                    <p/>
+                </changeDesc>
+            </change>
+            <change isodate="2015-11-25" resp="atge" xml:id="_2_1">
                 <changeDesc>
                     <p/>
                 </changeDesc>

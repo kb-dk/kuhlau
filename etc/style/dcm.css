@@ -252,7 +252,7 @@ ol {
 
 /* Illustrations */
 
-img.illustration, p.illustration_text {
+.illustration {
     display: block;
     width: 400px;
     float: right;
@@ -260,7 +260,7 @@ img.illustration, p.illustration_text {
     margin: 0 0 0 15px;
 }
 
-p.illustration_text {
+.illustration_text {
     font-style:italic;
     margin-bottom: 15px;
 }
@@ -323,6 +323,50 @@ p.illustration_text {
     margin-left: 1.3em;
     margin-bottom: .3em;
 }
+
+/* Abbreviations */
+
+#main a.abbr {
+    border-bottom: 1px dashed #666;
+    cursor: help;   
+    text-decoration: none;
+    color: #000;
+}
+#main a:hover.abbr .expan {
+    visibility:visible;
+}
+
+#main .expan {
+    display:inline;
+    position: absolute;
+    visibility:hidden;
+    white-space: normal;
+    text-decoration:none;
+    color: black;
+    background-color:#ddd;
+    padding: 1px;
+    padding-bottom: 5px;
+    z-index:250;
+    padding: 8px 4px 4px 4px;
+    width: auto;
+    max-width: 300px;
+    margin-top: 20px;
+    margin-left: -5px;
+    border: 1px solid #ddd;
+    font-weight:normal;
+    font-style: normal;
+    text-align: left;
+    box-shadow: 7px 7px 10px 5px #333;
+    border-radius: 4px;
+    /* For non-CSS3 FireFox */
+    -moz-box-shadow: 7px 7px 10px 5px #333;
+    -moz-border-radius: 4px;
+    /* For MSIE 6-8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=10, Direction=135, Color='#333333')"; 
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=10, Direction=135, Color='#333333'); 
+}
+
+
 
 /* SPECIAL SYMBOLS */
 
