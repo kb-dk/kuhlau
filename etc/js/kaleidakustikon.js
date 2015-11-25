@@ -154,8 +154,9 @@ function changeAction(action) {
     else {
         document.kaleidaform.action = "/cgi-bin/buildly";
     }
-    if (action==".mid" || action==".mp3") {
+    if (action==".mp3") {
         document.kaleidaform.target = "player";
+        document.getElementById("player").style.height="40px";
     } 
     else {
         document.kaleidaform.target = "score";
