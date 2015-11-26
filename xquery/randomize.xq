@@ -9,7 +9,6 @@ declare namespace math="http://www.w3.org/2005/xpath-functions/math/";
 declare namespace app="http://kb.dk/this/app";
 declare namespace m="http://www.music-encoding.org/ns/mei";
 declare namespace ft="http://exist-db.org/xquery/lucene";
-declare namespace p="http://kb.dk/p/";
 
 import module namespace head="http://kb.dk/this/head" at "./header-stuff.xqm";
 

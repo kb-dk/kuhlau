@@ -1,5 +1,6 @@
 xquery version "3.0" encoding "UTF-8";
 
+declare namespace conf="http://kb.dk/this/is/my/conf" at "./conf.xqm";
 declare namespace local="http://kb.dk/this/is/me";
 declare namespace xdb="http://exist-db.org/xquery/xmldb";
 declare namespace request="http://exist-db.org/xquery/request";
@@ -12,7 +13,7 @@ declare namespace m="http://www.music-encoding.org/ns/mei";
 declare option output:method "xml";
 declare option output:media-type "text/html; charset=UTF-8";
 
-declare function local:echo-parameters($pars as xs:string*,
+declare function local:echo-parameters($pars    as xs:string*,
 		                       $getitas as xs:string) as xs:string
 {
   let $h := head($pars)
