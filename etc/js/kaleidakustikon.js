@@ -149,10 +149,10 @@ function getParams() {
 
 function changeAction(action) {
     if (action==".svg") {
-        document.kaleidaform.action = "/storage/mei2013/get-cards.xq";
+        document.kaleidaform.action = "./mei2013/get-cards.xq";
     } 
     else {
-        document.kaleidaform.action = "/cgi-bin/buildly";
+        document.kaleidaform.action = "./cgi-bin/buildly";
     }
     if (action==".mp3") {
         document.kaleidaform.target = "player";
