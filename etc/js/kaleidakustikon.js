@@ -156,7 +156,8 @@ function changeAction(action) {
     }
     if (action==".mp3") {
         document.kaleidaform.target = "player";
-        document.getElementById("player").style.height="40px";
+        document.getElementById("player").style.height="85px";
+        document.kaleidaform.action = "audio.html";
     } 
     else {
         document.kaleidaform.target = "score";

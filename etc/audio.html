@@ -1,0 +1,27 @@
+<!DOCTYPE html SYSTEM "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Kaleidakustikon - MP3</title>
+        <link type="text/css" href="style/dcm.css" rel="stylesheet" />
+        <link type="text/css" href="style/kaleidakustikon.css" rel="stylesheet" />
+        <script type="text/javascript">
+            function play() {     
+                var url = 'cgi-bin/buildly' + window.location.search;
+                document.getElementById('audio_player').src = url;
+                document.getElementById('download_mp3_link').href = url;
+                /* alert('playing: '+url); */                       
+            }
+        </script>
+        <style type="text/css">
+            #main_container{
+                padding-top:5px;
+                color: #000;
+            }</style>
+    </head>
+    <body onload="play();" id="main_container">
+        <audio controls="controls" autoplay="autoplay" id="audio_player" src=""> 
+            Your browser does not support the &lt;audio&gt; element. 
+        </audio>
+        <!--&nbsp;<a id="download_mp3_link" href="" title="Download MP3 file">Download</a>-->
+    </body>
+</html>
