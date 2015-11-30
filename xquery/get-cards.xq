@@ -117,7 +117,7 @@ declare function local:echo-parameters($pars    as xs:string*,
 			      attribute type  {"radio"},
 			      attribute name  {$appid},
 			      attribute value {$rdgid},
-			      if( contains(request:get-parameter($appid,""),$rdgid)) then
+			      if( contains(request:get-parameter($appid,""),$rdgid) or $rdgpos = 1) then
 				attribute checked {"checked"}
 			      else
 				()
