@@ -114,6 +114,22 @@ function setLayer(preset) {
     showId();
 }
 
+function collectInputs() {
+    var params = './cgi-bin/buildly?';
+    
+    for(i=0; i<document.kaleidaform.elements.length; i++)
+    {
+       var fieldName = document.kaleidaform.elements[i].name;
+       var fieldValue = document.kaleidaform.elements[i].value;
+       
+       if(fieldName && fieldValue) { 
+           params += '&' + fieldName + '=' + fieldValue;
+       }
+    }
+    return params;
+}
+
+
 function showId() {
     var id='';
     for (var i=0;i<list.length;i++) {
@@ -129,6 +145,7 @@ function showId() {
     var url = [location.protocol, '//', location.host, location.pathname.replace('index.html','')].join('');
     //var url = [location.protocol, '//', location.host, location.pathname].join('');
     document.getElementById('link').value=url+'?preset='+id;
+    document.getElementById('midi_link').href=collectInputs();
 }
 
 function getParams() {
@@ -165,20 +182,6 @@ function hidePlayer() {
     return true;
 }
 
-function collectInputs() {
-    var params = './cgi-bin/buildly?';
-    
-    for(i=0; i<document.kaleidaform.elements.length; i++)
-    {
-       var fieldName = document.kaleidaform.elements[i].name;
-       var fieldValue = document.kaleidaform.elements[i].value;
-       
-       if(fieldName && fieldValue) { 
-           params += '&' + fieldName + '=' + fieldValue;
-       }
-    }
-    return params;
-}
 
 function changeAction(action) {
     if (action==".svg") {
