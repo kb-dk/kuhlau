@@ -1,7 +1,7 @@
 xquery version "1.0" encoding "UTF-8";
 module namespace head="http://kb.dk/this/head";
 
-declare namespace conf   = "http://kb.dk/this/is/my/conf" at "./conf.xqm";
+import module namespace conf   = "http://kb.dk/this/is/my/conf" at "./conf.xqm";
 declare namespace request="http://exist-db.org/xquery/request";
 
 declare function head:print-head($title  as xs:string) as node()
