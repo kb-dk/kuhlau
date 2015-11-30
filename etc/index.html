@@ -13,7 +13,6 @@
     <link type="text/css" href="jquery/jquery-ui-selectmenu/themes/base/jquery.ui.selectmenu.css" rel="stylesheet" />
     
     <!-- general jquery / jquery UI files -->
-    <!--<script type="text/javascript" src="jquery/jquery-ui-selectmenu/jquery-1.8.3.js"></script>-->
     <script type="text/javascript" src="jquery/jquery-ui-1.10.3/js/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="jquery/jquery-ui-1.10.3/js/jquery-ui-1.10.3.custom.js"></script>
     
@@ -56,7 +55,7 @@
         <div id="main">
           <form method="get" 
             action="./cgi-bin/buildly"
-            target="player" 
+            target="" 
             name="kaleidaform" 
             id="kaleidaform">
             <div id="box_shadow"><!-- creates a shadow in decent browsers --></div>
@@ -346,45 +345,48 @@
                 </div>
               </div>
               
-              <div class="play_button"><a href="javascript:void()" title="Select random cards"
+              <div class="play_button"><a href="javascript:void(0)" title="Select random cards"
                 onmouseover="document.getElementById('shuffle_button').src='style/images/shuffle_button_hover.png'"
                 onmouseout="document.getElementById('shuffle_button').src='style/images/shuffle_button.png'" 
-                onclick="randomize(); return false;"><img 
+                onclick="randomize(); hidePlayer(); return false;"><img 
                   src="style/images/shuffle_button.png" alt="Shuffle cards" id="shuffle_button"/><br/>SHUFFLE</a>
               </div>
               
-              <div class="play_button"><a href="javascript:void()" title="Play as MIDI"
+              <div class="play_button"><a href="javascript:void(0)"
+                id="midi_link"
+                title="Play as MIDI"
+                download="kaleidakustikon.mid"
                 onmouseover="document.getElementById('midi_button').src='style/images/sound_button_hover.png'"
                 onmouseout="document.getElementById('midi_button').src='style/images/sound_button.png'"
-                onclick="document.kaleidaform.elements['getitas'].value='.mid';changeAction(document.kaleidaform.getitas.value);document.kaleidaform.submit(); return false;"><img 
+                onclick="document.kaleidaform.elements['getitas'].value='.mid';document.getElementById('midi_link').href=collectInputs();"><img 
                   src="style/images/sound_button.png" alt="MIDI file" id="midi_button"/><br/>MIDI</a></div>
               
-              <div class="play_button"><a href="javascript:void()"  title="Play MP3 (takes about 30 seconds to generate)"
+              <div class="play_button"><a href="javascript:void(0)"  title="Play MP3 (takes about 30 seconds to generate)"
                 onmouseover="document.getElementById('mp3_button').src='style/images/sound_button_hover.png'"
                 onmouseout="document.getElementById('mp3_button').src='style/images/sound_button.png'"
-                onclick="document.kaleidaform.elements['getitas'].value='.mp3';changeAction(document.kaleidaform.getitas.value);document.kaleidaform.submit(); return false;"><img 
+                onclick="showPlayer();document.kaleidaform.elements['getitas'].value='.mp3';changeAction(document.kaleidaform.getitas.value);document.kaleidaform.submit(); return false;"><img 
                   src="style/images/sound_button.png" alt="MP3 sound file" id="mp3_button"/><br/>MP3</a></div>
               
-              <div class="play_button"><a href="javascript:void()" title="Print this selection of cards (facsimile)"
+              <div class="play_button"><a href="javascript:void(0)" title="Print this selection of cards (facsimile)"
                 onmouseover="document.getElementById('facs_button').src='style/images/print_button_hover.png'"
                 onmouseout="document.getElementById('facs_button').src='style/images/print_button.png'" 
                 onclick="window.open('facsimile.html?preset='+document.getElementById('preset').value, 'facsimile'); return false;"
                 target="facsimile"><img 
                   src="style/images/print_button.png" alt="Print facsimile" id="facs_button"/><br/>PRINT</a></div>
               
-              <div class="play_button"><a href="javascript:void()" title="Download score as PDF"
+              <div class="play_button"><a href="javascript:void(0)" title="Download score as PDF"
                 onmouseover="document.getElementById('pdf_button').src='style/images/score_button_hover.png'"
                 onmouseout="document.getElementById('pdf_button').src='style/images/score_button.png'" 
                 onclick="document.kaleidaform.elements['getitas'].value='.pdf';changeAction(document.kaleidaform.getitas.value);document.kaleidaform.submit(); return false;"><img 
                   src="style/images/score_button.png" alt="PDF document" id="pdf_button"/><br/>PDF</a></div>
               
-              <div class="play_button"><a href="javascript:void()" title="Display score as HTML page using SVG graphics"
+              <div class="play_button"><a href="javascript:void(0)" title="Display score as HTML page using SVG graphics"
                 onmouseover="document.getElementById('svg_button').src='style/images/score_button_hover.png'"
                 onmouseout="document.getElementById('svg_button').src='style/images/score_button.png'" 
                 onclick="document.kaleidaform.elements['getitas'].value='.svg';changeAction(document.kaleidaform.getitas.value);document.kaleidaform.submit(); return false;"><img 
                   src="style/images/score_button.png" alt="SVG graphics" id="svg_button"/><br/>SVG</a></div>
               
-              <div class="play_button"><a href="javascript:void()" title="Download encoded score as MEI XML"
+              <div class="play_button"><a href="javascript:void(0)" title="Download encoded score as MEI XML"
                 onmouseover="document.getElementById('xml_button').src='style/images/xml_button_hover.png'"
                 onmouseout="document.getElementById('xml_button').src='style/images/xml_button.png'" 
                 onclick="document.kaleidaform.elements['getitas'].value='.xml';changeAction(document.kaleidaform.getitas.value);document.kaleidaform.submit(); return false;"><img 
@@ -405,7 +407,7 @@
               <div class="play_button nowidth"><a href="javascript:void();" title="Use this combination"
                 onmouseover="document.getElementById('preset_button').src='style/images/refresh_button_hover.png'"
                 onmouseout="document.getElementById('preset_button').src='style/images/refresh_button.png'" 
-                onclick="setCards(document.getElementById('preset').value); return false;"><img 
+                onclick="hidePlayer();setCards(document.getElementById('preset').value); return false;"><img 
                   src="style/images/refresh_button.png" alt="Set combination" id="preset_button"/> SET</a></div>
             </div>
           </form>

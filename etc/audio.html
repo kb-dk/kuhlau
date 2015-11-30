@@ -4,24 +4,84 @@
         <title>Kaleidakustikon - MP3</title>
         <link type="text/css" href="style/dcm.css" rel="stylesheet" />
         <link type="text/css" href="style/kaleidakustikon.css" rel="stylesheet" />
+        <!-- general jquery / jquery UI files -->
+        <script type="text/javascript" src="jquery/jquery-ui-1.10.3/js/jquery-1.9.1.js"></script>
+
         <script type="text/javascript">
+            
+            var audio = document.getElementById("audio_player");
+
+            function audioLoaded() {
+               document.getElementById("audio_loading").style.display = "none";
+               showPlayer();
+            }
+
+            
+            function showPlayer() {
+                var player = document.getElementById("player_container");
+                player.style.display="block";
+                player.style.display="inline-block";
+            }
+            
+            
+            function hidePlayer() {
+                var player = document.getElementById("player_container");
+                playerFrame.style.none="none";
+            }
+
+            
+            
             function play() {     
                 var url = 'cgi-bin/buildly' + window.location.search;
                 document.getElementById('audio_player').src = url;
                 document.getElementById('download_mp3_link').href = url;
-                /* alert('playing: '+url); */                       
             }
         </script>
         <style type="text/css">
             #main_container{
                 padding-top:5px;
+                color:#000;
+            }
+            
+            #main_container a:link {
                 color: #000;
-            }</style>
+                text-decoration: none;
+            }
+        
+            #audio_loading {
+                height: 20px;
+            }
+            
+            #player_container {
+                display: none;
+            }        
+            
+            #audio_player {
+                display: inline-block;
+            }
+        
+        </style>
     </head>
     <body onload="play();" id="main_container">
-        <audio controls="controls" autoplay="autoplay" id="audio_player" src=""> 
-            Your browser does not support the &lt;audio&gt; element. 
-        </audio>
-        <!--&nbsp;<a id="download_mp3_link" href="" title="Download MP3 file">Download</a>-->
+        
+        <div id="audio_loading">
+            <p>LOADING &#160;<img src="style/images/throbber.gif" alt="Loading..."/></p>
+        </div>
+        
+        <div id="player_container">
+            <audio controls="controls" autoplay="autoplay" id="audio_player" src="" onloadeddata="audioLoaded();"> Your browser
+                does not support the &lt;audio&gt; element. </audio>
+            &#160;
+            
+            <div class="play_button nowidth" style="display: inline-block;"><a 
+                id="download_mp3_link" 
+                href="" 
+                target="_blank" 
+                title="Download MP3 file"
+                download="kaleidakustikon.mp3"
+                onmouseover="document.getElementById('download_button').src='style/images/download_button_hover.png'"
+                onmouseout="document.getElementById('download_button').src='style/images/download_button.png'"><img 
+                    src="style/images/download_button.png" alt="Download MP3" id="download_button"/></a></div>
+        </div>
     </body>
 </html>

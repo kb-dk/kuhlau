@@ -147,6 +147,36 @@ function getParams() {
 }
 
 
+function showPlayer() {
+    var playerFrame = document.getElementById("player");
+    playerFrame.style.height="85px";
+}
+
+
+function hidePlayer() {
+    var playerFrame = document.getElementById("player");
+    var innerDoc = playerFrame.contentDocument || playerFrame.contentWindow.document;
+    var player = innerDoc.getElementById("audio_player");
+    playerFrame.style.height="0px";
+    player.pause();
+    player.currentTime = 0;
+}
+
+function collectInputs() {
+    var params = './cgi-bin/buildly?';
+    
+    for(i=0; i<document.kaleidaform.elements.length; i++)
+    {
+       var fieldName = document.kaleidaform.elements[i].name;
+       var fieldValue = document.kaleidaform.elements[i].value;
+       
+       if(fieldName && fieldValue) { 
+           params += '&' + fieldName + '=' + fieldValue;
+       }
+    }
+    return params;
+}
+
 function changeAction(action) {
     if (action==".svg") {
         document.kaleidaform.action = "./mei2013/get-cards.xq";
@@ -156,7 +186,7 @@ function changeAction(action) {
     }
     if (action==".mp3") {
         document.kaleidaform.target = "player";
-        document.getElementById("player").style.height="85px";
+        showPlayer();
         document.kaleidaform.action = "audio.html";
     } 
     else {
