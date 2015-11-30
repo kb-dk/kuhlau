@@ -157,9 +157,12 @@ function hidePlayer() {
     var playerFrame = document.getElementById("player");
     var innerDoc = playerFrame.contentDocument || playerFrame.contentWindow.document;
     var player = innerDoc.getElementById("audio_player");
-    playerFrame.style.height="0px";
-    player.pause();
-    player.currentTime = 0;
+    if(player) {
+        playerFrame.style.height="0px";
+        player.pause();
+        player.currentTime = 0;
+    }
+    return true;
 }
 
 function collectInputs() {
