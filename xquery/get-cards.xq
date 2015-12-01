@@ -68,6 +68,7 @@ declare function local:echo-parameters($pars    as xs:string*,
 	<head>
 	  <title>{$title}{" "}
 	  </title>
+	  <link type="text/css" href="{$conf:base_uri}/style/dcm.css" rel="stylesheet" />
 	  <link type="text/css" href="{$conf:base_uri}/style/edition.css" rel="stylesheet"/>
 	</head>
 	<body>
@@ -141,7 +142,7 @@ declare function local:echo-parameters($pars    as xs:string*,
 		<img style="border: 0px; vertical-align:middle;" alt="DCM Logo"
 		src="{$conf:base_uri}/style/images/dcm_logo_small.png"/>
 		Danish Centre for Music Publication, 
-		The Royal Library, Copenhagen 2014 |
+		The Royal Library, Copenhagen 2015 |
 		<a href="http://www.kb.dk/dcm">www.kb.dk/dcm</a>
 	      </div>
 	    </div>
