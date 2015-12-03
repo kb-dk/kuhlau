@@ -140,12 +140,14 @@ function showId() {
         if(val=='12') { val='c'; }
         id=id+val;
     }
-    document.getElementById('preset').value=id;
+    document.getElementById('preset').value = id;
     //document.getElementById('set').disabled=true;
     var url = [location.protocol, '//', location.host, location.pathname.replace('index.html','')].join('');
     //var url = [location.protocol, '//', location.host, location.pathname].join('');
-    document.getElementById('link').value=url+'?preset='+id;
-    document.getElementById('midi_link').href=collectInputs();
+    document.getElementById('link').value = url + '?preset=' + id;
+    var midi_url = collectInputs();
+    document.getElementById('midi_link').href = midi_url;
+    document.getElementById('mp3_link').href = midi_url.replace('=midi','=mp3');
 }
 
 function getParams() {

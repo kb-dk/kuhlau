@@ -50,7 +50,7 @@
       </div>
       <div id="main_container">
         <div id="loading">
-          <p>LOADING &#160;<img src="style/images/throbber.gif" alt="Loading..."/></p>
+          <p>LOADING &#160;<img src="style/images/throbber.gif" alt=""/></p>
         </div>
         <div id="main">
           <form method="get" 
@@ -361,7 +361,10 @@
                 onclick="document.kaleidaform.elements['getitas'].value='.mid';document.getElementById('midi_link').href=collectInputs();"><img 
                   src="style/images/sound_button.png" alt="MIDI file" id="midi_button"/><br/>MIDI</a></div>
               
-              <div class="play_button"><a href="javascript:void(0)"  title="Play MP3 (takes about 30 seconds to generate)"
+              <div class="play_button"><a href="javascript:void(0)"
+                id="mp3_link"
+                title="Play as MP3 (takes about 30 seconds to generate; right-click to download)"
+                download="kaleidakustikon.mp3"
                 onmouseover="document.getElementById('mp3_button').src='style/images/sound_button_hover.png'"
                 onmouseout="document.getElementById('mp3_button').src='style/images/sound_button.png'"
                 onclick="showPlayer();document.kaleidaform.elements['getitas'].value='.mp3';changeAction(document.kaleidaform.getitas.value);document.kaleidaform.submit(); return false;"><img 
