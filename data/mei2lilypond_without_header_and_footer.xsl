@@ -20,24 +20,14 @@
         <xsl:apply-templates select="m:score"/>
     </xsl:template>
     <xsl:template match="m:score"><xsl:text>\paper {
-paper-height = 160\mm
+paper-height = 150\mm
 paper-width  = 280\mm 
-top-margin = 1\mm
-bottom-margin = 1\mm
+top-margin = 0\mm
+bottom-margin = 0\mm
 left-margin = 3\mm
 right-margin = 2\mm
 ragged-last-bottom = ##f
 last-bottom-spacing #'basic-distance = #0 
-
-  oddHeaderMarkup = \markup { 
-    \hspace #-1.3
-    \epsfile #Y #7 #"header.eps"
-  }
-  
-  oddFooterMarkup = \markup { 
-    \hspace #-1.3
-    \epsfile #Y #5 #"footer.eps"
-  }
 }
 
 \header {
