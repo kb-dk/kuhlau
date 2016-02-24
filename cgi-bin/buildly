@@ -36,8 +36,8 @@ my $log_file = $basename . '.log';
 
 my $host      = 'localhost';
 # $host      = 'dcm-frontend-01.kb.dk';
-my $lsource   = 'http://'.$host.'/storage/mei2013/get-cards-as-lily.xq';
-my $xsource   = 'http://'.$host.'/storage/mei2013/get-cards-as-xml.xq';
+my $lsource   = 'http://'.$host.'/dcm/mei2013/get-cards-as-lily.xq';
+my $xsource   = 'http://'.$host.'/dcm/mei2013/get-cards-as-xml.xq';
 my $dev_null  = '2> /dev/null';
 $dev_null  = '2>>'.$log_file;
 
