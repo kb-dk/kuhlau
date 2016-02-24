@@ -141,7 +141,7 @@ declare function local:echo-parameters($pars    as xs:string*,
 	      <div class="dcm_logo">
 		<img style="border: 0px; vertical-align:middle;" alt="DCM Logo"
 		src="{$conf:base_uri}/style/images/dcm_logo_small.png"/>
-		Danish Centre for Music Publication, 
+		Danish Centre for Music Editing, 
 		The Royal Library, Copenhagen 2015 |
 		<a href="http://www.kb.dk/dcm">www.kb.dk/dcm</a>
 	      </div>
