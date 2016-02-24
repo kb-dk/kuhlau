@@ -6,10 +6,10 @@ $| = 1;  # don't buffer output
 
 my $HOME     = '/home/kaleidakustikon/cache/';
 my $MUP      = "/usr/local/bin/lilypond"; 
-my $timidity = "/usr/local/bin/timidity";
-# $timidity = "/usr/bin/timidity";
-my $lame    = "/usr/bin/lame";
-# $lame    = "/usr/local/bin/lame";
+# my $timidity = "/usr/local/bin/timidity";
+my $timidity = "/usr/bin/timidity";
+# my $lame    = "/usr/bin/lame";
+my $lame    = "/usr/local/bin/lame";
 
 ############
 
@@ -36,8 +36,8 @@ my $log_file = $basename . '.log';
 
 my $host      = 'localhost';
 # $host      = 'dcm-frontend-01.kb.dk';
-my $lsource   = 'http://'.$host.'/dcm/mei2013/get-cards-as-lily.xq';
-my $xsource   = 'http://'.$host.'/dcm/mei2013/get-cards-as-xml.xq';
+my $lsource   = 'http://'.$host.'/dcm/kaleidakustikon/mei/get-cards-as-lily.xq';
+my $xsource   = 'http://'.$host.'/dcm/kaleidakustikon/mei/get-cards-as-xml.xq';
 my $dev_null  = '2> /dev/null';
 $dev_null  = '2>>'.$log_file;
 

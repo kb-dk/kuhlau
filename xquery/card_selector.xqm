@@ -18,12 +18,13 @@ declare function crds:select_cards(
 
     let $db  := concat($app,$col)
 
-    let $a := ("a","b","c","d","e","f","g")
-    let $b := ("h","i","k","l","m","n","o")
-    let $c := ("p","q","r","s","t","u","v")
+    let $a   := ("a","b","c","d","e","f","g")
+    let $b   := ("h","i","k","l","m","n","o")
+    let $c   := ("p","q","r","s","t","u","v")
 
+    let $get := request:get-parameter("getitas","")
     let $sequence :=
-      if(request:get-parameter("getitas","") = ".mid") then
+      if(contains($get,"mid")) then
 	($a,$a,$b,$b,$a,$c,$c,$a)
       else
 	($a,$b,$c)
@@ -87,7 +88,7 @@ declare function crds:select_cards(
 	  (:transform:transform($rawmusic,doc(concat($app,"/apparatus-criticus.xsl")),()) :)
 
       return 
-	if(request:get-parameter("getitas","") = ".mid") then
+	if(contains($get,"mid")) then
 	  transform:transform($music,doc(concat($app,"/strip-repeats.xsl")),())		  
 	else
 	  $music

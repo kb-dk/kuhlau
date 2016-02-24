@@ -187,7 +187,7 @@ function hidePlayer() {
 
 function changeAction(action) {
     if (action==".svg") {
-        document.kaleidaform.action = "./mei2013/get-cards.xq";
+        document.kaleidaform.action = "./mei/get-cards.xq";
     } 
     else {
         document.kaleidaform.action = "./cgi-bin/buildly";

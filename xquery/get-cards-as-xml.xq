@@ -7,7 +7,7 @@ declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 declare option output:method "xml";
 declare option output:media-type "text/xml; charset=UTF-8";
 
-let $app := "/db/mei2013"
+let $app := "/db/mei"
 let $col := "/kaleidakustikon"
 
 return 

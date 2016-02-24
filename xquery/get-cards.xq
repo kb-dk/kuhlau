@@ -46,13 +46,13 @@ declare function local:echo-parameters($pars    as xs:string*,
   };
 
 
-  let $app := "/db/mei2013"
+  let $app := "/db/mei"
   let $col := "/kaleidakustikon"
   let $parameters :=  request:get-parameter-names()
 
   let $rawdoc :=
     doc(
-      concat("http://localhost/storage/mei2013/get-cards-as-xml.xq?apparatus=yes&amp;",
+      concat("http://localhost/dcm/kaleidakustikon/mei/get-cards-as-xml.xq?apparatus=yes&amp;",
       local:echo-parameters($parameters,".xml"))
     )
 
@@ -60,7 +60,7 @@ declare function local:echo-parameters($pars    as xs:string*,
     for $tit in $rawdoc/m:mei/m:meiHead/m:fileDesc/m:titleStmt/m:title/string()
     return $tit
 
-    let $cards:=doc(concat("http://localhost/cgi-bin/buildly?",
+    let $cards:=doc(concat("http://localhost/dcm/kaleidakustikon/cgi-bin/buildly?",
       local:echo-parameters($parameters,".svg")))
 
       return 
