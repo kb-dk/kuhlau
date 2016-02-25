@@ -1,75 +1,27 @@
 #!/bin/sh
 
-# We deploy the documents by sending them to the eXist database
+# We move cgi-bin to /home/kaleidakustikon/cgi-bin SLU 2016-02-25
 
-#HOSTPORT="labs.kb.dk:8080"
-#HOSTPORT="disdev-01.kb.dk:8081"
-TARGET="mei"
-#TARGET="kuhlau"
-HOSTPORT="localhost:8080"
-PASSWORD="flormelis"
+export KUHLAU="/home/kaleidakustikon/"
+#export CGI="/kb/httpd/cgi-bin/"
+export CGI="$KUHLAU/cgi-bin/"
+export USER="apache"
 
-./load_exist.pl \
-    --user admin \
-    --password $PASSWORD \
-    --host-port $HOSTPORT  \
-    --suffix xml \
-    --delete ./data/ \
-    --context /exist/rest/db/ \
-    --target "$TARGET/kaleidakustikon/"
+set -e
+set -x
 
-./load_exist.pl \
-    --user admin \
-    --password $PASSWORD \
-    --host-port $HOSTPORT  \
-    --suffix xml \
-    --load ./data/ \
-    --context /exist/rest/db/ \
-    --target "$TARGET/kaleidakustikon/"
+if [ ! -d "$KUHLAU" ]; then
+    mkdir "$KUHLAU"
+fi
 
+if [ ! -d "$KUHLAU/cache" ]; then
+    mkdir "$KUHLAU/cache"
+    chown "$USER:$USER" "$KUHLAU/cache"
+fi
 
-./load_exist.pl \
-    --user admin \
-    --password $PASSWORD \
-    --host-port $HOSTPORT  \
-    --suffix xq \
-    --load ./xquery/ \
-    --context /exist/rest/db/ \
-    --target "$TARGET/"
+tar cvf - $(find etc -type f -print | grep -v '\.svn') | \
+    (cd "$KUHLAU" ; tar xvf - )
 
-./load_exist.pl \
-    --user admin \
-    --password $PASSWORD \
-    --host-port $HOSTPORT  \
-    --suffix xqm \
-    --load ./xquery/ \
-    --context /exist/rest/db/ \
-    --target "$TARGET/"
+cp buildly "$CGI"
+$ sudo ./pnr-install-web-site.sh
 
-
-./load_exist.pl \
-    --user admin \
-    --password $PASSWORD \
-    --host-port $HOSTPORT  \
-    --suffix xsl \
-    --load ./xquery \
-    --context /exist/rest/db/ \
-    --target "$TARGET/"
-
-./load_exist.pl \
-    --user admin \
-    --password $PASSWORD \
-    --host-port $HOSTPORT  \
-    --suffix xsl \
-    --load ./data \
-    --context /exist/rest/db/ \
-    --target "$TARGET/"
-
-./load_exist.pl \
-    --user admin \
-    --password $PASSWORD \
-    --host-port $HOSTPORT  \
-    --suffix owalk.xml \
-    --load ./data \
-    --context /exist/rest/db/ \
-    --target "$TARGET/"
