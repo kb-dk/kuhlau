@@ -4,14 +4,24 @@ use strict;
 
 $| = 1;  # don't buffer output
 
-my $HOME     = '/home/kaleidakustikon/cache/';
-my $MUP      = "/usr/local/bin/lilypond"; 
-# my $timidity = "/usr/local/bin/timidity";
-my $timidity = "/usr/bin/timidity";
-# my $lame    = "/usr/bin/lame";
-my $lame    = "/usr/local/bin/lame";
+#
+# The setup on dcm-frontend-01.kb.dk
+#
 
-############
+my $HOME      = '/home/kaleidakustikon/cache/';
+my $MUP       = "/usr/local/bin/lilypond"; 
+my $timidity  = "/usr/local/bin/timidity";
+my $lame      = "/usr/bin/lame";
+
+# This is on disdev-01
+# $timidity = "/usr/bin/timidity";
+# $lame     = "/usr/local/bin/lame";
+###################################################################################
+
+###################################################################################
+###### The author of the lines of code below is NOT proud of any one of them ######
+###### He is, however, proud of what they achieve.                           ######
+###################################################################################
 
 chdir $HOME;
 my $query=$ENV{'QUERY_STRING'};
