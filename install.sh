@@ -3,7 +3,6 @@
 # We move cgi-bin to /home/kaleidakustikon/cgi-bin SLU 2016-02-25
 
 export KUHLAU="/home/kaleidakustikon/"
-#export CGI="/kb/httpd/cgi-bin/"
 export CGI="$KUHLAU/cgi-bin/"
 export USER="apache"
 
@@ -23,5 +22,5 @@ tar cvf - $(find etc -type f -print | grep -v '\.svn') | \
     (cd "$KUHLAU" ; tar xvf - )
 
 cp buildly "$CGI"
-$ sudo ./pnr-install-web-site.sh
+# $ sudo ./pnr-install-web-site.sh
 
