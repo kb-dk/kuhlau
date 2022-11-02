@@ -3,7 +3,7 @@
 
 ## Kaleidakustikon
 
-This project contains the software and data related to the Kaleidakustikon project.
+This project contains the software and data related to the Kaleidakustikon project. It ran perhaps between 2011 - 2016 at a very low speed. All links are dead.
 
 For more info, please refer to the [DCM project page](http://www.kb.dk/en/kb/nb/mta/dcm/projekter/kaleidakustikon.html)
 
